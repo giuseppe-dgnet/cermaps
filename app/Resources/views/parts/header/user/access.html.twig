@@ -1,0 +1,40 @@
+<ul id="share-menu" class="button-index">
+    {#<li class="index-list first last">       
+        <span><a href="#" title="Il nostro network"></a></span>
+    </li> #}
+    {% if not app.user %}
+        <li class="login first last relative " id="login">
+            <span><a class="toggle-content" href="javascript: void(0)" targetLink="baloon-login" title="Accedi ed utilizza i tuoi strumenti">Accedi</a></span>
+            <div class="baloon-container no-display baloon-login-right" id="baloon-login">
+                <div class="arrow-up a-left" id="arrow-up-1"></div>
+                <section class="box-float shadow-strong clearfix" style="width: 255px;">
+                    {% render url('fos_user_security_login') %}
+                </section>
+            </div>
+        </li>
+        <li class="register first last">       
+            <span><a class="register" href="{{ path('richiesta_new') }}" title="Registrati e inizia a comunicare">+Registrati</a></span>
+        </li>   
+    {% else %}
+        <li class="user_thumb first" id="user_tools">
+            <span>
+                <a class="toggle-content" href="{{ path('op_sr_my') }}" targetLink="baloon-user-tools" title="I tuoi dati">
+                    <div style="width: 26px; height: 26px; background: url('{{app.user.showroom.logo}}') no-repeat center center; background-size: cover;">
+                        <img class="rounded-3 no-display" src="/bundles/esweb/images/user_placeholder.jpg" height="25" width="25" />
+                    </div>
+                </a>
+            </span>
+            <div class="baloon-container target-content no-display baloon-login-left" id="baloon-user-tools">
+                <div class="arrow-up a-left" id="arrow-up-2"></div>
+                <section class="box-float shadow-strong clearfix">
+                    {% render url('fos_user_security_login') %}
+                </section>
+            </div>
+        </li>
+        <li class="user_name last">
+            <span class="menu-holder">
+                <a class="toggle-content" href="{{ path('op_sr_my') }}" targetLink="baloon-user-tools" >{{ app.user.username|truncate(26) }}</a>
+            </span>
+        </li>
+    {% endif %}
+</ul>

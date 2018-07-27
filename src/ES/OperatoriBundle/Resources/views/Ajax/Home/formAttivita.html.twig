@@ -1,0 +1,128 @@
+{% form_theme form ':form:form_baloon_layout.html.twig' %}
+
+{% javascripts
+    '@ESOperatoriBundle/Resources/public/js/attivita.js'
+    %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+
+{#
+<section class="header_rb rounded-5-top">
+    <h1 id="titolo_fancybox_richiesta">Richiesta di registrazione a EcoSeekr</h1>
+</section>
+#}
+
+<div class="baloon-container" w="550" dx="50">
+    <div class="arrow-up a-left"></div>
+    <form action="{{ path('op_sr_save_attivita') }}" method="post" {{ form_enctype(form) }} class="p_input" id="form_balloon">
+        <section class="padding-10 box-float shadow-strong clearfix form-balloon">
+            <p class="text-lightblue" style="font-size: 14px;">Modifica le tue attività</p>
+            <div class="clearer"></div>
+            <div class="hr-light margin-top-5 margin-bottom-5"></div>
+            <div class="clearer"></div>
+            <table width="100%">
+                <tr>
+                    <td style="height: 25px; width: 140px; text-align: right;">
+                        {{ form_label(form.attivita_principale) }}
+                    </td>
+                    <td>
+                       {{ form_errors(form.attivita_principale) }}
+                    {{ form_widget(form.attivita_principale) }}
+                    </td>
+                </tr>
+            </table>
+            <table width="100%">
+                <tr>
+                    <td style="height: 25px; width: 140px; text-align: right; " valign="top">
+                        <label style="display: inline-block; margin-top: 5px">Attività secondarie</label>
+                    </td>
+                    <td>
+                        <div id="sezione_checkbox">         
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.impianto) }}
+                                {{ form_widget(form.impianto) }}
+                                {{ form_label(form.impianto) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.discarica) }}
+                                {{ form_widget(form.discarica) }}
+                                {{ form_label(form.discarica) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.raccoglitore) }}
+                                {{ form_widget(form.raccoglitore) }}
+                                {{ form_label(form.raccoglitore) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.trasportatore) }}
+                                {{ form_widget(form.trasportatore) }}
+                                {{ form_label(form.trasportatore) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.servizi) }}
+                                {{ form_widget(form.servizi) }}
+                                {{ form_label(form.servizi) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.laboratorio) }}
+                                {{ form_widget(form.laboratorio) }}
+                                {{ form_label(form.laboratorio) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.demolizioni) }}
+                                {{ form_widget(form.demolizioni) }}
+                                {{ form_label(form.demolizioni) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.spurghi) }}
+                                {{ form_widget(form.spurghi) }}
+                                {{ form_label(form.spurghi) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.bonifiche) }}
+                                {{ form_widget(form.bonifiche) }}
+                                {{ form_label(form.bonifiche) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.rottamazione) }}
+                                {{ form_widget(form.rottamazione) }}
+                                {{ form_label(form.rottamazione) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.raee) }}
+                                {{ form_widget(form.raee) }}
+                                {{ form_label(form.raee) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.olio_minerale) }}
+                                {{ form_widget(form.olio_minerale) }}
+                                {{ form_label(form.olio_minerale) }}
+                            </div>
+                            <div style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                {{ form_errors(form.olio_vegetale) }}
+                                {{ form_widget(form.olio_vegetale) }}
+                                {{ form_label(form.olio_vegetale) }}
+                            </div>
+                        </div>
+                    </td>
+                </tr>
+            </table>
+            {{ form_rest(form) }}
+            <div class="clearer thirty"></div>
+        </section>
+        <section class="cyan left baloon-submit form-balloon">
+            <ul class="tools button-light clearfix right" >
+                {#<li class="small first"><button type="submit" class="baloon-save">{{ 'salva'|trans({}, 'messages') }}</button></li>#}
+                <li class="small first"><a class="baloon-save" onclick="$('.submit-attivita').eq(0).trigger('click');" href="javascript:void(0);"><span class="ok">{{ 'salva'|trans({}, 'messages') }}</span></a></li>
+                <li class="small last"><a class="baloon-cancel" href="javascript:void(0);"><span class="annull">Annulla</span></a></li>
+            </ul>
+            <button type="submit" class="submit-attivita no-visible">{{ 'salva'|trans({}, 'messages') }}</button>
+        </section>
+        <script type="text/javascript">
+            enableBalloonForm();
+        </script>
+    </form>
+</div>
+
+

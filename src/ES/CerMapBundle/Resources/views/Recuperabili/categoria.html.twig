@@ -1,0 +1,41 @@
+{% set titolo_h1 = 'recuperabili.sm_rec'|trans({}, 'ESCerMapBundle') ~ categoria.seoTitle|lower ~ ' e codici cer' %}
+{% set titolo_app = 'app_cer' %}
+{% set menu_marker = 'rec' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'recuperabili.sm_rec'|trans({}, 'ESCerMapBundle') }} {{ categoria.nome|lower }} - EcoSeekr{% endblock %}
+
+{% block description %}Trova aziende e servizi per lo {{ 'recuperabili.sm_rec'|trans({}, 'ESCerMapBundle')|lower }} di {{ categoria.seoDescription }}{% endblock %}
+
+{% block keyword %}Smaltimento, recupero, rifiuti speciali, {{ categoria.seoKeywords }}{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/lps.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+
+{% block javascript_inline %}
+    {% include 'ESCerMapBundle:Recuperabili:_commons/variabiliJs.html.twig' %}
+{% endblock %}
+        
+{% block javascript_ready %}
+    marker_pos('#menu_rec');
+{% endblock %}
+
+{% block content %}
+    {% include 'ESCerMapBundle:Recuperabili:categoria/breadcrumbs.html.twig' %}
+    <section class="padding-10 clearfix box-light no-border shadow">
+        {% include 'ESCerMapBundle:Recuperabili:categoria/suggest.html.twig' %}
+        <section class="right "style="width: 100%;">
+            <section class="contenuto_ricerca" style="margin-left: 300px;">
+                <ul class="rec-index-cat clearfix" >
+                    {% include 'ESCerMapBundle:Recuperabili:categoria/content.html.twig' %}
+                </ul>
+            </section>
+        </section>
+    </section>
+{% endblock %}

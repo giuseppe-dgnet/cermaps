@@ -1,0 +1,78 @@
+{% extends "FOSUserBundle::layout.html.twig" %}
+
+{% block fos_user_content %}
+    {% if not app.user %}
+        {% javascripts      
+            '@ESUserBundle/Resources/public/js/login.js' %}
+        <script src="{{ asset_url }}"></script>
+        {% endjavascripts %}
+        <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+        <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+        <script>
+            function setfocus() {
+                $('#username').focus();
+            }
+            setfocus();
+            var security_check = '{{ path('fos_user_security_check') }}';
+            /* funzione invio form tramite tastiera per il baloon generico */
+            $(document).ready(function(){
+                $("#form_login input").bind("keydown", function(event) {
+                    var keycode = (event.keyCode ? event.keyCode : (event.which ? event.which : event.charCode));
+                    if (keycode == 13) {
+                        document.getElementById('baloon_submit').click();
+                        return false;
+                    } else  {
+                        return true;
+                    }
+                }); 
+            }); 
+        </script>
+        <div id="container_login">
+            {% if error %}
+                <div>{{ error|trans({}, 'FOSUserBundle') }}</div>
+            {% endif %}
+            <form class="p_input baloon_accesso" method="post" id="form_login" name="form_login">
+                <section class="bacheca no-border box-float shadow-strong clearfix" style="width: 235px;">
+                    <div class="form_voice_baloon no-margin relative">
+                        <label for="username">Email</label>
+                        <input type="text" id="username" name="_username" class="small" style="width: 225px" value="{{ last_username }}" placeholder="Inserisci la tue email" tabindex="1" />
+                    </div>
+                    <div class="form_voice_baloon relative">
+                        <label for="password" class="left">Password</label><a href="javascript: baloon_recupera()" class="no-margin no-padding right" style="color: #08C; position: relative; top: -2px;" id="baloon_recupera"><small>Recupera la password</small></a>
+                        <input type="password" id="password" name="_password" class="small" style="width: 225px" placeholder="Inserisci la tua password" tabindex="2" />
+                    </div>
+
+                    <div class="clearer twenty"></div>
+                    {#% if is_open %}
+                        <div class="hr bevel clearer"></div>
+                        <p class="form-divider-baloon"><span>o accedi con...</span></p>
+                        <div class="other_account_login">
+                            <ul>
+                                <li><a href="{{ path('auth_linkedin') }}" class="account_small linkedin_access_small tiptip" title="Accedi con Linkedin">LinkedIn</a></li>
+                                <li><a href="{{ path('auth_facebook') }}" class="account_small facebook_access_small tiptip" title="Accedi con Facebook">Facebook</a></li>
+                                <li><a href="{{ path('auth_google') }}" class="account_small google_access_small tiptip" title="Accedi con Google">Google</a></li>
+                                <li><a href="{{ path('auth_yahoo') }}" class="account_small yahoo_access_small tiptip" title="Accedi con Yahoo">Yahoo</a></li>
+                                <li><a href="{{ path('auth_twitter') }}" class="account_small twitter_access_small tiptip" title="Accedi con Twitter">Twitter</a></li>
+                            </ul>
+                        </div>
+                    {% endif %#}
+
+                <div class="clearer twenty"></div>
+                </section>
+                <section class="cyan left baloon-submit thick_login" style="width: 235px; left:  -1px; bottom: -11px;">
+                    <label style="color: #999; display: block; margin-top: 5px; float: left;"> <input type="checkbox" checked="checked" id="remember_me" name="_remember_me" value="on" class="checkbox-base">
+                    Rimani collegato</label>
+                    <button  type="submit" class="button-orange smaller bit-medium right relative" id="baloon_submit"  tabindex="3">Accedi</button>
+                    {% if error and error.message is defined %}
+                        <div class="absolute" style="top: 40px; right: 0;">
+                            <span class="rounded-5-bottom shadow text-white gradient-red text-small" style="position: static; padding: 3px 6px;">{{ error.message|trans({}, 'FOSUserBundle')|raw }}</span>
+                        </div>
+                    {% endif %}
+                </section>
+            </form>   
+        </div>
+        <div id="container_forgot_password" style="display:none">
+            {% render "ESUserBundle:Resetting:request" %}
+        </div>
+    {% endif %}
+{% endblock fos_user_content %}

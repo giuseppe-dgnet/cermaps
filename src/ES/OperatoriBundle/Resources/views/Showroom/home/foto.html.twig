@@ -1,0 +1,15 @@
+<article class="mini-colsx clearfix azienda_presentazione  left">
+    <section id="form_foto_static" class="form_foto clearfix rounded-3">
+        <div class="relative text-block" id="sr_foto">
+            {% include 'ESOperatoriBundle:Showroom:home/foto/foto.html.twig' %}
+        </div>
+    </section>
+    {% if modificabile %}
+        
+        <div class="box_foto" style="display:none">
+            {% set vars = {'didascalia': false } %}
+            {% render 'ESFotoBundle:UploadFoto:index' with vars%} {# ES twig vedere cosa richiama l'azione dentro ESFotoBundle/UploadFotoController/indexAction #}
+        </div>
+        
+    {% endif %}
+</article>

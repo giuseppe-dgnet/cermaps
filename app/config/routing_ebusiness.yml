@@ -1,0 +1,66 @@
+es_user:
+    resource: "@ESUserBundle/Controller/"
+    type:     annotation
+    prefix:   /user
+    
+es_operatori_reg:
+    resource: "@ESOperatoriBundle/Controller/RichiestaController.php"
+    type:     annotation
+    prefix:   /operatori
+
+es_cer_map:
+    resource: "@ESCerMapBundle/Controller/MapController.php"
+    type:     annotation
+    prefix:   /apps/cermap
+    
+es_cer_map_cer:
+    resource: "@ESCerMapBundle/Controller/CerController.php"
+    type:     annotation
+    prefix:   /apps/cermap
+    
+es_cer_map_Tag:
+    resource: "@ESCerMapBundle/Controller/TagController.php"
+    type:     annotation
+    prefix:   /apps/cermap
+    
+es_cer_map_coordinamento:
+    resource: "@ESCerMapBundle/Controller/CoordinamentoController.php"
+    type:     annotation
+    prefix:   /
+    
+PrestaSitemapBundle:
+    resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
+    prefix:   /
+    
+EphpStatsBundle:
+    resource: "@EphpStatsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+    
+_bazinga_exposetranslation:
+    resource: "@BazingaExposeTranslationBundle/Resources/config/routing/routing.yml"
+
+_geo:
+    resource: routing_geo.yml
+    
+_fos:
+    resource: routing_fos_user.yml
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"    
+    
+es_web_cc:
+    resource: "@ESWebBundle/Controller/CorporateController.php"
+    type:     annotation
+    prefix:   /
+    
+es_web_help:
+    resource: "@ESWebBundle/Controller/HelpController.php"
+    type:     annotation
+    prefix:   /
+    
+es_web_cc:
+    resource: "@ESWebBundle/Controller/EbusinessController.php"
+    type:     annotation
+    prefix:   /
+    

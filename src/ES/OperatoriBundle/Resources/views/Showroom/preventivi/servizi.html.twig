@@ -1,0 +1,61 @@
+{% block javascript %}
+    {% javascripts
+        '@ESOperatoriBundle/Resources/public/js/showroom.js'
+     %}
+<script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+<p class="text-lightblue" style="font-size: 14px;">Carta dei servizi, aree di attività per richieste specifiche sui nostri servizi</p>
+<div class="clearer"></div>
+<div class="hr-light margin-top-5 margin-bottom-5"></div>
+<div class="clearer"></div> 
+<div class="relative">
+{% if modificabile %}
+    <ul class="editing-tools button-light" style="position: absolute; top: -5px; right: 0px; z-index: 100;">
+        <li class="small first last shadow"><a href="{{ path('op_sr_servizi_edit') }}"><span class="edit">Modifica</span></a></li>
+    </ul>
+    <p class="on-edit note absolute">
+        {% if showroom.serviziSr|length > 0 %}
+            Questi sono i servizi che hai selezionato. Puoi modificarli cliccando sul punsate quì di lato o dal menù laterale
+        {% else %}
+            Non hai selezionato nessun servizio, dunque questa sezione non sarà visibile ai tuoi clienti. Puoi aggiungerli quando vuoi andando in modalità modifica del tuo showroom.
+        {% endif %}
+    </p>
+{% endif %}
+{% if showroom.serviziSr|length > 0 %}
+    <div class="clearer twenty"></div>
+    <section class="clearfix" id="select_servizi" style="border-top: solid 1px #dadada; border-right: solid 1px #dadada;">
+        <ul class="tab-menu-vertical menu-servizi"  style="border-left: solid 1px #dadada;">
+            {% for categoria, servizi in showroom.categorieServizi %}
+                <li><a href="javascript:void(0)" {% if loop.first %}class="defaulttab active"{% endif %} rel="tabs_servizi{{ loop.index }}">{{ categoria|capitalize }}</a></li>
+            {% endfor %}
+        </ul>
+        {% for categoria, servizi in showroom.categorieServizi %}
+            <section class="tab-content-vertical content-servizi" style="{% if not loop.first %}display:none;{% endif %}border-bottom: solid 1px #dadada;" id="tabs_servizi{{ loop.index }}">
+                <section class="box-light" >
+                    <ul class="activity act-list lista-servizi" a="servizi" {% if loop.first %} id="servizi" {% endif %}>
+                        {% for id, servizio in servizi %}
+                            <li id="servizi{{ servizio.id }}" all="servizi{{ servizio.id }}" class="servizi{{ servizio.id }}{% if loop.last %} last shadow{% endif %}" cat="{{ categoria|capitalize }}"><span class="desc-col-short">{{ servizio|capitalize }}</span>
+                                <ul class="item-tools button-light on-show">
+                                    <li class="smaller first last"><a href="javascript:void(0)"><span class="add">Aggiungi</span></a></li>
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            </section>
+        {% endfor %}
+    </section>
+    {% endif %}
+    <div class="clearer"></div>
+    <section class=" clearfix rounded-5 mess cyan no-display margin-top-10" id="submit_servizi">
+        <div class="form_voice clearfix left">
+            <p style="margin-bottom: 0px;"><small>Hai selezionato <span id="n_servizi">0</span> Servizi</small></p>
+        </div>
+        <div class="form_voice clearfix right">
+        <button class="button-orange large" onclick="$('a.rdoRequestServizi').trigger('click');">Conferma &raquo;</button>
+        <a class="no-display rdoRequestServizi" href="{{ path('op_sr_richiesta_rdo_servizi', {'slug': showroom.slug}) }}"></a>
+        </div>
+    </section>
+</div>

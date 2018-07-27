@@ -1,0 +1,77 @@
+{% set top_cer = -94 %}
+{% set top_mps = -26 %}
+{% set top_serv = 42 %}
+{% set n = 3 %}
+{% set arrow_rdo = '' %}
+
+{% if false and showroom.cer|length == 0 %}
+    {% set n = n - 1 %}
+    {% set top_mps = top_mps - 34 %}
+    {% set top_serv = top_serv - 34 %}
+{% endif %}
+{% if showroom.mps|length == 0 %}
+    {% set n = n - 1 %}
+    {% set top_cer = top_cer + 34 %}
+    {% set top_serv = top_serv - 34 %}
+{% endif %}
+{% if not modificabile %}
+    {% if showroom.serviziSr|length == 0 %}
+        {% set n = n - 1 %}
+        {% set top_cer = top_cer + 34 %}
+        {% set top_mps = top_mps + 34 %}
+    {% endif %}
+{% endif %}
+
+{% if n == 3 %}
+    {% set arrow_rdo = 'arrow_rdo_triple' %}
+{% elseif n == 2 %}
+    {% set arrow_rdo = 'arrow_rdo_double' %}
+{% elseif n == 1 %}
+    {% set arrow_rdo = 'arrow_rdo_single' %}
+{% endif %}
+
+<article class="clearfix {{ arrow_rdo }} relative" id="pannello_box" style="height: 212px;  padding-left: 30px;">
+    <section class="" id="pannello_container">
+        {% if true or showroom.cer|length > 0%}
+            <section class="clearfix hover margin-left-25 defocus" id="pannello_container_cer" style="position: absolute; top: 50%; margin-top: {{ top_cer }}px; width: 80%;" onclick="if (modifica == 'si') {window.location=('{{ path('op_sr_cer', {'slug': showroom.slug}) }}');}">
+                <div class=" icon-cer clearfix relative left margin-right-5">CER</div>
+                {% if modificabile %}
+                    <h3 class="margin-top-10 text-lightblue"><span style="font-weight: normal">Visiona i tuoi</span><br>CER</h3>
+                {% else %}
+                    <h3 class="margin-top-10 text-lightblue"><span style="font-weight: normal">Invia una richiesta per</span><br>smaltire un rifiuto</h3>
+                {% endif %}
+            </section>
+        {% endif %}
+        {% if showroom.mps|length > 0 %}
+            <section class="clearfix hover margin-left-25 defocus" id="pannello_container_mps" style="position: absolute; top: 50%; margin-top: {{ top_mps }}px; width: 80%;" onclick="if (modifica == 'si') {window.location=('{{ path('op_sr_mps', {'slug': showroom.slug}) }}');}">
+                <div class=" icon-mps clearfix relative left margin-right-5">MPS</div>
+                {% if modificabile %}
+                    <h3 class="margin-top-10 text-lightblue"><span style="font-weight: normal">Visiona le tue</span><br>Materie prime seconde</h3>
+                {% else %}
+                    <h3 class="margin-top-10 text-lightblue"><span style="font-weight: normal">Invia una richiesta per</span><br>Materie prime seconde</h3>
+                {% endif %}
+            </section>
+        {% endif %}
+    </section>
+    {% if modificabile %}
+        <section class="clearfix hover margin-left-25 on-edit" id="pannello_container_serv" style="position: absolute; top: 50%; margin-top: {{ top_serv }}px; width: 80%;" onclick="window.location=('{{ path('op_sr_servizi_edit') }}')">
+            <div class=" icon-servizi clearfix relative left margin-right-5">Servizi</div>
+            <h3 class="margin-top-10 text-lightblue"><span style="font-weight: normal">Gestisci i tuoi</span><br>Servizi</h3>
+            
+            <ul class="editing-tools button-light margin-top-15">
+                <li class="small first last shadow pre-edit"><a href="{{ path('op_sr_servizi_edit') }}"><span class="edit">Modifica</span></a></li>
+            </ul>
+            
+        </section>
+    {% endif %}
+    {% if showroom.serviziSr|length > 0 or modificabile %}
+        <section class="clearfix hover margin-left-25 on-show" id="pannello_containe_serv" style="position: absolute; top: 50%; margin-top: {{ top_serv }}px; width: 80%;" onclick="window.location=('{{ path('op_sr_servizi', {'slug': showroom.slug}) }}')">
+            <div class=" icon-servizi clearfix relative left margin-right-5">Servizi</div>
+            {% if modificabile %}
+                <h3 class="margin-top-10 text-lightblue"><span style="font-weight: normal">Visiona i tuoi</span><br>Servizi</h3>
+            {% else %}
+                <h3 class="margin-top-10 text-lightblue"><span style="font-weight: normal">Invia una richiesta per</span><br>Servizi</h3>
+            {% endif %}
+        </section>
+    {% endif %}
+</article>

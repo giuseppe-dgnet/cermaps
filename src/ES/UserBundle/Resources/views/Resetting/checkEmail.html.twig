@@ -1,0 +1,14 @@
+{# permette di togliere il baloon di login quando non necessario #}
+{% set show_login = false %}
+{% extends "::base.html.twig" %}
+
+{% block content %}
+    {% block fos_user_content %}
+        <section class="margin-10" >
+            <section class="fixed-width padding-10 clearfix gradient-light shadow rounded-5" style="width: 450px;">
+                <h3>{{ 'resetting.check_email'|trans({'%email%': email}, 'FOSUserBundle') }}</h3>
+            </section>
+        </section>
+    {% endblock %}
+{% endblock %}
+    

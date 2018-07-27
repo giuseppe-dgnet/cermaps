@@ -1,0 +1,21 @@
+{% extends '::admin.html.twig' %}
+
+{% block javascript %}
+{% javascripts
+       %}   
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% endblock %}
+
+{% block javascript_footer %}
+    {% javascripts  
+        '@ESWebBundle/Resources/public/js/splash/mason.js'
+        '@ESWebBundle/Resources/public/js/splash/*'
+    %} 
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+{% block bodyclass %}splash{% endblock %}
+{% block content %}
+{% endblock %}

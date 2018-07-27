@@ -1,0 +1,127 @@
+{% extends 'EcoSeekrWebBundle::lightWindow.html.twig' %}
+
+{% block title %}
+Vuoi diventare Business Plus?
+{% endblock %}
+
+{% block jscript %}
+<script type="text/javascript" src="{{ asset('/js/business_plus.js') }}"></script>
+{% endblock %}
+
+{% block jscript_inline %}
+var url_search_ajax_comune = '{{ path('geo_search_comune_database') }}';
+var url_check_cf = '{{ path('conf_ajax_check_cf') }}';
+{% endblock %}
+
+{% block h1 %}
+Vuoi diventare Business Plus?
+{% endblock %}
+
+{% block content %}
+<div id="form-container">
+    <section class="colthird reg-form col-first wizard">   
+        <h3 class="corsive_title">1) Dati contatto</h3>
+    </section>
+    <section class="colthird reg-form wizard">   
+        <h3 class="corsive_title">2) Dati organizzazione</h3>
+    </section>
+    <section class="colthird reg-form col-last no-border wizard">   
+        <h3 class="corsive_title">3) Altre informazioni</h3>
+    </section>
+    <div class="clearer"></div>
+
+    <form class="p_input" action="{{ path('business_plus_create') }}" id="rdo" method="post" onsubmit="return false;" {{ form_enctype(form) }}>
+        <section class="colthird col-first" style="height: 330px;">
+            <div class="form_ok">
+                <article class="clearfix ">
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.nome, 'Nome') }}
+                        <i>ad es. Mario</i>
+                        {{ form_widget(form.nome, {'attr': {'style':'width: 275px;'} }) }}
+                    </div>
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.cognome, 'Cognome') }}
+                        <i>ad es. Rossi</i>
+                        {{ form_widget(form.cognome, {'attr': {'style':'width: 275px;'} }) }}
+                    </div>
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.email, 'La tua e-mail') }}
+                        <i>ad es. mrossi@esempio.it</i>
+                        {{ form_widget(form.email, {'attr': {'style':'width: 275px;'} }) }}
+                    </div>
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.telefono, 'Il tuo telefono') }}
+                        <i>ad es. 333 0000000</i>
+                        {{ form_widget(form.telefono, {'attr': {'style':'width: 275px;"'} }) }}
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="colthird reg-form" style="height: 330px;">                
+            <div class="form_ok">
+                <article class="form_ok clearfix ">
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.tipo, 'Azienda o professionista?') }}
+                            <div class="styled-select">
+                        {{ form_widget(form.tipo, {'attr': {'style':'width: 290px;'} }) }}
+                                </div>  
+                    </div>
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.azienda, 'Azienda / Ragione sociale') }}
+                        <i>ad es. Ecoseekr Italia s.r.l.</i>
+                        {{ form_widget(form.azienda, {'attr': {'style':'width: 275px;'} }) }}
+                    </div>
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.codice_fiscale, 'Partita IVA / Codice fiscale') }}
+                        <i>ad es. 01234567890</i>
+                        {{ form_widget(form.codice_fiscale, {'attr': {'style':'width: 275px;'} }) }}
+                    </div>
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.fatturato, 'Fatturato') }}
+                            <div class="styled-select">
+                        {{ form_widget(form.fatturato, {'attr': {'style':'width: 290px;'} }) }}
+                                </div>
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="colthird col-last reg-form no-border" style="height: 330px;">   
+            <div class="form_ok">
+                <article class="form_ok clearfix ">
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.comune, 'Comune') }}
+                        <i>ad es. Cecina</i>
+                        <input type="text" id="geo" value="" style="width: 275px;" />
+                        {{ form_widget(form.comune, {'attr': {'style':'width: 275px;'} }) }}
+                    </div>
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.link, 'Sito Internet') }}
+                        <i>ad es. http://www.miosito.it</i>
+                        {{ form_widget(form.link, {'attr': {'style':'width: 275px;'} }) }}
+                    </div>
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.messaggio, 'Scrivi un messaggio') }}
+                        {{ form_widget(form.messaggio, {'attr': {'style':'width: 275px; height: 93px;'} }) }}
+                    </div>
+                </article>
+            </div>
+        </section>
+        <section class="colmono clearfix rounded-5 mess cyan" style="margin-bottom: 0;">         
+            <div class="form_voice clearfix right">
+                <button type="button" class="button-cyan" onclick="jQuery.fancybox.close();">Annulla</button><span>oppure..</span><button id="invio" class="button-orange large">Conferma e invia &raquo;</button>
+            </div>
+        </section>
+        {{ form_rest(form) }}
+    </form>                   
+</div>
+<section class="colmono" id="__invio" style="display: none;">
+    <h2>La tua richiesta è stata inoltrata!</h2>
+    <div class="reg stepend">
+        <h3>Verrai contattato al più presto</h3>
+        <p>Un nostro commerciale ti contatterà antro 48 ore</p>
+    </div>
+    <div class="form_voice clearfix right no-display-important">
+        <button type="button" class="button-cyan" onclick="jQuery.fancybox.close();">Chiudi</button>
+    </div>
+</section>
+{% endblock %}

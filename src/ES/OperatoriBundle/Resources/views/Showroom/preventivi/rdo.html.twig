@@ -1,0 +1,88 @@
+<script type="text/javascript"> 
+    var url_search_ajax_comune = "{{path('geo_search_comune_database')}}";
+    var url_search_ajax = '';
+    var url_geocode = '{{ path('geo_geocode') }}';
+</script>
+{% javascripts
+    '@ESOperatoriBundle/Resources/public/js/form_preventivi_cer.js'
+    '@ESOperatoriBundle/Resources/public/js/showroom.js'
+ %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+    
+<div id="form-container">
+    <section class="colthird reg-form col-first wizard">   
+        <h3>Riepilogo dei CER selezionati</h3>
+    </section>
+    <section class="colthird reg-form wizard">   
+        <h3>Indica le caratteristiche del rifiuto</h3>
+    </section>
+    <section class="colthird reg-form col-last no-border wizard">   
+        <h3>{% if user %}3) Riepilogo dei tui dati{% else %}Inserisci i tuoi dati anagrafici{% endif %}</h3>
+    </section>
+    <div class="clearer"></div>
+
+    <form class="p_input" action="{{ path('invio_richiesta_form_rdo', {'slug' : showroom}) }}" id="rdo" method="post" {{ form_enctype(form) }} style="height: 350px;" onsubmit="return false;">
+        <section class="colthird col-first" style="height: 380px;">
+            <div class="form_ok">
+                <div class="twenty"></div>
+                <ul class="riepilogo_cer riepilogo_taller rounded-5" id="ul_cer" style="height: 260px;">
+                </ul>
+                <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.testo) }}
+                        {{ form_errors(form.testo) }}
+                        {{ form_widget(form.testo) }}
+                </div>
+            </div>
+        </section>
+        <section class="colthird reg-form" style="height: 380px;">                
+            <div class="form_ok">
+                <article class="clearfix ">
+                    <div class='form_voice_compact clearfix left'>
+                        <label for="condizione">Condizione fisica del rifiuto</label>
+                        {{ form_label(form.condizione_fisica) }}
+                        <div class="styled-select">
+                                {{ form_errors(form.condizione_fisica) }}
+                                {{ form_widget(form.condizione_fisica) }}
+                        </div>
+                    </div>
+                    <div class='form_voice_compact clearfix left' style="width: 140px;">
+                        {{ form_label(form.quantita) }}
+                        <i>ad es. 1,2...</i>
+                        {{ form_errors(form.quantita) }}
+                        {{ form_widget(form.quantita) }}
+                    </div>
+                    <div class='form_voice_compact clearfix left' style="width: 150px;">
+                        {{ form_label(form.uumm) }}
+                        <div class="styled-select">
+                            {{ form_errors(form.uumm) }}
+                            {{ form_widget(form.uumm) }}
+                        </div>
+                    </div>
+                    <div class='form_voice_compact clearfix left'>
+                        {{ form_label(form.periodicita) }}
+                        <div class="styled-select">
+                            {{ form_errors(form.periodicita) }}
+                            {{ form_widget(form.periodicita) }}
+                        </div>
+                    </div>
+                    {% include 'ESOperatoriBundle:Showroom/preventivi:geoRDO.html.twig' %}  {# QUI #}
+                </article>
+            </div>
+        </section>
+        {% include 'ESOperatoriBundle:Showroom/preventivi:userRDO.html.twig' %}  
+        <section class="colmono clearfix rounded-5 mess cyan" style="margin-bottom: 0;">         
+            <div class="form_voice clearfix left">
+                <p style="margin-bottom: 0;">Stai per inviare la richiesta per <bold id="tot_cer">0</bold> CER</p>
+            </div>
+            <div class="form_voice clearfix right">
+                <button type="button" class="button-cyan" onclick="jQuery.fancybox.close();">Annulla</button><span>oppure..</span><button id="invio" class="button-orange large">Conferma e invia &raquo;</button>
+            </div>
+        </section>
+             <div class="form-section-area">
+                {{ form_rest(form) }} {#CSRF#}
+                <span></span><button type="submit" class="smaller" id="submit_form_preventivo">{{ 'salva'|trans({}, 'messages') }}</button>
+            </div>
+    </form>                   
+</div>
+{#% include 'EcoSeekrShowRoomBundle:ShowRoomRDO:callbackRDO.html.twig' %#}

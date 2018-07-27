@@ -1,0 +1,49 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webdesign' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webdesign');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Web content development</h2>
+            <h4 class="text-shadow normal">Sviluppiamo contentui e strutture web altamente performanti ed ottimizzate per i motori di ricerca ed il web marketing</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>Una foto vale più di mille parole, ma nel mondo dei motori di ricerca e web marketing, la corretta parola chiave é più importante di mille canali di vendita. Il <strong>Web Content Development é di vitale importanza </strong>quando si tratta di SEO o ottimizzazione dei motori di ricerca (SEM). </p>
+                <p>Oggi puoi utilizzare la tua piattaforma online per attirare - in modo passivo ed organico - molti più utenti dai principali motori di ricerca.</p>
+                <p> Lavorare "tecnicamente" sulla semantica, la qualità  e sul contenuto del vostro sito web, può generare traffico e molti visitatori in modo gratuito sul vostro sito web direttamente dai principali motori di ricerca. </p>
+                <h3>Senza alterare la leggibilità  e la facilità  di comprensione, possiamo produrre contenuti web ad altissimo rendimento.</h3>
+                <ul class="dot">
+                    <li>Parole chiave (Keywords) ottimizzate per i motori di ricerca e le campagne di marketing.</li>
+                    <li>Keyword density: Utilizziamo le Keyword di segmento in titoli, descrizioni, nomi di pagina. </li>
+                    <li>Elaboriamo testi e descrizioni concisi con ridondanza delle keywords</li>
+                </ul>
+                <h3>Architettura dell'informazione </h3>
+                <p>L' identificazione di un obiettivo ad hoc, la navigazione e il codice visivo <strong>possano trasformare un sito web in un negozio dove  proliferano le vendite e gli ordini anzichà© visite vuoto! </strong>Attraverso la nostra continua ricerca <strong>progettiamo siti web con criteri di canalizzazione ed informazione (tipici del web)</strong> che soddisfano le esigenze dei visitatori.</p>
+                <div class="clearer twenty"></div>
+            </section>
+        </section>
+    </section>
+{% endblock %}

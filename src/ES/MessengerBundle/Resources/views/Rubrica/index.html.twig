@@ -1,0 +1,34 @@
+{% set titolo_app = 'app_centro_messaggi' %}
+{% set open_tab = 'rubrica' %}
+{% extends 'EcoSeekrWebBundle::layout_messenger.html.twig' %}
+{% block title %}EcoSeekr{% endblock %}
+{% block description %}Social B2B per Professionisti, Aziende ed Organizzazioni di energia, ambiente, rifiuti e materie prime seconde{% endblock %}
+{% block keyword %}keyword{% endblock %}
+{% block jscript %}
+<script src="{{ asset('/js/messenger_rubrica.js') }}"></script>
+{% endblock %}
+{% block jscript_inline %}
+    {% include 'EcoSeekrMessengerBundle:Rubrica:route.js.twig' %}
+{% endblock %}
+{% block css_inline %}
+{% endblock %}
+
+{% block jscript_ready %}
+$('.rubrica_{{ app.session.get('user').id }}').remove();
+{% endblock %}
+{% block intestazione %}
+    {% include 'EcoSeekrMessengerBundle:Rubrica:moduli/intestazione.html.twig' %}
+{% endblock %}
+{% block filtri %}
+    {% include 'EcoSeekrMessengerBundle:Rubrica:moduli/filtri.html.twig' %}
+{% endblock %}
+
+{% block dashboard %}
+<section class="colsx-filter no-margin">
+     {% include 'EcoSeekrMessengerBundle:Rubrica:moduli/dashboard.html.twig' %} 
+</section>
+{% endblock %}
+{% block content %}
+{% include 'EcoSeekrMessengerBundle:Rubrica:moduli/risultati.html.twig' %}
+    
+{% endblock %}

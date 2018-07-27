@@ -1,0 +1,57 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webadvertising' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Introduzione al web advertising</h2>
+            <h4 class="text-shadow normal">Fare  pubblicità   in internet e nei nuovi media</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webadvertising/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:webadvertising/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>I <strong>motori di ricerca e i social network sono lo strumento più utilizzato sul web</strong>, secondi solo alla posta elettronica nella lista delle attività  più frequenti svolte dagli utenti internet. <strong>E' quindi evidente che siano uno dei mezzi più importanti per lo sviluppo della visibilità  di un sito web</strong>.</p>
+                <p>Il fatto che la <strong>funzione di ricerca sia la più diffusa tra le attività  online</strong>, <strong>mette in evidenza come l'accesso ai siti web avvenga, nella maggior parte dei casi, attraverso i motori di ricerca.</strong> Naturalemente ci riferiamo alla <em>&quot;prima visita&quot; </em>, successivamente alla quale il navigatore interessato al sito potrà  memorizzarlo tra i suoi <em>&quot;preferiti&quot;</em> o comunque tornarci digitandone il direttamente il nome o l'indirizzo esatto sul programma di navigazione.</p>
+                <p><strong>Negli ultimi anni hanno acquisito particolare importanza nerl web marketing, anche i Social Network</strong>, <em>(come ad esempio: Facebook, Linkedin, Netlog, Twitter ecc)</em> e sono diventati strumenti per il posizionamento di particolari annunci pubblicitari studiati ad hoc in funzione del profilo a target dell'utente in cui appaiano. </p>
+                <p><strong>Con il termine web advertising si individuano quindi tutte le azioni principali che devono essere attuate per progettare ed attuare una campagna pubblicitaria online per i tuoi servizi o prodotti.</strong></p>
+                <h3>Cosa possiamo fare per te?</h3>
+                <ul class="dot">
+                    <li>Pianificare, attivare, gestire e monitorare le tue campagne pubblicitarie online in italia e all'estero</li>
+                    <li>Aumentare il numero di utenti sul tuo sito</li>
+                    <li>Modificare il tuo sito web per renderlo più performante aumentandone il tasso di conversione <em><br>
+                        (numero di utenti/numero di vendite generate)</em></li>
+                    <li>Sviluppare campagne pubblicitarie basate su concorsi a premi e landing page</li>
+                    <li>Gestire il full-maneinance i tuoi canali pubblicitari </li>
+                    <li>Massimizzare il ROI (ritorno dall'investimento)</li>
+                    <li>Consulenze specifiche </li>
+                </ul>
+                <div class="clearer twenty"></div>
+                <div class="tips yellow">
+                    <p> <em>Smettere di fare pubblicità  per risparmiare soldi è come fermare l'orologio per risparmiare il tempo. <br>
+                        H.Ford</em></p>
+                </div>
+            </section>
+        </section>
+    </section>
+{% endblock %}

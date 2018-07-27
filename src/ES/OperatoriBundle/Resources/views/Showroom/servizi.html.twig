@@ -1,0 +1,53 @@
+{% set titolo_h1 = 'ShowRoom di ' ~ showroom.ragioneSociale %}
+{% set titolo_app = 'showroom_azienda' %}
+{% set menu_marker = 'showroom' %}
+{% extends '::base.html.twig' %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}{{showroom.seoTitle}} - EcoSeekr{% endblock %}
+{#% block title %}ShowRoom di {{ showroom.ragioneSociale }}. Contatta {{showroom.user.nomeCompleto}} - EcoSeekr{% endblock %#}
+
+{% block description %}{{ showroom.seoDescription }}{% endblock %}
+
+{% block keyword %}{{ showroom.seoKeywords }}{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@ESOperatoriBundle/Resources/public/js/showroom.js'
+        '@ESOperatoriBundle/Resources/public/js/preventivi_servizi.js'
+     %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_inline %}
+var modificabile = {% if modificabile %}true{% else %}false{%endif%};
+{% endblock %}
+
+{#% block jscript_ready %}
+    {% if modificabile and in_edit %}
+    apriModifica();
+    {% endif %}
+{% endblock %#}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos({% if  app.user %}'#menu_showroom'{% endif %});
+{% endblock %}
+
+{% block content %}
+<section id="header-tab" class=" relative">
+    {% include 'ESOperatoriBundle:Showroom:commons/intestazione.html.twig' %}
+</section>
+<section class="fixed-width box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+    <section class="colsx no-margin margin-left-10" id="pc_sx">
+        {% include 'ESOperatoriBundle:Showroom:preventivi/servizi.html.twig' %}
+        <a class="absolute" style="top: 0; right: 0" href="{{ path('op_sr_open', {'slug': showroom.slug}) }}">&laquo; torna allo showroom</a>
+    </section>
+    <section class="coldx no-margin margin-right-10" id="pc_dx">
+        {% include 'ESOperatoriBundle:Showroom:home/pulsantiera.html.twig' %}
+    </section>
+</section>
+    {#% render url('pt_sr_presentazione', {'slug':showroom. slug}) %#}
+    {#% include 'ESOperatoriBundle:Portlet:Presentazione/index.html.twig' with {'layout': 'default'} %#}
+{% include 'ESOperatoriBundle:Showroom:commons/balloon.html.twig' %}
+{% endblock %}

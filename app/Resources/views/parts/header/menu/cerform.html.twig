@@ -1,0 +1,26 @@
+{##
+ # Centro di coordinamento smaltimento rifiuti industriali
+ #}
+{# menu di sx #}
+<ul class="header_submenu clearfix left margin-left-10">
+    <li class="rounded-3 hover {% if menu_marker == 'ccsri' %}active{% endif %}" id="menu_ccsri" onclick="window.location.href='#'">Smaltimento rifiuti industriali pericolosi e non pericolosi</li>
+</ul>
+
+{# menu di dx #}
+<ul class="header_submenu clearfix right margin-right-10">
+    {#<li class="rounded-3 hover {% if menu_marker == 'ria' %}active{% endif %}" id="menu_ria" onclick="window.location.href='http://www.ecoseekr.it'">Richiesta interventi ambientali</li>#}
+{#
+    <li class="rounded-3 hover relative toggle-content {% if menu_marker == 'rec' %}active{% endif %}" id="menu_rec" targetLink="baloon-rec">{{ 'menu.rec'|trans({}, 'menu') }}
+         <div class="baloon-container no-display baloon-login-left" id="baloon-rec">
+            <div class="arrow-up a-right"></div>
+            <section class="box-float shadow-strong clearfix" style="width: 255px;">
+                <ul class="menu-tools">
+                    <li><a href="{{ path('es_recnp') }}" >{{ 'menu.np'|trans({}, 'menu') }}</a></li>
+                    <li><a href="{{ path('es_recp') }}" >{{ 'menu.p'|trans({}, 'menu') }}</a></li>
+                </ul>
+            </section>
+        </div>
+    </li>
+#}
+    <li class="rounded-3 hover {% if menu_marker == 'cermap' %}active{% endif %}" id="menu_cermap" onclick="window.open('http://www.ecoseekr.it')">{{ 'menu.cermap'|trans({}, 'menu') }}</li>
+</ul>

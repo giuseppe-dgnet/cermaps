@@ -1,0 +1,26 @@
+<section class="message-insert bacheca mid-light-grey clearfix" id="reply">
+    <form class="p_input margin-left-50" id="new_form" action="{{ path('messenger_new') }}">
+        <label for="messaggio_destinatari">Destinatari</label>
+        <input type="text" name="messaggio[destinatari]" id="messaggio_destinatari" placeholder="destinatari" class="placeholder small rounded-5" value="" />
+        <small><i>Inizia a scrivere un nome e scegli quello corretto dalla lista. Si possono inserire più  destinatari.</i></small>
+        <div class="clearer ten"></div>
+        <div class="hr-light"></div>
+        <div class="clearer ten"></div>
+        <input type="text" name="messaggio[subject]" class="placeholder small" id="messaggio_subject" value="" style="width: 435px;" placeholder="Oggetto del messaggio" />
+        <div class="clearer ten"></div>
+        <textarea class="message-textarea placeholder" id="messaggio_testo_risposta" name="messaggio[testo_risposta]" value="" style="width: 430px !important;"  placeholder="Testo del messaggio"></textarea>
+        <div class="clearer ten"></div>
+        <button type="submit" class="button-orange smaller relative" id="submit_mess"><strong>Invia</strong></button>
+        <div class="clearer ten"></div>
+        <input type="hidden" name="messaggio[destinatari_id]" id="messaggio_destinatari_id" value="[]" />
+        <input type="hidden" name="messaggio[slug]" id="messaggio_slug" value="{{ result.preSlug }}" />
+        <input type="hidden" name="messaggio[allegati]" id="messaggio_allegati" value="[]" />
+            {% render 'EphpDragDropBundle:DragDrop:multiAllegato' with {
+                'id': 'new_form',
+                'field': 'messaggio_allegati',
+                'values': '',
+                'dir': result.preSlug,
+                'mimetype': '/(\\.|\\/)(pdf|x?docx?|odt|jpe?g|png|jpg|gif|tiff?|zip|7z|rar|cad)$/i'
+            } %}
+    </form>
+</section>

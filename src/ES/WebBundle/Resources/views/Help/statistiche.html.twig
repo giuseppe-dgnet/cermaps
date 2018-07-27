@@ -1,0 +1,113 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@ESWebBundle/Resources/public/js/stats_node.js'
+   %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">{{ 'menu.scopri_di_piu'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.statistiche'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5 shadow clearfix">
+        <section class="rounded-5-top clearfix">
+            <ul class="tab-menu-portlet sr">
+                <li>
+                    <a href="{{ path('come_funziona') }}" class="rounded-5-top-left">{{ 'menu.come_funziona'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('scegliere_ecoseekr') }}">{{ 'menu.scegliere_ecoseekr'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('costi_funzionalita') }}">{{ 'menu.costi_funzionalita'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('statistiche') }}" class=" active">{{ 'menu.statistiche'|trans({}, 'menu') }}</a>
+                </li>
+            </ul>
+        </section>
+        <section class="corporate clearfix  no-padding padding-top-10 padding-bottom-10">
+            <section class="coldx no-margin margin-right-10">
+                {% include 'ESWebBundle:Help:commons/invite.html.twig' %}
+            </section>
+            <section class="colsx no-margin margin-left-10">
+                <h3 class="main-title"><strong>Niente è di più efficace</strong> di <strong>EcoSeekr</strong> per farti conoscere ed acquisire nuovi clienti ed opportunità dal web se sei un operatore del settore ambiente e rifiuti!</h3>
+                <div class="clearer"></div>
+                <div class="hr-light"></div>
+                <div class="clearer ten"></div>
+                <div class="relative">
+                    <div class="absolute block normal no-margin text-white text-shadow rounded-5 shadow text-center gradient-dark" style="opacity: .95; background: #999; top: 10px; left: 10px; padding: 10px; z-index: 100">
+                    <p class="normal no-margin no-padding" style="font-size: 10px; line-height: 1.5em;">visitatori attivi sul sito</p>
+                    <h1 class="normal no-margin no-padding" style="font-size: 70px; line-height: .9em;" id="utenti"></h1>
+                    </div>
+                    {{ google_map_container(map) }}
+                    {{ google_map_css(map) }}
+                    {{ google_map_js(map) }}
+                </div>
+                <section class="table">  
+                   {# <section class="table-row">
+                        <section class="table-cell padding-top-15 padding-bottom-15 text-center ">
+                                <h3 class="main-title no-margin text-left">In questo momento ci sono:</h3>
+                                <h1 class="normal no-margin no-padding text-grey" style="font-size: 70px;" id="utenti"></h1>
+                                <p>visitatori attivi sul sito</p>
+
+                                <span class="text-small inline-block text-strong margin-5"><span style="width: 8px; height: 8px; display: inline-block; background: #058DC7;"></span> <strong>NUOVI</strong></span>  <span class="text-small inline-block text-strong margin-5"><span style="width: 8px; height: 8px; display: inline-block; background: #50B432;"></span> <strong>DI RITORNO</strong></span>
+                                <div style="width: 95%;display: inline-block;">
+                                    <div class="left rounded-5-left text-white shadow" style="width: 79%; padding: 3px 0; display: inline-block; background: #058DC7;">80%</div>
+                                    <div class="right rounded-5-right text-white shadow" style="width: 20%; padding: 3px 0;  display: inline-block; background: #50B432;">20%</div>
+                                </div>
+                        </section>
+                        <section class="table-cell padding-top-15 padding-bottom-15">
+                            <article class="article-point ">
+                                <h3 class="main-title no-margin">Provenenti da:</h3>
+                                <div class="clearer"></div>
+                                <div class="hr-light"></div>
+                                <div class="clearer"></div>
+
+                            </article>
+                        </section>
+                    </section>#}
+                    <section class="table-row">
+                        <section class="table-cell padding-top-15 padding-bottom-15">
+                            <article class="article-point ">
+                                <h3 class="main-title no-margin">Ultime richieste CER:</h3>
+                                <div class="clearer"></div>
+                                <div class="hr-light"></div>
+                                <div class="clearer"></div>
+                                {% render url('stats_last', {'area': 'cer', 'n': 7}) %}                        
+                            </article>
+                        </section>
+                        <section class="table-cell padding-top-15 padding-bottom-15">
+                            <article class="article-point ">
+                                <h3 class="main-title no-margin">Ultime Aziende ricercate:</h3>
+                                <div class="clearer"></div>
+                                <div class="hr-light"></div>
+                                <div class="clearer"></div>
+                                {% render url('stats_last', {'area': 'showroom', 'n': 7}) %}
+                            </article>
+                        </section>
+                    </section>
+                </section>
+                {#<h3 class="main-title no-margin">Statistiche uniche del periodo:</h3>#}
+                [grafico]
+                <div class="clearer thirty"></div>
+                {% include 'ESWebBundle:Help:commons/invite_body.html.twig' %}
+                <div class="clearer ten"></div>
+            </section>
+        </section>
+    </section>
+{% endblock %}

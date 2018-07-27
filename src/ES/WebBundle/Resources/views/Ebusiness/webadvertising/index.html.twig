@@ -1,0 +1,40 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webadvertising' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Web Advertising</h2>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenuTab.html.twig' with {'index': 'true'} %}
+        <section class="corporate no-border clearfix no-padding padding-10 margin-top-10">
+            <h2>A cosa serve...</h2>
+            <p>Farti trovare subito da chi ti sta cercando, genera più vendite!</p>
+            <p><strong>Proprio cos&igrave;! Con una corretta campagna pubblicitaria online e nei nuovi media <em>(web advertising)</em>, puoi far trovare ai tuoi clienti i tuoi servizi ed i tuoi prodotti proprio nel momento in cui li stanno cercando in rete.</strong></p>
+            <p>Per questo motivo una corretta CAMPAGNA PUBBLICITARIA <strong>in internet e nei nuovi media</strong> &egrave; di fondamentale importanza per raggiungere i tuoi obiettivi!</p>
+            <div class="clearer twenty"></div>
+            <h2>Cosa possiamo fare per te...</h2>
+            <p><strong>Nuovi concetti e strategie pubblicitarie per incrementare la tua efficacia online! </strong>Concorsi a premi, sondaggi, lancio di prodotti o contesti digitali oppure  semplice gestione e pianificazione della tua campagna pubblicitaria online.</p>
+            <p>Selezioniamo <strong>i migliori e pi&amp;ugrave; performanti siti web adatti ad esprimere i tuoi messaggi pubblicitari</strong>, scegliamo gli argomenti più affini e sviluppiamo le tue creativit&agrave; <em>(annunci costituiti da immagini o testi)</em> e le posizioniamo online per attirare chi ti st&agrave; cercando.</p>
+            <p>Altre alla <strong>pianificazione della campagna pubblicitaria online</strong>, costruiamo un PIANO D'AZIONE ed una LINEA DI BUDGET  per il tuo investimento nell'advertising online e mettiamo in evidenza i punti di controllo, gli obiettivi, le strategie, i modi ed i tempi di realizzazione.</p>
+            <p><strong> Monitoriamo costantemente le performance della tua campagna di advertising online ed  operiamo per il raggiungimento del ROI <em>(ritorno dall'investimento)</em>.</strong></p>
+        </section>
+    </section>
+{% endblock %}

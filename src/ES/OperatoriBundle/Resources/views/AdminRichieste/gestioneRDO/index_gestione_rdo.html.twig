@@ -1,0 +1,70 @@
+{% extends '::admin.html.twig' %}
+{% block content %}
+{% javascripts
+    '@ESOperatoriBundle/Resources/public/js/admin_gestione_rdo.js'
+ %}
+<script src="{{ asset_url }}"></script>
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+ <script type="text/javascript">
+    // mi serve per fare la validazione dei form lato Js
+    var numero_form = {{numeroForm}};
+ </script>    
+{% endjavascripts %}
+
+{% for id, showroom in out %}  
+    {% if showroom.azienda %}
+     <div class="relative left">
+        <table style="width: 900px;" class="table_admin">
+            <thead>
+                <tr>
+                    <td class="shadow-medium gradient-greenindex text-white">
+                        <table style="width: 100%">
+                            <tr>
+                                <th colspan="2"><h1>{{showroom.azienda}}</h1></th>
+                                <th>{{showroom.comune}}</th>
+                            </tr>
+                            <tr>
+                                <th style="width: 300px;">Telefono: {% if showroom.telefono %}{{showroom.telefono}}{% else %}non presente{% endif %}</th>
+                                <th style="width: 300px;">Email: {% if showroom.email %}<a href="mailto:{{showroom.email}}">{{showroom.email}}</a>{% else %}non presente{% endif %}</th>
+                                <th style="width: 300px;">Sito: {% if showroom.sito %}<a href="{{showroom.sito}}" target="_blank">{{showroom.sito}}</a>{% else %}non presente{% endif %}</th>
+                            </tr>
+                        </table>
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <table style="width: 100%">
+                            {% for rdo in showroom.rdo %}     
+                                <tr class="load-detail rdo-{{ rdo.rdo.id }}" {% if not rdo.rdo.admin %}style="font-weight: bold"{% endif %} rdo="{{rdo.rdo.id}}">
+                                    <td nowrap>{{rdo.rdo.createdAt|date('d-m-Y')}}</td>
+                                    <td>{{rdo.rdo.subject}}</td>
+                                    <td nowrap id="stato-{{ rdo.rdo.id }}">{% if rdo.rdo.stato %}{{ rdo.rdo.stato.stato }}{% else %}NUOVA RICHIESTA{% endif %}</td>
+                                    <td nowrap id="admin-{{ rdo.rdo.id }}">{% if rdo.rdo.admin %}{{ rdo.rdo.admin }}{% else %}NON IN CARICO{% endif %}</td>
+                                </tr>
+                                <tr class="rdo-{{ rdo.rdo.id }} detail-row" id="espandi-{{rdo.rdo.id}}" style="display:none">
+                                    <td colspan="4" class="detail-rdo" style="background-color: #ffffff;" id="detail-{{rdo.rdo.id}}">
+                                        Attendere caricamento...
+                                    </td>
+                                </tr>
+                            {%endfor%}     
+                        </table>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        {% if showroom.azienda %}
+            <div class="absolute" style="top: 0px; right: -130px;" id="info_{{ id }}" cf="{{ showroom.codice_fiscale }}" rs="{{ showroom.azienda }}">
+                <button class="bringout">Cerca dati contatto</button>
+            </div>
+        {% endif %}
+    </div>
+    <div style="clear:both"></div>        
+              
+    {% endif %}
+{%endfor%}
+
+{% endblock content %}

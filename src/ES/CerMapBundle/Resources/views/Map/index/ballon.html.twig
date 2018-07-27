@@ -1,0 +1,149 @@
+<script type="text/html" id="template_empty_balloon">
+    <div id="bl_{id}">
+        Attendere prego...
+    </div>
+</script>
+<script type="text/html" id="template_balloon">
+    <div id="bl_{id}" style="width: 500px;" class="info_bubble">
+        <div class="box-lightgray no-border" style="border-bottom: solid 1px #ccc !important;">
+            <table width="100%" cellspacing="5">
+                <tr>
+                    <td width="25px" height="25px"><img src="/bundles/escermap/images/marker/{attivita_principale}.png" style="width:18px; height: 24px;" class="left"></td>
+                    <td><h3>{h_attivita_principale} <small>{comune_testuale}</small></h3></td>
+                </tr>
+            </table>
+        </div>
+        <div class="text-small">
+            <table width="100%" cellspacing="5" class="info_bubble_data">
+                <tr>
+                    <td width="340px">
+                        <table width="100%">
+                            <tr class="as">
+                                <td width="135px" style="vertical-align: middle">Attivita secondarie</td>
+                                <td height="25px">{elenco_attivita}</td>
+                            </tr>
+                            <tr>
+                                <td width="135px">Ragione sociale</td>
+                                <td><strong>{ragione_sociale}</strong></td>
+                            </tr>
+                            <tr>
+                                <td width="135px">Descrizione</td>
+                                <td>({descrizione_attivita})</td>
+                            </tr>
+                            <tr>
+                                <td width="135px">Codici CER</td>
+                                <td><strong class="test">{cer}</strong></td>
+                            </tr>
+                            <tr>
+                                <td width="135px">Codici CER in conferimento</td>
+                                <td><strong class="test">{cer_trattati}</strong></td>
+                            </tr>
+                            <tr>
+                                <td width="135px">Recuperabili</td>
+                                <td><strong class="test">{tipologie}</strong></td>
+                            </tr>
+                            <tr>
+                                <td width="135px">Materie prime seconde</td>
+                                <td><strong class="test">{mps}</strong></td>
+                            </tr>
+                            <tr>
+                                <td width="135px">Servizi</td>
+                                <td><strong class="test">{servizi_sr}</strong></td>
+                            </tr>
+                            <tr>
+                                <td width="135px">Indirizzo</td>
+                                <td><strong>{indirizzo}</strong></td>
+                            </tr>
+                            <tr>
+                                <td width="135px">Distanza</td>
+                                <td><strong>{distanza}</strong></td>
+                            </tr>
+                        </table>
+                    </td>
+                    <td valign="top" style="width: 150px;">
+                        <img class="rounded-3 left" style="width: 150px; height: 150px;" src="{logo}">
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        {rdo}
+                        <div class="right relative">
+                            {telefono}
+                            {slug}
+                        </div>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</script>
+<script type="text/html" id="attivita_impianto">
+    <img src="/bundles/escermap/images/marker/impianto_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_discarica">
+    <img src="/bundles/escermap/images/marker/discarica_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_raccoglitore">
+    <img src="/bundles/escermap/images/marker/raccoglitore_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_trasportatore">
+    <img src="/bundles/escermap/images/marker/trasportatore_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_servizi">
+    <img src="/bundles/escermap/images/marker/servizi_ambientali_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_laboratorio">
+    <img src="/bundles/escermap/images/marker/laboratori_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_demolizioni">
+    <img src="/bundles/escermap/images/marker/demolizioni_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_spurghi">
+    <img src="/bundles/escermap/images/marker/spurghi_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_bonifiche">
+    <img src="/bundles/escermap/images/marker/bonifiche_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_rottamazione">
+    <img src="/bundles/escermap/images/marker/rottamazione_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_raee">
+    <img src="/bundles/escermap/images/marker/raee_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_olio_minerale">
+    <img src="/bundles/escermap/images/marker/olio_minerale_small.png" style="width:18px; height: 24px;">
+</script>
+<script type="text/html" id="attivita_olio_vegetale">
+    <img src="/bundles/escermap/images/marker/olio_vegetale_small.png" style="width:18px; height: 24px;">
+</script>
+
+<script type="text/html" id="bt_telefono_0">
+    <button type="button" class="button-grey bt_telefono_disable relative"><span class="absolute" style="background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAHqSURBVDiNnZSxixNREMZ/uxxvCblwuyEJa+NfIYJwYKUYBIsDG68RDrxKEOFsBEFBFCvBykIsBCs5UJQrxIPjCqu0YnGVKMkmIYlh47LbjMW+xbe7MZe7DwZ2Z+Z975t5740VxzFKqTXgPZAAG0mShCwJpVTuf0VEAF4DF7VvTynVjuN4aVITtuM4T4BPwC/tWwf2HMdZPQ0hIvJTRP6IyJb+znAoIqtRFLHIRCRnNtAEKsAL4BHww1D6sLigaKWSjVIrwHPgsSYdAW9PSmiJyEfgquGLgDtAZzabdY5rWbVaLSl8U8ipAPUwDDvHqZuncAX4oMurG/4L85KXgT2dTiPgXsF/rVar3TiNQms8HgPguu4h6clmSID2ZDLZX6TIdd28QmOnbeC3EVPAruu65090bbLAaDT6BmxoZRnWgC+e510pEnme53uetwPkX9RwOMyZiNySMmIRuWvk+CLy3XxR2UbWYDAoyW40GjvAszktOwDekd7VB8BZ7f8KXAZCq9/vz212s9m8CbzUvSwiu/z3C6RtKwiCuYQArVbrErBb6lOKBLhdIN23ZcEJBkHwGTinSy1CkQ6Up/wbKInV7Xb/q9CE7/tbpH2tF0IJafnrwLa9FBvQ6/VeAWeA66QD+UiHjkhL3gTCv5FPnqJ980bmAAAAAElFTkSuQmCC') no-repeat center center; width: 30px; height: 30px;top: 50%; left: 50%; margin-left: -15px; margin-top: -15px;"></span></button>
+</script>
+<script type="text/html" id="bt_telefono_1">
+    <button type="button" onclick="mostraInformazioni($(this))" attr="telefono-{id}" class="contatti_showroom button-cyan bt_telefono margin-right-5" style="width: 70px"><span class="absolute" style="background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAAUCAYAAACNiR0NAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAHqSURBVDiNnZSxixNREMZ/uxxvCblwuyEJa+NfIYJwYKUYBIsDG68RDrxKEOFsBEFBFCvBykIsBCs5UJQrxIPjCqu0YnGVKMkmIYlh47LbjMW+xbe7MZe7DwZ2Z+Z975t5740VxzFKqTXgPZAAG0mShCwJpVTuf0VEAF4DF7VvTynVjuN4aVITtuM4T4BPwC/tWwf2HMdZPQ0hIvJTRP6IyJb+znAoIqtRFLHIRCRnNtAEKsAL4BHww1D6sLigaKWSjVIrwHPgsSYdAW9PSmiJyEfgquGLgDtAZzabdY5rWbVaLSl8U8ipAPUwDDvHqZuncAX4oMurG/4L85KXgT2dTiPgXsF/rVar3TiNQms8HgPguu4h6clmSID2ZDLZX6TIdd28QmOnbeC3EVPAruu65090bbLAaDT6BmxoZRnWgC+e510pEnme53uetwPkX9RwOMyZiNySMmIRuWvk+CLy3XxR2UbWYDAoyW40GjvAszktOwDekd7VB8BZ7f8KXAZCq9/vz212s9m8CbzUvSwiu/z3C6RtKwiCuYQArVbrErBb6lOKBLhdIN23ZcEJBkHwGTinSy1CkQ6Up/wbKInV7Xb/q9CE7/tbpH2tF0IJafnrwLa9FBvQ6/VeAWeA66QD+UiHjkhL3gTCv5FPnqJ980bmAAAAAElFTkSuQmCC')  no-repeat center center; width: 30px; height: 30px;top: 50%; left: 50%; margin-left: -15px; margin-top: -15px;"></span></button>
+</script>
+
+<script type="text/html" id="bt_rdo_0">
+    <button type="button" style="width: 290px" class="button-grey bt_telefono_disable">Richiedi quotazione smaltimento</button>
+</script>
+    
+{# COSA APRE IL FANCYBOX  ESOperatoriBundle:Showroom/preventivi:rdo.html.twig#}
+<script type="text/html" id="bt_rdo_1">
+    <a class="no-display rdoRequestCer" href="{{ path('op_cm_richiesta_rdo_cer', {'slug': 'slug', 'fb': true })|raw}}"></a>
+    <button type="button" style="width: 330px" class="button-orange bt_telefono" onclick="sendRequest();">Richiedi quotazione smaltimento</button>
+</script>
+
+{#<script type="text/html" id="bt_sito_0">
+    <button type="button" class="button-grey bt_www_disable">Sito ND</button>
+</script>
+<script type="text/html" id="bt_sito_1">
+    <button type="button" class="button-cyan bt_www">WWW</button>
+</script>#}
+
+<script type="text/html" id="bt_showroom">
+    <button type="button"  class="button-cyan bt_showroom" style="width: 70px" onclick="window.open('{{path('op_sr_open', {'slug': 'slug'})|raw}}')">
+    <span class="absolute" style="background: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABQAAAASCAYAAABb0P4QAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAGRSURBVDiNnZRBSxVRGIaf8VpUUhEuXPgD/AMuy0VRm4oUatNfEH9CXFwWgQRxIaIWgRmUEVo7bRMULtoGbVsIgqKSabcnui3uN3A6M3q1Dz5mvu+87zNn5pwzhcohohnX6V7C/h7jBXAVmIr6M/AO6Oxn6OsBvAksAi3gYdzf+t8ZjgNzwAPgLtAAzgDPgV/Am6MArwPzAWoCH4ATwHlgJ8YmgIWKU83zsvpTnYn6rdqJXFaPq/fVtnol9+ewMXVLfRT1iwRW5kKMtdTN8NQCR9V1dTbqpzWwMudC8yw8ozlwRP2mvo565gBYmY9DOx/ekRJ4Q/0a36dQ7xwCVuY99Zi6FIzxQv0CrAK3gWvAk2TNdmOFt6M+C1wATiWaSeAVMAsMo15SB2P1PmYzeKkOqacjh6KXaj6Fd1C92A8sx5POAT+yXbUKrCX19+ilsQMMABvA+/To/QF+Z+KTlY1b7bXDC1TPcn7oixrggb2+rNmoEfeKfzwpsEP30B812iRvlgL3gJVMvO9/L4kVutsLgL/JqNXqJXfhVgAAAABJRU5ErkJggg==')  no-repeat center center; width: 30px; height: 30px;top: 50%; left: 50%; margin-left: -15px; margin-top: -15px;"></span>
+    {#Visita il sito#}
+</button>
+</script>

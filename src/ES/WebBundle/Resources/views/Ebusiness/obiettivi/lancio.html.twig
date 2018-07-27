@@ -1,0 +1,63 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webadvertising' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Obiettivi - Programmare e sostenere il lancio del sito web</h2>
+            <h3 class="text-shadow">Pianificazione, creazione delle pubblicità  e gestione della tua campagna pubblicitaria sul web</h3>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>La <strong>pubblicità  sui motori di ricerca o sui network di siti web dedicati</strong> é il modo più rapido per ottenere utenti (potenziali acquirenti)  sul tuo sito web. <strong>In internet  la pubblicità  </strong>avviene tramite banner testuaili, grafici o  video<strong>,</strong> che devono essere sviluppati<strong> in funzione delle tue strategie di WEB MARKETING e MARKETING MIX </strong>per il web.</p>
+                <p>Per questo,<strong> prima di pianificare una campagna pubblicitaria online, é necessario che il tuo sito  sia perfettamente, funzionale </strong>e pronto a far trovare ai tuoi potenziali clienti quello che desiderano e che stanno cercando in quel momento. </p>
+                <p>La <strong>nostra società  puà² aiutarti </strong>in tutte le operazioni necessarie a programmare e GESTIRE CON SUCCESSO <strong>la tua pubblicità  online. </strong></p>
+                <h3>Cosa possiamo fare per te?</h3>
+                <ul class="dot">
+                    <li><strong>Consulenze</strong> per la <strong>pianificazione della campagna pubblicitaria </strong>online</li>
+                    <li>Pianificazione della <strong>campagna pubblicitaria online</strong><em> (line di budget e previsioni)</em></li>
+                    <li><strong>Sviluppo dei messaggi pubblicitari</strong> per il web<em> (banner o creatività )</em></li>
+                    <li><strong>Gestione e posizionamento degli annunci pubblicitari</strong> online</li>
+                    <li>Ottimizzazione<strong> del ROI </strong><em>(ritorno dell'investimento pubblicitario)</em></li>
+                </ul>
+                <h3>Scopri come operiamo per supportare il lancio del tuo sito web con la pubblicità  online</h3>
+                <ul class="dot">
+                    <li>Revisione e set-up del tuo sito <em>(e-commerce, cms, landing page)</em></li>
+                    <li><strong>Selezione dei motori di ricerca e siti web</strong> su cui collocare le tue pubblicità </li>
+                    <li><strong>Pianificazione dei budget</strong> e programmazione dei <strong>punti di controllo</strong></li>
+                    <li><strong>Valutazione previsionale degli obiettivi </strong><em>(forecast ricavi, utenti, tasso di conversione)</em></li>
+                    <li><strong>Gestione completa</strong> tecnica ed operativa della <strong>campagna pubblicitaria</strong></li>
+                    <li><strong>Perfezionamento costante per il mantenimento delle performace</strong></li>
+                    <li><strong>Rendicontazioni mensili</strong></li>
+                </ul>
+                <p><strong>Richiedi il nostro supporto o la nostra consulenza per la pianificazione della tua campagna pubblicitaria a supporto della tua impresa online.</strong></p>
+                <div class="clearer twenty"></div>
+                <div class="tips-adm shadow rounded-3">
+                    <div class="ribbon_tips"></div>
+                    <em>"Se la pubblicità  non funziona, non resta che cambiare la merce!"
+                        <br><small>Edgar Faure, scrittore e  politico francese</small></em>
+                </div>       
+            </section>
+        </section>
+    </section>
+{% endblock %}

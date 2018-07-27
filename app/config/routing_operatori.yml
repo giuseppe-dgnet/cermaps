@@ -1,0 +1,29 @@
+#    Operatori Bundle
+es_operatori_reg:
+    resource: "@ESOperatoriBundle/Controller/RichiestaController.php"
+    type:     annotation
+    prefix:   /operatori
+es_operatori_ajax_home:
+    resource: "@ESOperatoriBundle/Controller/Ajax/HomeController.php"
+    type:     annotation
+    prefix:   /operatori/showroom/ajax
+es_operatori_edit_preventivi:
+    resource: "@ESOperatoriBundle/Controller/Ajax/PreventiviController.php"
+    type:     annotation
+    prefix:   /operatori/showroom/gestione
+es_operatori_tag:
+    resource: "@ESOperatoriBundle/Controller/Ajax/TagController.php"
+    type:     annotation
+    prefix:   /operatori/showroom/ajax
+es_operatori_sr:
+    resource: "@ESOperatoriBundle/Controller/ShowroomController.php"
+    type:     annotation
+    prefix:   /operatori
+es_operatori_ws:
+    resource: "@ESOperatoriBundle/Controller/WsController.php"
+    type:     annotation
+    prefix:   /ws/operatori
+es_operatori_cron_sr:
+    resource: "@ESOperatoriBundle/Controller/CronShowroomController.php"
+    type:     annotation
+    prefix:   /cron/operatori

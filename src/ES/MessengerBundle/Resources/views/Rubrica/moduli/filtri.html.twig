@@ -1,0 +1,39 @@
+<section id="title_dashboard" class="clearfix margin-top-5 gradient-lightmedium" style="min-height: 40px;">
+    <section class="margin-left-10 margin-right-10">
+        <section class="colsx-filter">
+            <ul class="button-dark" style="position: absolute; top: -16px; left: 0;">
+                <li class="blue first last msg_button" id="aggiungi_rubrica"><span><a href="#">+ Nuovo contatto</a></span></li>
+            </ul>
+            <section class="baloon-container no-display" id="invito_rubrica_baloon" style="top: 20px;"> 
+                <div class="arrow-up a-right" id="arrow-up"></div>
+                <section class="box-float bacheca shadow-strong clearfix" >
+                    {% include 'EcoSeekrMessengerBundle:Rubrica:formInvito.html.twig' %}
+                </section>
+            </section>
+        </section>
+        <section class="coldx-listing margin-top-5 margin-bottom-5">
+            {% for lett in alfabeto %}
+                <span id="lettera_{{lett}}" class="lettera box-light gradient-medium rounded-3 tags padding-left-3 padding-right-3 left text-center" style="width: 10px;"><small>{{ lett }}</small></span>
+            {% endfor %}
+            <div class="clearer"></div>
+            <div class="hr-light"></div>
+            <div class="margin-right-10 margin-left-10 margin-top-5 left" style="padding-top: 3px;">
+                <form action="{{ path('messenger_new_discussione') }}" method="post" id="multi_msg">
+                    <input type="hidden" id="selected_check" name="usrs" value="[]">
+                </form>
+                <input type="checkbox" class="checkbox-base" id="select_check">
+            </div>
+            <div class="margin-top-5 left">
+                <ul class="doc-tools  button-light ">
+                    <li class="small first shadow"><a class="all" title="Invia messaggio" id="open_all" href="javascript:void(0)"><span class="mail">Invia messaggio</span></a></li>
+                    <li class="small shadow"><a class="all seleziona_cerchia" title="Aggiungi ai gruppi" id="cerchie_all" href="javascript:void(0)" rif="selezione multipla"><span class="edit">Aggiungi ai gruppi</span></a></li>
+                    <li class="small last shadow"><a class="all elimina_contatto" title="Elimina" id="delete_all" href="javascript:void(0)"><span class="remove">Elimina</span></a></li>
+                    {#
+                    <li class="small shadow"><a class="all pref preferiti aggiungi_contatto_preferito"  title="Aggiungi ai preferiti" id="add_preferito_all" href="javascript:void(0)"><span class="add">Aggiungi ai preferiti</span></a></li>
+                    <li class="small last shadow"><a class="all pref no-preferiti rimuovi_contatto_preferito" title="Rimuovi dai preferiti" id="rimuovi_preferito_all" href="javascript:void(0)"><span class="remove">Rimuovi dai preferiti</span></a></li>
+                    #}
+                </ul>
+            </div>
+        </section>
+    </section>
+</section>

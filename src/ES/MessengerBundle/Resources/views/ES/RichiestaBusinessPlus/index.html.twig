@@ -1,0 +1,52 @@
+{% extends 'EcoSeekrWebBundle::admin.html.twig' %}
+
+{% block title %}
+EcoSeekr - ES\RichiestaBusinessPlus
+{% endblock %}
+
+{% block content %}
+<h1>Gestione Richiesta Business Plus</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Operazioni</th>
+            <th>Richiedente</th>
+            <th>Contatti</th>
+            <th>Fatturato</th>
+            <th>Contattato</th>
+            <th>Link</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>
+                <button type="button">
+                    <a href="{{ path('business_plus_show', { 'id': entity.id }) }}">show</a>
+                </button>
+                <button type="button">
+                    <a href="{{ path('business_plus_edit', { 'id': entity.id }) }}">edit</a>
+                </button>
+                <br/>
+                {{ entity.datainvio|date('Y-m-d H:i:s') }}
+            </td>
+            <td>
+                {{ entity.nome }} {{ entity.cognome }}<br/>
+                ({{ entity.azienda }})
+            </td>
+            <td>
+                email: <a href="mailto:{{ entity.email }}">{{ entity.email }}</a><br/>
+                telefono: {{ entity.telefono }}<br/>
+            </td>
+            <td>{{ entity.fatturato }}</td>
+            <td>{% if entity.contattato %}SI{% else %}NO{% endif %}</td>
+            <td>
+                {% if entity.impresa %}<a href="{{ path('scheda', {'slug': entity.impresa.showroom.slug}) }}" target="_blank">Scheda/Showroom</a>{% endif %}<br/>
+                {% if entity.link %}<a href="{{ entity.link }}" target="_blank">Sito</a>{% endif %}<br/>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

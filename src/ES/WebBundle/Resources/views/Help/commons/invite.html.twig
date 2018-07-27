@@ -1,0 +1,19 @@
+{% if not app.user %}
+    <h3>Sei un operatore del settore?</h3>
+    <div class="left padding-5 rounded-8 mid-light-grey margin-bottom-10">
+        <button class="button-orange" onclick="$('a.register').trigger('click');">Invia ora la tua candidatura</button>
+        {#<div class="clearer ten"></div>
+        <ul class="box-light rounded-5 activity">
+            <li>operatore</li>
+            <li>operatore</li>
+            <li>operatore</li>
+            <li>operatore</li>
+            <li>operatore</li>
+            <li>operatore</li>
+            <li>operatore</li>
+            <li>operatore</li>
+            <li>operatore</li>
+        </ul>#}
+    </div>
+{% else %}
+{% endif %}

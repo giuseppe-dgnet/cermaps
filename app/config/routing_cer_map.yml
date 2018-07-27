@@ -1,0 +1,21 @@
+#    CER MAP Bundle
+es_cer_map:
+    resource: "@ESCerMapBundle/Controller/MapController.php"
+    type:     annotation
+    prefix:   /apps/cermap
+es_cer_map_cer:
+    resource: "@ESCerMapBundle/Controller/CerController.php"
+    type:     annotation
+    prefix:   /apps/cermap
+es_cer_map_mps:
+    resource: "@ESCerMapBundle/Controller/MpsController.php"
+    type:     annotation
+    prefix:   /apps/cermap
+es_cer_map_recuperabili:
+    resource: "@ESCerMapBundle/Controller/RecuperabiliController.php"
+    type:     annotation
+    prefix:   /apps/cermap
+es_cer_map_Tag:
+    resource: "@ESCerMapBundle/Controller/TagController.php"
+    type:     annotation
+    prefix:   /apps/cermap

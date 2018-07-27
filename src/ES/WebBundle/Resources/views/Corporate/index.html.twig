@@ -1,0 +1,30 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::corporate.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}EcoSeekr - Vision e Mission{% endblock %}
+{% block description %}Consideriamo i rifiuti una fonte inesauribile di materie prime da cui poter ricavare nuovi prodotti ed energia rispettando la natura.{% endblock %}
+{% block keywords %}vision, mission, aziendale, ecoseekr{% endblock %}
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            {#<span class="absolute tiptip" title="utente registrato in data {{showroom.intestazione.created_at|date("d/m/Y")}}" style="right: 0; top: 0;" ><img src="{{ asset('/images/user-type-'~showroom.intestazione.account~'.png') }}" /></span>#}
+            <h2 class="text-shadow">{{ 'menu.su_di_noi'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.vision'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width corporate box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+    </section>
+{% endblock %}

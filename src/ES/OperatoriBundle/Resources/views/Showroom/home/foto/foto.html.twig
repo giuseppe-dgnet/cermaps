@@ -1,0 +1,7 @@
+<div style="width:150px;overflow:hidden;" class="rounded-3">
+    {% if(foto_profilo is not null) %}
+        <img src="{{ foto_profilo }}" class="thumb_azienda left rounded-3" style="width: 150px;">
+    {% else %}
+        <img src="{{ asset(showroom.logoTmb) }}" class="thumb_azienda left rounded-3" style="width: 150px;">
+    {% endif %}
+</div>

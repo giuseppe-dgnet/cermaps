@@ -1,0 +1,41 @@
+<h4 class="text-grey margin-bottom-10">Richiesta per acquisto MPS</h4>
+{% if result.mappa %}
+    <section class="right light-grey" style="display: block; width: 150px; height: 150px;">
+        {{ google_map_container(result.mappa) }}
+        {{ google_map_css(result.mappa) }}
+        {{ google_map_inline_js(result.mappa) }}
+    </section>
+{% endif %}
+<ul>
+{% set max = 40 %}
+{% set i = 0 %}
+{% for mps in result.mps %}
+    {% if i < max %}
+        <li>{{mps.materia}}{% if mps.descrizione %}<br/><small>{{ mps.descrizione }}</small>{% endif %}</li>
+    {% endif %}
+    {% set i = i + 1 %}
+{% endfor %}
+{% if i > max %}
+<li>...e altre {{ i - max }} MPS</li>     
+{% endif %}
+</ul>
+
+<div class="clearer ten"></div>
+<h4 class="text-grey">Informazioni aggiuntive</h4>
+<table class="lps-table">
+    <tr>
+        <td><strong>Dove:</strong></td>
+        <td>{{result.indirizzo}} - {{result.comune.nomeComune}} - {{ result.cap }}</td>
+    </tr>
+    {% for info in result.altreInformazioni %}
+        <tr>
+            <td><strong>Sede operativa di:</strong></td>
+            <td>{{info}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<div class="clearer twenty"></div>
+<h4 class="text-grey">Note</h4>
+<p class="note-big">
+{{ result.testo }}
+</p>

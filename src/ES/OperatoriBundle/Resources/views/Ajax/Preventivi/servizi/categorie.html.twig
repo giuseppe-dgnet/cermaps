@@ -1,0 +1,12 @@
+<div class="clearer ten"></div>
+<div class="draggable_container" id="dc_draggable_{{ categoria.id }}" >
+    <ul id="ul_{{ categoria.id }}">
+        {% for servizio in categoria.servizi %}
+            <li id="s_{{ servizio.id }}" class="s_{{ servizio.id }} sa categoria_{{ categoria.id }}" name="opt_{{ categoria.id }}" cats='["{{ servizio.categoria.categoria }}"]' categorie_id='["{{ servizio.categoria.id }}"]'><span class="icon servizi_small">servizio:</span>{{ servizio.servizio }} <img src="{{ asset('/bundles/esweb/images/icone/plus.png') }}" class="icon-add" /></li>
+        {% endfor %}
+{#    <li class="add_servizio" id="new_{{ categoria.id }}"><a id="a_{{ categoria.id }}" class="fancybox" href="#form_sa" >Aggiungi un nuovo servizio in questa categoria</a></li> #}
+    </ul>
+</div>
+<section style="position: absolute; bottom: -35px; right: 5px;">
+    <p><a href="javascript:addCategoria('{{ categoria.id }}')">aggiungi tutti i servizi nell'elenco &raquo;</a></p>
+</section>

@@ -1,0 +1,44 @@
+<li id="discussione-list">
+    <section class="message-topic relative">
+        <section class="col-desc-reply left clearfix relative">
+            <h3 class="{{ result.tipo }} text-lightblue normal padding-left-15" style="font-size: 14px;"> {{ result.subject }}</h3>
+            
+            {% for utente in destinatari.percorso_utente %}
+                {% if(utente.profilo is defined) %}
+                    {% if(utente.showroom != false) %}
+                       {{utente.showroom}}</a>
+                       <p title="{{ destinatari.big }}" class="padding-left-15 text-gray">Conversazione con: <a href='{{ path('show_room', {'slug': utente.nome} )}}'></a></p>
+                    {%else%}
+                        <p title="{{ destinatari.big }}" class="padding-left-15 text-gray">Conversazione con: <a href='{{ path('profilo_personale', {'slug': utente.profilo} )}}'>{{utente.nome}}</a></p>
+                    {%endif%}            
+                {%endif%}            
+            {%endfor%}
+            <div class="clearer five"></div>
+            <div class="hr"></div>
+            <div class="clearer five"></div>
+            {% set aperto = (result.risposte|length == 0) or (not result.messaggioLetto) %}
+            {% include 'EcoSeekrMessengerBundle:Messenger:discussione/show.html.twig' with {'open': aperto} %}
+            {% for risposta in result.risposte %}
+                {% set aperto = not risposta.messaggioLetto %}
+                {% include 'EcoSeekrMessengerBundle:Messenger:discussione/show.html.twig' with {'result': risposta,'open': aperto} %}
+            {% endfor %}
+            {% if result.replyAvailable %}
+                {% include 'EcoSeekrMessengerBundle:Messenger:discussione/form.html.twig' %}
+            {% endif %}
+        </section>
+        <section class="col-info-reply right absolute" style="right: 0;" id="col_dx_info">
+            <article class="clearfix" id="allegati">
+                {% include 'EcoSeekrMessengerBundle:Messenger:discussione/allegati.html.twig' %}
+            </article>
+        </section>
+    </section>
+    <script type="text/javascript">
+        setIntestazione();
+        $(".tiptipAllegati").tipTip({
+            defaultPosition: 'left',
+            maxWidth: 'auto',
+            keepAlive: false,
+            delay: 0
+        });
+    </script>
+</li>

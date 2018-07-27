@@ -1,0 +1,23 @@
+var url_scroll_result = '{{ path('messenger_scroll_messaggi') }}';
+var messenger_filtro = '{{ path('messenger_filtro') }}';
+var rubrica_aggiungi = '{{ path('rubrica_aggiungi') }}';
+var rubrica_elimina = '{{ path('rubrica_elimina') }}';
+var leggi_discussione = '{{ path('leggi_discussione') }}';
+var archivia_discussione = '{{ path('archivia_discussione') }}';
+var disarchivia_discussione= '{{ path('disarchivia_discussione') }}';
+var ru_contact_tools = '{{ path('contact_tools') }}';
+var segna_letto = '{{ path('segna_letto') }}';
+var segna_da_leggere = '{{ path('segna_da_leggere') }}';  
+var segna_spam = '{{ path('segna_spam') }}';
+var disabilita_spam = '{{ path('disabilita_spam') }}';
+var cerca_messenger = '{{ path('cerca_messenger') }}';
+var nuova_discussione = '{{ path('nuova_discussione') }}';
+var messenger_destinatari = '{{ path('messenger_destinatari') }}';
+var messenger_new = '{{ path('messenger_new') }}';
+var tutti_messaggi_utente = '{{ path('tutti_messaggi_utente') }}';
+var contatti = {{ rubrica.contatti_in_rubrica|raw }};
+contatti.add({{ app.session.get('user').id }});
+var url_aggiungi_rubrica_invito = '{{ path('url_aggiungi_rubrica_invito') }}';
+var url_email = '{{ path('auth_cerca_email') }}';
+
+var invio_filtro = '{{ path('invio_filtro') }}';

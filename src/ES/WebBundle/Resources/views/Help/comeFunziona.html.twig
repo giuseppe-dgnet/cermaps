@@ -1,0 +1,93 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}EcoSeekr CerMaps - Come funziona{% endblock %}
+{% block description %}EcoSeekr attira i tuoi potenziali clienti dal web proprio nel momento in cui stanno cercando informazioni specifiche ed operatori in base a rifiuti, cer o materie prime secondarie e servizi ambientali.{% endblock %}
+{% block keywords %}clienti, ambiente, energia, rifiuti, materie prime, web marketing, eco, soluzioni, processi{% endblock %}
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">{{ 'menu.scopri_di_piu'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.come_funziona'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5 shadow clearfix">
+        <section class="rounded-5-top clearfix">
+            <ul class="tab-menu-portlet sr">
+                <li>
+                    <a href="{{ path('come_funziona') }}" class="defaulttab rounded-5-top-left active">{{ 'menu.come_funziona'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('scegliere_ecoseekr') }}">{{ 'menu.scegliere_ecoseekr'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('costi_funzionalita') }}">{{ 'menu.costi_funzionalita'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('statistiche') }}">{{ 'menu.statistiche'|trans({}, 'menu') }}</a>
+                </li>
+            </ul>
+        </section>
+        <section class="corporate clearfix  no-padding padding-top-10 padding-bottom-10">
+            <section class="coldx no-margin margin-right-10">
+                {% include 'ESWebBundle:Help:commons/invite.html.twig' %}
+            </section>
+            <section class="colsx no-margin margin-left-10">
+                <h3 class="main-title">Ogni mese in Italia sono eseguite online <strong>milioni di ricerche</strong> per trovare informazioni relative all’<strong>ambiente</strong>, l’<strong>energia</strong> ed i <strong>rifiuti</strong>.</h3>
+                <h3 class="main-title">L’<strong>80% dei professionisti</strong> utilizza internet per <strong>trovare</strong> nuove informazioni, nuovi partner oppure richiedere preventivi.</h3>
+                <div class="clearer ten"></div>
+                <h3 class="subtitle">Ti facciamo trovare da <strong>nuovi clienti</strong> proprio <strong>nel momento</strong> in cui ti stanno cercando!</h3>
+                <dl class="dl-list">
+                    <dt class="clearfix  margin-top-15">
+                        <img class="right padding-5 margin-left-10 shadow-strong" src="/bundles/esweb/images/help/help_image_step1.jpg">
+                        Quando un professionista <strong>ricerca informazioni</strong> (ad esempio: in funzione di un rifiuto oppure per trovare operatori vicino ad un sito o un cantiere) esegue la ricerca con <strong>termini specifici</strong> del settore.
+                        <p class="note right margin-top-5">Siamo presenti anche su <img src="/bundles/esweb/images/help/help_image_step1_didascalia.png"></p>
+                    </dt>
+                    <dt class="clearfix  margin-top-30">
+                     <div class="clearer ten"></div>
+                        <img class="left padding-5 margin-right-10 shadow-strong" src="/bundles/esweb/images/help/help_image_step2.jpg">
+                        Lavoriamo costantemente per <strong>fornire al web</strong> le informazioni più utili, aggiornate e specifiche <strong>sui nostri clienti e le loro attività</strong>.
+                        <br>
+                        <ul class="left check">
+                            <li>Rifiuti e Codici CER;</li>
+                            <li>materie prime seconde;</li>
+                            <li>processi;</li>
+                            <li>servizi ambientali;</li>
+                            <li>aziende ed operatori.</li>
+                        </ul>
+                        <p class="note left margin-top-5" style="width: 350px;"><strong>Non ci hai trovato?</strong><br>Non disperare! Perché <strong>lavorando al tuo fianco possiamo raggiungere in poco tempo</strong> i risultati che desideri e sopravanzare la concorrenza.</p>
+                    </dt>
+                    <dt class="clearfix  margin-top-30">
+                      <div class="clearer ten"></div>
+                        <img class="right padding-5 margin-left-10 shadow-strong" src="/bundles/esweb/images/help/help_image_step3.jpg">
+                        Il tuo cliente web può <strong>contattarti immediatamente</strong>, <strong>visitare il tuo showroom o il tuo sito</strong> oppure richiedere un preventivo attraverso CerMaps<sup><small>®</small></sup>.
+                        <br><br>
+                        In modo rapido, intuitivo e diretto il tuo potenziale cliente può contattarti immediatamente per:
+                        <br>
+                        <ul class="left check">
+                            <li>Localizziamo l’utente.</li>
+                            <li>Recuperiamo le informazioni di ricerca.</li>
+                            <li>Lo guidiamo verso l’operatore<br>più indicato o più vicino.</li>
+                        </ul>
+                    </dt>
+                </dl>
+                <div class="clearer thirty"></div>
+                {% include 'ESWebBundle:Help:commons/invite_body.html.twig' %}
+                <div class="clearer ten"></div>
+              </section>
+        </section>
+    </section>
+{% endblock %}

@@ -1,0 +1,131 @@
+{% extends '::admin.html.twig' %}
+{% block content %}
+<h1>Richiesta</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Ragione Sociale</th>
+            <td>{{ entity.ragioneSociale }}</td>
+            <th>Note</th>
+        </tr>
+        <tr>
+            <th>Referente</th>
+            <td>{{ entity.referente }}</td>
+            <td rowspan="21"><textarea id="note" placeholder="Scrivi note di lavoro" style="width: 400px; height: 250px;">{{ entity.note }}</textarea></td>
+        </tr>
+        <tr>
+            <th>Partita Iva</th>
+            <td>{{ entity.partitaIva }}</td>
+        </tr>
+        <tr>
+            <th>Codice Fiscale</th>
+            <td>{{ entity.codiceFiscaleAzienda }}</td>
+        </tr>
+        <tr>
+            <th>Telefono</th>
+            <td>{{ entity.telefono }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>PEC</th>
+            <td>{{ entity.emailPec }}</td>
+        </tr>
+        <tr>
+            <th>Fax</th>
+            <td>{{ entity.fax }}</td>
+        </tr>
+        <tr>
+            <th>Sito</th>
+            <td>{{ entity.sitoWeb }}</td>
+        </tr>
+        <tr>
+            <th>Indirizzo</th>
+            <td>{{ entity.indirizzo }}</td>
+        </tr>
+        <tr>
+            <th>Impianto</th>
+            <td>{% if entity.attivitaPrincipale == 'impianto'%}<b>Principale</b>{% else %}{% if  entity.impianto %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Discarica</th>
+            <td>{% if entity.attivitaPrincipale == 'discarica'%}<b>Principale</b>{% else %}{% if  entity.discarica %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Raccoglitore</th>
+            <td>{% if entity.attivitaPrincipale == 'raccoglitore'%}<b>Principale</b>{% else %}{% if  entity.raccoglitore %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Trasportatore</th>
+            <td>{% if entity.attivitaPrincipale == 'trasportatore'%}<b>Principale</b>{% else %}{% if  entity.trasportatore %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Laboratorio</th>
+            <td>{% if entity.attivitaPrincipale == 'laboratorio'%}<b>Principale</b>{% else %}{% if  entity.laboratorio %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Servizi</th>
+            <td>{% if entity.attivitaPrincipale == 'servizi_ambientali'%}<b>Principale</b>{% else %}{% if  entity.servizi %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Demolizioni</th>
+            <td>{% if entity.attivitaPrincipale == 'demolizioni'%}<b>Principale</b>{% else %}{% if  entity.demolizioni %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Spurghi</th>
+            <td>{% if entity.attivitaPrincipale == 'spurghi'%}<b>Principale</b>{% else %}{% if  entity.spurghi %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Bonifiche</th>
+            <td>{% if entity.attivitaPrincipale == 'bonifiche'%}<b>Principale</b>{% else %}{% if  entity.bonifiche %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Rottamazione</th>
+            <td>{% if entity.attivitaPrincipale == 'rottamazione'%}<b>Principale</b>{% else %}{% if  entity.rottamazione %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>RAEE</th>
+            <td>{% if entity.attivitaPrincipale == 'raee'%}<b>Principale</b>{% else %}{% if  entity.laboratorio %}raee{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Olio minerale</th>
+            <td>{% if entity.attivitaPrincipale == 'olio_minerale'%}<b>Principale</b>{% else %}{% if  entity.olioMinerale %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+        </tr>
+        <tr>
+            <th>Olio vegetale</th>
+            <td>{% if entity.attivitaPrincipale == 'olio_vegetale'%}<b>Principale</b>{% else %}{% if  entity.olioVegetale %}Secondaria{% else %}-{% endif %}{% endif %}</td>
+            <th><a href="javascript:salvaNote()" id="bt_note" style="display: none">Salva note</a></th>
+        </tr>
+    </tbody>
+</table>
+
+<form action="{{ path('richiesta_delete', { 'id': entity.id }) }}" method="post">
+    {{ form_widget(delete_form) }}
+    <button type="button" onclick="window.location = '{{ path('richiesta') }}'">
+        Torna indietro
+    </button>
+    {% if entity.showroom %}
+        <button type="button" onclick="window.location = '{{ path('crea_utente', { 'id': entity.id }) }}'">
+            Crea utenza
+        </button>
+    {% else %}
+        <button type="button" onclick="window.location = '{{ path('richiesta_edit', { 'id': entity.id }) }}'">
+            Attiva
+        </button>
+    {% endif %}
+    <button type="submit">Elimina</button>
+</form>
+
+<script type="text/javascript">
+    $('#note').keyup(function(){
+        $('#bt_note').show();
+    });
+    
+    function salvaNote() {
+        $.post('{{ path('richiesta_update_note', {'id': entity.id}) }}', {'note': $('#note').val()}, function(out) {$('#bt_note').hide();});
+    }
+</script>
+{% endblock %}

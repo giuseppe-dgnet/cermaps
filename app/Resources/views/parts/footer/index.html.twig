@@ -1,0 +1,23 @@
+{##
+ # GENERATORE DI FOOTER
+ # 
+ # Il generatore di footer è molto semplice da utilizzare. se si dichiara la
+ # variabile 'footer' prima di includere questo twig, lui va a cercare il twig
+ # corrispondente. Se non viene specidicata assume il valore 'default'.
+ # I footer grafici che possono essere richiamati si trovano dentro la cartella
+ # ':parts:footer/layout/...', non devono accettare nessun parametro aggiuntivo.
+ # Quindi se 'footer' assume il valore 'corporate' il twig usaro per il render
+ # sarà ':parts:footer/layout/corporate.html.twig'
+ #
+ # L'altro parametro preso in considerazione è 'running_mode', che se è uguale a
+ # 'prod' attiva Analytics di Google
+ #
+ # Slide feedback per ora è commentato in attesa di decisioni in merito
+ #}
+{% if footer is not defined %}{% set footer = 'default' %}{% endif %}
+{% if running_mode is not defined %}{% set running_mode = 'dev' %}{% endif %}
+
+{% include ':parts:footer/layout/'~footer~'.html.twig' %}
+{% include ':parts:footer/analytics.html.twig' %}
+
+{#% include ':parts:help/slide_feedback.html.twig' %#}

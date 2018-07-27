@@ -1,0 +1,5 @@
+<ul class="statistiche">
+    {% for visita in visite %}
+        <li class="text-small"><a class="tiptip" href="{{ site_stats }}{{ visita.url }}" title="{{ visita.url|replace({'/apps/cermap/codici-cer/cer/':'', '/operatori/showroom/':'','-':' '}) }}" {% if site_stats %}target="_blank" {% endif %}>{{ visita.url|replace({'/apps/cermap/codici-cer/cer/':'', '/operatori/showroom/':'','-':' '})|truncate(40) }}</a> <span class=" date-stamp" time="{{ visita.openAt|date("Y-m-d H:i:s") }}"></span></li>
+    {% endfor %}
+</ul>

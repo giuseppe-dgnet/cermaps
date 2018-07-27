@@ -1,0 +1,14 @@
+<section class="right "style="width: 100%;">
+    <section style="margin-left: 300px;">
+        <ul class="mps-index-cat clearfix" >
+            {% for mps in categoria.mps %}
+                <li class="shadow {% if loop.last %} no-margin{% endif %}">
+                    <a href="{{ path('es_mps', {'slug': mps.slug}) }}">
+                        <h2>{{ mps.materia|capitalize }}</h2>
+                        <p>{{ mps.descrizione|capitalize }}</p>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</section>

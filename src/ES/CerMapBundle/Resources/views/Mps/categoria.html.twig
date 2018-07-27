@@ -1,0 +1,35 @@
+{% set titolo_h1 = 'Trova, acquista o vendi ' ~ categoria.categoria|lower %}
+{% set titolo_app = 'app_cer' %}
+{% set menu_marker = 'mps' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}Trova, acquista o vendi {{ categoria.categoria|lower }} - EcoSeekr Italia{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/lps.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+
+{% block javascript_inline %}
+    {% include 'ESCerMapBundle:Mps:_commons/variabiliJs.html.twig' %}
+{% endblock %}
+        
+{% block javascript_ready %}
+    marker_pos('#menu_mps');
+{% endblock %}
+
+{% block description %}Trova, acquista o vendi {{ categoria.categoria|lower }} tra cui {% for servizio in categoria.mps %}{% if servizio.condiviso %}{% if not loop.first %}, {% endif %}{{ servizio.materia|lower }}{% endif %}{% endfor %}{% endblock %}
+
+{% block keyword %}trova, acquista, vendi, materie prime seconde{% for servizio in categoria.mps %}{% if servizio.condiviso %}, {{ servizio.materia|lower }}{% endif %}{% endfor %}{% endblock %}
+
+{% block content %}
+    {% include 'ESCerMapBundle:Mps:categoria/breadcrumbs.html.twig' %}
+    <section class="padding-10 clearfix box-light no-border">
+        {% include 'ESCerMapBundle:Mps:categoria/suggest.html.twig' %}
+        {% include 'ESCerMapBundle:Mps:categoria/content.html.twig' %}
+    </section>
+{% endblock %}

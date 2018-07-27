@@ -1,0 +1,45 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webadvertising' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2>Posizionamento del sito web nei motori di di ricerca e Google</h2>
+            <h3>Consulenze, metodi e strategie per primeggiare nel posizionamento all'interno dei motori di ricerca ed essere primo su Google senza pubblicità .</h3>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p> <strong>Cerchi una ricetta efficace per o un metodo standard per primeggiare nei motori di ricerca senza pubblicità ?<br>
+                    </strong>Se ci pensi bene, puoi comprendere che non può esistere!</p>
+                <p>Il web di oggi é un universo vasto ed in continua evoluzione. Ha i suoi tempi, i suoi bioritmi e dei fattori che ne determinano le funzionalità  e l'utilità . Per questo il tuo sito web <strong>deve essere armonicamente integrato come una nuova entità  all'interno di un contesto più grande</strong>, più evoluto ed in continua evoluzione. </p>
+                <p><strong>Per primeggiare sui motori di ricerca in modo organico - senza pubblicita nei motori di ricerca - Il tuo sito web deve esser progettato, gestito e manutenuto in maniera organica e funzionale al contesto web in cui viene collato. </strong></p>
+                <p>Possiamo garantirti servizi FULL-MANTEINANCE e TEMPORARY MANAGEMENT per gestire e collocore al meglio la tua struttura web e le sue ramificazioni più perificeriche, trasformando in pochi anni la tua struttura, in un complesso E-BUSINESS di successo.</p>
+                <div class="clearer twenty"></div>
+                <div class="tips-adm shadow rounded-3">
+                    <div class="ribbon_tips"></div>
+                    Nel cliente soddisfatto del tuo sito web, si genera subito un parere positivo sulla tua attività  online, che si estende fino al concetto reale della tua azienda e dei tuoi prodotti.<br>
+                </div>
+            </section>
+        </section>
+    </section>
+{% endblock %}

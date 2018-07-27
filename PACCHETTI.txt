@@ -1,0 +1,3 @@
+apt-get install g++ g++-4.9 gcc gcc-4.9 git pkg-config ruby ruby-celluloid ruby-chunky-png ruby-compass ruby-compass-core ruby-compass-import-once ruby-ffi ruby-json ruby-listen ruby-multi-json ruby-oj ruby-rb-inotify ruby-sass ruby-timers ruby-yajl ruby2.1 rubygems-integration php5-curl
+
+a2enmod rewrite

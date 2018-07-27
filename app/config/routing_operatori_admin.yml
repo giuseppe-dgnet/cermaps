@@ -1,0 +1,17 @@
+#    Operatori Bundle
+es_operatori_admin_reg:
+    resource: "@ESOperatoriBundle/Controller/AdminRichiesteController.php"
+    type:     annotation
+    prefix:   /admin/operatori
+es_operatori_admin_anga:
+    resource: "@ESOperatoriBundle/Controller/AdminAngaController.php"
+    type:     annotation
+    prefix:   /admin/operatori/ws
+es_operatori_admin_import:
+    resource: "@ESOperatoriBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /admin
+es_operatori_admin_rdo:
+    resource: "@ESOperatoriBundle/Controller/AdminRdoController.php"
+    type:     annotation
+    prefix:   /admin

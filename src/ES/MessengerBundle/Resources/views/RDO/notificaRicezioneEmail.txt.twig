@@ -1,0 +1,25 @@
+{% if esistente %} 
+    Buongiorno {{ user.nomeCompleto}},
+    Hai ricevuto una nuova Richiesta di smaltimento,
+{% else %}
+    {% if user %}
+        Lo Showroom {{user.ragioneSociale}}
+    {% else %}
+        Centro Smaltimento Rifiuti
+    {% endif %}
+Ha ricevuto una nuova RDO,
+{% endif %}
+
+Riepilogo della richiesta:
+----------------------------------------
+{{ riepilogo|raw }}
+----------------------------------------
+{#Usa il tuo Messenger su EcoSeekr per gestire la richiesta#}
+
+{#% if destinatario.destinatario.showroom %}
+    Per gestire la discussione apri il link:
+    {{ url('messenger_discussione_login', { 'slug': destinatario.slug }) }}
+{% endif %#}
+
+nota:
+* Un utente non verificato può effettuare il check e diventare utente verificato EcoSeekr in qualsiasi momento

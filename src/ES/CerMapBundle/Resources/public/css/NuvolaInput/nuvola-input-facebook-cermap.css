@@ -1,0 +1,162 @@
+/* Example tokeninput style #2: Facebook style */
+ul.nuvola-input-list-facebook-cermap {
+    overflow: hidden; 
+    height: auto !important; 
+    height: 1%;
+    width: 307px;
+    border: 1px solid #bbb;
+    cursor: text;
+    font-size: 12px;
+    min-height: 1px;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+    clear: left;
+    background: #fff url(/bundles/esweb/images/header/shadow.png) repeat-x 0 0;
+    list-style-type: none;
+    clear: left;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    border-radius: 2px;
+    position: relative;
+}
+
+ul.nuvola-input-list-facebook-cermap li input {
+    border: 0;
+    width: 290px !important;
+    padding: 3px 6px;
+    background: transparent !important;
+    margin: 0;
+    -webkit-appearance: caret;
+    font-size:12px;
+}
+ul.nuvola-input-list-facebook-cermap li input:focus {
+    background: transparent !important;
+}
+
+/*li.nuvola-input-token-facebook-cermap {
+    overflow: hidden; 
+    height: auto !important; 
+    height: 15px;
+    margin: 3px;
+    padding: 1px 3px;
+    background-color: #eff2f7;
+    color: #000;
+    cursor: default;
+    border: 1px solid #ccd5e4;
+    font-size: 11px;
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    float: left;
+    white-space: nowrap;
+}*/
+
+li.nuvola-input-token-facebook-cermap {
+    overflow: hidden; 
+    height: auto !important; 
+    margin: 3px;
+    padding: 1px 3px;
+    /*background: url(/bundles/esweb/images/header/bg-button-voice.png) repeat-x 0 -794px;
+    color: #fff;*/
+    cursor: default;
+    border: 1px solid #ccc;
+    font-size: 11px;
+    border-radius: 3px;
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    float: left;
+    white-space: nowrap;
+    /*-webkit-box-shadow:0 1px 3px rgba(0, 0, 0, 0.15);
+    -moz-box-shadow:0 1px 3px rgba(0, 0, 0, 0.15);
+    box-shadow:0 1px 3px rgba(0, 0, 0, 0.15);*/
+}
+
+
+
+li.nuvola-input-token-facebook-cermap p {
+    display: inline;
+    padding: 0;
+    margin: 0;
+}
+
+li.nuvola-input-token-facebook-cermap span {
+    color: #fff;
+    margin-left: 5px;
+    font-weight: bold;
+    cursor: pointer;
+}
+li.gradient-orangedark span,
+li.gradient-green span,
+li.gradient-red span {
+    color: #fff !important;
+}
+
+li.nuvola-input-selected-token-facebook-cermap {
+    border: 1px solid #333;
+    color: #333;
+}
+
+li.nuvola-input-input-token-facebook-cermap {
+    float: left;
+    width: 307px;
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+div.nuvola-input-dropdown-facebook-cermap {
+    position: absolute;
+    width: 301px;
+    max-height: 300px;
+    background-color: #fff;
+    overflow: auto;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    padding: 3px;
+    cursor: default;
+    font-size: 11px;
+    z-index: 1000;
+    -webkit-box-shadow:0 2px 3px rgba(0, 0, 0, 0.18);
+    -moz-box-shadow:0 2px 3px rgba(0, 0, 0, 0.18);
+    box-shadow:0 2px 3px rgba(0, 0, 0, 0.18);
+}
+
+div.nuvola-input-dropdown-facebook-cermap p {
+    margin: 0;
+    padding: 2px;
+    font-weight: bold;
+    color: #777;
+}
+
+div.nuvola-input-dropdown-facebook-cermap ul {
+    margin: 0;
+    padding: 0;
+}
+
+div.nuvola-input-dropdown-facebook-cermap ul li {
+    background-color: #fff;
+    padding: 2px;
+    margin: 0;
+    list-style-type: none;
+}
+
+div.nuvola-input-dropdown-facebook-cermap ul li.nuvola-input-dropdown-item-facebook-cermap {
+    background-color: #fff;
+}
+
+div.nuvola-input-dropdown-facebook-cermap ul li.nuvola-input-dropdown-item2-facebook-cermap {
+    background-color: #fff;
+}
+
+div.nuvola-input-dropdown-facebook-cermap ul li em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+div.nuvola-input-dropdown-facebook-cermap ul li.nuvola-input-selected-dropdown-item-facebook-cermap {
+    background-color: #7c93c1;
+    cursor: pointer;
+}

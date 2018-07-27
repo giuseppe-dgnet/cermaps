@@ -1,0 +1,67 @@
+{% block javascript %}
+    {% javascripts
+        '@ESOperatoriBundle/Resources/public/js/showroom.js'
+     %}
+<script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+<p class="text-lightblue" style="font-size: 14px;">Seleziona e invia la tua richiesta per materie prime seconde</p>
+<div class="clearer"></div>
+<div class="hr-light margin-top-5 margin-bottom-5"></div>
+<div class="clearer"></div> 
+<div class="relative">
+{#% if modificabile %}
+    <ul class="editing-tools button-light" style="position: absolute; top: 0px; right: 0px; z-index: 100;">
+        <li class="small first last shadow"><a href="{{ path('op_sr_cer', {"slug": showroom.slug}) }}"><span class="edit">Modifica</span></a></li>
+    </ul>
+    <p class="on-edit note absolute">
+        {% if showroom.mps|length > 0 %}
+            Questi sono le materie prime seconde che hai selezionato.
+        {% else %}
+            Non hai selezionato nessuna materia prima seconda, dunque questa sezione non sarà visibile ai tuoi clienti. Puoi aggiungerli quando vuoi andando in modalità modifica del tuo showroom.
+        {% endif %}
+    </p>
+{% endif %#}
+{% if showroom.mps|length > 0 %}
+    <div class="clearer ten"></div>
+    <section class="clearfix" id="select_mps" style="border-top: solid 1px #dadada; border-right: solid 1px #dadada;">
+        <ul class="tab-menu-vertical menu-mps" style="border-left: solid 1px #dadada;">
+            {% for categoria, mpss in showroom.categorieMps %}
+                <li><a href="javascript:void(0)" {% if loop.first %}class="defaulttab active"{% endif %} rel="tabs_mps{{ loop.index }}">{{ categoria|capitalize }}</a></li>
+            {% endfor %}
+        </ul>
+        {% for categoria, mpss in showroom.categorieMps %}
+            <section class="tab-content-vertical content-mps" style="{% if not loop.first %}display:none;{% endif %}border-bottom: solid 1px #dadada;" id="tabs_mps{{ loop.index }}">
+                <section class="box-light" >
+                    <ul class="activity act-list lista-mps" a="mps" {% if loop.first %} id="mps" {% endif %}>
+                        {% for mps in mpss %}
+                            <li id="mps{{ mps.id }}"  {% if loop.last %} class="last shadow" {% endif %} cat="{{ categoria|capitalize }}">
+                                <span class="desc-col-short">
+                                    <strong>{{ mps.materia|capitalize }}</strong><br>
+                                    {% if mps.descrizione %}
+                                        <small>({{mps.descrizione|capitalize}})</small>
+                                    {% endif %}
+                                </span>
+                                <ul class="item-tools button-light on-show">
+                                    <li class="smaller first last"><a href="javascript:void(0)"><span class="add">Aggiungi</span></a></li>
+                                </ul>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </section>
+            </section>
+        {% endfor %}
+    </section>
+{% endif %}
+    <div class="clearer"></div>
+    <section class="clearfix rounded-5 mess cyan no-display margin-top-10" id="submit_mps">    
+        <div class="form_voice clearfix left">
+            <p style="margin-bottom: 0px;"><small>Hai selezionato <span id="n_mps">0</span> MPS</small></p>
+        </div>
+        <div class="form_voice clearfix right">
+            <button class="button-orange large" onclick="$('a.rdoRequestMps').trigger('click');">Conferma &raquo;</button>
+            <a class="no-display rdoRequestMps" href="{{ path('op_sr_richiesta_rdo_mps', {'slug': showroom.slug}) }}"></a>
+        </div>
+    </section>
+</div>

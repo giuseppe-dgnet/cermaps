@@ -1,0 +1,58 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webadvertising' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Raggiungi nuovi clienti con la pubblicità  su Google Adwords</h2>
+            <h4 class="text-shadow normal">Sviluppo, monitoraggio e gestione di campagne pubblicitarie online<br>per la promozione dei siti web con Google Adwords e altri network pay per click</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webadvertising/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:webadvertising/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>Sviluppando una <strong>campagna pubblicitaria online</strong> con il servizio di Google Adwords puoi <strong>entrare in contatto con milioni di potenziali clienti proprio nel momento in cui sono alla ricerca dei tuoi prodotti o servizi,</strong> mostrando annunci testuali sul lato destro della pagina dei risultati.</p>
+                <p>Con Google AdWords <strong>possiamo creare e pubblicare annunci per la tua attività  in modo rapido e semplice</strong>. Possiamo pubblicare i tuoi annunci su Google e nella  rete pubblicitaria dei siti partners e, indipendentemente dall'entità  del budget stanziato,<strong> pagherai soltanto se gli utenti fanno clic sui tuoi annunci.</strong></p>
+                <h3>Cosa possiamo fare per te? <br>
+                    Gestiamo tutte le fasi strategiche e attuative della tua campagna pubblicitaria su Google</h3>
+                <p>Gestiamo tutto il processo di <strong>pianificazione strategica e le procedure di attivazione della tua campagna pubblicitaria</strong> <strong>su Google e ne controlliamo costantemente i risultati.</strong></p>
+                <ul class="dot">
+                    <li>Individuiamo insime gli obiettivi e studiamo la concorrenza</li>
+                    <li>Quantifichiamo i  budget mensili minimi</li>
+                    <li>Pianifichiamo integralemente la tua campagna selezionando i siti dove dovranno comparire i tuoi annunci oltre all'indice di ricerca di Google</li>
+                    <li>Selezioniamo le Keywords pià¹ adatte ai tuoi prodotti o servizi</li>
+                    <li>Sviluppiamo un piano di azione ed una linea di budgeting dove evidenziamo il volume di utenti che arriveranno dalla campagna, il rapporto tra utenti e conversioni <em>(vista/acquisto)</em> e predeterminiamo i ricavi, monitorando costantemente il ROI <em>(ritorno dall'investimento)</em>.</li>
+                    <li>Sviluppiamo le creatività  e modifichiamo il tuo sito web <em>(annunci testuali, banner grafici o visuali)</em></li>
+                    <li>Attiviamo i tuoi canali pubblicitari</li>
+                    <li>Ottimizziamo costantemente la tua campagna in funzione dei risultati</li>
+                </ul>
+                <h3>Dove vengono visutalizzati gli annunci?</h3>
+                <p>Gli annunci AdWords <strong>vengono visualizzati insieme ai risultati di ricerca</strong> quando un utente esegue una ricerca su Google <strong>con una delle parole chiave che abbiamo specificato </strong>per i tuoi prodotti o servizi. </p>
+                <p>Gli annunci <strong>vengono visualizzati sotto il titolo "Link sponsorizzati" nella colonna laterale di una pagina</strong> di ricerca e possono essere visualizzati anche in altre posizioni sopra i risultati di ricerca gratuiti.</p>
+                <p> <strong>Pertanto, la tua pubblicità  viene indirizzata a un pubblico già  interessato alla tua attività .</strong> Possiamo anche pianificare di pubblicare i tuoi annunci su siti della Rete Display all'interno della sempre pià¹ grande Rete Google. Inoltre, possiamo prevedere di <strong>scegliere gli esatti posizionamenti sulla Rete Display in cui desideri pubblicare gli annunci oppure utilizzare il targeting contestuale per abbinare le parole chiave ai contenuti. </strong></p>
+                <h3>Che formati di annunci possiamo pubblicare?</h3>
+                <p><strong>Possiamo  scegliere tra diversi formati di annunci,</strong> tra cui annunci di testo, annunci illustrati e annunci video; inoltre, potrai monitorare facilmente il rendimento degli annunci tramite i rapporti che ti renderemo disponibili.</p>
+            </section>
+        </section>
+    </section>
+{% endblock %}

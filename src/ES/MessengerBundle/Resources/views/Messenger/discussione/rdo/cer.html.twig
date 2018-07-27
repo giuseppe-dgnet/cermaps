@@ -1,0 +1,50 @@
+<h4 class="text-grey margin-bottom-10">Richiesta di smaltimento rifiuti</h4>
+{% if result.mappa %}
+    <section class="right light-grey" style="display: block; width: 150px; height: 150px;">
+            {{ google_map_container(result.mappa) }}
+            {{ google_map_css(result.mappa) }}
+            {{ google_map_inline_js(result.mappa) }}
+    </section>
+{% endif %}
+{% set max = 40 %}
+{% set i = 0 %}
+{% for cer in result.cer %}
+    {% if i < max %}
+        <span class="button-cer-code-small tiptip" title="{{cer.descrizione}}">{{cer.codice}}</span>
+    {% endif %}
+    {% set i = i + 1 %}
+{% endfor %}
+{% if i > max %}
+    <br/>...e altri {{ i - max }} CER        
+{% endif %}
+<div class="clearer ten"></div>
+<h4 class="text-grey">Informazioni aggiuntive</h4>
+<table class="lps-table">
+    <tr>
+        <td width="170"><strong>Condizione fisica:</strong></td>
+        <td>{{result.statoRifiutoTestuale}}</td>
+    </tr>
+    <tr>
+        <td><strong>Quantità:</strong></td>
+        <td>{{result.quantita}} {{result.unitaMisura}}</td>
+    </tr>
+    <tr>
+        <td><strong>Dove:</strong></td>
+        <td>{{result.indirizzo}} - {{result.comune.nomeComune}} - {{ result.cap }}</td>
+    </tr>
+    <tr>
+        <td><strong>Periodicita:</strong></td>
+        <td>{{result.periodicitaTestuale}}</td>
+    </tr>
+    {% for info in result.altreInformazioni %}
+        <tr>
+            <td><strong>Sede operativa di:</strong></td>
+            <td>{{info}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<div class="clearer twenty"></div>
+<h4 class="text-grey">Note</h4>
+<p class="note-big">
+{{ result.testo }}
+</p>

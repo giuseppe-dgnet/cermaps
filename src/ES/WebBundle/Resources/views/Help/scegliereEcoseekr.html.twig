@@ -1,0 +1,142 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}EcoSeekr CerMaps - Vantaggi{% endblock %}
+{% block description %}Scopri i principali vantaggi e le soluzioni di web marketing in ambiente, energia e rifiuti offerte da ecoseekr cermaps {% endblock %}
+{% block keywords %}clienti, ambiente, energia, rifiuti, materie prime, web marketing, eco, soluzioni, processi{% endblock %}
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">{{ 'menu.scopri_di_piu'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.scegliere_ecoseekr'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5 shadow clearfix">
+        <section class="rounded-5-top clearfix">
+            <ul class="tab-menu-portlet sr">
+                <li>
+                    <a href="{{ path('come_funziona') }}" class="rounded-5-top-left">{{ 'menu.come_funziona'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('scegliere_ecoseekr') }}" class="active">{{ 'menu.scegliere_ecoseekr'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('costi_funzionalita') }}">{{ 'menu.costi_funzionalita'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('statistiche') }}">{{ 'menu.statistiche'|trans({}, 'menu') }}</a>
+                </li>
+            </ul>
+        </section>
+        <section class="corporate clearfix  no-padding padding-top-10 padding-bottom-10">
+            <section class="coldx no-margin margin-right-10">
+                {% include 'ESWebBundle:Help:commons/invite.html.twig' %}
+            </section>
+            <section class="colsx no-margin margin-left-10">
+                <h3 class="main-title">Con <strong>oltre 50.000 utenti/mese</strong> geolocalizzati e più di 750.000 risultati nei motori di ricerca in ambiente, energia e rifiuti, <strong>siamo l’unica reale soluzione di web marketing</strong> in grado di potenziare le tue attività di marketing & advertising nel settore dell’eco-produzione.</h3>
+                <h3 class="subtitle">Alcuni buoni motivi per scegliere Ecoseekr</h3>
+                <section class="table">  
+                    <section class="table-row">
+                        <section class="table-cell padding-top-15">
+                            <article class="article-point power">
+                                <h4 class="no-margin">Supera i tuoi concorrenti</h4>
+                                <p class="margin-bottom-20"><strong>Mettiti in evidenza</strong> fra le oltre 150.000 operatori di ambiente, energia e rifiuti iscritti all' <strong>Albo Nazionale dei Gestori Ambientali</strong> e presenti in EcoSeekr CerMaps </p>
+                                </p></article>
+                        </section>
+                        <section class="table-cell padding-top-15 ">
+                            <article class="article-point becomefirst">
+                                <h4 class="no-margin">Primo nei motori di ricerca</h4>
+                                <p class="margin-bottom-20">Sali rapidamente con il tuo sito web nei <strong>primi risultati dei motori di ricerca</strong> più importanti ad investimenti molto contenuti.</p>
+                            </article>
+                        </section>
+                    </section>
+                    <section class="table-row">
+                        <section class="table-cell padding-top-15">
+                            <article class="article-point request">
+                                <h4 class="no-margin">Ricevi richieste geolocalizzate</h4>
+                                <p class="margin-bottom-20"><strong>Aumenta i tuoi profitti</strong> lavorando maggiormente sulle opportunità presenti nel tuo <strong>raggio operativo</strong>, dove sei più competitivo e performante.</p>
+                            </article>
+                        </section>
+                        <section class="table-cell padding-top-15">
+                            <article class="article-point icon_rifiuto">
+                                <h4 class="no-margin">Ottieni richieste specifiche</h4>
+                                <p class="margin-bottom-20">Ottieni contatti reali <strong>solo dai clienti che ti interessano</strong> di più in funzione dei Codici CER, dei servizi ambientali o delle MPS.</p>
+                            </article>
+                        </section>
+                    </section>
+                    <section class="table-row">
+                        <section class="table-cell padding-top-15">
+                            <article class="article-point becomepremium">
+                                <h4 class="no-margin">Più serietà</h4>
+                                <p class="margin-bottom-20"><strong>Fai sapere ai tuoi nuvoi clienti</strong> che sei un operatore di eccellenza nel settore con cui poter concludere nuovi business in tutta sicurezza.</p>
+                            </article>
+                        </section>
+                        <section class="table-cell padding-top-15">
+                            <article class="article-point anga">
+                                <h4 class="no-margin">Più trasparenza</h4>
+                                <p class="margin-bottom-20">I nostri clienti sanno che <strong>verifichiamo</strong> le informazioni relative al tuo business ambientale.</p>
+                            </article>
+                        </section>
+                    </section>
+                    <section class="table-row">
+                        <section class="table-cell padding-top-15">
+                            <article class="article-point eco">
+                                <h4 class="no-margin">Diventa Eco-friendly</h4>
+                                <p class="margin-bottom-20">Ecoseekr <strong>incentiva gli scambi</strong> di rifiuti, materie seconde e servizi <strong>in modo localizzato</strong> contribuendo in questo modo alla riduzione dell’impatto ambientale.</p>
+                            </article>
+                        </section>
+                    </section>
+                </section>
+                <div class="clearer thirty"></div>
+                <h3 class="subtitle">Desideri più performance online?</h3>
+                <p>Sviluppiamo innovativi modelli di e-business per <strong>aumentare la tua competitività</strong>, integrando con successo internet nel tuo modello di business tradizionale.</p>
+                  <section class="table">  
+                    <section class="table-row">
+                        <section class="table-cell padding-top-15 ">
+                            <article class="article-point icon_adwords">
+                                <h4 class="no-margin">Campagne pubblicitarie</h4>
+                                <p class="margin-bottom-20"><strong>Aumenta velocemente i tuoi profitti</strong> attivando una campagna pubblicitaria studiata ad Hoc per il tuo showroom ed il tuo sito web aziendale con EcoSeekr e Google Adwords.</p>
+                            </article>
+                        </section>
+                        <section class="table-cell padding-top-15">
+                            <article class="article-point newsite">
+                                <h4 class="no-margin">E-Business</h4>
+                                <p class="margin-bottom-20"><strong>Sviluppo e gestione</strong> di un piano di successo, completo di obiettivi chiari e strategie integrate volte ad indirizzare il traffico sul sito web, <strong>convertendo i visitatori</strong> in clienti e le prospettive in valore.</p>
+                            </article>
+                        </section>
+                    </section>
+                    <section class="table-row">
+                        <section class="table-cell padding-top-15">
+                            <article class="article-point identity">
+                                <h4 class="no-margin">Web personalizzato</h4>
+                                <p class="margin-bottom-20">Se hai <strong>esigenze specifiche</strong> puoi richiedere un <strong>servizio personalizzato</strong> per il tuo sito web o il tuo showroom. Lavoreremo al tuo fianco per sviluppare quello che desideri.</p>
+                            </article>
+                        </section>
+                        <section class="table-cell padding-top-15">
+                            <article class="article-point support">
+                                <h4 class="no-margin">Assistenza ed E-Business</h4>
+                                <p class="margin-bottom-20">Ti garantiamo il supporto necessario al mantenimento della piena efficienza strategica ed operativa della tua nuova espressione digitale d’azienda in modo da <strong>raggiungere e mantenere</strong> nel tempo una reale costruzione di valore.</p>
+                            </article>
+                        </section>
+                    </section>
+                </section>
+                <div class="clearer thirty"></div>
+                {% include 'ESWebBundle:Help:commons/invite_body.html.twig' %}
+                <div class="clearer ten"></div>
+             </section>
+        </section>
+    </section>
+{% endblock %}

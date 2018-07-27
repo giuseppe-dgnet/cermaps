@@ -1,0 +1,296 @@
+
+<section id="drag-data" class="absolute box-lightgray no-border shadow-rdopanel" style="display: none;left: 0; z-index: 10; width: 400px;">
+    <form id="filtro" class="p_input relative" style="overflow: auto" onsubmit="return false; ">
+        <table style="width: 100%" cellspacing="7" class="margin-top-15 ">
+            <tr>
+                <td class="text-right padding-top-5" style="width: 60px; vertical-align: top">
+                    Cosa:
+                </td>
+                <td colspan="3">
+                <div id="cosa_cerca">
+                    <input type="text" id="nuvola_cermap_cosa" class="search smaller rounded-5 placeholder" name="q[cosa]" value="" placeholder="Descrivi il tuo rifiuto o il codice CER e premi invio" style="width: 295px;">
+                </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                </td>
+                <td colspan="3">
+                    <p class="relative text-small" style="top: -6px;"><a href="{{ path('es_cer_classi') }}">Puoi eseguire la ricerca anche dall'Indice CER »</a></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right padding-top-5">
+                    A:
+                </td>
+                <td colspan="3">
+                    <div id="cermap_geo_luogo_container" class="relative">
+                        <input type="text" id="cermap_geo_luogo" class="search smaller rounded-5 placeholder" name="q[geo][luogo]" value="" placeholder="Località" style="width: 295px;">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                </td>
+                <td colspan="3">
+                    <p class="relative text-small tiptip" style="top: -8px;" title="<table class='no-margin no-padding'><tr><td><img class='margin-right-5 rounded-3' src='/bundles/escermap/images/help/drag-marker-cermap.jpg'></td><td>Clicca e trascina la puntina rossa per correggere la tua posizione</td></tr></table>">Non è la posizione corretta? <a class="" href="javascript: void(0)" >Correggila</a></p>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    Distanza:
+                </td>
+                <td colspan="3">
+                    <div class="form-cermap">
+                        <input type="number" id="cermap_geo_dist" class="geo smaller left rounded-5 placeholder" name="q[geo][dist]" value="100" placeholder="Distanza" style="width: 45px;">
+                        <span class="text-grey text-small left margin-top-5 margin-left-5"> Km.</span>
+                        <span class="relative left" id="slider">
+                        </span>
+                        <input type="hidden" id="cermap_geo_comune" name="q[geo][comune]" value="">
+                        <input type="hidden" id="cermap_geo_lat" name="q[geo][lat]" value="">
+                        <input type="hidden" id="cermap_geo_lon" name="q[geo][lon]" value="">
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="4" class="text-right">
+                    <div class="hr bevel-img"></div>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_I" class="hover"><img src="/bundles/escermap/images/marker/impianto_small.png" alt="{{ 'operatori.impianti'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_I" class="hover">{{ 'operatori.impianti'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_I" class="hover no-display">(7)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_I" class="hover label_radio" id="filtri_impianti"><input type="checkbox" class="impianto checkbox-base cb" value="impianto" checked="checked" id="cb_I"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_D" class="hover"><img src="/bundles/escermap/images/marker/discarica_small.png" alt="{{ 'operatori.discariche'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_D" class="hover">{{ 'operatori.discariche'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_D" class="hover no-display">(45)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_D" class="hover label_radio"><input type="checkbox" class="discarica checkbox-base cb" value="discarica" checked="checked" id="cb_D"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_R" class="hover"><img src="/bundles/escermap/images/marker/raccoglitore_small.png" alt="{{ 'operatori.raccoglitori'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_R" class="hover">{{ 'operatori.raccoglitori'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_D" class="hover no-display">(34)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_R" class="hover label_radio"><input type="checkbox" class="raccoglitore checkbox-base cb" value="raccoglitore" checked="checked" id="cb_R"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_T" class="hover"><img src="/bundles/escermap/images/marker/trasportatore_small.png" alt="{{ 'operatori.trasportatori'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_T" class="hover">{{ 'operatori.trasportatori'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_T" class="hover no-display">(10)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_T" class="hover label_radio"><input type="checkbox" class="trasportatore checkbox-base cb" value="trasportatore" checked="checked" id="cb_T"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_S" class="hover"><img src="/bundles/escermap/images/marker/servizi_ambientali_small.png" alt="{{ 'operatori.servizi_ambientali'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_S" class="hover">{{ 'operatori.servizi_ambientali'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_S" class="hover no-display">(3)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_S" class="hover label_radio"><input type="checkbox" class="servizi_ambientali checkbox-base cb" value="servizi" checked="checked" id="cb_S"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_L" class="hover"><img src="/bundles/escermap/images/marker/laboratori_small.png" alt="{{ 'operatori.laboratori'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_L" class="hover">{{ 'operatori.laboratori'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_L" class="hover no-display">(142)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_L" class="hover label_radio"><input type="checkbox" class="laboratori checkbox-base cb" value="laboratorio" checked="checked" id="cb_L"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_DM" class="hover"><img src="/bundles/escermap/images/marker/demolizioni_small.png" alt="{{ 'operatori.demolizioni'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_DM" class="hover">{{ 'operatori.demolizioni'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_DM" class="hover no-display">(142)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_DM" class="hover label_radio"><input type="checkbox" class="demolizioni checkbox-base cb" value="demolizioni" checked="checked" id="cb_DM"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_SP" class="hover"><img src="/bundles/escermap/images/marker/spurghi_small.png" alt="{{ 'operatori.spurghi'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_SP" class="hover">{{ 'operatori.spurghi'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_SP" class="hover no-display">(142)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_SP" class="hover label_radio"><input type="checkbox" class="spurghi checkbox-base cb" value="spurghi" checked="checked" id="cb_SP"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_BO" class="hover"><img src="/bundles/escermap/images/marker/bonifiche_small.png" alt="{{ 'operatori.bonifiche'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_BO" class="hover">{{ 'operatori.bonifiche'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_BO" class="hover no-display">(142)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_BO" class="hover label_radio"><input type="checkbox" class="bonifiche checkbox-base cb" value="bonifiche" checked="checked" id="cb_BO"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_RO" class="hover"><img src="/bundles/escermap/images/marker/rottamazione_small.png" alt="{{ 'operatori.rottamazione'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_RO" class="hover">{{ 'operatori.rottamazione'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_RO" class="hover no-display">(142)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_RO" class="hover label_radio"><input type="checkbox" class="rottamazione checkbox-base cb" value="rottamazione" checked="checked" id="cb_RO"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_RA" class="hover"><img src="/bundles/escermap/images/marker/raee_small.png" alt="{{ 'operatori.raee'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_RA" class="hover">{{ 'operatori.raee'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_RA" class="hover no-display">(142)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_RA" class="hover label_radio"><input type="checkbox" class="raee checkbox-base cb" value="raee" checked="checked" id="cb_RA"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_OM" class="hover"><img src="/bundles/escermap/images/marker/olio_minerale_small.png" alt="{{ 'operatori.olio_minerale'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_OM" class="hover">{{ 'operatori.olio_minerale'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_OM" class="hover no-display">(142)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_OM" class="hover label_radio"><input type="checkbox" class="olio_minerale checkbox-base cb" value="olio_minerale" checked="checked" id="cb_OM"></label>
+                </td>
+            </tr>
+            <tr>
+                <td class="text-right">
+                    <label for="cb_OV" class="hover"><img src="/bundles/escermap/images/marker/olio_vegetale_small.png" alt="{{ 'operatori.olio_vegetale'|trans({}, 'ESCerMapBundle') }}"></label>
+                </td>
+                <td>
+                    <label for="cb_OV" class="hover">{{ 'operatori.olio_vegetale'|trans({}, 'ESCerMapBundle') }}</label>
+                </td>
+                <td class="text-lightblue text-right">
+                    <label for="cb_OV" class="hover no-display">(142)</label>
+                </td>
+                <td class="text-right">
+                    <label for="cb_OV" class="hover label_radio"><input type="checkbox" class="olio_vegetale checkbox-base cb" value="olio_vegetale" checked="checked" id="cb_OV"></label>
+                </td>
+            </tr>
+            {% if not app.user %}
+            <tr>
+                <td colspan="4">
+                    <div class=" margin-top-25">
+                        <p class="padding-5">Sei tra questi operatori?</p>
+                        <div class="register box gradient-light padding-5 clearfix rounded-8 hover" onclick="$('a.register').trigger('click');">
+                            <div class="icon-mps left margin-right-5">&nbsp;</div>
+                            <h2 class="margin-top-5">Registra la tua attività sulla Cermaps</h2>
+                            <h4>Più opportunità nelle zone di tuo interesse</h4>
+                        </div>
+                        {# <a href="{{ path('come_funziona') }}" class="left text-small margin-5">» Voglio sapere di più</a> #}
+                    </div>
+                </td>
+            </tr>
+            {% endif %}
+            {#<tr>
+                <td colspan="4" class="text-right">
+                    <div class="hr bevel-img"></div>
+                </td>
+            </tr>#}
+            <tr>
+                <td colspan="4">
+                    <div class="{% if app.user %}margin-top-25{% endif %}">
+                        <p class="padding-5">Al momento ci sono</p>
+                        {# <div class="register box gradient-light padding-5 clearfix rounded-8 hover"  onclick="window.location='{{path('statistiche')}}'" > #}
+                        <div class="register box gradient-light padding-5 clearfix rounded-8 hover">
+                            <div class="icon-stats left margin-right-5">&nbsp;</div>
+                            <h2 class="left text-grey normal margin-top-5 inline-block text-center" style="font-size: 40px; width: 90px;" id="utenti"></h2>
+                            <h3 class="right margin-top-20 margin-right-10" style="">Visitatori attivi su CerMaps</h3>
+                        </div>
+                        {#
+                            <a class="right icon_analytics inline-block no-text margin-5" href="{{path('statistiche')}}">Google Analytics</a>
+                            <a class="left text-small margin-5 padding-5" href="{{path('statistiche')}}">» Vai alle statistiche</a>
+                        #}
+                        <a class="right icon_analytics inline-block no-text margin-5" href="#">Google Analytics</a>
+                    </div>
+                </td>
+            </tr>
+        </table>
+        <div class="google-maps-logo-big no-text centered margin-top-25">powered by Google Maps</div>
+        {#<div class="margin-25 text-grey text-small text-center">
+            <p>{{ 'footer.copyright'|trans({}, 'footer') }} - {{ 'footer.partita_iva'|trans({}, 'footer') }}</p>
+        </div>#}
+    </form>
+    <div class="open-close-tab absolute no-border hover" style="top: 0; right: -21px; height: 184px; width: 21px; background: url('/bundles/esweb/images/cermap-tab.png') no-repeat 0 0;"></div>
+</section>
+
+{% if twig is defined %}
+    <div class="map_detail absolute box-light padding-5 rounded-5 shadow" style="top: 20px; right: 20px; z-index: 10; width: 250px;" >
+        <div class="drag-pan no-text left rounded-3" style="background: url('/bundles/esweb/images/grip-elem.png') top left; width: 230px; height: 15px;"></div>
+        <div class="close-pan hover no-text right" style="opacity: .5; background: url('/bundles/esweb/images/header/sprite.png') no-repeat -1858px -1424px; width: 15px; height: 15px;"></div>
+        <div class="clearer five"></div>
+        {% include twig %}
+    </div>
+{% endif %}

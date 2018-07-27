@@ -1,0 +1,81 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}EcoSeekr CerMaps - Privacy{% endblock %}
+{% block description %}Trattamento dei dati persolani{% endblock %}
+{% block keywords %}privacy, trattamento dati, personali {% endblock %}
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            {#<span class="absolute tiptip" title="utente registrato in data {{showroom.intestazione.created_at|date("d/m/Y")}}" style="right: 0; top: 0;" ><img src="{{ asset('/images/user-type-'~showroom.intestazione.account~'.png') }}" /></span>#}
+            <h2 class="text-shadow">{{ 'menu.info_docs'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.privacy'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width corporate box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+        <section class="coldx left no-margin margin-left-10">
+            {% include 'ESWebBundle:Corporate:commons/corporateMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <span>Nell’ambito del trattamento dei dati personali forniti dall’Interessato per l’espletamento del servizio, Ecoseekr nel pieno rispetto delle disposizioni dettate dal D.Lgs. n. 196/03 e s.m.i., Codice in materia di protezione dei dati personali, è tenuto a fornire le seguenti informazioni riguardanti l’utilizzo dei dati personali.</span>
+                <div class="clearer twenty"></div>
+                <h4>Fonte dei dati personali</h4>
+                <p>I dati personali sono forniti anche attraverso le tecniche di comunicazione a distanza di cui Ecoseekr si avvale (fra le quali il sito internet ed il call center) direttamente dal soggetto cui i dati personali si riferiscono (“Interessato”).</p>
+
+                <h4>Finalità del trattamento dei dati personali</h4>
+                <p>I dati personali forniti dall’Interessato saranno trattati secondo le seguenti finalità:<br><br>
+                    1 - Finalità connesse all’espletamento delle procedure telematiche gestite attraverso il Portale e/o all’adempimento, prima della conclusione del contratto, di specifiche richieste dell’Interessato.<br>
+                    2 - Finalità connesse all’adempimento di obblighi previsti dalla legge, da un regolamento o dalla normativa comunitaria;<br>
+                    3 - Finalità funzionali all'attività di Ecoseekr relative ad attività non strettamente collegate ai servizi richiesti dal Cliente ma utili per migliorarli o per conoscere nuovi servizi offerti da Ecoseekr, dal Gruppo o di società terze quali: <br>
+                    - per finalità informative, promozionali, commerciali, e per lo svolgimento di attività statistiche e 	ricerche di mercato e per l’offerta diretta di prodotti o servizi della stessa Ecoseekr anche 	attraverso lettere, telefono, sistemi automatizzati di comunicazione quali e-mail, fax, sms ecc;<br>
+                    - per finalità informative, promozionali, commerciali e per l’offerta diretta di prodotti o servizi da 	parte di società terze alle quali i dati personali dell’Interessato potranno essere ceduti, previo 	consenso.
+                </p>
+
+                <h4>Natura obbligatoria e facoltativa del conferimento dei dati personali e conseguenze di un eventuale rifiuto</h4>
+                <p>Il conferimento dei dati per le finalità di cui a punti 1) e 2) è obbligatorio e l’eventuale rifiuto avrà come conseguenza l’impossibilità di dare seguito al procedimento di iscrizione al Portale acquisti e la mancata partecipazione alle procedure telematiche. Il conferimento dei dati per le finalità di cui al punto 3) è facoltativo e non obbligatorio ed il loro trattamento richiede il consenso dell'Interessato.</p>
+                <p>In particolare Ecoseekr potrà inoltrare all’Interessato tramite posta elettronica comunicazioni commerciali relative ai prodotti e servizi offerti da Ecoseekr, salvo che lo stesso non manifesti opposizione contattando il Responsabile del trattamento. Il mancato conferimento del consenso per finalità di marketing non inficerà il rapporto contrattuale ma avrà come conseguenza l’impossibilità di venire a conoscenza di iniziative promozionali di Ecoseekr e/o di soggetti terzi.</p>
+                <p>Il trattamento dei dati personali in relazione alle suindicate finalità avviene mediante strumenti manuali e/o informatici e telematici con logiche strettamente correlate alle finalità stesse e comunque in modo da garantire la sicurezza e la riservatezza dei dati stessi.</p>
+                <p>Fermo restando quanto sopra, Ecoseekr si impegna ad adottare tutte le misure organizzative fisiche e logiche di cui agli artt. 31– 36 del D.Lgs. n. 196/03 e del relativo Allegato B Disciplinare tecnico in materia di misure minime di sicurezza.</p>
+                <p>I dati personali dell’Interessato verranno conservati presso la sede del Titolare, per il tempo previsto da disposizioni di legge. Il Titolare si impegna ad osservare e a far osservare ai propri dipendenti, incaricati e collaboratori il segreto l’obbligo di riservatezza rispetto a tutti i dati personali dei quali avrà conoscenza nello svolgimento del servizio e a non diffondere a terzi alcuna informazione o documentazione acquisita.</p>
+
+                <h4>Categorie di soggetti ai quali i dati personali possono essere comunicati</h4>
+                <p>I dati personali potranno essere comunicati, per le finalità di trattamento sopra indicate, a pubbliche amministrazioni, nonché a soggetti terzi per la fornitura di servizi di vario tipo (contabilità, spedizione di corrispondenza, servizi bancari, corrispondenti esteri, etc.), a società del Gruppo Ecoseekr, a società terze appartenenti alle categorie di società di informazioni economiche e di recupero crediti di cui Ecoseekr si avvale per l’esercizio della propria attività. I dati personali potranno essere trasmessi all’estero per l’espletamento del servizio richiesto. I dati non saranno comunicati o diffusi ad altri soggetti se non richiedendo il consenso dell’Interessato o nei casi previsti dall’art. 24 del Codice Privacy. Ecoseekr, previo consenso dell’Interessato, intende comunicare i dati personali a società terze a fini di informazione commerciale, ricerche di mercato, offerte dirette di loro prodotti o servizi.</p>
+                <p<b>Titolare e Responsabile Titolare autonomo del trattamento di cui alla presente informativa è, Ecoseekr  Italia Srl con sede Livorno (LI) Via Nicolodi, 54 cap 57123.</b></p>
+
+                <h4>Diritti dell'interessato</h4>
+                <p>Per esercitare i diritti riconosciuti dall’art. 7 del D.lgs. 196/03, il cui testo è di seguito interamente riportato, l’Interessato potrà rivolgersi al Responsabile del trattamento. In particolare l’Interessato potrà richiedere la cancellazione dei propri dati personali inviando una mail al seguente indirizzo cancellation@ecoseekr.com.<br><br>
+                    Art. 7 del D.Lgs 196/2003 (Diritto di accesso ai dati personali e ad altri diritti)<br>
+                    1 - L’interessato ha diritto di ottenere la conferma dell’esistenza o meno di dati personali che lo riguardano, anche se non ancora registrati, e la loro comunicazione in forma intelligibile.<br>
+                    2 - L’interessato ha diritto di ottenere l’indicazione:<br>
+                    - dell’origine dei dati personali;<br>
+                    - delle finalità e modalità del trattamento;<br>
+                    - della logica applicata in caso di trattamento effettuato con l’ausilio di strumenti elettronici;<br>
+                    - degli estremi identificativi del titolare, dei responsabili e del rappresentante designato ai sensi dell’articolo 5, comma 2;<br>
+                    - dei soggetti o delle categorie di soggetti ai quali i dati personali possono essere comunicati o che possono venirne a conoscenza in qualità di rappresentante designato nel territorio dello Stato, di responsabili o incaricati.<br>
+                    3 - L’interessato ha diritto di ottenere:<br>
+                    - l’aggiornamento, la rettificazione ovvero, quando vi ha interesse, l’integrazione dei dati;<br>
+                    - la cancellazione, la trasformazione in forma anonima o il blocco dei dati trattati in violazione di legge, compresi quelli di cui non è necessaria la conservazione in relazione agli scopi per i quali i dati sono stati raccolti o successivamente trattati;<br>
+                    - l’attestazione che le operazioni di cui alle lettere a) e b) sono state portate a conoscenza, anche per quanto riguarda il loro contenuto, di coloro ai quali i dati sono stati comunicati o diffusi, eccettuato il caso in cui tale adempimento si rivela impossibile o comporta un impiego di mezzi manifestamente sproporzionato rispetto al diritto tutelato.<br>
+                    4 - L’interessato ha diritto di opporsi, in tutto o in parte: <br>
+                    - per motivi legittimi al trattamento dei dati personali che lo riguardano, ancorché pertinenti allo scopo della raccolta;  <br>
+                    - al trattamento di dati personali che lo riguardano a fini di invio di materiale pubblicitario o di vendita diretta o per il compimento di ricerche di mercato o di comunicazione commerciale.<br>
+                </p>
+
+                <h4>Dichiarazione di consenso al trattamento dei dati personali</h4>
+                <p>L’utente dichiara di avere ricevuto ed accettato le informazioni di cui all’art. 13 del D.lgs. 196/2003 in particolare riguardo ai diritti da me riconosciuti dalla legge ex art. 7 D.lgs. 196/2003, richiesto di autorizzare il trattamento dei miei dati con le modalità e per le finalità indicate nella informativa stessa, comunque strettamente connesse e strumentali</p>
+            </section>
+        </section>
+{% endblock %}

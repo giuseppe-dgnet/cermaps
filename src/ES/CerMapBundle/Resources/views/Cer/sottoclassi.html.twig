@@ -1,0 +1,35 @@
+{% set titolo_h1 = classe.codice ~ 'Codici CER Classe ' %}
+{% set titolo_app = 'app_cer' %}
+{% set menu_marker = 'cer' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ classe.seoTitle }} Codici CER Classe - EcoSeekr Italia{% endblock %}
+
+{% block description %}Codici CER Classe {{ classe.seoDescription }}{% endblock %}
+
+{% block keyword %}Codici CER, {{ classe.seoKeywords }},aziende,smaltimento,recupero{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/lps.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+
+{% block javascript_inline %}
+    {% include 'ESCerMapBundle:Cer:_commons/variabiliJs.html.twig' %}
+{% endblock %}
+        
+{% block javascript_ready %}
+    marker_pos('#menu_cer');
+{% endblock %}
+
+{% block content %}
+    {% include 'ESCerMapBundle:Cer:sottoclassi/breadcrumbs.html.twig' %}
+    <section class="padding-10 clearfix box-light no-border shadow">
+        {% include 'ESCerMapBundle:Cer:sottoclassi/suggest.html.twig' %}
+        {% include 'ESCerMapBundle:Cer:sottoclassi/content.html.twig' %}
+    </section>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% javascripts  
+    '@ESWebBundle/Resources/public/js/base/jquery.isotope.js'    
+    '@ESWebBundle/Resources/public/js/base/my-isotope.js'    
+    '@ESCerMapBundle/Resources/public/js/init.js'    
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript"> var isotope = true</script>
+{% endjavascripts %}
+    
+<ul class="cer-index cat-lps clearfix padding-bottom-10" id="contenuti" style="margin: 0 auto;">
+    {#% for cer in classi %}
+        <li class="element shadow left">
+            <a href="{{ path('es_cer_sottoclassi', {'slug': cer.slug}) }}">
+                <h2>{{ cer.classe }}.{{ cer.sottoclasse }}.{{ cer.categoria }}</h2>
+                <p>{{ cer.descrizione|capitalize }}</p>
+            </a>
+        </li>
+    {% endfor %#}
+    {% for cer in classi %}
+        <li class="element shadow left">
+            <a href="{{ path('es_cer_sottoclassi', {'slug': cer.slug}) }}">
+                <h1>{{ cer.classe }}.{{ cer.sottoclasse }}.{{ cer.categoria }}</h1>
+                <p>{{ cer.descrizione|capitalize }}</p>
+            </a>
+        </li>
+    {% endfor %}
+</ul>
+    
+    
+
+

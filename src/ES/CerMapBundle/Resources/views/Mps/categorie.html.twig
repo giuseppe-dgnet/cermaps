@@ -1,0 +1,34 @@
+{% set titolo_h1 = 'Trova, acquista o vendi materie prime seconde (MPS)' %}
+{% set titolo_app = 'app_cer' %}
+{% set menu_marker = 'mps' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}Trova, acquista o vendi materie prime seconde (MPS){% endblock %}
+
+{% block description %}Trova, acquista o vendi {% for categoria in categorie %}{{ categoria.nome|lower }}{% if not loop.last %}, {% endif %}{% endfor %}{% endblock %}
+
+{% block keyword %}trova, acquista, vendi, materie prime seconde{% for categoria in categorie %}, {{ categoria.nome|lower }}{% endfor %}{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/lps.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+
+{% block javascript_inline %}
+    {% include 'ESCerMapBundle:Mps:_commons/variabiliJs.html.twig' %}
+{% endblock %}
+        
+{% block javascript_ready %}
+    marker_pos('#menu_mps');
+{% endblock %}
+    
+{% block content %}
+    <section class="tab-content general no-padding box-light no-border">
+        {% include 'ESCerMapBundle:Mps:categorie/breadcrumbs.html.twig' %}
+        {% include 'ESCerMapBundle:Mps:categorie/content.html.twig' %}
+    </section>
+{% endblock %}

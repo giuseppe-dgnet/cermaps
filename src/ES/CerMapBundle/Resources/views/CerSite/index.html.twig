@@ -1,0 +1,108 @@
+{% set titolo_h1 = 'Codici cer, cer rifiuti, codici cer rifiuti speciali, codici cer rifiuti industriali, codici smaltimento rifiuti pericolosi, cer rifiuti non pericolosi' %}
+{% set titolo_app = 'app_cer' %}
+{% set header_preset = 'cersite' %}
+{% set menu_marker = 'cer' %}
+{% extends '::cersite.html.twig' %}
+
+{% block title %}Codice CER{% endblock %}
+
+{% block description %}Codice cer, aggiornamento ufficiale del CATALOGO EUROPEO DEI RIFIUTI{% endblock %}
+
+{% block keyword %}Codice cer,rifiuti codici cer,codici rifiuti cer,cer codici rifiuti, rifiuti codice cer,codice rifiuti cer,rifiuti cer,cer codice,codice cer rifiuti pericolosi,codice cer pericolosi,codici cer rifiuti non pericoosi,lista codici cer{% endblock %}
+
+{% block javascript %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+{% block javascript_inline %}
+    
+{% endblock %}
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_cer');
+    
+    var $sidebar = $('.sidebar');
+    $window = $(window);
+    $parent = $sidebar.parent();
+    offset = $sidebar.offset();
+    topPadding = 0;
+
+    $window.scroll(function() {
+        if ($window.scrollTop() > offset.top) {
+            $sidebar.css({
+                'margin-top': '100px'
+            });
+        } else {
+            $sidebar.css({
+                'margin-top': '0'
+            });
+        }
+    });        
+    
+    var colsxHeight = ($('.colsx').height()) - 80;
+    $('.coldx').css('height', colsxHeight + 'px');
+    
+    $('.sidebar').stickyfloat({
+        cssTransition: true
+    });
+    $('.sidebar').stickyfloat( 'update',
+    {
+        stickToBottom:false
+    });
+{% endblock %}
+
+{% block content %}
+<section id="header-tab" class="relative">
+    <div class="fixed-width clearfix">
+        <h2 class="text-shadow">Aggiornamento del Catalogo Europeo dei Rifiuti - Codice CER</h2>
+    </div>
+</section>
+<section class="fixed-width box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10 relative" id="tab_container">
+    <section class="colsx no-margin margin-left-10" id="pc_sx">
+        <img src="/bundles/esweb/images/cersite/leaf.jpg" style="height: 40px;width: 40px; margin-right:10px; vertical-align: center" valign="middle"><h3 class="text-lightblue inline-block">CLASSIFICAZIONE DEI RIFIUTI - INDICE CER</h3>
+        <ul class="default_ul">
+        {% for cer in cers %}
+                {% if cer.sottoclasse == '00' %}
+                <li class="margin-left-50"><p class="relative" style="margin-left: 50px"><span class="text-red absolute" style="left: -45px;">{{cer.codice}}</span><a href="#{{cer.codice}}"{#href="{{ path('es_cer_sottoclassi', {'slug': cer.slug})|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" target="_blank"#}>{{cer.descrizione}}.</a></p></li>
+                {% endif %}
+        {% endfor %}
+        </ul>
+        <div class="clearer twenty"></div>
+        <ul class="default_ul">
+        {% for cer in cers %}
+                {% if cer.sottoclasse == '00' %}
+                <li class="relative"><a class="absolute no-text" style="top: -80px;" name="{{cer.codice}}"></a><br><h3 class="text-lightblue relative" style="min-height: 40px; background: url('/bundles/esweb/images/cersite/leaf.jpg') no-repeat 0 0;"><span class="text-red absolute" style="left: 50px; top: 10px;">{{cer.codice}}</span><a href="http://www.ecoseekr.it{{ path('es_cer_sottoclassi', {'slug': cer.slug})|replace({'/app_cersite.php': ''}) }}" target="_blank" style="display: inline-block; padding-left: 100px; padding-top: 10px;"> {{cer.descrizione}}.</a></h3></li>
+                {% elseif cer.categoria == '00' %}
+                    <li class="margin-left-50 margin-top-10"><p class="relative" style="margin-left: 50px"><span class="text-red absolute" style="left: -45px;">{{cer.codice}}</span><a href="http://www.ecoseekr.it{{ path('es_cer_categorie', {'slug': cer.slug})|replace({'/app_cersite.php': ''}) }}" target="_blank">{{cer.descrizione}}.</a></p></li>
+                {% else %}
+                    <li class="no-padding margin-left-50 margin-bottom-5 text-small"><p class="relative" style="margin-left: 50px"><span class="text-red absolute" style="left: -39px;">{{cer.codice}}{% if cer.pericoloso %}*{% endif %}</span><a href="http://www.ecoseekr.it{{ path('es_cer_cer', {'slug': cer.slug})|replace({'/app_cersite.php': ''}) }}" target="_blank">{{cer.descrizione}}.</a></p></li>
+                {% endif %}
+        {% endfor %}
+        </ul>
+    </section>
+    <section class="coldx no-margin margin-right-10" id="pc_sx">
+        <div class="sidebar transition200 absolute" style="width: 300px;">
+            <div class="register box gradient-light shadow padding-5 clearfix rounded-8 hover" onclick="window.open('http://www.ecoseekr.it')">
+                <div class="icon-cer left margin-right-5">&nbsp;</div>
+                <h3>Vuoi smaltire qualcosa?</h3>
+                <p class="margin-top-5">Trova subito impianti ed operatori autorizzati per trattare i rifiuti sul web.</p>
+            </div>
+            <div class="clearer twenty"></div>
+            <div class="register box gradient-light shadow padding-5 clearfix rounded-8 hover" onclick="window.open('http://www.ecoseekr.it')">
+                <div class="icon-mps left margin-right-5">&nbsp;</div>
+                <h3 class="margin-top-5">Registra la tua attività sulla CerMaps<sup><small>®</small></sup></h3>
+                <div class="clearer ten"></div>
+                <img src="/bundles/esweb/images/cersite/cermaps.jpg" style="width: 100%;">
+                <p class="text-center padding-5">Raggiungi più clienti nelle zone di tuo interesse<p>
+            </div>
+            <div class="clearer twenty"></div>
+            <div class="box-light no-display" style="height: 250px;">
+                <span class="padding-10 note-big inline-block">Adv 300x250</span>
+            </div>
+        </div>
+    </section>
+</section>
+{% endblock %}
+    
+    
+
+

@@ -1,0 +1,52 @@
+<section class="clearfix relative padding-10">
+    <ul class="default_ul">
+        {% for cer in cers.classi %}
+            <li class="margin-left-50"><p class="relative" style="margin-left: 50px"><span class="text-red absolute" style="left: -45px;">{{cer.codice}}</span><a class="a_classe" classe="{{cer.codice}}" href="#{{cer.codice}}"{#href="{{ path('es_cer_sottoclassi', {'slug': cer.slug})|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" target="_blank"#}>{{cer.descrizione}}.</a></p></li>
+        {% endfor %}
+    </ul>
+    <div class="clearer twenty"></div>
+    {% for classe, sottoclassi in cers.sottoclassi %}
+        <ul class="default_ul classe classe_{{ classe }}0000">
+            {% for cer in sottoclassi %}
+                {% if loop.first %}
+                    <li class="margin-left-50"><h3 class="relative" style="margin-left: 50px"><a class="absolute no-text" style="top: -80px;" name="{{ classe }}0000"></a><span class="text-red absolute" style="left: -45px;">{{cer.codice}}</span>{{cer.descrizione}}.</h3></li>
+                {% else %}
+                    <li class="margin-left-50"><p class="relative" style="margin-left: 50px"><span class="text-red absolute" style="left: -45px;">{{cer.codice}}</span><a class="a_sottoclasse" sottoclasse="{{cer.codice}}" href="#{{cer.codice}}"{#href="{{ path('es_cer_sottoclassi', {'slug': cer.slug})|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" target="_blank"#}>{{cer.descrizione}}.</a></p></li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+        <div class="clearer twenty classe classe_{{ classe }}0000"></div>
+    {% endfor %}
+    {% for classe, sottoclassi in cers.categorie %}
+        {% for sottoclasse, categorie in sottoclassi %}
+            <ul class="default_ul classe sottoclasse sottoclasse_{{ classe }}{{ sottoclasse }}00">
+                {% for cer in categorie %}
+                    {% if loop.first %}
+                        <li class="margin-left-50"><h4 class="relative" style="margin-left: 50px"><a class="absolute no-text" style="top: -80px;" name="{{ classe }}{{ sottoclasse }}00"></a><span class="text-red absolute" style="left: -45px;">{{cer.codice}}</span>{{cer.descrizione}}.</h4></li>
+                    {% else %}
+                        {% if cer.pericoloso %}
+                            <li class="margin-left-50"><p class="relative" style="margin-left: 50px"><span class="text-red absolute" style="left: -45px;">{{cer.codice}}</span><a href="{{ path('centro_coordinamento_geocer_rifiuti_pericolosi', {'comune': comune.slug, 'provincia': provincia_sigla, 'slug': cer.slug}) }}"{#href="{{ path('es_cer_sottoclassi', {'slug': cer.slug})|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" target="_blank"#}>{{cer.descrizione}}.</a></p></li>
+                        {% else %}
+                            <li class="margin-left-50"><p class="relative" style="margin-left: 50px"><span class="text-red absolute" style="left: -45px;">{{cer.codice}}</span><a href="{{ path('centro_coordinamento_geocer_rifiuti', {'comune': comune.slug, 'provincia': provincia_sigla, 'slug': cer.slug}) }}"{#href="{{ path('es_cer_sottoclassi', {'slug': cer.slug})|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" target="_blank"#}>{{cer.descrizione}}.</a></p></li>
+                        {% endif %}
+                    {% endif %}
+                {% endfor %}
+            </ul>
+            <div class="clearer classe sottoclasse sottoclasse_{{ classe }}{{ sottoclasse }}00"></div>
+        {% endfor %}
+    {% endfor %}
+</section>
+<script>
+    $('.classe').hide();
+    $('.a_classe').click(function(){
+        $('.classe').hide();
+        $('.classe_'+$(this).attr('classe')).show();
+    });
+    $('.a_sottoclasse').click(function(){
+        $('.sottoclasse').hide();
+        $('.sottoclasse_'+$(this).attr('sottoclasse')).show();
+    });
+</script>
+        
+
+

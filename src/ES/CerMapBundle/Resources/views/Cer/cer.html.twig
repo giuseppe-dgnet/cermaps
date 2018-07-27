@@ -1,0 +1,39 @@
+<section style="">
+    <article class="lps-tab no-margin">
+        <section class="tab-content-listing tab-content-lps" id="tab-cer">
+            <div class="relative padding-bottom-10">
+                <h4 class="padding-3">Codice CER <span class="button-cer-code-small {% if categoria.pericoloso %}cer-per{% else %}cer-np{% endif %}">{{ categoria.codice }}</span></h4>
+                <p class="padding-3">{{ categoria.descrizione|capitalize }}</p>
+                <a href="#" onclick="$('.cer-toggle').toggle()" class="absolute" style="bottom: 0; right: 0;">dettagli</a>
+            </div>
+            <div class="cer-toggle no-display">
+                <article class="margin-top-10">
+                    <h4 class="cer-class padding-3 rounded-3">Classe <span class="button-cer-code-small right">{{ classe.codice }}</span></h4>
+                    <p class="padding-3 margin-bottom-10">{{ classe.descrizione|capitalize }}</p>
+                </article>
+                <article class="margin-top-10">
+                    <h4 class="cer-class padding-3 rounded-3">Codice CER di sottoclasse <span class="button-cer-code-small right">{{ sottoclasse.codice }}</span></h4>
+                    <p class="padding-3 margin-bottom-10">{{ sottoclasse.descrizione|capitalize }}</p>
+                </article>
+                <article class="margin-top-10">
+                    <h4 class="cer-class padding-3 rounded-3 margin-bottom-5">Altri codici CER di questa sottoclasse</h4>
+                    <div class="masonry clearfix margin-top-5">
+                        {% for cer in categorie %}
+                            {% if cer.categoria != '00' %}
+                                {% if cer.codice == categoria.codice %}{% else %}<a href="{{ path('es_cer_cer', {'slug': cer.slug}) }}" class="box-light rounded-3 gradient-medium left tags tiptip" title="{{ cer.descrizione|capitalize }}">CER {{ cer.codice }}</a>{% endif %}
+                            {% endif %}
+                        {% endfor %}
+                    </div>
+                </article>
+            </div>
+        </section>
+    </article>
+</section>
+<span id="cer{{categoria.id}}" class="no-display">
+    <a href="javascript:void(0);" class="button-cer-code" title="<h3>{{ categoria.codice }}</h3><p>{{ categoria.descrizione|capitalize }}</p>" >{{ categoria.codice }}</a>
+    <span>{{ categoria.descrizione|capitalize }}</span>
+</span>
+<script type="text/javascript">
+    pre_populate.add({id:{{ categoria.id }}, name:'{{ categoria.codice }}', css:'tag_cer', descrizione:'{{ categoria.descrizione }}'});
+    tags.add({{ categoria.id }});
+</script>

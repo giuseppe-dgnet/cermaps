@@ -1,0 +1,26 @@
+#Js upload_immagine
+form_upload_foto:
+  label_button: Upload a photo from your computer
+  save: Save Photos
+  load: Load Photo
+  success: photos uploaded successfully
+  error:
+     minima_risoluzione: Your photo is too small. The minimum size is %larghezza_minima_immagine%x%altezza_minima_immagine% px
+     tipo_file_accettati: Format not supported
+     massima_dimensione: Your photo is too large. The maximum size is %dimensione% Mb
+     massimo_numero_files: Maximum uploaded files exceeded!
+
+form_gestione_foto:
+   form:
+     fotoPrivata: Private photo
+     fotoProfilo: Profile photo
+     titolo: Title
+     descrizione: Description
+     crop: Cut the photo
+   eliminaFoto: Do you really want to delete this photo?
+   eliminaFotoProfilo: Save before another profile picture, thanks
+   
+#Generali
+attendere: Waiting Please
+continua: Continue
+error: Please try again

@@ -1,0 +1,29 @@
+<section id="title_dashboard" class="clearfix margin-top-5 gradient-lightmedium" style="min-height: 40px;">
+    <section class="margin-left-10 margin-right-10">
+        <section class="colsx-filter">
+            <ul class="button-dark" style="position: absolute; top: -16px; left: 0;">
+                <li class="blue first last msg_button" id="nuovo_messaggio"><span><a href="javascript:nuovaDiscussione()">+ Nuovo messaggio</a></span></li>
+                <li class="blue first last msg_button" style="display: none;" id="listing_messaggi"><span><a href="javascript:aggiorna()">< Torna ai Messaggi</a></span></li>
+            </ul>
+        </section>
+        <section class="coldx-listing">
+            <p style="position: absolute; top: -6px; left: 0;" class="search-mess-filter" id="select_filter"><span>filtra <b id="tipo-messaggi"></b> per...</span></p>
+            <div class="clearer"></div>
+            <section style="position: relative; top: 23px; left: 3px;">
+                <section id="list_filter" class="clearfix box-light shadow-strong search-mess-filter-listing no-display">
+                    <ul class="menu-tools message-filter">
+                        {% for filtro in filtro_tendina%}
+                        <li class="filtro-tendina {% if loop.last %} last shadow{% endif %}" tipo='{{filtro.tipo|raw}}' filtri="{{filtro.filtro|raw}}"><a href="javascript:void(0)">{{filtro.label|raw}}</a></li>
+                        {% endfor%}
+                    </ul>
+                </section>
+            </section>
+            <form style="position: absolute; top: -6px; right: 0px;" onsubmit="return false;">
+                <section class="search-mess-area">
+                    <input type="text" id="ricerca_messaggi" class="placeholder" name="" value="" placeholder="Cerca tra i messaggi, le comunicazioni e le email">
+                    <div class="clearer"></div>
+                </section>
+            </form>
+        </section>
+    </section>
+</section>

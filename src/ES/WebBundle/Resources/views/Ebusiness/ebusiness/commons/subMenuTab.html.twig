@@ -1,0 +1,17 @@
+<ul class="tab-menu-portlet tab-menu-ebusiness sr absolute rounded-5-top clearfix">
+    {% if index is not defined %}
+        <li>
+            <a href="{{ path('ebusinessIndex') }}" class="rounded-5-left no-rounded-bottom">A cosa serve</a>
+        </li>
+        <li>
+            <a href="{{ path('ebusinessIntro') }}" class="rounded-5-right no-rounded-bottom active">Servizi e approfondimenti</a>
+        </li>
+    {% else %}
+        <li>
+            <a href="{{ path('ebusinessIndex') }}" class="rounded-5-left no-rounded-bottom active">A cosa serve</a>
+        </li>
+        <li>
+            <a href="{{ path('ebusinessIntro') }}" class="rounded-5-right no-rounded-bottom">Servizi e approfondimenti</a>
+        </li>
+    {% endif %}
+</ul>

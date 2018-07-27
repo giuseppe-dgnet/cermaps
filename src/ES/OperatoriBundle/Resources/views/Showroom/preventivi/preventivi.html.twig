@@ -1,0 +1,46 @@
+<section class="fixed-width box bacheca clearfix">
+    <section class="colsx no-margin">
+            {% if tipo == 'servizi' %}
+                {% include 'EcoSeekrShowRoomBundle:ShowRoom:introduzione/servizi.html.twig' with {'link': path('show_room_con', {'slug': slug, 'area':'richieste_preventivi'})} %}
+            {% endif %}
+            {% if tipo == 'cer' %}
+                {% include 'EcoSeekrShowRoomBundle:ShowRoom:introduzione/cer.html.twig' with {'link': path('show_room_con', {'slug': slug, 'area':'richieste_preventivi'})} %}
+            {% endif %}
+            {% if tipo == 'mps' %}
+                {% include 'EcoSeekrShowRoomBundle:ShowRoom:introduzione/mps.html.twig' with {'link': path('show_room_con', {'slug': slug, 'area':'richieste_preventivi'})} %}
+            {% endif %}
+    </section>
+    <section class="coldx no-margin">
+        {% if (tipo == 'servizi' and showroom.introduzione.cer|length + showroom.introduzione.mps|length > 0) 
+            or (tipo == 'cer' and showroom.introduzione.servizi|length + showroom.introduzione.mps|length > 0) 
+            or (tipo == 'mps' and showroom.introduzione.cer|length + showroom.introduzione.servizi|length > 0) %}
+            <h3 class="shadow-light ribbon-title-right"><span class="ribbon-corner"></span>Richiedi offerte anche per...</h3>
+            <div class="clearer ten"></div>
+        {% endif %}
+        <ul class="activity rdo box-light shadow" style="margin-top: 80px;">
+            {% if tipo != 'servizi' and showroom.introduzione.servizi|length > 0 %}
+                <li class="clearfix console-rdo-bt gradient-light" onclick="window.location=('{{ path('show_room_servizi', {'slug': slug}) }}')">
+                    <span class="servizi_small left margin-right-5">Servizi</span><h4>Servizi e attività</h4><p>Richieste e informazioni</p>
+                </li>
+            {% endif %}
+            {% if tipo != 'cer' and showroom.introduzione.cer|length > 0 %}
+                <li class="clearfix console-rdo-bt gradient-light" onclick="window.location=('{{ path('show_room_cer', {'slug': slug}) }}')">
+                    <span class="cer_small left margin-right-5">CER</span><h4>Gestione rifiuti</h4><p>Richieste e informazioni.</p>
+                </li>
+            {% endif %}
+            {% if tipo != 'mps' and showroom.introduzione.mps|length > 0 %}
+                <li class="clearfix console-rdo-bt gradient-light" onclick="window.location=('{{ path('show_room_mps', {'slug': slug}) }}')">
+                    <span class="mps_small left margin-right-5">MPS</span><h4>MPS</h4><p>Acquisto o vendita</p>
+                </li>
+            {% endif %}
+            <li class="clearfix console-rdo-bt gradient-light" onclick="$('a.rdiRequest').trigger('click');">
+                <span class="rdi_small left margin-right-5">MPS</span><h4>Richiedi informazioni</h4><p>Richieste generiche</p>
+            </li>
+        </ul>
+    </section>
+</section>
+<script type="text/javascript">
+$(document).ready(function(){
+    open_tabs.remove('tabs1');
+});
+</script>

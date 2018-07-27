@@ -1,0 +1,41 @@
+menu:
+# Etichette Link
+  
+  
+  cermap: Ricerca operatori per smaltimento e recupero
+  mps: Indice Materie Prime
+  rec: Indice Rifiuti Recuperabili
+  np: Non pericolosi
+  p: Pericolosi
+  cer: Codice CER
+  
+  help: Aiuto
+  
+  scopri_di_piu: Scopri di più
+  come_funziona:  Come funziona
+  scegliere_ecoseekr: Perchè scegliere EcoSeekr
+  costi_funzionalita: Costi e funzionalità
+  statistiche: Statistiche
+  
+  su_di_noi: Su di noi
+  vision: Vision & Mission
+  collaboratori: Persone e collaboratori
+  partners: Partners & fornitori
+  dove_siamo: Dove siamo
+  info: Info bancarie e societarie
+  
+  lavora_con_noi: Lavora con noi
+  rivenditore: Diventa rivenditore
+  collaborazioni: Collabora con noi
+  
+  info_docs: Info & docs
+  terms_cond: Condizioni generali di utilizzo
+  privacy: Informativa sulla privacy
+  modulo_ordine: Scarica il modulo d'ordine
+  
+  seguici: Seguici su
+link:
+# Url
+  facebook:     http://www.facebook.com/pages/EcoSeekr-Italia-Srl/271423612925957
+  twitter:      http://www.facebook.com/pages/EcoSeekr-Italia-Srl/271423612925957
+  

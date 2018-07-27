@@ -1,0 +1,41 @@
+{% set titolo_h1 = sottoclasse.codice ~ ' Codici CER Sottoclasse' %}
+{% set titolo_app = 'app_cer' %}
+{% set menu_marker = 'cer' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ sottoclasse.codice }} Codici CER Sottoclasse - EcoSeekr{% endblock %}
+
+{% block description %}Codici CER Sottoclasse {{ sottoclasse.seoDescription }}{% endblock %}
+
+{% block keyword %}Codici CER, {{ sottoclasse.seoKeywords }}, aziende, smaltimento, recupero{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/lps.js'
+    %}
+<script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+
+{% block javascript_inline %}
+    {% include 'ESCerMapBundle:Cer:_commons/variabiliJs.html.twig' %}
+{% endblock %}
+
+{% block javascript_ready %}
+marker_pos('#menu_cer');
+{% endblock %}
+
+{% block content %}
+    {% include 'ESCerMapBundle:Cer:categorie/breadcrumbs.html.twig' %}
+    <section class="padding-10 clearfix box-light no-border shadow">
+        {% include 'ESCerMapBundle:Cer:categorie/suggest.html.twig' %}
+            <section class="right "style="width: 100%;">
+                <section class="contenuto_ricerca" style="margin-left: 300px;">
+                    <ul class="cer-index-cat clearfix padding-bottom-10" id="contenuti">
+                        {% include 'ESCerMapBundle:Cer:categorie/content.html.twig' %}
+                    </ul>
+            </section>
+        </section>
+    </section>
+{% endblock %}

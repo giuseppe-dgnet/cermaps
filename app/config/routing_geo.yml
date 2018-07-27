@@ -1,0 +1,5 @@
+#    Operatori Bundle
+ephp_geo:
+    resource: "@EphpGeoBundle/Controller/GeoController.php"
+    type:     annotation
+    prefix:   /geo

@@ -1,0 +1,45 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+Categoria Servizi
+{% endblock %}
+
+{% block content %}
+<h1>Categorie Servizi</h1>
+
+<ul>
+    <li>
+        <a href="{{ path('admin_categorie_servizi_new') }}">
+            Nuova Categoria
+        </a>
+    </li>
+</ul>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Categoria</th>
+            <th>Descrizione</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr>
+            <td>{{ entity.categoria }}</td>
+            <td>{{ entity.descrizione }}</td>
+            <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('admin_categorie_servizi_show', { 'id': entity.id }) }}">show</a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_categorie_servizi_edit', { 'id': entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+    {% endfor %}
+    </tbody>
+</table>
+{% endblock %}

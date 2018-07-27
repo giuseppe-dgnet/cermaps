@@ -1,0 +1,34 @@
+es_cer_list:
+    resource: "@ESCerMapBundle/Controller/CerSiteController.php"
+    type:     annotation
+    prefix:   /
+    
+es_cer_map_cer:
+    resource: "@ESCerMapBundle/Controller/CerController.php"
+    type:     annotation
+    prefix:   /apps/cermap
+    
+_bazinga_exposetranslation:
+    resource: "@BazingaExposeTranslationBundle/Resources/config/routing/routing.yml"
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"    
+    
+PrestaSitemapBundle:
+    resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
+    prefix:   /
+
+EphpStatsBundle:
+    resource: "@EphpStatsBundle/Controller/"
+    type:     annotation
+    prefix:   /    
+    
+es_web_cc:
+    resource: "@ESWebBundle/Controller/CorporateController.php"
+    type:     annotation
+    prefix:   /
+    
+es_web_help:
+    resource: "@ESWebBundle/Controller/HelpController.php"
+    type:     annotation
+    prefix:   /

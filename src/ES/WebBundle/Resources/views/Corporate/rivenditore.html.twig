@@ -1,0 +1,41 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block title %}EcoSeekr CerMaps - Rivenditori{% endblock %}
+{% block description %}Diventa un rivenditore in esclusiva per la tua zona dei nostri servizi{% endblock %}
+{% block keywords %}rivenditori, ecoseekr, contatto, collaborazione, rete vendita, agenzia rappresentanza {% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            {#<span class="absolute tiptip" title="utente registrato in data {{showroom.intestazione.created_at|date("d/m/Y")}}" style="right: 0; top: 0;" ><img src="{{ asset('/images/user-type-'~showroom.intestazione.account~'.png') }}" /></span>#}
+            <h2 class="text-shadow">{{ 'menu.lavora_con_noi'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.rivenditore'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width corporate box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+        <section class="coldx left no-margin margin-left-10">
+            {% include 'ESWebBundle:Corporate:commons/corporateMenu.html.twig' %}
+        </section>
+        <section class="colsx right no-margin margin-right-10">
+            <p>Ecoseekr è un contesto verticale - al servizio degli operatori direttamente e indirettamente coinvolti in ambiente, energia e rifiuti - interconnesso al web ed ai social network, in grado di fornire un effettivo ed utile supporto alla comunicazione e la vendita di servizi e prodotti.</p>
+            <p>Una fiera virtuale dedicata all’intero settore dell’eco-produzione, che nel web come nella vita reale, permette di <strong>VENDERE, COMUNICARE, INTERAGIRE, CONFRONTARSI E SVILUPPARE E SOSTENERE PARTERSHIP</strong> realmente profittevoli.</p>
+            <p>Le nostre applicazioni si integrano con semplicità nel normale flusso di lavoro, migliorano la comunicazione integrata e lo scambio di informazioni tra parteners, fornitori e clienti a tutto vantaggio della produttività e la competitività di enti, aziende e professionisti. </p>
+            <p>Non stiamo sviluppando soltanto un marketplace B2B/B2C dedicato, ma una innovativa ECO SOCIAL BUSINESS COMMUNITY 2.0 ricca di strumenti ed utilità capace di integrare in modo redditizio comportamenti internet all'interno delle organizzazioni o le attività professionali.</p>
+        </section>
+    </section>
+{% endblock %}

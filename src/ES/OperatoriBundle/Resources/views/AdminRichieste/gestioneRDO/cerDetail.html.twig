@@ -1,0 +1,53 @@
+<table style="width: 100%">
+    <tr>
+        <th style="width: 10%">CER</th>
+        <td style="width: 40%">
+            {% for cer in rdo.cer %}
+                <strong class="button-cer-code-small left" title="{{ cer.descrizione }}">{{ cer.codice }}</strong>
+            {% endfor %}
+        </td>
+        <td rowspan="8" style="width: 50%">
+            <form  action="{{path('salva_rdo_admin_form', {'id': rdo.id})}}" method="post"  {{ form_enctype(form) }} id="form_rdo_admin-{{rdo.id}}" class="form_gestione_rdo_admin" style="clear: both;">
+                <div class="form-section-area">
+                    {{ form_label(form.note_admin) }}
+                    {{ form_errors(form.note_admin) }}
+                    {{ form_widget(form.note_admin) }}
+                </div>
+                <div class="form-section-area">
+                    {{ form_label(form.stato) }}
+                    {{ form_errors(form.stato) }}
+                    {{ form_widget(form.stato) }}
+                </div>
+
+                <div class="form-section-area">
+                    {{ form_rest(form) }} {#CSRF#}
+                    <span></span><button type="button" class="smaller no-display bt_fake" id="submit_form_rdo_admin-{{rdo.id}}">{{ 'salva'|trans({}, 'messages') }}</button>
+                </div>
+            </form>
+        </td>
+    </tr>
+    <tr>
+        <th>Quantità</th>
+        <td>{{ rdo.quantita|number_format(2, ',', '') }} {{ rdo.uumm }}</td>
+    </tr>
+    <tr>
+        <th>Località</th>
+        <td>{{ rdo.indirizzo }} {{ rdo.cap }} {% if rdo.comune %}{{ rdo.comune.asciiname }} ({{ rdo.comune.admin2Code }}){% endif %}</td>
+    </tr>
+    <tr>
+        <th>Periodicità</th>
+        <td>{{ rdo.periodicita }}</td>
+    </tr>
+    <tr>
+        <th>Messaggio</th>
+        <td>{{ rdo.testo }}</td>
+    </tr>
+    <tr>
+        <th>Richiedente</th>
+        <td>{{ rdo.fromNome }} {{ rdo.fromCognome }}{% if rdo.fromUtente %} &REG; {% endif %}</td>
+    </tr>
+    <tr>
+        <th>Email richiedente</th>
+        <td>{{ rdo.fromEmail }}</td>
+    </tr>
+</table>

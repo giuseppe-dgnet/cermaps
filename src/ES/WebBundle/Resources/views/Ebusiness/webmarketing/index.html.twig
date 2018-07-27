@@ -1,0 +1,39 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webmarketing' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webmarketing');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Web Marketing</h2>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webmarketing/commons/subMenuTab.html.twig' with {'index': 'true'} %}
+        <section class="corporate no-border clearfix no-padding padding-10 margin-top-10">
+            <h2>A cosa serve...</h2>
+            <p><strong>Desideri cogliere  a pieno il successo online che attendevi</strong> per il tuo nuovo e-business o la tua impresa?</p>
+            <p>Sicuramente ti sarai accorto che<strong> un nuovo sito web (da solo) non genera automaticamente un boom di traffico ed una aumento delle vendite!</strong></p>
+            <p> Adesso hai bisogno delle nostre  competenze in WEB MARKETING e ADVERTISING per poter cogliere a pieno il  successo che pensavi di poter ottenere.</p>
+            <div class="clearer twenty"></div>
+            <h2>Cosa possiamo fare per te...</h2>
+            <p>Ti aiutiamo a sviluppare il corretto MARKETING MIX per il web e <strong>generiamo traffico qualificato</strong> verso il tuo sito web, <strong>trasformando</strong>, <strong>le visite in utenti, e gli utenti in vendite.</strong></p>
+            <p><strong>Pensa a cosa vuol dire modificare un aumento delle vendite online (o tasso di conversione) dal 2% a 4% !</strong></p>
+            <p>In Admize <strong>conosciamo bene come raggiungere e mantenere il corretto equilibrio tra costi e benefici </strong>e siamo pronti ad attuare le migliori strategie di web marketing, advertising e comunicazione integrata in funzione del ROI <em>(ritorno dell'investimento)</em> ed il raggiungemento dei tuoi obiettivi.</p>
+        </section>
+    </section>
+{% endblock %}

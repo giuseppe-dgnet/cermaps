@@ -1,0 +1,8 @@
+{% for pagina in categoria.rifiuti %}
+    <li class="shadow {% if loop.last %} no-margin{% endif %}">
+        <a href="{{ path('es_'~route~'_rifiuto', {'slug': pagina.slug}) }}">
+            <h2>{{ pagina.rifiuto }}</h2>
+            <p>{{ pagina.tipologia }}</p>
+        </a>
+    </li>
+{% endfor %}

@@ -1,0 +1,261 @@
+{% extends '::admin.html.twig' %}
+{% block content %}
+{% javascripts
+    '@ESOperatoriBundle/Resources/public/js/crea_utenza.js'
+ %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<script type="text/javascript"> 
+    //se viene inserito manualmente da agenzia è true altrimenti se da richiesta sito è false
+    var nuovo_showroom_diretto = false; 
+</script>    
+
+<h1>Richiesta edit</h1>
+
+<form action="{{path('salva_utenza_showroom', {'id': id})}}" method="post" {{ form_enctype(edit_form) }} id="crea_utenza_form">
+    {#{ form_widget(edit_form) }#}
+    <table style="float: left; margin: 10px;">
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.ragione_sociale) }}</th>
+            <td>
+            {{ form_errors(edit_form.ragione_sociale) }}
+            {{ form_widget(edit_form.ragione_sociale) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.partita_iva) }}</th>
+            <td>
+            {{ form_errors(edit_form.partita_iva) }}
+            {{ form_widget(edit_form.partita_iva) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.codice_fiscale) }}</th>
+            <td>
+            {{ form_errors(edit_form.codice_fiscale) }}
+            {{ form_widget(edit_form.codice_fiscale) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.descrizione_attivita) }}</th>
+            <td>
+            {{ form_errors(edit_form.descrizione_attivita) }}
+            {{ form_widget(edit_form.descrizione_attivita) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.descrizione) }}</th>
+            <td>
+            {{ form_errors(edit_form.descrizione) }}
+            {{ form_widget(edit_form.descrizione) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.codice_rae) }}</th>
+            <td>
+            {{ form_errors(edit_form.codice_rae) }}
+            {{ form_widget(edit_form.codice_rae) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.sito) }}</th>
+            <td>
+            {{ form_errors(edit_form.sito) }}
+            {{ form_widget(edit_form.sito) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.email) }}</th>
+            <td>
+            {{ form_errors(edit_form.email) }}
+            {{ form_widget(edit_form.email) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.email_pec) }}</th>
+            <td>
+            {{ form_errors(edit_form.email_pec) }}
+            {{ form_widget(edit_form.email_pec) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.telefono) }}</th>
+            <td>
+            {{ form_errors(edit_form.telefono) }}
+            {{ form_widget(edit_form.telefono) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.fax) }}</th>
+            <td>
+            {{ form_errors(edit_form.fax) }}
+            {{ form_widget(edit_form.fax) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.cellulare) }}</th>
+            <td>
+            {{ form_errors(edit_form.cellulare) }}
+            {{ form_widget(edit_form.cellulare) }}
+            </td>
+        </tr>
+        <tbody id="sezione_checkbox">
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.attivita_principale) }}</th>
+                <td>
+                {{ form_errors(edit_form.attivita_principale) }}
+                {{ form_widget(edit_form.attivita_principale) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.impianto) }}</th>
+                <td>
+                {{ form_errors(edit_form.impianto) }}
+                {{ form_widget(edit_form.impianto) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.discarica) }}</th>
+                <td>
+                {{ form_errors(edit_form.discarica) }}
+                {{ form_widget(edit_form.discarica) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.raccoglitore) }}</th>
+                <td>
+                {{ form_errors(edit_form.raccoglitore) }}
+                {{ form_widget(edit_form.raccoglitore) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.trasportatore) }}</th>
+                <td>
+                {{ form_errors(edit_form.trasportatore) }}
+                {{ form_widget(edit_form.trasportatore) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.servizi) }}</th>
+                <td>
+                {{ form_errors(edit_form.servizi) }}
+                {{ form_widget(edit_form.servizi) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.laboratorio) }}</th>
+                <td>
+                {{ form_errors(edit_form.laboratorio) }}
+                {{ form_widget(edit_form.laboratorio) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.demolizioni) }}</th>
+                <td>
+                {{ form_errors(edit_form.demolizioni) }}
+                {{ form_widget(edit_form.demolizioni) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.spurghi) }}</th>
+                <td>
+                {{ form_errors(edit_form.spurghi) }}
+                {{ form_widget(edit_form.spurghi) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.bonifiche) }}</th>
+                <td>
+                {{ form_errors(edit_form.bonifiche) }}
+                {{ form_widget(edit_form.bonifiche) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.rottamazione) }}</th>
+                <td>
+                {{ form_errors(edit_form.rottamazione) }}
+                {{ form_widget(edit_form.rottamazione) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.raee) }}</th>
+                <td>
+                {{ form_errors(edit_form.raee) }}
+                {{ form_widget(edit_form.raee) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.olio_minerale) }}</th>
+                <td>
+                {{ form_errors(edit_form.olio_minerale) }}
+                {{ form_widget(edit_form.olio_minerale) }}
+                </td>
+            </tr>
+            <tr class="form-section-area">
+                <th>{{ form_label(edit_form.olio_vegetale) }}</th>
+                <td>
+                {{ form_errors(edit_form.olio_vegetale) }}
+                {{ form_widget(edit_form.olio_vegetale) }}
+                </td>
+            </tr>
+        </tbody>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.sezione) }}</th>
+            <td>
+            {{ form_errors(edit_form.sezione) }}
+            {{ form_widget(edit_form.sezione) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.numero_iscrizione) }}</th>
+            <td>
+            {{ form_errors(edit_form.numero_iscrizione) }}
+            {{ form_widget(edit_form.numero_iscrizione) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.cap) }}</th>
+            <td>
+            {{ form_errors(edit_form.cap) }}
+            {{ form_widget(edit_form.cap) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.indirizzo) }}</th>
+            <td>
+            {{ form_errors(edit_form.indirizzo) }}
+            {{ form_widget(edit_form.indirizzo) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th>{{ form_label(edit_form.comune_testuale) }}</th>
+            <td>
+            {{ form_errors(edit_form.comune_testuale) }}
+            {{ form_widget(edit_form.comune_testuale) }}
+            </td>
+        </tr>
+        <tr class="form-section-area no-display" id="tr_elenco_cer">
+            <th>{{ form_label(edit_form.elenco_cer) }}</th>
+            <td>
+            {{ form_errors(edit_form.elenco_cer) }}
+            {{ form_widget(edit_form.elenco_cer) }}
+            </td>
+        </tr>
+        <tr class="form-section-area">
+            <th><label for="geo">Coordinate geografiche</th>
+            <td>
+            <input type="text" id="geo"/>
+            </td>
+        </tr>
+    </table>
+    {{ form_rest(edit_form) }} {#CSRF#}
+    <p>
+        <button type="submit" id="crea_utenza" style="display:none">Crea Utenza</button>
+    </p>
+</form>
+
+{% include 'ESOperatoriBundle:AdminRichieste:edit/anga.html.twig' %}
+{% include 'ESOperatoriBundle:AdminRichieste:edit/template.html.twig' %}
+
+{% endblock content %}

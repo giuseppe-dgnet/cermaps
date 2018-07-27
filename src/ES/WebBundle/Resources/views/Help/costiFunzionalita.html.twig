@@ -1,0 +1,125 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">{{ 'menu.scopri_di_piu'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.costi_funzionalita'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5 shadow clearfix">
+        <section class="rounded-5-top clearfix">
+            <ul class="tab-menu-portlet sr">
+                <li>
+                    <a href="{{ path('come_funziona') }}" class="rounded-5-top-left">{{ 'menu.come_funziona'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('scegliere_ecoseekr') }}">{{ 'menu.scegliere_ecoseekr'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('costi_funzionalita') }}" class="active">{{ 'menu.costi_funzionalita'|trans({}, 'menu') }}</a>
+                </li>
+                <li>
+                    <a href="{{ path('statistiche') }}">{{ 'menu.statistiche'|trans({}, 'menu') }}</a>
+                </li>
+            </ul>
+        </section>
+        <section class="corporate clearfix  no-padding padding-top-10 padding-bottom-10">
+            <section class="coldx no-margin margin-right-10">
+                {% include 'ESWebBundle:Help:commons/invite.html.twig' %}
+            </section>
+            <section class="colsx no-margin margin-left-10">
+                <h3 class="main-title">Se sei un impianto, una discarica un operatore di servizi specifici per l’ambiente, l’energia ed i rifiuti <strong>niente è di più efficace di EcoSeekr CerMaps</strong> per farti conoscere ed acquisire nuovi clienti ed opportunità dal web.</h3>
+                <h3 class="main-title"><img class="left margin-right-10" src="/bundles/esweb/images/user-type-PLUS.png">Puoi diventare un operatore verificato per 12 mesi a <strong>solo 999,00 Euro</strong> +iva.</h3>
+                <div class="clearer twenty"></div>
+                <table width="100%" border="0" cellspacing="0" cellpadding="0" class="payment-table text-center">
+                    <tr>
+                        <td align="left" colspan="2" style="background: url(/bundles/esweb/images/icone/icon_tools.png) no-repeat center left; padding-left: 40px;"><h3 style="font-size: 14px;" class="no-margin text-lightblue">Funzionalità e caratteristiche</h3></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Account verificato</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Rubrica</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Messenger</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Showroom</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Collegamenti al tuo network</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr class="noborder">
+                        <td align="left" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="left" colspan="2" style="background: url(/bundles/esweb/images/icone/icon_preventivi.png) no-repeat center left; padding-left: 40px;"><h3 style="font-size: 14px;" class="no-margin text-lightblue">Moduli richieste e preventivi</h3></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Informazioni</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Smaltimento o recupero CER o RIFIUTI</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Servizi ambientali</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Materie prime secondarie</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr class="noborder">
+                        <td align="left" colspan="2">&nbsp;</td>
+                    </tr>
+                    <tr>
+                        <td align="left" colspan="2" style="background: url(/bundles/esweb/images/icone/icon_customize.png) no-repeat center left; padding-left: 40px;"><h3 style="font-size: 14px;" class="no-margin text-lightblue">Moduli richieste e preventivi</h3></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Assitenza telefonica</td>
+                        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Personalizzazione Shoroom</td>
+                        <td><a href="mailto: info@ecoseekr.com?subject=Richiesta preventivo personalizzazione showroom">Richiedi preventivo</a></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Campagne pubblicitarie su misura AdWords</td>
+                        <td><a href="mailto: info@ecoseekr.com?subject=Richiesta preventivo Campagne AdWords Google account">Richiedi preventivo</a></td>
+                    </tr>
+                    <tr>
+                        <td align="left" class="text-lightblue">Nuovo sito web aziendale</td>
+                        <td><a href="mailto: info@ecoseekr.com?subject=Richiesta preventivo nuovo sito web aziendale">Richiedi preventivo</a></td>
+                    </tr>
+                </table>
+                <div class="clearer thirty"></div>
+                {% include 'ESWebBundle:Help:commons/invite_body.html.twig' %}
+                <div class="clearer ten"></div>
+                </section>
+        </section>
+    </section>
+{% endblock %}

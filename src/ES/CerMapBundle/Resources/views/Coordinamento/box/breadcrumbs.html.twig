@@ -1,0 +1,17 @@
+<section class="title_dashboard clearfix gradient-lightmedium padding-10">
+    {% if regione is not defined %}
+        <p class="breadcrumbs neutro" style="top: 4px;"><a href="{{ path('centro_coordinamento_regioni') }}"><span class="regioni shadow" title="Regioni Italiane">Regioni Italiane</span></a><strong> Regioni Italiane</strong></p>
+    {% else %}
+        <p class="breadcrumbs neutro" style="top: 4px;"><a href="{{ path('centro_coordinamento_regioni') }}"><span class="regioni shadow" title="Regioni Italiane">Regioni Italiane</span></a>
+            <strong>
+            &raquo; {% if provincia.slug is defined %}<a href="{{ path('centro_coordinamento_province', {'slug': regione.slug}) }}">{% endif %}<span title="{{ regione.nome }}">{{ regione.nome }}</span> {% if provincia.slug is defined %}</a>{% endif %}
+        {% if provincia.slug is defined %}
+            &raquo;{% if comune.slug is defined %}<a href="{{ path('centro_coordinamento_comuni', {'slug': provincia.slug }) }}">{% endif %}<span title="{{ provincia.nome }}">{{ provincia.nome }}</span>{% if comune.slug is defined %}</a>{% endif %}
+            {% if comune.slug is defined %}
+                &raquo;<span class="active" title="{{ comune.nome }}">{{ comune.nome }}</span>
+            {% endif %}
+        {% endif %}
+            </strong>
+        </p>
+    {% endif %}
+</section>

@@ -1,0 +1,27 @@
+<table id="anga_list_table" style="float: left; margin: 10px;">
+    <thead>
+        <tr>
+            <th>Tipo</th>
+            <th>Ragione sociale</th>
+            <th rowspan="2">Match</th>
+            <th rowspan="2">Azioni</th>
+        </tr>
+        <tr>
+            <th colspan="2">Sede</th>
+        </tr>
+    </thead>
+    <tbody id="anga_list">
+    </tbody>
+    <tfoot>
+        <tr>
+            <th colspan="4"><button id="bt_anga">Cerca</button> <button id="bt_forza">Forza</button></th>
+        </tr>
+    </tfoot>
+</table>
+<table id="anga_detail" style="float: left; margin: 10px; max-width: 600px;">
+</table>
+
+<script type="text/javascript">
+    var url_anga_list = '{{ path('anga_list') }}';
+    var url_anga_detail = '{{ path('anga_detail') }}';
+</script>

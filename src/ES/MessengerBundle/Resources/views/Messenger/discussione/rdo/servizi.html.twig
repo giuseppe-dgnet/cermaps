@@ -1,0 +1,47 @@
+<h4 class="text-grey margin-bottom-10">Richiesta per Servizio Ambientale</h4>
+{% if result.mappa %}
+    <section class="right light-grey" style="display: block; width: 150px; height: 150px;">
+        {{ google_map_container(result.mappa) }}
+        {{ google_map_css(result.mappa) }}
+        {{ google_map_inline_js(result.mappa) }}
+    </section>
+{% endif %}
+{% if result.serviziOld|length > 0 %}
+    {% set max = 40 %}
+    {% set i = 0 %}
+    <ul>
+        {% for servizio in result.serviziOld %}
+            {% if i < max %}
+                <li>{{servizio.servizio}}</li>
+            {% endif %}
+            {% set i = i + 1 %}
+        {% endfor %}
+        {% if i > max %}
+            <li>...e altri {{ i - max }} Servizi</li>     
+        {% endif %}
+    </ul>
+{% else %}
+    {% for servizio in result.servizi %}
+        {% include "EcoSeekrTagBundle::tag.html.twig" with {'tag': servizio.tag, 'nojs': true} %}
+    {% endfor %}
+{% endif %}
+
+<div class="clearer ten"></div>
+<h4 class="text-grey">Informazioni aggiuntive</h4>
+<table class="lps-table">
+    <tr>
+        <td><strong>Dove:</strong></td>
+        <td>{{result.indirizzo}} - {{result.comune.nomeComune}} - {{ result.cap }}</td>
+    </tr>
+    {% for info in result.altreInformazioni %}
+        <tr>
+            <td><strong>Sede operativa di:</strong></td>
+            <td>{{info}}</td>
+        </tr>
+    {% endfor %}
+</table>
+<div class="clearer twenty"></div>
+<h4 class="text-grey">Note</h4>
+<p class="note-big">
+{{ result.testo }}
+</p>

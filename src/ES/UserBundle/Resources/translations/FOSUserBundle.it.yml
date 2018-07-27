@@ -1,0 +1,132 @@
+# Group
+group:
+    edit:
+        submit: Aggiorna gruppo
+    show:
+        name: Nome gruppo
+    new:
+        submit: Crea gruppo
+    flash:
+        updated: Il gruppo è stato aggiornato
+        created: Il gruppo è stato creato
+        deleted: Il gruppo è stato cancellato
+
+# Security
+security:
+    login:
+        username: "Email:"
+        password: "Password:"
+        remember_me: Ricordami
+        submit: Accedi
+
+# Profile
+profile:
+    show:
+        username: Username
+        email: Email
+    edit:
+        submit: Aggiorna
+    flash:
+        updated: Il profilo è stato aggiornato
+    logout: Esci
+    login: Sei già iscritto a EcoSeekr? <strong>Accedi</strong>
+
+# Password change
+change_password:
+    submit: Cambia password
+    flash:
+        success: La password è stata cambiata
+
+# Registration
+registration:
+    check_email: Una mail è stata inviata a %email%. Contiene il link d'attivazione che devi utilizzare per attivare il tuo account.
+    confirmed: Congratulazioni %username%, il tuo account è confermato.
+    back: Torna alla pagina d'origine.
+    submit: Registrazione
+    flash:
+        user_created: Utente creato con successo
+    email:
+        subject: Benvenuto %username%!
+        message: |
+            Ciao %username%!
+
+            Per terminare la validazione del tuo account visita %confirmationUrl%
+
+            Saluti,
+            il Team.
+            %app_name%
+
+# Password resetting
+resetting:
+    password_already_requested: La password per questo utente è già stata richiesta nelle ultime 24 ore.
+    check_email: Una email è stata inviata a %email%. Contiene il link d'attivazione che devi utilizzare per il reset della password.
+    request:
+        invalid_username: Indirizzo email "%username%" non esistente.
+        username: "Indirizzo email:"
+        submit: Password reset
+    reset:
+        submit: Cambia password
+    flash:
+        success: La password è stata resettata
+    email:
+        subject: Password reset
+        message: |
+            Ciao %username%!
+
+            Per resettare la password visita %confirmationUrl%
+
+            Saluti,
+            il Team. 
+            
+
+# Global strings
+layout:
+    logout: Logout
+    login: Login
+    register: Registra
+    logged_in_as: Collegato come %username%
+
+# Form field labels
+form:
+    group_name: "Nome gruppo:"
+    username: "Username:"
+    email: "Email:"
+    email_confirmation: "Ripeti Email:"
+    current_password: "Password corrente:"
+    password: "Password:"
+    password_confirmation: "Ripeti Password:"
+    new_password: "Nuova password:"
+    new_password_confirmation: "Ripeti Password:"
+    piva: "Partita Iva:"
+    cf: "Codice Fiscale:"
+    nazione: "Nazione:"
+    citta: "Seleziona una citta:"
+    compleanno: "Data di Nascita:"
+    sesso: "Sesso:"
+    maschio: "Maschio"
+    femmina: "Femmina"
+    citta: "Città"
+    orientamento: "Sexual Orientation"
+    sono: "Sono"
+    scelta: "Scegli"
+    interessi: "Mi interessano"
+    sesso_pagamento: "Sesso a pagamento"
+    professione: "Professione"
+    telefono: "Telefono"
+    descrizione: "Scrivi qualcosa su di te"
+    
+    # campi specifici form RDO
+    nome: Nome
+    cognome: Cognome
+    azienda: Azienda
+    testo: Descrizione del rifiuto
+    quantita: Quantità
+    unita: Unità di misura
+    periodicita: Periodicità
+    indirizzo: Indirizzo
+    geo: Città
+    cer: Codice CER
+
+configurazione_profilo_passo1:
+    submit: "Continua"
+  

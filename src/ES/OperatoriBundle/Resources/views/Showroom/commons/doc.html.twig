@@ -1,0 +1,9 @@
+<ul class="doc-tools button-light {{ classe }}" style="{{ stile }}">
+    {% if info %}
+        <li class="small first">
+            <a class="on-show rdiRequest" href="{{ path('rdi_sr', {'slug': slug}) }}"><span class="mail">Richiedi maggiori informazioni</span></a>
+        </li>
+    {% endif %}
+    <li class="small{% if not info %} first{% endif %}"><a href="javascript:void(0);"><span class="pdf">PDF</span></a></li>
+    <li class="small last"><a href="javascript:void(0);"><span class="print">Stampa</span></a></li>
+</ul>

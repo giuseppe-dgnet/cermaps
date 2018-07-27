@@ -1,0 +1,85 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'two' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Theenq Two</h2>
+            <h3 class="text-shadow">Analisi dei giudizi [analisi qualitativa]</h3>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:theenq/commons/subMenuTab.html.twig' with {'index': menu_marker} %}
+        <section class="corporate no-border clearfix no-padding padding-10 margin-top-10">
+            <h2>Theenq Two in breve</h2>
+            <ul class="dot">
+                <li>TheenqTwo è lo strumento di indagine semantica che esplora il web (social network, forum, blog, media, ecc) per leggere, capire e catalogare automaticamente tutto ciò che riguarda il tuo business.</li>
+                <li>TheenqTWO rileva i commenti degli utenti per capire cosa pensano di te, dei tuoi prodotti, della tua concorrenza e valuta bisogni, aspettative e trend. </li>
+                <li>TheenqTWO identifica anche le motivazioni per le quali vengono espressi pareri e opinioni e discrimina ogni fonte per rilevanza e attendibilità.</li>
+                <li>TheenqTWO opera su tutto il web, in lingue e mercati diversi e può facilmente rapportare ogni elemento rilevato ad un periodo temporale preciso, per offrirti un quadro davvero completo di ciò che pensavano gli utenti, ieri, sei mesi fa o lo scorso anno.</li>
+                <li>TheenqOne produce più di 80 grafici relativi ai principali elementi di valutazione dei giudizi espressi dagli utenti. Inoltre, ti mette a disposizione un potente strumento di business intelligence per visionare, correlare e filtrare tutti i dati raccolti e ottenere immediatamente le informazioni strategiche necessarie al tuo business. </li>
+            </ul>
+            <div class="clearer twenty"></div>    
+            <section class="table">  
+                <section class="table-row">
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point">
+                            <h4 class="no-margin">Cosa pensano gli utenti di te e delle altre aziende del tuo settore?</h4>
+                            <p class="margin-bottom-20">TheenqTwo rileva e cataloga il gradimento espresso dagli utenti nei confronti dei marchi e delle aziende del tuo settore.</p>
+                        </article>
+                    </section>
+                    <section class="table-cell padding-top-15 ">
+                        <article class="article-point">
+                            <h4 class="no-margin">Valuta come variano nel tempo i giudizi riferiti a ciascun brand</h4>
+                            <p class="margin-bottom-20">Osserva come varia nel tempo il gradimento degli utenti. Incrocia questi dati con quelli prodotti da TheenqOne per scoprire quali sono le azioni tue e della concorrenza che causano tali variazioni.</p>
+                        </article>
+                    </section>
+                </section>
+                <section class="table-row">
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point">
+                            <h4 class="no-margin">Scopri quali sono i prodotti più apprezzati/criticati, tuoi e della concorrenza.</h4>
+                            <p class="margin-bottom-20">Valuta il gradimento dei prodotti e dei servizi offerti dalla concorrenza ed esaminane le cause.</p>
+                        </article>
+                    </section>
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point ">
+                            <h4 class="no-margin">Scopri tutti i punti deboli della concorrenza.</h4>
+                            <p class="margin-bottom-20">Qual e' il gradimento espresso nei confronti della qualità, del servizio, del prezzo, dei materiali usati, della funzionalità, ecc, di ogni singolo prodotto tuo e della concorrenza?</p>
+                        </article>
+                    </section>
+                </section>
+                <section class="table-row">
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point">
+                            <h4 class="no-margin"> Scopri quali sono i brand/prodotti che vengono affiancati/paragonati ai tuoi</h4>
+                            <p class="margin-bottom-20">Valuta il gradimento dei prodotti e dei servizi offerti dalla concorrenza ed esaminane le cause.</p>
+                        </article>
+                    </section>
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point ">
+                            <h4 class="no-margin">Scegli e collega tra loro tutte le informazioni che ti servono</h4>
+                            <p class="margin-bottom-20">Consulta tutti i dati con un potente strumento che ti permette di ottenere in modo semplice e immediato tutte le informazioni di tue interesse.</p>
+                        </article>
+                    </section>
+                </section>
+            </section>
+            <p><strong>Come funziona TheenqOne? <a style="color: #FB0A13;" href="http://www.theenq.com/theenq-one-dettagli.htm">Scoprilo quì</a></strong></p>
+        </section>
+    </section>
+{% endblock %}

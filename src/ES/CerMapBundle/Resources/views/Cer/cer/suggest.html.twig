@@ -1,0 +1,36 @@
+<section class="left" style="width: 288px; margin-right: -288px;">
+    <article class="lps-tab no-margin">
+        <section class="tab-content-listing tab-content-lps" id="tab-cer">
+            <h4 class="padding-3">Codice CER <span class="button-cer-code-small {% if categoria.pericoloso %}cer-per{% else %}cer-np{% endif %}">{{ categoria.codice }}</span></h4>
+            <p class="padding-3">{{ categoria.descrizione|capitalize }}</p>
+
+            {#% include 'EcoSeekrMessengerBundle:RDO:rdopanel.html.twig' with {'action': path('rdo_cer')} %#}
+            {#<article class="no-border rounded-5 padding-3 margin-top-10 text-center">
+                <p>Per maggiore sicurezza e garanzia scegli un utente verificato!</p>
+                <p class="no-margin"><img src="{{ asset('/images/user-type-PLUS.png') }}"></p>
+            </article>#}
+            <article class="margin-top-10">
+                <h4 class="cer-class padding-3 rounded-3">Classe <span class="button-cer-code-small right">{{ classe.codice }}</span></h4>
+                <p class="padding-3 margin-bottom-10">{{ classe.descrizione|capitalize }}</p>
+            </article>
+            <article class="margin-top-10">
+                <h4 class="cer-class padding-3 rounded-3">Codice CER di sottoclasse <span class="button-cer-code-small right">{{ sottoclasse.codice }}</span></h4>
+                <p class="padding-3 margin-bottom-10">{{ sottoclasse.descrizione|capitalize }}</p>
+            </article>
+            <article class="margin-top-10">
+                <h4 class="cer-class padding-3 rounded-3 margin-bottom-5">Altri codici CER di questa sottoclasse</h4>
+                <div class="masonry clearfix margin-top-5">
+                    {% for cer in categorie %}
+                        {% if cer.categoria != '00' %}
+                            {% if cer.codice == categoria.codice %}{% else %}<a href="{{ path('es_cer_categorie', {'slug': cer.slug}) }}" class="box-light rounded-3 gradient-medium left tags tiptip" title="{{ cer.descrizione|capitalize }}">CER {{ cer.codice }}</a>{% endif %}
+                        {% endif %}
+                    {% endfor %}
+                </div>
+            </article>
+        </section>
+    </article>
+</section>
+    <span id="cer{{categoria.id}}" class="no-display">
+    <a href="javascript:void(0);" class="button-cer-code" title="<h3>{{ categoria.codice }}</h3><p>{{ categoria.descrizione|capitalize }}</p>" >{{ categoria.codice }}</a>
+    <span>{{ categoria.descrizione|capitalize }}</span>
+</span>

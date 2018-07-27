@@ -1,0 +1,93 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}EcoSeekr CerMaps - Partners{% endblock %}
+{% block description %}Fornitori tecnologici, partners e tecnologie{% endblock %}
+{% block keywords %}fornitori, tecnologia, partners, servizi, terzi{% endblock %}
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            {#<span class="absolute tiptip" title="utente registrato in data {{showroom.intestazione.created_at|date("d/m/Y")}}" style="right: 0; top: 0;" ><img src="{{ asset('/images/user-type-'~showroom.intestazione.account~'.png') }}" /></span>#}
+            <h2 class="text-shadow">{{ 'menu.su_di_noi'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.partners'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width corporate box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+        <section class="coldx left no-margin margin-left-10">
+            {% include 'ESWebBundle:Corporate:commons/corporateMenu.html.twig' %}
+        </section>
+        <section class="colsx right no-margin margin-right-10">
+            <h3 class="subtitle"> Marketing &amp; Advertising</h3>
+            <div class="partner_sheet">
+                <a href="https://www.google.com/intl/it/dfp/info/welcome.html" class="thumb google_dfp">Doubleclick for Publisher by Google</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.tradedoubler.com/it-it/" class="thumb tradedoubler">Tradedoubler</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://advertising.microsoft.com/italia/home" class="thumb microsoft_adv">Microsoft Advertising</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://advertising.yahoo.com/" class="thumb yahoo_adv">Yahoo Advertising Solutions</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.zanox.com/it/" class="thumb zanox">Zanox</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://adwords.google.it" class="thumb google_adwords">Google Adwords</a>
+            </div>
+            <div class="clearer twenty"></div>
+            <h3 class="subtitle">Partners tecnologici</h3>
+            <div class="clearer twenty"></div>
+            <div class="partner_sheet">
+                <a href="http://www.aruba.it/" class="thumb aruba">Aruba</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.telecomitalia.it/" class="thumb telecom">Telecom</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.ubuntu.com/" class="thumb ubuntu">Ubuntu</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.skype.com/" class="thumb skype">Skype</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.paypal.it/" class="thumb paypal">Paypal</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.alfresco.com/" class="thumb alfresco">Alfresco</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://it.wordpress.com/" class="thumb wordpress">wordpress</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.joomla.org/" class="thumb joomla">Joomla</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.drupal.org/" class="thumb drupal">Drupal</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://framework.zend.com/" class="thumb zend">Zend Framework</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://www.symfony-project.org/" class="thumb symfony">Symfony Framework</a>
+            </div>
+            <div class="partner_sheet">
+                <a href="http://codeigniter.com/" class="thumb codeigniter">Codeigniter Framework</a>
+            </div>
+        </section>
+    </section>
+{% endblock %}

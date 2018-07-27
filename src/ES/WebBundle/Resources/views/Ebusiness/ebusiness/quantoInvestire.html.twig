@@ -1,0 +1,118 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'ebusiness' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_ebusiness');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Tanti servizi in un unico interlocutore per la tua soluzione web<br>o e-business chiavi in mano</h2>
+            <h4 class="text-shadow normal">Sviluppiamo soluzioni E-BUSINESS ALL-IN-ONE a misura di piccola e media impresa</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:ebusiness/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:ebusiness/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <table class="tavola_servizi" width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th width="260">Servizi e Operazioni</th>
+                        <th width="310">Prodotti e Soluzioni</th>
+                        <th width="153">Budget</th>
+                    </tr>
+                </table>
+                <div class="clearer twenty"></div>
+                <div class="grafico_budget">
+                    <ul>
+                        <li>Web producer management</li>
+                        <li>Web marketing management</li>
+                        <li>Web advertising management</li>
+                        <li>Monitoraggio ROI e performance</li>
+                        <li>Gestione infrastruttura IT </li>
+                        <li>Gestione infrastruttura Web</li>
+                        <li>Pianificazione  industriale e consulenze</li>
+                        <li>Assistenza tecnica</li>
+                    </ul>
+                    <ul>
+                        <li>Web marketing management</li>
+                        <li>Web advertising management</li>
+                        <li>Monitoraggio ROI e performance</li>
+                        <li>Gestione infrastruttura IT</li>
+                        <li>Gestione infrastruttura Web</li>
+                        <li>Pianificazione industriale  e consulenze</li>
+                        <li>Assistenza tecnica</li>
+                    </ul>
+                    <ul>
+                        <li>Web advertising management</li>
+                        <li>Monitoraggio ROI e performance</li>
+                        <li>Gestione infrastruttura IT </li>
+                        <li>Gestione infrastruttura Web</li>
+                        <li>Assistenza tecnica</li>
+                    </ul>
+                    <ul>
+                        <li>Web advertising management</li>
+                        <li>Monitoraggio ROI e performance</li>
+                        <li>Consulenza</li>
+                        <li>Assistenza tecnica</li>
+                    </ul>
+                </div>
+                <div class="clearer twenty"></div>
+                <table class="tavola_servizi" width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th width="50%">Servizi correlati</th>
+                        <th width="50%">benefici e vantaggi</th>
+                    </tr>
+                    <tr>
+                        <td><strong>WEB PRODUCER  MANAGEMENT<br />
+                        <em>In coordinamento con i quadri aziendali</em></strong></td>
+                        <td><p>Il servizio prevede il PERFEZIONAMENTO CONTINUO di tutto il sistema e-business. Un &quot;tuning&quot; che rende la struttura aggiornata, utile sempre più performante in funzione degli obiettivi del marketing e advertising. Nel servizio é anche prevista la revisione e la riscrittura  dei contenuti per il web in funzione dei risultati (web content writing).</p></td>
+                    </tr>
+                    <tr class="th_alt">
+                        <td><strong>WEB MARKETING MANAGEMENT<br>
+                            <em>In coordinamento con i quadri aziendali</em></strong></td>
+                        <td><p>CONSULENZA, GESTIONE,  E SUPPORTO degli aspetti principali del  MARKETING MIX per il web e delle operazioni di allineamento del PIANO MARKETING e ADVERTISING. Brand awareness e operazioni connesse.</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>WEB ADVERTISING MANAGEMENT<br />
+                        <em>In coordinamento con i quadri aziendali</em></strong></td>
+                        <td><p>AGGIORNAMENTO E SET-UP dei canali delle CAMPAGNE PUBBLICITARIE ON-LINE (advertising). Gestione e tuning dei parametri SEO/SEM  (Search Engine Optimization/Search Engine Marketing) e  URL rewriting.</p></td>
+                    </tr>
+                    <tr class="th_alt">
+                        <td><strong>MONITORAGGIO DEL ROI <br />
+                        (Ritorno dell'investimento)</strong></td>
+                        <td><p>.MONITORAGGIO COSTANTE DEGLI OBIETTIVI e modifiche del contesto web in funzione del ROI e dei punti di controllo.</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong> GESTIONE INFRASTRUTTURA WEB &amp; IT</strong></td>
+                        <td><p>Gestione e assistenza tecnica e consulenziale dell'intera struttura tecnica e software.</p></td>
+                    </tr>
+                    <tr class="th_alt">
+                        <td><strong> PIANIFICAZIONE INDUSTRIALE E-BUSINESS</strong></td>
+                        <td><p> Il nostro processo di pianificazione é alla base di qualsiasi tipo di scelta strategica e sviluppo di attività  nel web. La consulenza di E-Business é in grado far acquisire ai quadri aziendali la necessaria competenza in materia al fine di poter sfruttare a fondo le grandi potenzialità  che offre l'integrazione di internet nei comportamenti aziendali o nei modelli di business. </p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>ASSISTENZA TECNICA</strong></td>
+                        <td><p>Il servizio comprende tutte le operazioni di assistenza tecnica dell'infrastruttura IT, aggiornamento dei software e del parco macchine.</p></td>
+                    </tr>
+                </table>
+            </section>
+        </section>
+    </section>
+{% endblock %}

@@ -1,0 +1,56 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'ebusiness' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}Ebusiness EcoSeekr {% endblock %}
+{% block description %}Consideriamo i rifiuti una fonte inesauribile di materie prime da cui poter ricavare nuovi prodotti ed energia rispettando la natura.{% endblock %}
+{% block keywords %}vision, mission, aziendale, ecoseekr{% endblock %}
+{% block javascript %}
+    {% javascripts %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_ebusiness');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow normal">Aiutiamo la tua eco-impresa a crescere, prosperare ed essere più competitiva nei mercati digitali</h2>
+        </div>
+    </section>
+    <section class="fixed-width box no-border shadow clearfix rounded-5 no-padding" id="tab_container">
+        <section class="padding-10 clearfix">
+            <div class="box-light shadow left margin-right-10"><a href="http://www.ecoseekr.it" target="_blank"><img src="/bundles/esweb/images/banner-cermaps-large.jpg " style="float: left; width: 541px; height: 268px;" alt="Scopri il nuovo EcoSeekr CerMaps" title="Scopri il nuovo EcoSeekr CerMaps"></a></div>
+            <div class="padding-top-10 left" style="width:370px">
+                <h3>Fatti trovare da nuovi clienti</h3>
+                <p class="margin-top-5 margin-bottom-20">Ottieni contatti dai clienti che ti interessano di più; selezionati in funzione dei Codici CER, dei  servizi ambientali o delle materie prime seconde che tratti con la tua azienda.</p>
+                <h3>Richiedi facilmente le tue quotazioni</h3>
+                <p class="margin-top-5 margin-bottom-20">Ottienieni più rapidamente risposte di quotazione per i tuoi rifiuti direttamente dagli impianti di conferimento, le discariche ed i trasportatori.</p>
+                <h3>Più competitivo e più rapido</h3>
+                <p class="margin-top-5 margin-bottom-20">Rispondi rapidamente ai tuoi clienti con la migliore offferta del momento e tieniti aggiornato sui prezzi di mercato nazionali.</p>
+            </div>
+        </section>
+    </section>
+    <section class="fixed-width box no-border shadow clearfix rounded-5 no-padding margin-top-10" id="tab_container">
+        <section class="padding-10 clearfix">
+            <a href="{{ path('theenq') }}" target="_blank"><img src="/bundles/esweb/images/banner-theenq-large.jpg " style="float: left; width: 937px; height: 134px;" alt="Istantaneo, intelligente, semantico. Theenq esplora il web, comprende e cataloga le informazioni e i giudizi degli utenti." title="Istantaneo, intelligente, semantico. Theenq (Think) esplora il web, comprende e cataloga le informazioni e i giudizi degli utenti."></a>
+        </section>
+    </section>
+    <section class="fixed-width box no-border shadow clearfix rounded-5 no-padding margin-top-10" id="tab_container">
+        <section class="padding-10 clearfix">
+            <div class="relative">
+                <a class="twitter-timeline" width="460" height="243" href="https://twitter.com/EcoSeekrItalia"  data-widget-id="344819982451998721">Tweets di @EcoSeekrItalia</a>
+                <script>!function(d,s,id){var js,fjs=d.getElementsByTagName(s)[0],p=/^http:/.test(d.location)?'http':'https';if(!d.getElementById(id)){js=d.createElement(s);js.id=id;js.src=p+"://platform.twitter.com/widgets.js";fjs.parentNode.insertBefore(js,fjs);}}(document,"script","twitter-wjs");</script>
+            </div>
+            <div class="right box-light rounded-5 relative">
+                <div id="fb-root"></div>
+                <script src="http://connect.facebook.net/it_IT/all.js#xfbml=1"></script><fb:like-box href="http://www.facebook.com/pages/EcoSeekr-Italia-Srl/271423612925957" width="460" show_faces="true" show_border="false" stream="false" header="false"></fb:like-box>
+            </div>
+        </section>
+    </section>
+{% endblock %}

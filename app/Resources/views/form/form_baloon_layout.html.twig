@@ -1,0 +1,58 @@
+{% use "form_div_layout.html.twig" %}
+
+{% block form_row %}
+{% spaceless %}
+    <tr>
+        <td style="height: 25px; width: 140px; text-align: right;">
+            {{ form_label(form) }}
+        </td>
+        <td>
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+        </td>
+    </tr>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block hidden_row %}
+{% spaceless %}
+     <tr style="display: none">
+        <td colspan="2">
+            {{ form_widget(form) }}
+        </td>
+    </tr>
+{% endspaceless %}
+{% endblock hidden_row %}
+    
+{% block choice_widget_collapsed %}
+{% spaceless %}
+    <div class="styled-select-small">
+        <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+            {% if empty_value is not none %}
+                <option value="">{{ empty_value|trans({}, translation_domain) }}</option>
+            {% endif %}
+            {% if preferred_choices|length > 0 %}
+                {% set options = preferred_choices %}
+                {{ block('choice_widget_options') }}
+                {% if choices|length > 0 and separator is not none %}
+                    <option disabled="disabled">{{ separator }}</option>
+                {% endif %}
+            {% endif %}
+            {% set options = choices %}
+            {{ block('choice_widget_options') }}
+        </select>
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block form_widget_compound %}
+{% spaceless %}
+    <table style="width: 100%">
+        {% if form.parent is empty and errors|length > 0 %}
+            {{ form_errors(form) }}
+        {% endif %}
+        {{ block('form_rows') }}
+        {{ form_rest(form) }}
+    </table>
+{% endspaceless %}
+{% endblock form_widget_compound %}

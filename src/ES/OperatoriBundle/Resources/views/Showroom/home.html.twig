@@ -1,0 +1,58 @@
+{% set titolo_h1 = 'ShowRoom di ' ~ showroom.ragioneSociale %}
+{% set titolo_app = 'showroom_azienda' %}
+{% set menu_marker = 'showroom' %}
+{% extends '::base.html.twig' %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}{{showroom.seoTitle}} | {{ showroom.attivita }} | {{ showroom.comuneTestuale }} | EcoSeekr{% endblock %}
+{#% block title %}ShowRoom di {{ showroom.ragioneSociale }}. Contatta {{showroom.user.nomeCompleto}} - EcoSeekr{% endblock %#}
+
+{% block description %}{{ showroom.seoDescription }}{% endblock %}
+
+{% block keyword %}{{ showroom.seoKeywords }}{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@ESOperatoriBundle/Resources/public/js/showroom.js'
+     %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    
+{#js routing bundle #}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos({% if  app.user %}'#menu_showroom'{% endif %});
+{% endblock %}
+
+{% block content %}
+<section id="header-tab" class="relative">
+    {% include 'ESOperatoriBundle:Showroom:commons/intestazione.html.twig' %}
+</section>
+<section class="fixed-width box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+    <section class="colsx no-margin margin-left-10" id="pc_sx">
+        {% include 'ESOperatoriBundle:Showroom:home/foto.html.twig' %}
+        <div class="mini-coldx clearfix right " style="position: relative; min-height: 30px;">
+            {% include 'ESOperatoriBundle:Showroom:home/intestazione.html.twig' %}
+            {% include 'ESOperatoriBundle:Showroom:home/presentazione.html.twig' %}
+        </div>
+        {% include 'ESOperatoriBundle:Showroom:home/attivita.html.twig' %}
+        {% include 'ESOperatoriBundle:Showroom:home/sede.html.twig' %}
+        {% include 'ESOperatoriBundle:Showroom:home/contatti.html.twig' %}
+        {% include 'ESOperatoriBundle:Showroom:home/anga.html.twig' %}
+    </section>
+    <section class="coldx no-margin margin-right-10" id="pc_dx">
+        {% include 'ESOperatoriBundle:Showroom:home/pulsantiera.html.twig' %}
+    </section>
+    {#<section class="colmono">
+        <div class=" margin-10">
+            {% include 'ESOperatoriBundle:Showroom:home/cer.html.twig' %}
+        </div>
+    </section>#}
+</section>
+    {#% render url('pt_sr_presentazione', {'slug':showroom. slug}) %#}
+    {#% include 'ESOperatoriBundle:Portlet:Presentazione/index.html.twig' with {'layout': 'default'} %#}
+{% include 'ESOperatoriBundle:Showroom:commons/balloon.html.twig' %}
+{% endblock %}

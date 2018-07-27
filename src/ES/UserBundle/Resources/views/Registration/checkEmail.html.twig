@@ -1,0 +1,31 @@
+{#% extends "FOSUserBundle::layout.html.twig" %#}
+{% set show_login = false %}
+{% extends "::base.html.twig" %}
+
+
+{% block content %}
+<div id="utility-area">
+    <div id="sub-header-bar" class="pattern">   
+        <div class="wrapper" >
+                {% block fos_user_content %}
+                    {% javascripts     
+                        '@ESUserBundle/Resources/public/js/resendEmail.js'
+                    %}
+                <script src="{{ asset_url }}"></script>
+                {% endjavascripts %}
+
+                <script type="text/javascript">
+                    var url_resend_attivazione = '{{path('resend_attivazione') }}';
+                    var email = '{{user.email}}';
+                    </script>
+                    <div class="title-head thead-left" >
+                        <h3>{{ 'registration.check_email'|trans({'%email%': user.email}, 'FOSUserBundle') }}</h3>
+                    {% endblock fos_user_content %}
+                        <p>Se ancora non ti è pervenuta, controlla prima di tutto nella posta indesiderata, altrimenti clicca sul pulsante di seguito per reinviarla</p>
+                        <button id="resend_email" onclick="resendAttivazione()" type="button">{{'reinvio_email'|trans({},'ESUserBundle')|raw }}</button>    
+                        <div id="feedback"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+{% endblock %}

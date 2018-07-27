@@ -1,0 +1,94 @@
+jms_security_extra:
+    secure_all_services: false
+    expressions: true
+
+security:
+    encoders:
+        Symfony\Component\Security\Core\User\User: plaintext
+        FOS\UserBundle\Model\UserInterface: sha512
+
+    role_hierarchy:
+        ROLE_ADMIN:       ROLE_USER
+        ROLE_SUPER_ADMIN: [ROLE_USER, ROLE_ADMIN, ROLE_ALLOWED_TO_SWITCH]
+
+    providers:
+        chainprovider:
+            chain:
+                providers: [fos_user_bundle, my_fos_facebook_provider]
+        fos_user_bundle:
+            id: fos_user.user_provider.username
+        my_fos_facebook_provider:
+            id: my.facebook.user   
+        in_memory:
+            memory:
+                users:
+                    user:  { password: userpass, roles: [ 'ROLE_USER' ] }
+                    admin: { password: adminpass, roles: [ 'ROLE_ADMIN' ] }
+
+    firewalls:
+        dev:
+            pattern:  ^/(_(profiler|wdt)|css|images|js)/
+            security: false
+            
+        secured_area:
+            pattern: ^/
+            form_login:
+                provider: chainprovider
+                login_path: /login
+                check_path: /login_check
+                default_target_path: /operatori/showroom-redirect
+                remember_me: true
+            logout:                   true
+            anonymous:                true
+            remember_me:
+                key:      divine_office_hub_17021976
+                lifetime: 31536000
+                path:     ^/
+                domain:   ~ # Defaults to the current domain from $_SERVER
+                always_remember_me: true
+                remember_me_parameter: _remember_me
+#                csrf_provider: form.csrf_provider      
+        #public:
+            # since anonymous is allowed users will not be forced to login
+       #    pattern:   ^/.*
+       #     fos_facebook:
+       #         app_url:              "http://apps.facebook.com/itac.dev/"
+       #         server_url:           "http://itac.dev/"
+       #         login_path:           /login
+       #          check_path:           /fb/login_check
+       #         default_target_path:  /
+       #         provider:             my_fos_facebook_provider
+       #     logout:                   true
+       #     anonymous:                true
+#        main:
+#            pattern:                  ^/
+#            form_login:
+#                provider:             fos_user_bundle
+#                csrf_provider:        form.csrf_provider
+#                # http://symfony.com/it/doc/current/reference/configuration/security.html
+#                default_target_path: /
+#                #Login Fallito SBALLLATO!
+#                failure_path: /ripeti-login
+#            logout:                   true
+#            anonymous:                true
+#            remember_me:
+#                key:      divine_office_hub_17021976
+#                lifetime: 31536000
+#                path:     ^/
+#                domain:   ~ # Defaults to the current domain from $_SERVER
+#                always_remember_me: true
+#                remember_me_parameter: _remember_me
+        login:
+            pattern:  ^/login$
+            security: false
+            #anonymous: ~
+            #http_basic:
+            #    realm: "Secured Demo Area"
+
+    access_control:
+        #- { path: ^/login, roles: IS_AUTHENTICATED_ANONYMOUSLY, requires_channel: https }
+        #
+        # You must uncomment the two following rules to restrict access to paths
+        # starting with the /_internal prefix to only localhost
+        #- { path: ^/_internal/secure, roles: IS_AUTHENTICATED_ANONYMOUSLY, ip: 127.0.0.1 }
+        #- { path: ^/_internal/secure, roles: ROLE_NO_ACCESS }

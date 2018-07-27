@@ -1,0 +1,124 @@
+/* Example tokeninput style #1: Token vertical list*/
+ul.nuvola-input-list {
+    overflow: hidden; 
+    height: auto !important; 
+    height: 1%;
+    width: 400px;
+    border: 1px solid #999;
+    cursor: text;
+    font-size: 12px;
+    font-family: Verdana;
+    z-index: 999;
+    margin: 0;
+    padding: 0;
+    background: #fff url(../../../images/header/shadow.png) repeat-x 0 0;
+    list-style-type: none;
+    clear: left;
+    -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
+    behavior: url(../../../js/PIE.htc);
+}
+
+ul.nuvola-input-list li {
+    list-style-type: none;
+}
+
+ul.nuvola-input-list li input {
+    border: 0;
+    width: 350px;
+    padding: 3px 8px;
+    background: transparent !important;
+    -webkit-appearance: caret;
+    font-size:12px;
+    height: 12px;
+    padding: 6px 6px;
+}
+
+ul.nuvola-input-list li input:focus {
+    background-color: transparent !important;
+}
+
+li.nuvola-input-token {
+    overflow: hidden; 
+    height: auto !important; 
+    height: 1%;
+    margin: 3px;
+    padding: 3px 5px;
+    background-color: #d0efa0;
+    color: #000;
+    font-weight: bold;
+    cursor: default;
+    display: block;
+}
+
+li.nuvola-input-token p {
+    float: left;
+    padding: 0;
+    margin: 0;
+}
+
+li.nuvola-input-token span {
+    float: right;
+    color: #777;
+    cursor: pointer;
+}
+
+li.nuvola-input-selected-token {
+    background-color: #08844e;
+    color: #fff;
+}
+
+li.nuvola-input-selected-token span {
+    color: #bbb;
+}
+
+div.nuvola-input-dropdown {
+    position: absolute;
+    width: 400px;
+    background-color: #fff;
+    overflow: hidden;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
+    cursor: default;
+    font-size: 12px;
+    font-family: Verdana;
+    z-index: 1;
+}
+
+div.nuvola-input-dropdown p {
+    margin: 0;
+    padding: 5px;
+    font-weight: bold;
+    color: #777;
+}
+
+div.nuvola-input-dropdown ul {
+    margin: 0;
+    padding: 0;
+}
+
+div.nuvola-input-dropdown ul li {
+    background-color: #fff;
+    padding: 3px;
+    list-style-type: none;
+}
+
+div.nuvola-input-dropdown ul li.nuvola-input-dropdown-item {
+    background-color: #fafafa;
+}
+
+div.nuvola-input-dropdown ul li.nuvola-input-dropdown-item2 {
+    background-color: #fff;
+}
+
+div.nuvola-input-dropdown ul li em {
+    font-weight: bold;
+    font-style: normal;
+}
+
+div.nuvola-input-dropdown ul li.nuvola-input-selected-dropdown-item {
+    background-color: #d0efa0;
+}
+

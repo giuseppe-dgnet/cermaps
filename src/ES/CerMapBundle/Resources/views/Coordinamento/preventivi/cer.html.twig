@@ -1,0 +1,55 @@
+{% block javascript %}
+    {% javascripts
+     %}
+<script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+    <p class="text-lightblue" style="font-size: 14px;">Seleziona e invia la tua richiesta per smaltire un rifiuto</p>
+<div class="clearer"></div>
+<div class="hr-light margin-top-5 margin-bottom-5"></div>
+<div class="clearer"></div> 
+<div class="relative">
+{#% if modificabile %}
+    <ul class="editing-tools button-light" style="position: absolute; top: 0px; right: 0px; z-index: 100;">
+        <li class="small first last shadow"><a href="{{ path('op_sr_cer', {"slug": showroom.slug}) }}"><span class="edit">Modifica</span></a></li>
+    </ul>
+    <p class="on-edit note absolute">
+        {% if showroom.cer|length > 0 %}
+            Questi sono i cer che hai selezionato.
+        {% else %}
+            Non hai selezionato nessun cer, dunque questa sezione non sarà visibile ai tuoi clienti. Puoi aggiungerli quando vuoi andando in modalità modifica del tuo showroom.
+        {% endif %}
+    </p>
+{% endif %#}
+{% if showroom.cer|length > 0 %}
+    <div class="clearer"></div>
+    <section class="clearfix" id="select_cer">
+        <div class="clearer ten"></div>
+        <p class="int_activity"><span class="cer-col">Codice CER</span>Descrizione rifiuto<span class="filter-col"><strong>{{ showroom.cer|length }} indici selezionati</strong> | Visualizza: <a class="allFilter" href="javascript:showCer('all')">Tutti</a> | <a class="perFilter" href="javascript:showCer('per')">Pericolosi</a> | <a class="npFilter" href="javascript:showCer('np')">Non pericolosi</a></span></p>
+        <div class="clearer"></div>
+        <section class="box-light" >
+            <ul class="activity act-list" a="cer" id="cer">
+                {% for cer in showroom.cer %}
+                    <li id="cer{{ cer.id }}" {% if loop.last %} class="last shadow"{% endif %}><span class="cer-col"><a class="button-cer-code-small {% if cer.pericoloso %}cer-per{% else %}cer-np{% endif %}">{{ cer.codice }}</a></span><span class="desc-col">{{ cer.descrizione|capitalize }}</span>
+                        <ul class="item-tools button-light on-show">
+                            <li class="smaller first last"><a href="javascript:void(0)"><span class="add">Aggiungi</span></a></li>
+                        </ul>
+                    </li>
+                {% endfor %}
+            </ul>
+        </section>
+    </section>
+{% endif %}
+    <div class="clearer"></div>
+    <section class="clearfix rounded-5 mess cyan no-display margin-top-10" id="submit_cer">      
+        <div class="form_voice clearfix left">
+            <p style="margin-bottom: 0px;"><small>Hai selezionato <span id="n_cer">0</span> CER</small></p>
+        </div>
+        <div class="form_voice clearfix right">
+            <button class="button-orange large" onclick="$('a.rdoRequestCer').trigger('click');">Conferma &raquo;</button></a>
+            <a class="no-display rdoRequestCer" href="{{ path('op_sr_richiesta_rdo_cer', {'slug':showroom.slug}) }}"></a> {# COSA APRE IL FANCYBOX  ESOperatoriBundle:Showroom/preventivi:rdo.html.twig#}
+        </div>
+    </section>
+</div>
+

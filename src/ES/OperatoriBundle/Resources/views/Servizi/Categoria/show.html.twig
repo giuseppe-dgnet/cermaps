@@ -1,0 +1,61 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+Categoria Servizi
+{% endblock %}
+
+{% block content %}
+<h1>Categoria Servizi\</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Categoria</th>
+            <td>{{ entity.categoria }}</td>
+        </tr>
+        <tr>
+            <th>Descrizione</th>
+            <td>{{ entity.descrizione }}</td>
+        </tr>
+        <tr>
+            <th>Seo_title</th>
+            <td>{{ entity.seotitle }}</td>
+        </tr>
+        <tr>
+            <th>Seo_description</th>
+            <td>{{ entity.seodescription }}</td>
+        </tr>
+        <tr>
+            <th>Seo_keywords</th>
+            <td>{{ entity.seokeywords }}</td>
+        </tr>
+        <tr>
+            <th>Slug</th>
+            <td>{{ entity.slug }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_categorie_servizi') }}">
+            Back to the list
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('admin_categorie_servizi_edit', { 'id': entity.id }) }}">
+            Edit
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('admin_categorie_servizi_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Delete</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

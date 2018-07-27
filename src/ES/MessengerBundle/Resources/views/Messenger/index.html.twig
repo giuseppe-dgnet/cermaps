@@ -1,0 +1,93 @@
+{% set titolo_app = 'app_centro_messaggi' %}
+{% set open_tab = 'messenger' %}
+{#% extends 'ESWebBundle::layout_messenger.html.twig' %#}
+{% block title %}EcoSeekr{% endblock %}
+{% block description %}Social B2B per Professionisti, Aziende ed Organizzazioni di energia, ambiente, rifiuti e materie prime seconde{% endblock %}
+{% block keyword %}keyword{% endblock %}
+
+
+{% block jscript %}
+<script src="{{ asset('/js/messenger_messenger_index.js') }}"></script>
+{% endblock %}
+{% block jscript_inline %}
+    {% include 'ESMessengerBundle:Messenger:route.js.twig' %}
+    is_showroom = {% if is_showroom %}true{% else %}false{% endif %}
+    
+    var windowHeight = $(window).height();
+
+    /*var $box = $('.dashboard-box');
+    var $parent = $('.colsx-filter');
+    var parentAbsoluteTop = $parent.offset().top;
+    var parentAbsoluteBottom = parentAbsoluteTop + $parent.height();
+    var topStop = parentAbsoluteTop + $box.height();
+
+    $(window).scroll(function(event) {
+        var windowBottom = $(window).scrollTop() + windowHeight;
+
+        if (windowBottom < topStop)
+            $box.css({
+                position: 'absolute',
+                top: '0px',
+                bottom: 'auto'
+            });
+        else if (windowBottom >= topStop && windowBottom <= parentAbsoluteBottom)
+            $box.css({
+                position: 'fixed',
+                top: 'auto',
+                bottom: '0px'
+            });
+        else
+            $box.css({
+                position: 'absolute',
+                top: 'auto',
+                bottom: '0px'
+            });
+    });*/
+    
+    
+    /*$(function () {
+        var off_set = parseInt(20);
+        var scroll_timer;
+        var displayed = false;
+        var $message = $('.dashboard-box');
+        var offset = $(".colsx-filter").offset();
+        var topPadding = $(".colsx-filter").height();
+        var $window = $(window);
+        var top = $(document.body).children(0).position().top;
+        
+        $window.scroll(function () {
+            window.clearTimeout(scroll_timer);
+            scroll_timer = window.setTimeout(function () {
+                if($window.scrollTop() <= offset.top + topPadding - off_set)
+                {
+                    displayed = false;
+                    $message.css('position', 'relative').css('top', '0px');
+                }
+                else if(displayed == false)
+                {
+                    displayed = true;
+                    $message.css('position', 'fixed').css('top', '70px');
+                }
+            }, 0);
+        });
+    });*/
+    
+{% endblock %}
+{% block jscript_ready %}
+    $('.rubrica_{{ app.session.get('user').id }}').remove();
+{% endblock %}
+{% block css_inline %}{% endblock %}
+{% block intestazione %}
+    {% include 'ESMessengerBundle:Messenger:moduli/intestazione.html.twig' %}
+{% endblock %}
+{% block filtri %}
+    {% include 'ESMessengerBundle:Messenger:moduli/filtri.html.twig' %}
+{% endblock %}
+{% block dashboard %}
+    <section class="colsx-filter">
+        {% include 'ESMessengerBundle:Messenger:moduli/dashboard.html.twig' %}
+    </section>
+{% endblock %}
+{% block content %}
+    {% include 'ESMessengerBundle:Messenger:moduli/risultati.html.twig' %}
+{% endblock %}

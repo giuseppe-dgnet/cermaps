@@ -1,0 +1,5 @@
+#    Operatori Bundle
+ephp_ws:
+    resource: "@EphpWsBundle/Controller/"
+    type:     annotation
+    prefix:   /admin/ws

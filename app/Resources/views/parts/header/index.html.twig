@@ -1,0 +1,139 @@
+{##
+ # GENERATORE DI HEADER
+ #
+ # COME FUNZIONA:
+ # Si può utilizzare in due modalità:
+ # 1. modalita 'preset'
+ # 2. modalità 'manuale'
+ # La modalità 'preset' vince sulla modalità 'manuale'
+ #
+ # LA MODALITÀ 'PRESET'
+ # Impostando la variabile 'header_preset' prima di chiamare questo twig vengono
+ # richiamati dei layout predefiniti dell'header. Ne sono stati preparati due di
+ # esempio: 'manual', 'none' e 'esempio'.
+ # * 'manual': è il preset di default se 'header_preset' non è definito,
+ #             permette di utilizzare le impostazioni manuali (v. cap. succ.)
+ # * 'none': preimposta tutto per avere un header completamente vuoto
+ # * 'esempio': mostra come impostare un nuovo preset
+ # Conoscere come funziona la modalità manuale è importante anche per creare dei
+ # nuovi preset, poiché nei preset occorre costruire i contenuti delle variabili
+ # 'header' e 'subheader', necessarie per la costruzione del twig.
+ #
+ # LA MODALITÀ 'MANUALE'
+ # Come detto in precedenza, non dichiarando 'header_preset' possiamo impostare
+ # manualmente il contenuto dell'header. Possiamo fare ciò andando a specificare
+ # le variabili 'header' e 'subheader' prima di chiamare questo twig.
+ # * 'header': deve contenere l'elenco dei twig e dei parametri da includere
+ #             nella parte superiore dell'header
+ # * 'subheader': deve contenere l'elenco dei twig e dei parametri da includere
+ #                nella parte inferiore dell'header
+ # La struttura che devono avere i contenuti delle due variabili è identica, e
+ # devono essere degli array associativi strutturati così:
+ # { twig_1: params_1, twig_2: params_2, ..., twig_n: params_n}
+ # ovvero:
+ # * 'twig_#': è il twig che verrà incluso nell'header. La sintassi del nome è
+ #             semplificata: scrivendo 'app/esempio' verrà incluso il twig
+ #             ':parts/header/app/esempio.html.twig'. In generale il twig che
+ #             verrà incluso è ':parts/header/<twig_#>.html.twig'.
+ # * 'params_#' : sono i parametri che vengono passati al twig. Deve essere un
+ #                array associativo, come nei normali 'include', ad esempio:
+ #                {'titolo': 'Homepage', 'testo': 'Questo è un esempio'}
+ #
+ # BEST PRATICS
+ # Per la realizzazione di nuovi twig da includere nell'header, si consiglia
+ # di organizzarli con logica, a seconda delle loro funzionalità.
+ # Ad esempio sono state create le cartelle default 'app', 'menu', 'motore' e
+ # 'title' dove inserire i twig da richiamare nell'header. nessuno vieta di
+ # creare nuove cartelle a seconda delle necessità. Si consiglia inoltre di
+ # organizzare gli ulteriori 'include' usati all'interno di un twig in una
+ # cartella con lo stesso nome del twig richiamato (vedi 'app/esempio').
+ # Per ulteriore completezza e maggiore manutenibilità dei twig si chiede di
+ # aggiungere una breve descrizione ai twig con descrizione dei parametri che il
+ # twig accetta (devi 'motore/generico')
+ #}
+
+{% if header_preset is not defined %}{% set header_preset = 'manual' %}{% endif %}
+{% if header_preset == 'manual' %}
+{% elseif header_preset == 'none' %}
+    {% set header = {} %}
+    {% set subheader = {} %}
+{% elseif header_preset == 'base' %}
+    {% set header = {
+        'title/default': {'title': app_name},
+        'user/access': {'share': false, 'left' :true, 'index': false, 'baloon_offset': '-190px'},
+    } %}
+    {% set subheader = {
+        'menu/menu_base': {},
+    } %}
+{% elseif header_preset == 'cermap' %}
+    {% set header = {
+        'title/default': {'title': app_name ~ ' - CerMap'},
+        'user/access': {'share': false, 'left' :true, 'index': false, 'baloon_offset': '-190px'},
+    } %}
+    {% set subheader = {
+        'menu/cermap': {},
+    } %}
+{% elseif header_preset == 'cersite' %}
+    {% set header = {
+        'title/cersite': {'title': app_name ~ ' - CerIndex'},
+        'user/redirect': {},
+    } %}
+    {% set subheader = {
+        'menu/cersite': {},
+    } %}
+{% elseif header_preset == 'cerform' %}
+    {% set header = {
+        'title/cerform': {},
+        'user/redirect-cobrand': {},
+    } %}
+    {% set subheader = {
+        'menu/cerform': {},
+    } %}
+{% elseif header_preset == 'corporate' %}
+    {% set header = {
+        'title/corporate': {'title': app_name ~ ' - Corporate'},
+        'user/corporate_access': {},
+    } %}
+    {% set subheader = {
+        'menu/corporate': {},
+    } %}
+{% elseif header_preset == 'ebusiness' %}
+    {% set header = {
+        'title/ebusiness': {'title': app_name ~ ' - E-business'},
+        'user/corporate_access': {},
+    } %}
+    {% set subheader = {
+        'menu/ebusiness': {},
+    } %}
+{% elseif header_preset == 'admin' %}
+    {% set header = {
+        'title/default': {'title': 'ADMIN'},
+    } %}
+    {% set subheader = {
+        'menu/admin': {},
+    } %}
+{% endif %}
+{% if header is not defined %}{% set header = {'title/default': {'title': app_name}} %}{% endif %}
+{% if subheader is not defined %}{% set subheader = {} %}{% endif %}
+
+<header id="header">
+    <nav id="app"{% if splash is defined %} class="no-display"{% else %}{% endif %}>
+        <section class="shadow-medium">
+            {% for twig, params in header %}
+                {% include ':parts:header/'~twig~'.html.twig' with params %}
+            {% endfor %}
+        </section>
+    </nav>
+    {% if splash is defined %}
+    {% else %}
+        {# <section class="shadow-medium gradient-greenindex" style="border-bottom: solid 2px #80AF29;"> #}
+        <section class="menu">
+            <section class="clearfix relative">
+                {% for twig, params in subheader %}
+                    {% include ':parts:header/'~twig~'.html.twig' with params %}
+                {% endfor %}
+                <div class="menu-marker" id="menu-marker" style=""></div>
+            </section>
+        </section>
+    {% endif %}
+</header>

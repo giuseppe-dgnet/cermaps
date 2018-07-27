@@ -1,0 +1,46 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}EcoSeekr - Vision e Mission{% endblock %}
+{% block description %}Consideriamo i rifiuti una fonte inesauribile di materie prime da cui poter ricavare nuovi prodotti ed energia rispettando la natura.{% endblock %}
+{% block keywords %}vision, mission, aziendale, ecoseekr{% endblock %}
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            {#<span class="absolute tiptip" title="utente registrato in data {{showroom.intestazione.created_at|date("d/m/Y")}}" style="right: 0; top: 0;" ><img src="{{ asset('/images/user-type-'~showroom.intestazione.account~'.png') }}" /></span>#}
+            <h2 class="text-shadow">{{ 'menu.su_di_noi'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.vision'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width corporate box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+        <section class="coldx left no-margin margin-left-10">
+            {% include 'ESWebBundle:Corporate:commons/corporateMenu.html.twig' %}
+        </section>
+        <section class="colsx right no-margin margin-right-10">
+            <h3 style="padding: 10px 0 10px 100px; background: url('/bundles/esweb/images/icone/leaf.png') no-repeat left center">Aiutiamo le piccole e medie imprese dell’eco-produzione a costruire e gestire con profitto la propria organizzazione online e nei nuovi media</h3>
+            <div class="clearer"></div>
+            <div class="hr-light"></div>
+            <div class="clearer ten"></div>
+            <p><strong>Eric Schmidt - CEO di Google - in una delle sue più recenti interviste, afferma che i teenagers di oggi sono il modello che rispecchia di più quello che sarà e offrirà il web fra 5 anni e da cui ricava che gli odierni teenagers saranno i manager e gli imprenditori di domani!</strong></p>
+            <p>Se ne deduce che siamo di fronte ad uno scenario tecnologico in continuo e rapido mutamento poiché ogni giorno nascono nuove tecnologie, applicazioni e periferiche a supporto della comunicazione integrata ed il business; soluzioni in grado di aumentare notevolmente la connettività delle aziende con il mercato, a tutto vantaggio della competitività, delle sole organizzazioni capaci di attrezzarsi al meglio per cogliere queste grandi opportunità.</p>
+            <h3 class="main-title">MA IN QUESTO SCENARIO COME SI PONE LA VOSTRA  AZIENDA?</h3>
+            <h3  class="subtitle">la nostra vision</h3>
+            <p>Consideriamo i rifiuti una grande opportunità; come una fonte inesauribile di materie prime da cui poter ricavare nuovi prodotti ed energia rispettando la natura. A tale scopo e per mezzo delle nostre soluzioni ci rivolgiamo agli operatori dell’ecoproduzione e li aiutiamo a progredire attraverso l’utilizzo dell’e-business.</p>
+            <h3  class="subtitle">la nostra mission</h3>
+            <p>Vogliamo diventare un impresa internazionale che supportando la comunicazione tra operatori nei settori dell’energia, l’ambiente e rifiuti facilita ed ottimizza lo scambio di informazioni e prodotti, per  aumentare il riciclo e diminuire l’impatto ambientale. In questo modo mentre produciamo valore per clienti, azionisti ed impiegati aiutiamo l’ambiente e le economie dei paesi in cui operiamo a prosperare aiutando l’ambiente.</p>
+        </section>
+    </section>
+{% endblock %}

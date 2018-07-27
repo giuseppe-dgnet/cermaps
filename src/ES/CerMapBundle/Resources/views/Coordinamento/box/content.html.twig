@@ -1,0 +1,18 @@
+<section class="right "style="width: 100%">
+    <section class="contenuto_ricerca" style="margin-left: 320px;">
+        <ul class="regioni-index-cat clearfix"  id="contenuti">
+            {% for geo in geos %}
+                <li class="shadow {% if loop.last %} no-margin{% endif %}">
+                    <a href="{{ path(next_route, {'slug': geo.slug}) }}">
+                        <h1>{{ geo.nome }}</h1>
+                    </a>
+                </li>
+            {% endfor %}
+        </ul>
+    </section>
+</section>
+
+    
+    
+
+

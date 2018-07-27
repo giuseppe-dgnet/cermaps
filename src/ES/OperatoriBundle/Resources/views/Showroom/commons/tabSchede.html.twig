@@ -1,0 +1,23 @@
+<section class="fixed-width clearfix" >
+    <ul class="tab-menu-portlet sr" >
+        {% for tab in showroom.tabs %}
+            {% if modificabile or tab.show %}
+                <li>
+                    {% if open_link is defined %}
+                        <a href="{{ path('show_room_con', {'slug': slug, 'area': tab.slug}) }}" class="{% if tab.select is defined %}{% if open == tab.select %}defaulttab {% endif %}{% else %}{% if open == tab.slug %}defaulttab {% endif %}{% endif %}sr_tab{% if tab.ordine == 1 %} rounded-5-top-left{% endif %}" id="tab_{{tab.ordine}}">
+                            {% if tab.ordine == 1 %}<span class="home-tab">{% endif %}
+                                {{ tab.titolo }}
+                            {% if tab.ordine == 1 %}</span>{% endif %}
+                        </a>
+                    {% else %}
+                        <a href="javascript:void(0)" class="{% if tab.select is defined %}{% if open == tab.select %}defaulttab {% endif %}{% else %}{% if open == tab.slug %}defaulttab {% endif %}{% endif %}sr_tab{% if tab.ordine == 1 %} rounded-5-top-left{% endif %}" rel="{{ tab.slug }}" id="tab_{{tab.ordine}}" relid="{{ tab.id }}">
+                            {% if tab.ordine == 1 %}<span class="home-tab">{% endif %}
+                                {{ tab.titolo }}
+                            {% if tab.ordine == 1 %}</span>{% endif %}
+                        </a>
+                    {% endif %}
+                </li>
+            {% endif %}
+        {% endfor %}
+    </ul>
+</section>

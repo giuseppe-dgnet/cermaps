@@ -1,0 +1,43 @@
+<div class="relative text-block">
+    <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-5">
+        <p class="text-grey">Indirizzo:</p>
+    </article>
+    <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+        <p>{{ showroom.indirizzo }} - {{ showroom.cap }} - 
+        {%if showroom.comune%}
+            {{ showroom.comune.name }} ({{ showroom.comune.admin2code }}) 
+        {%else%}
+            {{showroom.comuneTestuale}}
+        {%endif%}    
+        </p>
+    </article>
+    <div class="clearer"></div>
+    {% if showroom.partitaIva %}
+        <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-5">
+            <p class="text-grey">Partita IVA:</p>
+        </article>
+        <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+            <p>{{ showroom.partitaIva }}</p>
+        </article>
+    <div class="clearer"></div>
+    {% endif %}
+    {% if showroom.codiceFiscale %}
+        <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-5">
+            <p class="text-grey">Codice Fiscale:</p>
+        </article>
+        <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+            <p>{{ showroom.codiceFiscale }}</p>
+        </article>
+    <div class="clearer"></div>
+    {% endif %}
+    {% if showroom.codiceRae %}
+        <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-5">
+            <p class="text-grey">Codice REA:</p>
+        </article>
+        <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+            <p>{{ showroom.codiceRae }}</p>
+        </article>
+    <div class="clearer"></div>
+    {% endif %}
+
+</div>

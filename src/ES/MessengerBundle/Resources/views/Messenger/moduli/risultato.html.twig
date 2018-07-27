@@ -1,0 +1,108 @@
+<li class='discussione clearfix {% if not result.messaggioLetto %}da-leggere{% endif %}' id="d_{{result.slug}}">
+    <section class="col-desc col-desc-mess left clearfix">
+        <div class="img_thumb_listing margin-right-10 relative goto_discussione hover" id="{{result.slug}}">
+            {% if result.fromUtente.professionista %}
+                <div class="flag premium tiptip" title="Utente Premium Plus">Premium</div>                
+            {% endif %}
+            <a href="javascript:void(0)">
+                {% if result.isLock <= 0 %}
+                    {% include 'EcoSeekrProfessionistaBundle::avatar.html.twig' with {'utente': result.lastMittenteUserSerialize, 'size': 50} %}
+                {% else %}
+                    <div style="width: 50px; height: 50px;">
+                        <img class="rounded-3" style="margin: 0px 0px;" src="/images/user_no_placeholder.jpg" height="50" width="50">
+                    </div>
+                {% endif%}        
+            </a>
+        </div>
+        <article class="mess-body left relative">
+            {% if  result.isLock <= 0 %}
+               {% if result.fromUtente.professionista %}
+                   {#<div class="flag premium tiptip" title="Utente Premium Plus">Premium</div>#}
+               {% endif %}   
+            {% else %}
+               <button onclick="window.location('{{ path('pay_rdo') }}')">Acquista RDO</button>    
+            {% endif %}
+            <h3 class="text-lightblue normal goto_discussione hover {{ result.tipo }} padding-left-15 " style="font-size: 14px;" id="{{result.slug}}" alt="{{ result.subject }}" title="{{ result.subject }}">
+                {% if result.risposte|length > 0 %} 
+                    
+                {% endif %}
+                {% if result.isLock <= 0 %}
+                    {{ result.subject|truncate(75) }}
+                {% endif %}
+            </h3>
+            <p class="padding-left-15 text-gray">
+                {% if  result.isLock <= 0 %}
+                    <span class="relative" >
+                        <span class="goto_discussione hover tiptip" id="{{result.slug}}" alt="{{ result.nomiUtenti.big }}" title="{{ result.nomiUtenti.big }}">
+                            {{ result.nomiUtenti.small }}
+                        </span>
+                        {% if result.isLock <= 0 and result.tipo != 'system' %}
+                            <span class="absolute rubrica_{{ result.fromUtente.id }} hover" style="font-size: 0; line-height: 0; top: 8px; right: -15px;">
+                                <span class="add-rubrica tiptip add" style="background-position: -1514px -1417px;" title="Aggiungi a rubrica" rel="{{result.fromUtente.id}}"></span>
+                            </span>
+                            {#<ul class="item-tools button-light only-icon on-show rubrica_{{ result.fromUtente.id }}" style="top: -2px; right: 15px;">
+                                <li class="smaller first last"><a href="javascript:void(0)" class="add-rubrica tiptip" title="Aggiungi a rubrica" rel="{{result.fromUtente.id}}"><span class="add">Aggiungi alla rubrica</span></a></li>
+                            </ul>#}
+                        {% endif %}  
+                    </span>
+                {% else %}
+                    <span class="relative" >
+                        <span class="goto_discussione" id="{{result.slug}}" alt="{{ result.nomiUtenti.big }}" title="{{ result.nomiUtenti.big }}">
+                            {{result.fromUtente.tipoMittente}}
+                        </span>
+                        {% if result.isLock <= 0 and result.tipo != 'system' %}
+                            <span class="absolute rubrica_{{ result.fromUtente.id }} hover" style="font-size: 0; line-height: 0; top: -8px; right: -15px;">
+                                <span class="add-rubrica tiptip add" style="background-position: -1514px -1417px;" title="Aggiungi a rubrica" rel="{{result.fromUtente.id}}"></span>
+                            </span>
+                            {#<ul class="item-tools button-light only-icon on-show rubrica_{{ result.fromUtente.id }}" style="top: -2px; right: 15px;">
+                                <li class="smaller first last"><a href="javascript:void(0)" class="add-rubrica tiptip" title="Aggiungi a rubrica" rel="{{result.fromUtente.id}}"><span class="add">Aggiungi alla rubrica</span></a></li>
+                            </ul>#}
+                        {% endif %}  
+                    </span>
+                {% endif %}
+            </p>
+            
+            {% if  result.isLock <= 0 %}
+                {% if result.risposte|length > 0 %}
+                    <p class="text-grey goto_discussione hover {% if result.lastMittenteId == app.session.get('user').id %}reply-out{% else %}reply-in{% endif %} margin-left-15 padding-left-15" id="{{result.slug}}">{{ result.risposte|length }} {% if result.risposte|length > 1 %}risposte{% else %}risposta{% endif %} - Ultima risposta inviata da {% if result.lastMittenteId == app.session.get('user').id %}te{% else %}{{result.lastMittente}}{% endif %}:<br><i>"{{ result.lastAnteprima }}"</i></p>
+                {% endif %}
+            {% endif %}
+        </article>
+    </section>
+    <section class="col-info col-info-mess right">
+        <span class="date-stamp right" time="{{ result.lastMessageAt|date("Y-m-d H:i:s") }}"></span>
+        <div class="clearer five"></div>
+        
+        {% if result.messaggioLetto %}
+            <a href="javascript: void(0)" class="readstate readstate-mess right tiptip" letto="s" title="Segna come da leggere">Segna come da leggere</a>
+        {% else %}
+            <a href="javascript: void(0)" class="readstate readstate-ok-mess right tiptip" letto="n" title="Segna come letto">Segna come letto</a>
+        {% endif %}
+            
+        {% if result.allegati|length > 0 %} 
+            <a href="javascript: void(0)" class="attachment-small right tiptip no-hover" title="Sono presenti dei file allegati"></a>
+        {% endif %}
+            
+        {% if not result.fromUtente.emailVerificata%}
+            <a href="javascript: void(0)"  class="not-verified right tiptip no-hover" title="Utente non verificato">Utente non verificato</a>
+        {% endif %}
+            
+        <div class="clearer"></div>
+        
+        {% if result.messaggioSpam%}
+            <a href="javascript: void(0)" class="spamstate no-spam-mess right tiptip" title="Rimuovi dallo Spam">Rimuovi dallo Spam</a>
+        {% else %}
+            <a href="javascript: void(0)" class="spamstate spam-mess right tiptip" title="Segna come Spam">Segna come Spam</a>
+        {% endif %}
+            
+        {% if result.messaggioLetto %}
+            {% if result.messaggioArchiviato%} {# Cambiare icona quando il messaggio è archiviato #}
+                <a href="javascript: void(0)" id ="archivia" class="storestate store-mess right tiptip" title="Recupera messaggio">Recupera messaggio</a>
+            {% else %}
+                <a href="javascript: void(0)" id ="archivia" class="storestate recover-mess right tiptip" title="Archivia messaggio">Archivia messaggio</a>
+            {% endif %}
+        {% else %}
+            <a href="javascript: void(0)" id ="archivia" class="storestate recover-mess no-display right tiptip" style="display:none"title="Archivia messaggio">Archivia messaggio</a>
+        {%endif%}
+    </section>
+</li>

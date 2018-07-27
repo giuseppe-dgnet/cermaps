@@ -1,0 +1,27 @@
+<section class="message-insert bacheca clearfix relative" id="reply">
+    <div class="close-box hover close_mail" style="top: 0px; right: 0px;">Chiudi</div>
+    <div id="status_invito_{{utente.getId}}" style="display:none"></div>
+    <form class="p_input" id="form_messaggio_{{utente.getId}}" action="{{ path('messenger_new') }}" onsubmit="return false;">
+        <h4>email: {{utente.getEmail}}</h4>
+        <input type="hidden" type="text" name="messaggio[destinatario]" id="messaggio_destinatario_{{utente.getId}}" placeholder="Loading..." class="placeholder small rounded-5" value="{{utente.getEmail}}" />
+        <div class="clearer ten"></div>
+        <input type="text" name="messaggio[subject]" class="placeholder small" id="messaggio_subject_{{utente.getId}}" value="" style="width: 270px;" placeholder="Oggetto del messaggio" />
+        <div class="clearer ten"></div>
+        <textarea class="message-textarea-float placeholder" id="messaggio_testo_risposta_{{utente.getId}}" name="messaggio[testo_risposta]" value="" placeholder="Testo del messaggio"></textarea>
+        <div class="clearer ten"></div>
+        <button type="button" class="button-orange smaller margin-left-5 relative" id="submit_mess_{{utente.getId}}" onclick="invia_messaggio({{utente.getId}})"><strong>Invia</strong></button>
+        <div class="clearer ten"></div>
+        <input type="hidden" name="messaggio[destinatari_id]" id="messaggio_destinatari_id_{{utente.getId}}" value="[]" />
+        <input type="hidden" name="messaggio[slug]" id="messaggio_slug" value="{{ result.preSlug }}" />
+        <input type="hidden" name="messaggio[allegati]" id="messaggio_allegati_{{utente.getId}}" value="[]" />
+            {% render 'EphpDragDropBundle:DragDrop:multiAllegato' with {
+                'id': 'form_messaggio_'~utente.getId,
+                'field': 'messaggio_allegati_'~utente.getId,
+                'values': '',
+                'dir': result.preSlug,
+                'mimetype': '/(\\.|\\/)(pdf|x?docx?|odt|jpe?g|png|jpg|gif|tiff?|zip|7z|rar|cad)$/i'
+            } %}
+    </form>
+</section>
+
+

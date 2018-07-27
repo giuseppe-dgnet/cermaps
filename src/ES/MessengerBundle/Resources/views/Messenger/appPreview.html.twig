@@ -1,0 +1,9 @@
+{% for id, result in data %} 
+    <section class="box-light rounded-5 padding-5 relative clearfix posts shadow">
+        da {{ result.lastMittenteUser.serialize.label }}:
+        <a href="{{ path('messenger_discussione', {'slug': result.slug}) }}"><b>{{ result.subject }}</b></a>
+    </section>
+    {% if not loop.last %}
+        <div class="hr-light"></div>
+    {% endif %}
+{% endfor %}    

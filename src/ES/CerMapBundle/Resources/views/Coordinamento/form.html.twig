@@ -1,0 +1,115 @@
+{# SEO #}
+{% set titolo_h1 = '' %}
+{% set seo_title = '' %}
+{% set seo_description = '' %}
+{% set seo_description_luogo = '' %}
+{% set seo_keywords = '' %}
+{% if luogo and luogo|trim != '' %}
+    {% set titolo_h1 = luogo ~ ' - ' %}
+    {% set seo_title = luogo ~ ' - ' %}
+    {% set seo_description_luogo = ' di '~ luogo %}
+    {% set seo_keywords = luogo ~ ', ' %}
+{% endif %}
+{% set titolo_h1 = titolo_h1 ~ 'Centro Smaltimento Rifiuti Speciali' %}
+{% set seo_title = seo_title ~ 'Centro Smaltimento Rifiuti Speciali' %}
+{% set seo_description = 'Centro Smaltimento Rifiuti Speciali e Industriali' %}
+{% set seo_keywords = seo_keywords ~ 'Centro Smaltimento, Rifiuti Speciali' %}
+{% if cer %}
+    {% if cer.pericoloso %}
+        {% set titolo_h1 = titolo_h1 ~ ' Pericolosi - CER ' ~ cer.codice %}
+        {% set seo_title = seo_title ~ ' Pericolosi - CER ' ~ cer.codice %}
+        {% set seo_description = seo_description ~' Pericolosi' ~ seo_description_luogo ~ ' - CER ' ~ cer.codice ~ ' - ' ~ cer.descrizione %}
+        {% set seo_keywords = seo_keywords ~ 'Pericolosi, Rifiuti Industriali Pericolosi, Codice CER ' ~ cer.codice %}
+    {% else %}
+        {% set titolo_h1 = titolo_h1 ~ ' - CER ' ~ cer.codice %}
+        {% set seo_title = seo_title ~ ' - CER ' ~ cer.codice %}
+        {% set seo_description = seo_description ~ seo_description_luogo ~ ' - CER ' ~ cer.codice ~ ' - ' ~ cer.descrizione %}
+        {% set seo_keywords = seo_keywords ~ ', Codice CER ' ~ cer.codice %}
+    {% endif %}
+{% endif %}
+
+{% set header_preset = 'cerform' %}
+{% set footer = 'none' %}
+{% set titolo_app = 'centro_coordinamento' %}
+{% set menu_marker = 'ccsri' %}
+{% extends '::base.html.twig' %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block title %}{{seo_title}}{% endblock %}
+{% block description %}{{ seo_description }}{% endblock %}
+{% block keyword %}{{ seo_keywords }}{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@ESOperatoriBundle/Resources/public/js/showroom.js'
+        '@ESOperatoriBundle/Resources/public/js/preventivi_cer.js'
+     %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{#js routing bundle #}
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+{% endblock %}
+
+{% block javascript_inline %}
+    var modificabile = false;
+    var csr = true;
+    {% if tag %}
+    pre_populate = [{
+        id: {{tag.id}},
+        name: '{{ tag.tag }}',
+        css: 'tag_cer',
+        descrizione: '{{ tag.descrizione}}'
+    }];
+    {% endif %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_ccsri');
+    $('#rdo_geo').val('{{luogo}}'){% if geo %}.attr('readonly', true){% endif %};
+    $('#nuvola-input-rdo_cerca_cer'){% if cer %}.attr('readonly', true){% endif %};
+{% endblock %}
+
+{% block content %}
+<section id="header-tab" class="relative">
+    {% include 'ESCerMapBundle:Coordinamento:commons/intestazione.html.twig' %}
+</section>
+<section class="fixed-width box no-border shadow clearfix rounded-5-top no-padding gradient-lightmedium" id="tab_container" style="border-bottom: solid 1px #ccc !important;">
+    <section class="colsx no-margin padding-10" style="background: url(/bundles/esweb/images/bg_hr_vert.png) repeat-y right top;">
+        {% include "ESCerMapBundle:Coordinamento:preventivi/rdo_cer.html.twig" %}
+    </section>
+    <section class="coldx no-margin margin-right-10 padding-top-10">
+        {% include 'ESCerMapBundle:Coordinamento:commons/info.html.twig' %}
+        {#% if home is defined %#}
+            <div class="clearer ten"></div>
+            <div class="hr-light "></div>
+            <div class="clearer ten"></div>
+            <a class="margin-left-20" href="{{ path('centro_coordinamento_regioni') }}"><img src="/bundles/esweb/images/mappa_comuni.png" style="width: 250px; height:146px;" alt="Scegli il tuo comune"></a></a>
+        {#% endif %#}
+    </section>
+</section>
+<section class="fixed-width box no-border shadow clearfix rounded-5-bottom no-padding padding-top-10 padding-bottom-10" id="tab_container">
+    <section class="margin-10 clearfix">
+        <h3 class="margin-bottom-10">Strumenti di comunicazione e soluzioni di web marketing per gli operatori del settore ambiente e rifiuti</h3>
+        <div class="box-light shadow left margin-right-10"><a href="http://www.ecoseekr.it" target="_blank"><img src="/bundles/esweb/images/banner-cermaps.jpg " style="float: left; width: 360px; height: 246px;" alt="Scopri il nuovo EcoSeekr CerMaps" title="Scopri il nuovo EcoSeekr CerMaps"></a></div>
+        <div class="box-light shadow left padding-10" style="width: 256px; height: 226px;">
+            <h3>Lavorare con EcoSeekr</h3>
+            <p class="text-grey margin-top-5">Proponi la tua candidatura per la tua azienda</p>
+            <p class="margin-top-10">Supportiamo la comunicazione tra gli operatori ambientali e <strong>facilitiamo lo scambio di opportunità</strong>, di servizi, di prodotti ed informazioni.</p>
+            <p class="margin-top-10">Invia la tua candidatura per accedere al <strong>gruppo dei fornitori di servizi</strong> ed operatori di eccellenza già accreditati.</p>
+            {#<button class="button-orange max-width margin-top-10" onclick="$('a.register').trigger('click');">Invia ora la tua candidatura</button>#}
+            <a href="http://www.ecoseekr.it/aiuto/come-funziona" taget="_blank" class="left text-small margin-top-5">» Voglio sapere di più</a>
+        </div>
+        <div class="box-light shadow right padding-10" style="width: 256px; height: 226px;">
+            <h3>Ultime richieste CER</h3>
+            <p class="text-grey margin-top-5">Nuovi clienti ed operatori per la tua azienda</p>
+            {% render url('stats_last', {'area': 'cer', 'n': 6}) %} 
+        </div>
+        <div class="box-light shadow left margin-right-10 margin-top-10"><a href="http://www.minambiente.it/" target="_blank"><img src="/bundles/esweb/images/banner-ministero-ambiente.jpg " style="float: left; width: 360px; height: 67px;" alt="" title=""></a></div>
+        <div class="box-light shadow right margin-top-10"><a href="http://www.theenq.com/" target="_blank"><img src="/bundles/esweb/images/banner-theenq.jpg " style="float: left; width: 566px; height: 67px;" alt="" title=""></a></div>
+        <div class="clearer twenty"></div>
+        <p class="text-small text-grey">seguici su <a href="https://twitter.com/EcoSeekrItalia" target="_blank"><img src="/bundles/esweb/images/icone/logo_twitter_grey.png" style="vertical-align: middle ;height:16px; width: 73px;"></a> <a  href="https://www.facebook.com/pages/EcoSeekr-Italia-Srl/271423612925957" target="_blank"><img src="/bundles/esweb/images/icone/logo_facebook_grey.png" style="vertical-align: middle; height:16px; width: 73px;"></a></p>
+    </section>
+</section>
+{% endblock %}

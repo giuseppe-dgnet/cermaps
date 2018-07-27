@@ -1,0 +1,3 @@
+<li {% if submenu_marker == 'ebusiness' %}class="active"{% endif %}><a href="{{ path('ebusinessIntro')|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" >E-business</a></li>
+<li {% if submenu_marker == 'webmarketing' %}class="active"{% endif %}><a href="{{ path('webMarketingIntro')|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" >Web Marketing</a></li>
+<li {% if submenu_marker == 'webadvertising' %}class="active"{% endif %}><a href="{{ path('webAdvertisingIntro')|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" >Web Advertising</a></li>

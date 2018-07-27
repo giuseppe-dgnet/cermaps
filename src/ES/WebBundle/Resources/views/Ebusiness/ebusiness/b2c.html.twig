@@ -1,0 +1,65 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'ebusiness' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_ebusiness');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Sviluppo contesti e soluzioni per il business to consumer (B2C)</h2>
+            <h4 class="text-shadow normal">Utilizzare internet per comunicare e vendere in modo performante ed integrato</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:ebusiness/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:ebusiness/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>Lo <strong>sviluppo della relazione consente l'approfondimento della conoscenza reciproca tra impresa e cliente</strong>, premessa per ogni <strong>strategia di adattamento dell'offerta alle esigenze dei diversi clienti e di personalizzazione</strong>. La personalizzazione rappresenta quindi una voce di valore fondamentale. Nel modello <strong>B2C si genera una relazione costante con i propri clienti</strong>, in grado di mantenere alto il grado di fiducia e lealtà verso il prodotto e l'azienda anche immediatamente dopo l'acquisto. </p>
+                <h3>Alcune funzionalità del modello business to business</h3>
+                <ul class="dot">
+                    <li>Interagire in modo organizzato con i tuoi clienti.</li>
+                    <li>Gestire la comunicazione sull'innovazione dei tuoi prodotti e servizi</li>
+                    <li>Gestire la comunicazione integrata della tua azienda </li>
+                    <li>Programmare iniziative commerciali.</li>
+                    <li>Vendere prodotti o servizi post vendita</li>
+                    <li>Altre interessanti funzionalità. </li>
+                </ul>
+                <h3>Principali obiettivi del modello business to business (B2B)</h3>
+                <ul class="dot">
+                    <li>Mantenere alto il livello di fiducia e lealtà con i propri clienti.</li>
+                    <li>Elevare la conoscenza (verso i proprio prodotti) da parte dei clienti</li>
+                    <li>Aumenatare le capacità competive e produttive. </li>
+                    <li>Aumentare la forza del proprio marchio attraverso il presidio dei propri clienti  (Brand Awarness).</li>
+                </ul>
+                <h3>A chi &egrave; destinato il servizio</h3>
+                <ul class="dot">
+                    <li>Operatori industriali e consumer</li>
+                    <li>Distretti industriali</li>
+                    <li>Gruppo di lavoro</li>
+                    <li>Enti e pubblica amministrazione</li>
+                </ul>
+                <div class="clearer twenty"></div>
+                <div class="tips yellow">
+                    <p>Internet, opportunamente integrato, aiuta lo sviluppo e il rafforzamento del valore delle relazioni con i propri clienti e fornitori, modificandone l'evoluzione, la facilità, i tempi di attuazione e le modalità costruttive. In altre parole ricostituisce le strategie di connettività con il mercato e la loro attuazione operativa.</p>
+                </div>
+            </section>
+        </section>
+    </section>
+{% endblock %}

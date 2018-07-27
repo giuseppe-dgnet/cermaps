@@ -1,0 +1,24 @@
+# Bootstrap
+app/bootstrap*
+
+# Symfony directories
+vendor/*
+*/logs/*
+*/cache/*
+web/uploads/*
+web/bundles/*
+web/js/*
+web/css/*
+web/.htaccess
+composer.lock
+/composer.lock
+
+# Configuration files
+/app/config/parameters.ini
+/app/config/parameters.yml
+app/config/parameters.ini
+app/config/parameters.yml
+nbproject/*
+/cron/cron.config.php
+/web/.htaccess
+/watch/

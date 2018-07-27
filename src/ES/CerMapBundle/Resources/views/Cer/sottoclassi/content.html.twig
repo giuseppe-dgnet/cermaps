@@ -1,0 +1,16 @@
+<section class="right "style="width: 100%">
+    <section class="contenuto_ricerca" style="margin-left: 300px;">
+        <ul class="cer-index-cat clearfix"  id="contenuti">
+            {% for cer in sottoclassi %}
+                {% if cer.sottoclasse != '00' %}
+                    <li class="shadow {% if loop.last %} no-margin{% endif %}">
+                        <a href="{{ path('es_cer_categorie', {'slug': cer.slug}) }}">
+                            <h2>{{ cer.classe }}.{{ cer.sottoclasse }}.{{ cer.categoria }}</h2>
+                            <p>{{ cer.descrizione|capitalize }}</p>
+                        </a>
+                    </li>
+                {% endif %}
+            {% endfor %}
+        </ul>
+    </section>
+</section>

@@ -1,0 +1,61 @@
+<footer>
+    <div id="footer_content" class="clearfix">
+        <ul class="menu">
+            <li>
+                <h3 class="text-shadow-down normal">{{ 'menu.scopri_di_piu'|trans({}, 'menu') }}</h3>
+                <ul class="submenu" style="height: 100px;">
+                    {% include ':parts:header/menu/submenu/scopri_di_piu.html.twig' %}
+                </ul>
+            </li>
+            {#<li>
+                <h3 class="text-shadow-down normal">Servizi</h3>
+                <ul class="submenu" style="height: 100px;">
+                    {% include ':parts:header/menu/submenu/servizi.html.twig' %}
+                </ul>
+            </li>#}
+            <li>
+                <h3 class="text-shadow-down normal">{{ 'menu.su_di_noi'|trans({}, 'menu') }}</h3>
+                <ul class="submenu" style="height: 100px;">
+                    {% include ':parts:header/menu/submenu/su_di_noi.html.twig' %}
+                </ul>
+            </li>
+            <li>
+                <h3 class="text-shadow-down normal">{{ 'menu.lavora_con_noi'|trans({}, 'menu') }}</h3>
+                <ul class="submenu" style="height: 100px;">
+                    {% include ':parts:header/menu/submenu/lavora_con_noi.html.twig' %}
+                </ul>
+            </li>
+            <li>
+                <h3 class="text-shadow-down normal">{{ 'menu.info_docs'|trans({}, 'menu') }}</h3>
+                <ul class="submenu" style="height: 100px;">
+                    {% include ':parts:header/menu/submenu/info_docs.html.twig' %}
+                </ul>
+            </li>
+            <li>
+                <h3 class="text-shadow-down normal">{{ 'menu.seguici'|trans({}, 'menu') }}:</h3>
+                <ul class="submenu">
+                    <li><a class="account_small twitter_access_small no-margin left" href="https://twitter.com/EcoSeekrItalia" target="_blank">Twitter</a></li>
+                    <li><a class="account_small facebook_access_small no-margin left" href="https://www.facebook.com/pages/EcoSeekr-Italia-Srl/271423612925957" target="_blank">Facebook</a></li>
+                </ul>
+            </li>
+        </ul>
+        <ul class="company_info">
+            <li class="logo">
+                <h3>{{ 'footer.copyright'|trans({}, 'footer') }}</h3>
+                 <p>
+                    {{ 'footer.denominazione'|trans({}, 'footer') }}<br>
+                    {{ 'footer.indirizzo'|trans({}, 'footer') }}<br>
+                    {{ 'footer.telefono'|trans({}, 'footer') }}<br>
+                    {{ 'footer.fax_ordini'|trans({}, 'footer') }}<br>
+                    {{ 'footer.email'|trans({}, 'footer') }}<br>
+                    {{ 'footer.pec'|trans({}, 'footer') }}<br>
+                    {{ 'footer.partita_iva'|trans({}, 'footer') }} | {{ 'footer.rea'|trans({}, 'footer') }}<br>
+                    {{ 'footer.capitale'|trans({}, 'footer') }}<br>
+                    <br>
+                    _//We Develop!
+                 </p>
+            </li>
+        </ul>
+        <div class="clearer ten"></div>
+    </div>
+</footer>

@@ -1,0 +1,10 @@
+{% if classe is not defined %}
+    {% set classe = '' %}
+{% endif %}
+{% if style is not defined %}
+    {% set style = false %}
+{% endif %}
+
+<ul class="editing-tools button-light {{ classe }}" {% if style %}style="{{ stile }}"{% endif %}>
+    <li class="small first last shadow pre-edit"><a href="javascript:void(0);" class="balloon-edit" url="{{ url }}" form_target="{{ target }}"><span class="edit">Modifica</span></a></li>
+</ul>

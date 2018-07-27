@@ -1,0 +1,35 @@
+{% set header_preset = 'cerform' %}
+{% set footer = 'none' %}
+{% set titolo_app = 'centro_coordinamento' %}
+{% set menu_marker = 'ccsri' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ seoTitle }}{% endblock %}
+
+{% block description %}{{ seoDescription }}{% endblock %}
+
+{% block keyword %}{{ seoKeywords }}{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/box.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+        
+{% block javascript_ready %}
+    marker_pos('#menu_cer');
+{% endblock %}
+
+{% block content %}
+        {% include 'ESCerMapBundle:Coordinamento:box/breadcrumbs.html.twig' %}
+        <section class="padding-10 clearfix box-light no-border shadow">
+            {% include 'ESCerMapBundle:Coordinamento:box/suggest.html.twig' %}
+            {% include 'ESCerMapBundle:Coordinamento:box/content.html.twig' %}
+        </section>
+{% endblock %}
+    
+    
+
+

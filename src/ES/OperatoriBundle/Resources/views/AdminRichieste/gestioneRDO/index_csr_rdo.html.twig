@@ -1,0 +1,54 @@
+{% extends '::admin.html.twig' %}
+{% block content %}
+{% javascripts
+    '@ESOperatoriBundle/Resources/public/js/admin_gestione_rdo.js'
+ %}
+<script src="{{ asset_url }}"></script>
+
+<script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+<script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+ <script type="text/javascript">
+    // mi serve per fare la validazione dei form lato Js
+    var numero_form = {{numeroForm}};
+ </script>    
+{% endjavascripts %}
+
+ <div class="relative left">
+    <table style="width: 900px;" class="table_admin">
+        <thead>
+            <tr>
+                <td class="shadow-medium gradient-greenindex text-white">
+                    <table style="width: 100%">
+                        <tr>
+                            <th><h1>Centro Smaltimento Rifiuti</h1></th>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <table style="width: 100%">
+                        {% for rdo in out %}     
+                            <tr class="load-detail rdo-{{ rdo.rdo.id }}" {% if not rdo.rdo.admin %}style="font-weight: bold"{% endif %} rdo="{{rdo.rdo.id}}">
+                                <td nowrap>{{rdo.rdo.createdAt|date('d-m-Y')}}</td>
+                                <td>{{rdo.rdo.subject}}</td>
+                                <td nowrap id="stato-{{ rdo.rdo.id }}">{% if rdo.rdo.stato %}{{ rdo.rdo.stato.stato }}{% else %}NUOVA RICHIESTA{% endif %}</td>
+                                <td nowrap id="admin-{{ rdo.rdo.id }}">{% if rdo.rdo.admin %}{{ rdo.rdo.admin }}{% else %}NON IN CARICO{% endif %}</td>
+                            </tr>
+                            <tr class="rdo-{{ rdo.rdo.id }} detail-row" id="espandi-{{rdo.rdo.id}}" style="display:none">
+                                <td colspan="4" class="detail-rdo" style="background-color: #ffffff;" id="detail-{{rdo.rdo.id}}">
+                                    Attendere caricamento...
+                                </td>
+                            </tr>
+                        {%endfor%}     
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+ </div>
+<div style="clear:both"></div>        
+              
+{% endblock content %}

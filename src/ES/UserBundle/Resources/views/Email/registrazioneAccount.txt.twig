@@ -1,0 +1,19 @@
+{% block subject %}
+{% autoescape false %}
+{{ 'registration.email.subject'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+{% endautoescape %}
+{% endblock %}
+{% block body_text %}
+{% autoescape false %}
+{{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl}, 'FOSUserBundle') }}
+{% endautoescape %}
+{% endblock %}
+{% block body_html %}
+
+{%set app_name= "Ecoseekr"%}
+
+<h1 style="color:#57AE20">{{app_name}}</h1>
+
+{{ 'registration.email.message'|trans({'%username%': user.username, '%confirmationUrl%': confirmationUrl,'%app_name%': app_name}, 'FOSUserBundle')|nl2br }}
+
+{% endblock %}

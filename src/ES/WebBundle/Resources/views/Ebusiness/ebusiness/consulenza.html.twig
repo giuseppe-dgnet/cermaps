@@ -1,0 +1,71 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'ebusiness' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_ebusiness');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Consulenze, analisi e strategie per lo sviluppo di e-Business</h2>
+            <h4 class="text-shadow normal">Integrare con successo internet nel tuo comportamento di business non é mai stato così facile!</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:ebusiness/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:ebusiness/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>Il nostro <strong>processo  di pianificazione </strong> <strong>é alla base di qualsiasi tipo di scelta strategica e sviluppo di attività nel web</strong>. La <strong>consulenza di E-Business</strong> é in grado far acquisire ai quadri aziendali la necessaria competenza in materia <strong> </strong>al fine di poter sfruttare a fondo  le grandi potenzialità che offre l'integrazione di internet nei comportamenti aziendali o nei modelli di business. </p>
+                <h3>Punti chiave del processo di pianificazione e sviluppo dell'analisi</h3>
+                <ul class="dot">
+                    <li>Aumentare la conoscenza dei  nuovi mercati rappresentati dai nuovi modelli di business elettronico (E-Business).</li>
+                    <li>Capire con chiarezza quali  dei diversi modelli di e-business possono essere integrabili nella propria catena del valore.</li>
+                    <li>Individuzione delle leve decisionali (decision maker &amp; value driver)</li>
+                    <li>Sviluppare  e rafforzare il  valore delle relazioni  con i propri clienti e fornitori, costituendo nuove strategie di connettività</li>
+                    <li>Individuare  una nuova strategia di crescita organica del  modello di e-business in modo misurabile ed in funzione di costi, tempi ed obiettivi. </li>
+                </ul>
+                <p>In Admize Abbiamo la visione  globale e costante dell'ecosistema web e ne conosciamo a fondo le dinamiche  competitive. Per questo nella nostra ANALISI &amp; CONSULENZA di E-BUSINESS possiamo  individuare con sicurezza le reali opportunità di business e  le aspettative realistiche in funzioni degli  obiettivi ed al contempo marginalizzare i rischi e le pericolosità.</p>
+                <h3>Struttura dell'analisi di E-Business</h3>
+                <ul class="dot">
+                    <li>Disamina del contesto web o del modello di e-business  utilizzato in azienda.</li>
+                    <li>Individuazione delle linee strategiche ed operative</li>
+                    <li>Studio del cliente in target</li>
+                    <li>Analisi delle attività E-Business dei competitors e scenari competitivi</li>
+                    <li>Definizione del  modello di E-Business (dei contesti web e delle applicazioni sofftware)</li>
+                    <li>Revisione del marketing mix (per adattarlo al web)</li>
+                    <li>Elaborazione del Piano di web marketing </li>
+                    <li>Sviluppo del piano di budget (almeno 1/2 esercizi) sino al dettaglio mensile.</li>
+                    <li>Sviluppo del Piano di azione </li>
+                    <li>Sviluppo del  Rolling Plan</li>
+                    <li>Pianificazione della campagna pubblicitaria (advertising) a supporto dell'iniziativa</li>
+                    <li>Presentazione del quadro tecnologico </li>
+                </ul>
+                <p> Il nostro processo di  pianificazione  risulta una guida sicura  per trasferire o costruire gradualmente con un discreto margine di sicurezza e buona  riuscita il tuo core business online. Qualunque esso sia e con la dimensione  pi&amp;ugrave; appropriata.</p>
+                <p>Valutiamo  insieme a te le operazioni e le procedure necessarie per implementare  il tuo nuovo ramo di azienda, e possiamo   una soluzione <a href="#">full outsourcing</a> per garantire in modo efficace l'operatività e la gestione della tua attività E-Business o E-Commerce online. </p>
+                <br />
+
+                <div class="clearer twenty"></div>
+                <div class="tips yellow">
+                    {#<div class="ribbon_tips"></div>#}
+                    <p>Alcune ricerche (bauer 2002) evidenziano come internet possa influenzare in modo positivo la costruzione di una relazione tra fornitore e cliente e accrescere il livello reciproco di fiducia, percorso essenziale per raggiungere situazioni di fedeltà  e lealtà . </p>
+                </div>
+            </section>
+        </section>
+    </section>
+{% endblock %}

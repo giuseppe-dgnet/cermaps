@@ -1,0 +1,40 @@
+{% set titolo_h1 = 'Trova, acquista o vendi ' ~ materia.seoTitle|lower %}
+{% set titolo_app = 'app_cer' %}
+{% set menu_marker = 'mps' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}Trova, acquista o vendi {{ materia.seoTitle }} - EcoSeekr Italia{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/lps.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+
+{% block javascript_inline %}
+    {% include 'ESCerMapBundle:Mps:_commons/variabiliJs.html.twig' %}
+    aggiungi_utente_rdo = !true;
+{% endblock %}
+        
+{% block javascript_ready %}
+    marker_pos('#menu_mps');
+{% endblock %}
+
+{% block description %}{{ materia.seoDescription }}{% endblock %}
+
+{% block keyword %}trova, acquista, vendi, {{ materia.seoKeywords }}{% endblock %}
+
+{% block jscript %}
+    <script src="{{ asset('/js/listing_lps.js') }}"></script>
+{% endblock %}
+    
+{% block content %}
+    {% include 'ESCerMapBundle:Mps:mps/breadcrumbs.html.twig' %}
+    <section class="padding-10 clearfix box-light no-border">
+        {% include 'ESCerMapBundle:Mps:mps/suggest.html.twig' %}
+        {% include 'ESCerMapBundle:Mps:mps/content.html.twig' %}
+    </section>
+{% endblock %}

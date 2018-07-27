@@ -1,0 +1,76 @@
+
+<script type="text/javascript">
+    var url_salva_blocco_foto_nuove = '{{path('salva_blocco_foto_nuove') }}';
+    var didascalia = {% if didascalia %}true{% else %}false{% endif%};    
+    
+</script>
+{% javascripts
+    '@ESFotoBundle/Resources/public/js/underscore-min.js'
+    '@ESFotoBundle/Resources/public/js/upload_immagine.js'     
+    '@PunkAveFileUploaderBundle/Resources/public/js/jquery.fileupload.js'
+    '@PunkAveFileUploaderBundle/Resources/public/js/FileUploader.js'
+%}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+
+{# JS per tradurre il JS#}        
+<script type="text/javascript" src="{{ url('bazinga_exposetranslation_js', { 'domain_name': 'ESFotoBundle'}) }}"></script>
+
+
+
+{% include "PunkAveFileUploaderBundle:Default:templates.html.twig" %}
+<div id="contenitore_foto_upload" style="position: relative;">
+     <div class="baloon-container baloon-login-left" id="baloon-image" style="left: -15px;">
+        <div class="arrow-up a-right" id="arrow-up"></div>
+        <section class="box-float shadow-strong clearfix" style="min-width: 230px;">
+            <form class="edit-form padding-10" action="#" method="post" onsubmit="return false">
+                {# creo Cartella random per ogni utente, richiesta dal bundle #}
+                <input type="hidden" id="id_cartella_upload" name="id_cartella_upload" value="{{id_cartella_upload}}">
+                {# redirect dove voglio #}
+                {% if redirect is not null%}
+                <input type="hidden" id="url_action" name="url_action" value="{{redirect}}">
+                {% endif %}
+
+                {#<button id="croppa">crop</button>
+                Hydrated by javascript #}
+                <div class="file-uploader"></div>
+
+                <div id="upload_foto">
+                    {# Qui appare il pulsante, lo faccio apparire via Js, per pararsi un pò il culo #}
+                </div>
+            </form>
+        </section>
+    </div>
+</div>
+<div id="fine_configurazione">
+    {# Qui appare il pulsante, lo faccio apparire via Js, per pararsi un pò il culo#}
+</div>
+
+<script type="text/javascript">
+    // Enable the file uploader
+
+    $(function() {
+        new PunkAveFileUploader({
+            'uploadUrl':{{ path('upload_img', { editId: id_cartella_upload }) | json_encode | raw }},
+            'viewUrl': "{{ '/uploads/attachments/' ~ id_cartella_upload | json_encode | raw }}",
+            'el': '.file-uploader', //BOTTONE PER UPLOAD FILE
+            'delaySubmitWhileUploading': '.edit-form',
+            'errorCallback': function(errorObj) {
+                if (errorObj.error == 'maxNumberOfFiles') {
+                    alert("{{'form_upload_foto.error.massimo_numero_files'|trans({},'ESFotoBundle') }}");
+                }
+                if (errorObj.error == 'acceptFileTypes') {
+                    creaMessaggioFlash('.fakefile','<p class="padding-top-5 text-red" id="error_load_foto">{{'form_upload_foto.error.tipo_file_accettati'|trans({},'ESFotoBundle') }}</p>', 1000,3000,1000);
+                }
+                if (errorObj.error == 'maxFileSize') {
+                    var dimensione = '{{dimensione_massima_immagine}}'.first(); //Prendo la prima lettera/numero Translator.get('DOMAIN_NAME:key', { "foo" : "bar" });
+                    creaMessaggioFlash('.fakefile','<p class="padding-top-5 text-red" id="error_load_foto">'+Translator.get('ESFotoBundle:form_upload_foto.error.massima_dimensione', { "dimensione" : dimensione })+'</p>', 1000,3000,1000);
+                }
+                if (errorObj.error == 'minResolution') {
+                    creaMessaggioFlash('.fakefile','<p class="padding-top-5 text-red" id="error_load_foto">{{'form_upload_foto.error.minima_risoluzione'|trans({'%larghezza_minima_immagine%':larghezza_minima_immagine,'%altezza_minima_immagine%':altezza_minima_immagine},'ESFotoBundle') }}</p>', 1000,3000,1000);
+                }
+            }
+        });
+    });
+</script>

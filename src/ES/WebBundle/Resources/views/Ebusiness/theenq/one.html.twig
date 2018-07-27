@@ -1,0 +1,62 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'one' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Theenq One</h2>
+            <h3 class="text-shadow">Analisi della concorrenza [analisi quantitativa]</h3>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:theenq/commons/subMenuTab.html.twig' with {'index': menu_marker} %}
+        <section class="corporate no-border clearfix no-padding padding-10 margin-top-10">
+            <section class="table">  
+                <section class="table-row">
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point">
+                            <h4 class="no-margin">Qual è la popolarità del tuo brand e quella dei tuoi concorrenti?</h4>
+                            <p class="margin-bottom-20">TheenqONE determina la popolarità attuale e quella di ogni anno precedente.</p>
+                        </article>
+                    </section>
+                    <section class="table-cell padding-top-15 ">
+                        <article class="article-point">
+                            <h4 class="no-margin">Valuta l'andamento della popolarità di ogni brand</h4>
+                            <p class="margin-bottom-20">Valuta come varia nel tempo la popolarità dei diversi brand.</p>
+                        </article>
+                    </section>
+                </section>
+                <section class="table-row">
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point">
+                            <h4 class="no-margin">Perché la popolarità di quel brand sta cresecendo così tanto?</h4>
+                            <p class="margin-bottom-20">Perché il nome della tua azienda o i tuoi brand potrebbero essere impiegati anche in altri ambiti. Ad esempio, Scavolini, oltre ad essere una azienda leader nel settore delle cucine è anche una squadra di pallacanestro, una squadra di volley, una linea di arredamento bagno, un cognome diffuso, ecc. Selezionando il tuo settore/argomento riceverai solo ciò che ti interessa.</p>
+                        </article>
+                    </section>
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point ">
+                            <h4 class="no-margin">Nuove informazioni e aggiornamenti</h4>
+                            <p class="margin-bottom-20">Valuta subito in quali canali web (social network, media, blog, forum, portali di annunci, video, ecc.) il brand ha compiuto attività.</p>
+                        </article>
+                    </section>
+                </section>
+            </section>
+            <p><strong>Come funziona TheenqOne? <a style="color: #FB0A13;" href="http://www.theenq.com/theenq-one-dettagli.htm">Scoprilo quì</a></strong></p>
+        </section>
+    </section>
+{% endblock %}

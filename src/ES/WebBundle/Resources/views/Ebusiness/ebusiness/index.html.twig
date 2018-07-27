@@ -1,0 +1,42 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'ebusiness' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_ebusiness');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">E-Business</h2>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:ebusiness/commons/subMenuTab.html.twig' with {'index': 'true'} %}
+        <section class="corporate no-border clearfix no-padding padding-10 margin-top-10">
+            <h2>A cosa serve ...</h2>
+            <p>Ogni giorno nascono <strong>nuove tecnologie  a servizio della comunicazione integrata </strong>e delle relazioni, grazie alle quali, &egrave; possibile sviluppare ed <strong>approfondire la conoscenza reciproca tra impresa e cliente,</strong> premesse importantissime per ogni strategia di <strong>adattamento dell'offerta</strong> alle esigenze dei diversi clienti e di personalizzazione.</p>
+            <p>Inoltre,  il <strong>business &egrave; socialit&agrave;</strong> ed  i migliori affari si basano su <strong>stima e fedelt&agrave; </strong>reciproca tra fornitore e consumatore. </p>
+            <p>Per questo motivo, l'integrazione di comportamenti di internet nel tuo business tradizionale <em>"e-business"</em> <strong>aiuta lo sviluppo ed il rafforzamento del valore delle relazioni con i propri dipendenti, clienti e fornitori</strong>, modificandone l'evoluzione, la facilit&agrave;, i tempi di attuazione e le modalit&agrave; costruttive.</p>
+            <p><strong>In altre parole ricostituisce le strategie di connettivit&agrave; con il mercato e la loro attuazione operativa a tutto vantaggio della competitivit&agrave; della tua impresa!</strong></p>
+            <div class="clearer twenty"></div>
+            <h2>Cosa possiamo fare per te...</h2>
+            <p><strong>Progettiamo e costruiamo un modello di sviluppo  di e-Business personalizzato</strong> <strong>per la tua impresa</strong>. </h3>
+            <p>Iniziamo dallo sviluppo di un esauriente<strong> piano industriale </strong>della tua iniziativa online, <strong>definiamo gli obiettivi, i tempi di realizzazione, gli investimenti ed i ricavi </strong><em>(Key Value Driver).</em> Evidenziamo le principali rischiosit&agrave;, le opportunit&agrave; e contestualizziamo gli scenari competitivi per elaborare <strong>un'attenta pianificazione   che &egrave; alla base di qualsiasi decisione strategica di successo!</strong></p>
+            <p><strong>Realizziamo e gestiamo  passo dopo passo (anche in full-outsourcing) la crescita del contesto web della tua impresa</strong>, curandone tutti i principali aspetti tecnici, operativi ed attuativi. </p>
+            <p>Ci impegnamo in una CONTINUA MESSA A PUNTO dell'intero sistema anche in ambito del WEB MARKETING e ADVERTISING per l'ottimizzazione del <strong>ROI</strong> <em>"ritorno dell'investimento" </em>e per il conseguimento degli obiettivi.</p>
+            <p><strong>Siamo  il riferimento per piccole e medie imprese che desiderano intraprendere  le proprie attivit&agrave; online in modo misurabile, performante e profittevole. </strong><strong></strong></p>
+        </section>
+    </section>
+{% endblock %}

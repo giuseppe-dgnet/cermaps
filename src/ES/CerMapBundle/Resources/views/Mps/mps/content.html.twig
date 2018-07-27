@@ -1,0 +1,23 @@
+<section class="right "style="width: 100%;">
+    <section style="margin-left: 300px;"> 
+        <section class="clearfix no-display-important">
+            <ul class="cer-index-cat clearfix" >
+                <li class="shadow">
+                    {#<a href="{{ path('servizio_lps_servizi', {'slug': materia.slug}) }}">#}
+                    <a href="javascript:void(0);">
+                        <h2>{{ materia.seoTitle|capitalize }}</h2>
+                        <span id="mps{{materia.id}}" class="no-display" cat="{{ materia.categoria.nome }}"> 
+                            <strong>{{ materia.seoTitle|capitalize }}</strong> ({{ materia.descrizione }})
+                        </span>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        {#% include 'EcoSeekrMotoreBundle:Cerca:showroom/risultatiLps.html.twig' %#}
+        <article id="console" class="shadow">
+            <section class="activity gradient-reg">
+                <a href="javascript:void(0)" onclick="$('.register').trigger('click');" class="reg"><h4>Registrati subito.<br><small>Registrati gratis per ricevere le richieste che ti interessano di più nella tua zona</small></h4></a>
+            </section>
+        </article>
+    </section>
+</section>

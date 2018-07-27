@@ -1,0 +1,14 @@
+<ul class="tab-menu-portlet tab-menu-ebusiness sr absolute rounded-5-top clearfix">
+    <li>
+        <a href="{{ path('theenq') }}" class="rounded-5-left no-rounded-bottom{% if index == 'theenq' %} active{% endif %}">Theenq</a>
+    </li>
+    <li>
+        <a href="{{ path('alert') }}" class="{% if index == 'alert' %} active{% endif %}">Alert</a>
+    </li>
+    <li>
+        <a href="{{ path('one') }}" class="{% if index == 'one' %} active{% endif %}">One</a>
+    </li>
+    <li>
+        <a href="{{ path('two') }}" class="rounded-5-right no-rounded-bottom {% if index == 'two' %} active{% endif %}">Two</a>
+    </li>
+</ul>

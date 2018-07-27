@@ -1,0 +1,39 @@
+{% extends '::base.html.twig' %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block title %}
+Seleziona i CER che tratti
+{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@ESOperatoriBundle/Resources/public/js/editCer.js'
+     %}
+    <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_inline %}
+    cer_massimi = {{ cer_massimi }};
+    url_get_cer = '{{ path('op_sr_cer_ajax') }}';
+    function fineModifica() {
+    window.location = '{{ path('op_sr_cer', {'slug': showroom.slug}) }}';
+}
+{% endblock %}
+        
+{% block javascript_ready %}
+    $('.on-edit').show();
+    $('.on-show').hide();
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+{% endblock %}
+    
+{% block content %}
+<div class="listing-filter-top">
+</div>
+<section id="header-tab" class="relative">
+    {% include 'ESOperatoriBundle:Ajax:Preventivi/cer/intestazione.html.twig' %}
+</section>
+<section class="fixed-width box no-border shadow clearfix rounded-5 no-padding padding-top-5" id="tab_container">
+    {% include 'ESOperatoriBundle:Ajax:Preventivi/cer/dragdrop.html.twig' with {'showroom': showroom, 'open': true, 'action' : path('op_sr_cer_save')} %}
+</section>
+{% endblock %}

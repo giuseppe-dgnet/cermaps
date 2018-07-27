@@ -1,0 +1,24 @@
+{% extends '::base.html.twig' %}
+
+{% block title %}
+Nuovo Servizio
+{% endblock %}
+
+{% block content %}
+<h1>Nuovo Servizio </h1>
+
+<form action="{{ path('admin_servizi_create') }}" method="post" {{ form_enctype(form) }}>
+    {{ form_widget(form) }}
+    <p>
+        <button type="submit">Create</button>
+    </p>
+</form>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('admin_servizi') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

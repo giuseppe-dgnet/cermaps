@@ -1,0 +1,128 @@
+<script type="text/javascript">
+    var lettere_abilitate = [];
+</script>
+<section class="coldx-listing no-margin" id="messager-list">
+    <section id="dx_top">
+        {% set lettera = '' %}
+        {% for id, utente in utenti_rubrica%}
+            {% if utente.id is defined %}
+                {% set utente_id = utente.id %}
+            {% else %}
+                {% set utente_id = id %}
+            {% endif %}
+            {% set iniziale = utente.contatto.label(false)|slice(0, 1)|upper %}
+            {% if lettera != iniziale %}
+                {% set lettera = iniziale %}
+                <div class="mid-light-grey padding-5 padding-left-15 relative" id="_lettera_{{lettera}}">
+                    <h4>{{ lettera }}</h4>
+                    <script type="text/javascript">
+                        lettere_abilitate.add('{{ lettera }}');
+                    </script>
+                </div>
+                <div class="clearer ten"></div>
+            {% else %}
+                <div class="hr-light rubrica_{{utente_id}}"></div>
+                <div class="clearer ten rubrica_{{utente_id}}"></div>
+            {% endif %}
+            <div class=" relative lettera_{{lettera}} rubrica_{{utente_id}}" lett="lettera_{{lettera}}" {% if not loop.last %} style="border-bottom: none;"{% endif %} id="box-contatto-rubrica_{{utente_id}}">
+                {# TITOLO E TESTO CON LINK SHOWROOM/SCHEDA #}
+                {% if utente.contatto.serialize.tipo == 'showroom' %}
+                    <div class="margin-right-10 margin-left-10 margin-top-15 left">
+                        <input type="checkbox" class="checkbox-base cb" value="{{ utente_id }}">
+                    </div>
+                    <div class="margin-right-10 img_avatar left">
+                        <div class="relative" id="pref-holder_{{utente.contatto.getId}}" style="width: 50px; height: 50px;">
+                            {% if utente.preferito %}<div class="favourites absolute" id="pref_{{utente.contatto.getId}}" style="top: -5px; left: -5px; padding-left: 14px;">&nbsp;</div>{% endif %}
+                            <a href="{{ path('show_room', {'slug': utente.contatto.showroom.slug}) }}">
+                                {% include 'EcoSeekrProfessionistaBundle::avatar.html.twig' with {'utente': utente.contatto.serialize, 'size': 50} %}
+                            </a>
+                        </div>
+                    </div>
+                    <div class="left" style="width: 450px;">
+                        <h4 class="normal" id="label_{{utente_id}}" style="font-size: 12px;"><a href="{{ path('show_room', {'slug': utente.contatto.showroom.slug}) }}">{{ utente.contatto.showroom.titolo }}</a></h4>
+                        <p class="text-grey text-small">{{ utente.contatto.showroom.attivita }}</p>
+                    </div>
+                    <div class="absolute text-small text-right text-grey" style="top: 0; right: 0;">{{ utente.contatto.showroom.sedeLegale.nomeComune }}</div>
+                {% else %}
+                    <div class="margin-right-10 margin-left-10 margin-top-15 left">
+                        <input type="checkbox" class="checkbox-base cb" value="{{ utente_id }}">
+                    </div>
+                    <div class="margin-right-10 img_avatar left">
+                        <div class="relative" id="pref-holder_{{utente.contatto.getId}}" style="width: 50px; height: 50px;">
+                            {% if utente.preferito %}<div class="favourites absolute block" id="pref_{{utente.contatto.getId}}" style="top: -5px; left: -5px; padding-left: 14px;">&nbsp;</div>{% endif %}
+                            {% if utente.contatto.professionista %}
+                                <a href="{{ path('profilo_personale', {'slug': utente.contatto.professionista.slugPulito}) }}">
+                            {% endif %}
+                                {% include 'EcoSeekrProfessionistaBundle::avatar.html.twig' with {'utente': utente.contatto.serialize, 'size': 50} %}
+                            {% if utente.contatto.professionista %}
+                                </a>
+                            {% endif %}
+                        </div>
+                    </div>
+                    <div class="left" style="width: 400px;">
+                        <h4 class="normal" id="label_{{utente_id}}" style="font-size: 12px;">{% if utente.contatto.professionista %}<a href="{{ path('profilo_personale', {'slug': utente.contatto.professionista.slugPulito}) }}">{% endif %}{{ utente.contatto.nomeCompleto }} {% if not utente.contatto.professionista %}<a href="#">invita</a>{% endif %}{% if utente.contatto.professionista %}</a>{% endif %}</h4>
+                        {% if utente.contatto.professionista %}
+                            <p class="text-grey text-small">{{ utente.contatto.professionista.professioneTestuale }} {{ utente.contatto.professionista.qualifica }}
+                                {% if utente.contatto.professionista.nomeAzienda %} presso 
+                                    {% if utente.contatto.professionista.azienda %}
+                                        <a class="no-decoration" href="{{ path('show_room', {'slug': utente.contatto.professionista.azienda.showroom.slug}) }}">
+                                    {% endif %}
+                                    {{ utente.contatto.professionista.nomeAzienda }}
+                                    {% if utente.contatto.professionista.azienda %}
+                                        </a>
+                                    {% endif %}
+                                {% endif %}
+                            </p>
+                        {% endif %}
+                    </div>
+                    {% if utente.contatto.professionista %}
+                        <div class="absolute text-small text-right text-grey" style="top: 0; right: 0;">{{  utente.contatto.professionista.nomeComune }}</div>
+                    {% endif %}
+                {% endif %}                    
+                <div class="clearer ten"></div>
+                <ul class="doc-tools only-icon button-light absolute" style="bottom: 10px; right: 0px;">
+                    <li class="small first shadow"><a class="invia_msg tiptip" title="Invia messaggio" id="open_{{utente.contatto.id}}" href="javascript:void(0)"><span class="mail">Invia messaggio</span></a></li>
+                    <li class="small shadow"><a class="seleziona_cerchia tiptip" title="Aggiungi ai gruppi" id="cerchie_{{utente_id}}" rel="contatto_{{utente_id}}" rif="label_{{utente_id}}" href="javascript:void(0)"><span class="edit">Aggiungi ai gruppi</span></a></li>
+                    <li class="small shadow" id="rem_rubrica_{{utente_id}}"><a class="elimina_contatto tiptip" title="Elimina" id="delete_{{utente_id}}" rif="{{utente_id}}" href="javascript:void(0)"><span class="remove">Elimina</span></a></li>
+                    {% if utente.preferito %}        
+                        <li class="small last shadow" id="rimuovi_preferito_{{utente_id}}" style="display: block"><a class="rimuovi_contatto_preferito tiptip" title="Rimuovi dai preferiti" id="box_contatto_{{utente.contatto.getId}}" href="javascript:void(0)"><span class="remove">Rimuovi dai preferiti</span></a></li>
+                        <li class="small last shadow" id="add_preferito_{{utente_id}}" style="display: none"><a class="aggiungi_contatto_preferito tiptip" title="Aggiungi ai preferiti" id="box_contatto_{{utente.contatto.getId}}" href="javascript:void(0)"><span class="add">Aggiungi ai preferiti</span></a></li>
+                    {% else %}
+                        <li class="small last shadow" id="rimuovi_preferito_{{utente_id}}" style="display: none"><a class="rimuovi_contatto_preferito tiptip" title="Rimuovi dai preferiti" id="box_contatto_{{utente.contatto.getId}}" href="javascript:void(0)"><span class="remove">Rimuovi dai preferiti</span></a></li>
+                        <li class="small last shadow" id="add_preferito_{{utente_id}}" style="display: block"><a class="aggiungi_contatto_preferito tiptip"  title="Aggiungi ai preferiti" id="box_contatto_{{utente.contatto.getId}}" href="javascript:void(0)"><span class="add">Aggiungi ai preferiti</span></a></li>
+                    {% endif %}
+                </ul>
+                <section class="baloon-container no-display" style="top: 30px; left: 10px;" id="messaggio_{{utente.contatto.getId}}">
+                    <div class="arrow-up a-right" id="arrow-up"></div>
+                    <section class="box-float bacheca shadow-strong clearfix" >
+                    {# Qui dentro ci viene caricato il baloon via Ajax, mail/formMessaggio #}
+                    </section>
+                </section>  
+            </div>  
+        {% else %}
+            <ul class="nessunContatto listing-result">
+                {%if lettera is defined and lettera %}
+                    <li class="mid-light-grey"><span class="padding-left-15">Non sono presenti contatti che iniziano con <strong>{{lettera}}</strong></span></li> 
+                {%else%}
+                    <li class="mid-light-grey"><span class="padding-left-15">Non sono presenti contatti</span></li>    
+                {%endif%}
+            </ul>
+        {% endfor %}
+    </section>
+    {% if form_action is defined %}
+        <section id="dx_bottom">
+           <section id="form_provider" style="display:none">
+               <form class="p_input" id="form_status_invito" action="{{ path(form_action) }}" method="post">
+                   <p id="info_contatti"></p>
+                   <p id="load_contatti"></p>
+                   <section id="campi_form"></section>
+                   <script type="text/html" id="nuova_riga">
+                        {% include "EcoSeekrMessengerBundle:Rubrica:moduli/campo_input.html.twig" with {'i': '#'} %}
+                    </script>
+                    {#<button class="button-orange smaller margin-left-5 relative" id="submit_get_provider"><strong>Invia Richiesta</strong></button>#}
+                    <section class="clearer ten"></section>
+                </form>
+            </section>
+        </section>
+    {%endif%}
+ </section>

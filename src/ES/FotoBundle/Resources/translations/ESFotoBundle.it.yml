@@ -1,0 +1,26 @@
+#Js upload_immagine
+form_upload_foto:
+  label_button: Carica una foto dal tuo computer
+  save: Salva Foto
+  load: Carica Foto
+  success: Foto Caricate con successo
+  error:
+     minima_risoluzione: La tua Fotografia è troppo piccola. Le dimensioni minime sono %larghezza_minima_immagine%x%altezza_minima_immagine% px
+     tipo_file_accettati: Formato non supportato
+     massima_dimensione: La tua Fotografia è troppo grande. La dimensione massima è %dimensione% Mb
+     massimo_numero_files: Stai sorpassando il limite delle foto che puoi caricare     
+
+form_gestione_foto:
+   form:
+     fotoPrivata: Foto privata
+     fotoProfilo: Foto profilo
+     titolo: Titolo
+     descrizione: Descrizione
+     crop: Taglia la foto
+   eliminaFoto: Vuoi veramente eliminare questa foto?
+   eliminaFotoProfilo: Salva prima un'altra foto profilo, grazie
+
+#Generali
+attendere: Attendere Prego
+continua: Continua
+error: Si e verificato un errore, prego riprovare

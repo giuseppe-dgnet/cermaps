@@ -1,0 +1,11 @@
+<ul class="cer_{{ classe }}">
+    {% for cer in cers %}
+        {% if cer.sottoclasse != '00' %}
+        <li id="s_{{ cer.id }}" name="accordion_{{ cer.classe }}" class="{% if cer.categoria == '00' %}cat_cer{% else %}cer_item classe_{{ cer.classe }} sottoclasse_{{ cer.classe }}{{ cer.sottoclasse }} {% endif %} {% if cer.pericoloso %}pericoloso{% endif %} {% if cer.avaible %}selezionato{% endif %}">{% if cer.categoria != '00' %}<span class="icon_cer button-cer-code {% if cer.pericoloso %}cer-per{% endif %}">{{ cer.codice }}</span>{% endif %}{% if cer.pericoloso %}*{% endif %} {% if cer.categoria == '00' %}<button class="add_all_cer" onclick="addSottoCategoria('{{ cer.classe}}{{ cer.sottoclasse}}')" >aggiungi<br>tutti</button>{% endif %}{{ cer.descrizione|capitalize }} {% if cer.categoria != '00' %}<img src="{{ asset('/bundles/esweb/images/icone/plus.png') }}" class="icon-add" />{% endif %}</li>
+        {% endif %}
+    {% endfor %}
+</ul>
+<div class="ten"></div>
+<section style="position: absolute; bottom: -35px; right: 5px;">
+    <p><a href="javascript:addCategoria('{{ classe }}')">aggiungi tutti i cer nella lista &raquo;</a></p>
+</section>

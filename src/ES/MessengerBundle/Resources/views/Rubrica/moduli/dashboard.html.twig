@@ -1,0 +1,46 @@
+<script type="text/javascript">
+    var url_add_cerchia = '{{ path('rubrica_add_cercio') }}';
+    var cerchia = '{{cerchia}}';
+    var cerchie = [];
+    var colleghi = [];
+    {% for utente_id, utente in utenti_rubrica %}
+        var contatto_{{utente_id}} = [];
+        {% for cer in utente.cerchie %}
+            {% if not cer.predefinito %}
+                contatto_{{utente_id}}.add({{cer.id}});
+            {% endif %}
+        {% endfor %}
+    {% endfor %}
+</script>
+<article class="dashboard-box clearfix">
+    <h4>Gruppi</h4>
+    <div class="clearfix margin-top-5">
+        <div id="cerchie">
+            <a href="{{path('rubrica')}}" id="cerc_all" class="box-light rounded-3  {% if '' == cerchia %}gradient-bluelight{% else %}gradient-lightmedium{% endif %} tags left"><strong>Tutti i contatti</strong></a>
+            <div class="clearer five"></div>
+            <div class="hr-light"></div>
+            <div class="clearer five"></div>
+            {% for cer in cerchie %}
+                {% include 'EcoSeekrMessengerBundle:Rubrica:moduli/cerchia.html.twig' %}
+            {% endfor %}
+        </div>
+        <form action="{{ path('rubrica_add_cerchia') }}" class="p_input" onsubmit="return false;" id="form_add_cerchie">
+            <input type="text" id="cerc_nome" name="cerc[nome]" class="cf small left no-margin" placeholder="Nuovo gruppo" style="width: 153px;">
+            <button class="button-orange smaller right no-margin text-strong" type="button" id="cerc_add" style="font-size: 14px;">+</button>
+        </form>
+    </div>
+    {#<div class="clearfix ten"></div>
+    <ul class="doc-tools button-light">
+        <li class="small first shadow"><a href="javascript:void(0)"><span class="tutti-contatti ok">Tutti</span></a></li>
+        <li class="small last shadow"><a href="javascript:void(0)"><span class="contatti-preferiti ok">Preferiti</span></a></li>
+    </ul>#}
+    <section class="baloon-container no-display" id="invito_rubrica_baloon"> 
+        <div class="arrow-up a-right" id="arrow-up"></div>
+        <section class="box-float bacheca shadow-strong clearfix" >
+            {% include 'EcoSeekrMessengerBundle:Rubrica:formInvito.html.twig' %}
+        </section>
+    </section>
+    <div class="clearfix twenty"></div>
+    <h4>Aggiungi i tuoi contatti da:</h4>
+    {% include 'EcoSeekrMessengerBundle:Rubrica:moduli/aggiungiRubricaEmail.html.twig' %}
+</article>

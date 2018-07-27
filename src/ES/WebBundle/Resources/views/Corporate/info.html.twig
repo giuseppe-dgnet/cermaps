@@ -1,0 +1,63 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}EcoSeekr CerMaps - Informazioni societarie{% endblock %}
+{% block description %}Informazioni societarie di EcoSeekr Italia Srl{% endblock %}
+{% block keywords %}Informazioni, società, istituzionali{% endblock %}
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            {#<span class="absolute tiptip" title="utente registrato in data {{showroom.intestazione.created_at|date("d/m/Y")}}" style="right: 0; top: 0;" ><img src="{{ asset('/images/user-type-'~showroom.intestazione.account~'.png') }}" /></span>#}
+            <h2 class="text-shadow">{{ 'menu.su_di_noi'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.info'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width corporate box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+        <section class="coldx left no-margin margin-left-10">
+            {% include 'ESWebBundle:Corporate:commons/corporateMenu.html.twig' %}
+        </section>
+        <section class="colsx right no-margin margin-right-10">
+            <table width="100%" border="0" cellspacing="0">
+                    <tbody>
+                    <tr>
+                        <td width="30%" valign="top"><strong>Ragione sociale:</strong></td>
+                        <td width="70%" valign="top"><strong>EcoSeekr Italia SRL</strong></td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><strong>Partita iva:</strong></td>
+                        <td valign="top">01713500492 </td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><strong>Codice fiscale azienda:</strong></td>
+                        <td valign="top">01713500492 </td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><strong>Capitale sociale iv:</strong></td>
+                        <td valign="top">10.000 euro</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><strong>Indirizzo:</strong></td>
+                        <td valign="top">Via dei Cordai 37, Livorno</td>
+                    </tr>
+                    <tr>
+                        <td valign="top"><strong>Cap:</strong></td>
+                        <td valign="top">57121</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </section>
+{% endblock %}

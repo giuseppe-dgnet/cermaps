@@ -1,0 +1,18 @@
+{##
+ # Motore di ricerca con action generica
+ #
+ # Parametri obbligatori:
+ # 'action': action a cui fa riferimento il motore di ricerca
+ # 'placeholder': testo del placeholder
+ # 'button': testo del bottone di ricerca
+ #}
+<div id="motore-select">
+    <form action="{{ action }}" id="q" method="post">
+        <ul id="toolbar">
+            <li class="p_input">
+                <input type="text" id="q_term" class="small search no-margin placeholder shadow" name="q[term]" value="" placeholder="{{ placeholder }}"><button type="button" class="button-orange smaller margin-left-5 relative" id="submit_search_global" onclick="search_submit"><strong class="trova">{{ button }}</strong></button>
+            </li>
+        </ul>
+    </form>
+</div>    
+

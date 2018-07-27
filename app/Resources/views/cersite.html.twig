@@ -1,0 +1,57 @@
+{% if header_preset is not defined %}
+    {% set header_preset = 'cersite' %}
+{% endif %}
+{% if menu_marker is not defined %}
+    {% set menu_marker = 'cer' %}
+{% endif %}
+{% set footer = 'corporate' %}
+<!doctype html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <title>{% block title %}CerMaps{% endblock %}</title>
+        <meta name="description" content="{% block description %}Il modo più veloce per smaltire, recuperare, trasportare e riciclare i rifiuti sul web{% endblock %}">
+        <meta name="keywords" content="{% block keyword %}ecoseekr, cermaps, smaltimento, riciclaggio, trasporto, trattamento, rifiuti, servizi ambientali{% endblock %}">
+        <!-- ottimizzazione layout smartphone -->
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+        <!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+        <!--[if IE 9]><meta http-equiv="X-UA-Compatible" content="IE=9" /><![endif]-->
+        <!--[if IE 8]><meta http-equiv="X-UA-Compatible" content="IE=8" /><![endif]-->
+        {% include ":parts:javascript_cer.html.twig" %}
+        {% include ":parts:stylesheets.html.twig" %}
+        {% block javascript %}{% endblock %}
+        
+        <script type="text/javascript">
+            {% block javascript_inline %}{% endblock %}
+            $(document).ready(function() {
+                {% block javascript_ready %}{% endblock %}
+            });
+            // -->
+        </script>
+        {% block fix_ie %}{% include ':parts:ie_fixer.html.twig' %}{% endblock %}
+        <style type="text/css">
+            .clearfix:after {
+                content: ".";
+                display: block;
+                height: 0;
+                clear: both;
+                visibility: hidden;
+            }
+        {% block css_inline %}{% endblock %}
+        </style>
+        {% block stylesheets %}{% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body class="{% block bodyclass %}{% endblock %}" onload="{% block onload %}{% endblock %}">
+    {% block header %}
+        {% include ':parts:header/index.html.twig' with {'header_preset': header_preset} %}
+    {% endblock %}
+    {% block extra_content %}{% endblock %}
+    <section id="content_large" class="{% block content_css %}{% endblock %} clearfix">
+        {% block content %}{% endblock %}
+        {% include ':parts:footer/index.html.twig' %}
+        {% block javascript_footer %}{% endblock %}
+    </section>
+    {# {% include 'ESWebBundle:Help:slide_feedback.html.twig' %} #}
+    </body>
+</html>

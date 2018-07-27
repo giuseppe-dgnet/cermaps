@@ -1,0 +1,13 @@
+<section class="title_dashboard clearfix gradient-lightmedium padding-10">
+    <p class="breadcrumbs neutro" style="top: 4px;"><a href="{{ path('es_mps_categorie') }}"><span class="mps shadow active" title="Indice MPS">Indice Materie Prime Seconde</span></a>
+        <strong>
+            &raquo;<a href="{{ path('es_mps_categoria', {'slug': materia.categoria.slug }) }}"><span title="<h3>{{ materia.categoria.nome|capitalize }}</h3><p>{{ materia.categoria.categoria|capitalize }}</p>">Categoria MPS</span></a>
+            &raquo;<span class="active" title="<h3>{{ materia.materia|capitalize }}</h3><p>{{ materia.descrizione|capitalize }}</p>">Materia Prima Seconda</span>
+        </strong>
+    </p>
+    <form style="position: absolute; top: 8px; right: 8px;" onsubmit="return false;">
+        <section class="search-mess-area clearfix">
+            <input type="text" id="q_lps" class="placeholder" name="q_lps" value="" placeholder="Cerca una Materia Prima Seconda">
+        </section>
+    </form>
+</section>

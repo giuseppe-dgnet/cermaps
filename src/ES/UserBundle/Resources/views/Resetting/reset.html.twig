@@ -1,0 +1,27 @@
+{# permette di togliere il baloon di login quando non necessario #}
+{% set show_login = false %}
+{% extends "::base.html.twig" %}
+{#% extends "FOSUserBundle::layout.html.twig" %#}
+
+{% block javascript %}
+{% javascripts
+    
+    '@ESUserBundle/Resources/public/js/cambiaPassword.js'
+   %}   
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{# traduzione degli avvisi di jquery validate #}    
+<script src="{{ asset('bundles/snweb/js/localization/messages_'~app.request.locale~'.js') }}" type="text/javascript"></script>
+{% endblock %}
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos({% if  app.user %}'#menu_showroom'{% endif %});
+{% endblock %}
+
+{% block content %}
+    {% block fos_user_content %}
+        {% include "FOSUserBundle:Resetting:reset_content.html.twig" %}
+    {% endblock fos_user_content %}
+{% endblock content %}
+

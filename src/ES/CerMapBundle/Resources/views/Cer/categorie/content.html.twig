@@ -1,0 +1,11 @@
+{% for cer in categorie %}
+    {% if cer.categoria != '00' %}
+        <li class="element shadow ">
+            <a href="{{ path('es_cer_cer', {'slug': cer.slug}) }}" {% if cer.pericoloso %}class="per"{% endif %}>
+                <h2>{{ cer.classe }}.{{ cer.sottoclasse }}.{{ cer.categoria }}{% if cer.pericoloso %}*{% endif %}</h2>
+                <p>{{ cer.descrizione|capitalize }}</p>
+            </a>
+        </li>
+    {% endif %}
+{% endfor %}
+ 

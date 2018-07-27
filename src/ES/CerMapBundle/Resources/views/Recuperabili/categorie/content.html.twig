@@ -1,0 +1,19 @@
+{% javascripts  
+    '@ESWebBundle/Resources/public/js/base/jquery.isotope.js'    
+    '@ESWebBundle/Resources/public/js/base/my-isotope.js'    
+    '@ESCerMapBundle/Resources/public/js/init.js'    
+%}
+    <script type="text/javascript" src="{{ asset_url }}"></script>
+    <script type="text/javascript"> var isotope = true</script>
+{% endjavascripts %}
+    
+<ul class="rec-index cat-lps clearfix padding-bottom-10" id="contenuti" style="margin: 0 auto;">
+    {% for categoria in categorie %}
+        <li class="element shadow left">
+            <a href="{{ path('es_'~route~'_categoria', {'slug': categoria.slug}) }}">
+                <h2>{{ categoria.nome }}</h2>
+                <p>{{ categoria.categoria|capitalize }}</p>
+            </a>
+        </li>
+    {% endfor %}
+</ul>

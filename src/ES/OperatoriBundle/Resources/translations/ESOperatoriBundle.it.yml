@@ -1,0 +1,52 @@
+# Registrazione Profilo
+registrazione:
+  titolo: Proponi la  candidatura per la tua azienda
+  
+  fieldset_titolo_1: Dati aziendali
+  ragione_sociale: Ragione sociale
+  partita_iva: Partita Iva
+  codice_fiscale_azienda: Codice Fiscale Azienda
+  indirizzo: Provincia
+  fieldset_titolo_2: Attività (si posso effettuare scelte multiple)
+  attivita_principale:
+    label: Attività principale
+    seleziona: Seleziona la tua attività principale
+    impianto: Impianto di trattamento o recupero
+    discarica: Discarica
+    raccoglitori: Raccoglitori
+    trasportatore: Trasportatore
+    servizi_ambientali: Servizi ambientali e smaltimenti
+    laboratori: Laboratorio di analisi chimiche, ambientali...
+    demolizioni: Demolizioni immobili
+    spurghi: Spurghi e serbatoi
+    bonifiche: Bonifiche ambientali
+    rottamazione: Rottamazione veicoli
+    raee: Rottamazione apparecchiature elettriche
+    olio_minerale: Recupero olio minerale
+    olio_vegetale: Recupero olio vegetale
+  attivita_secondarie:
+    label: Attività secondarie
+    impianto: Impianto
+    discarica: Discarica
+    raccoglitore: Raccoglitore
+    trasportatore: Trasportatore
+    servizi_ambientali: Servizi ambientali e smaltimenti
+    laboratori: Laboratorio di analisi chimiche, ambientali...
+    demolizioni: Demolizioni immobili
+    spurghi: Spurghi e serbatoi
+    bonifiche: Bonifiche ambientali
+    rottamazione: Rottamazione veicoli
+    raee: Rottamazione apparecchiature elettriche
+    olio_minerale: Recupero olio minerale
+    olio_vegetale: Recupero olio vegetale
+  fieldset_titolo_3: Contatti
+  telefono: Telefono
+  fax: Fax
+  email: Email
+  email_pec: Email PEC
+  referente: Referente
+  ruolo: Ruolo
+  sito_web: Sito web
+  codice_rae: Rae Code
+    
+  submit: invia la richiesta

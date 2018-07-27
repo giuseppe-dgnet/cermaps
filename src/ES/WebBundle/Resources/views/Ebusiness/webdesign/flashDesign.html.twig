@@ -1,0 +1,51 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webdesign' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webdesign');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Flash Design</h2>
+            <h4 class="text-shadow normal">Flash design, sviluppo applicazioni, animazioni e banner pubblicitari con tecnologia adobe flash</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>Adobe Flash é un framework di sviluppo molto efficace per <strong>sviluppare applicazioni, banner pubblicitari o contentui grafici dinamici </strong><em>- anche intregrabili con fonti di dati provenienti dai database o xml -</em> per il web. <strong>E' una piattaforma molto versatile</strong> ed integrabile sia nel web che nelle device come palmari e smartphone (periferiche ultraportatili Apple escluse). </p>
+                <h3>Cosa possiamo fare per te?</h3>
+                <p>Possiamo <strong>sviluppare ed integrare nel tuo software o nel tuo contesto web qualsisi tipo di applicazione</strong> o interfaccia web in Adobe Flash, oppure fornirti di una <strong>semplice consulenza</strong>.</p>
+                <ul class="dot">
+                    <li>Applicativi</li>
+                    <li>Video games</li>
+                    <li>Concorsi a premi</li>
+                    <li>Configuratori online</li>
+                    <li>Banner pubblicitari flash (Display Advertising)</li>
+                    <li>Altro on demand</li>
+                </ul>
+                <h3>Il nostro punto di vista</h3>
+                <p>Riteniamo che la tecnologia Adobe Flash <strong>riteniamo opportuno che questa sia utilizzata solamente in alcuni casi</strong>, dove si rende opportuna, necessaria e dove altri tipi di programmazione non riescono ad eguagliarne le principali funzionalitÃ . <br>
+                    - <strong>L'abuso della tecnologia Adobe Flash a può infatti penalizzare moltissimo il tuo contesto web</strong>!</p>
+            </section>
+        </section>
+    </section>
+{% endblock %}

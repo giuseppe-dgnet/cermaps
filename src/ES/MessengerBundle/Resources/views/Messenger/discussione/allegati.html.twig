@@ -1,0 +1,9 @@
+<h4>Riepilogo allegati</h4>
+{% if result.allegatiConversazione|length > 0 %}
+    <ul class="box-light shadow margin-top-5 padding-5 attachment-archive ">
+        {% for allegato in result.allegatiConversazione %}
+            <li class="hover"><a href="{{ asset(allegato.file) }}" target="_blank" class="{{ allegato.css }} tiptipAllegati" title="{{ allegato.filename }}">{{ allegato.filenameBreve }}</a></li>
+        {% endfor %}
+    </ul>
+{% endif %}
+

@@ -1,0 +1,116 @@
+{% use "form_div_layout.html.twig" %}
+
+    
+{% block form_row %}
+{% spaceless %}
+    <tr>
+        <td style="height: 25px; width: 140px; text-align: right;">
+            {{ form_label(form) }}
+        </td>
+        <td class="relative">
+            {{ form_errors(form) }}
+            {{ form_widget(form) }}
+        </td>
+    </tr>
+{% endspaceless %}
+{% endblock form_row %}
+
+{% block hidden_row %}
+{% spaceless %}
+    <tr style="display: none">
+        <td colspan="2">
+            {{ form_widget(form) }}
+        </td>
+    </tr>
+{% endspaceless %}
+{% endblock hidden_row %}
+    
+{% block choice_widget_collapsed %}
+{% spaceless %}
+    <div class="styled-select-small">
+        <select {{ block('widget_attributes') }}{% if multiple %} multiple="multiple"{% endif %}>
+            {% if empty_value is not none %}
+                <option value="">{{ empty_value|trans({}, translation_domain) }}</option>
+            {% endif %}
+            {% if preferred_choices|length > 0 %}
+                {% set options = preferred_choices %}
+                {{ block('choice_widget_options') }}
+                {% if choices|length > 0 and separator is not none %}
+                    <option disabled="disabled">{{ separator }}</option>
+                {% endif %}
+            {% endif %}
+            {% set options = choices %}
+            {{ block('choice_widget_options') }}
+        </select>
+    </div>
+{% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block form_widget_compound %}
+{% spaceless %}
+    {% if form.parent is empty and errors|length > 0 %}
+            <tr>
+                <td colspan="2">
+                    {{ form_errors(form) }}
+                </td>
+            </tr>
+    {% endif %}
+    {{ block('form_rows') }}
+    {{ form_rest(form) }}
+{% endspaceless %}
+{% endblock form_widget_compound %}
+
+{% macro fieldset_block(fieldset, form) %}
+    <fieldset{% if fieldset.subform is defined %} class="{{ fieldset.subform }}"{% endif %}>
+        <legend>{{fieldset.legend | trans({}, fieldset.translation_domain) }}</legend>
+        {% if fieldset.content is defined%}
+        <table  width="100%">
+            {% for title, row in fieldset.content %}
+                {% if row is iterable %}
+                    <tr>
+                        <td style="height: 25px; width: 140px; text-align: right; " valign="top">
+                            <label style="display: inline-block; margin-top: 5px" for="td_{{ title }}">{{ title | trans({}, fieldset.translation_domain) }}</label>
+                        </td>
+                        <td id="td_{{ title }}" class="relative">
+                            {% for element in row %}
+                                <div class="att_sec" style="float: left; width: 130px; text-align:left; margin: 5px 0;">
+                                    {{ form_errors(form[element]) }}
+                                    {{ form_widget(form[element]) }}
+                                    {{ form_label(form[element]) }}
+                                </div>
+                            {% endfor %}
+                        </td>
+                    </tr>
+                {% else %}
+                    {{ form_row(form[row]) }}
+                {% endif %}
+            {% endfor %}
+        </table>
+        {% endif %}
+        {% if fieldset.subform is defined %}
+            {# Couldn't get some recursivity (simply call form widget) here... too bad #}
+            {% if form[fieldset.subform].get('attr').fieldsets is defined %}
+                {% for subfieldset in form[fieldset.subform].get('attr').fieldsets %}
+                    {{ _self.fieldset_block(subfieldset, form[fieldset.subform]) }}
+                {% endfor %}
+            {% else %}
+                 <table  width="100%">
+                    {% for row in form[fieldset.subform] %}
+                        {{ form_row(row) }}
+                    {% endfor %}
+                </table>
+            {% endif %}
+        {% endif %}
+        {% if fieldset.items is defined%}
+          {% for fieldset in fieldset.items %}
+              {{ _self.fieldset_block(fieldset, form) }}
+          {% endfor %}
+        {% endif %}
+    </fieldset>
+{%  endmacro %}
+
+{% block form_widget %}
+    {% for fieldset in form.get('attr').fieldsets %}
+        {{ _self.fieldset_block(fieldset, form) }}
+    {% endfor %}
+{% endblock %}

@@ -1,0 +1,129 @@
+
+{% set titolo_app = 'app_bacheca_messaggi' %}
+{% extends '::cermap.html.twig' %}
+
+{% block title %}{% if seoTitle is defined %}{{ seoTitle }}{% else %}EcoSeekr CerMaps{% endif %}{% endblock %}
+{% block description %}{% if seoDescription is defined %}{{ seoDescription }}{% else %}Il modo più veloce per smaltire, recuperare, trasportare e riciclare i rifiuti sul web{% endif %}{% endblock %}
+{% block keyword %}{% if seoKeywords is defined %}{{ seoKeywords }}{% else %}EcoSeekr, cermaps, smaltimento, riciclaggio, trasporto, trattamento, rifiuti, servizi ambientali{% endif %}{% endblock %}
+
+{% block stylesheets %}
+    {% stylesheets 
+    "@ESCerMapBundle/Resources/public/css/NuvolaInput/nuvola-input-facebook-cermap.css"  
+    '@ESCerMapBundle/Resources/public/css/tour/trip.css'
+%}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+{% endblock %}
+
+{% block javascript %}
+     <script type="text/javascript">
+         
+         var trip_completo = {%if trip_completo != "" %} true{%else%}false{%endif%};
+     
+     </script>   
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/tour/trip.js'
+        '@ESWebBundle/Resources/public/js/es/jquery.nuvolainput.js'
+        '@ESWebBundle/Resources/public/js/es/dragger.js'
+        '@ESCerMapBundle/Resources/public/js/infobubble.js'
+        '@EphpGeoBundle/Resources/public/js/markerclusterer.js'
+        '@ESCerMapBundle/Resources/public/js/cermap.js'
+        '@ESCerMapBundle/Resources/public/js/cermap_node.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#js routing bundle #}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+{% endblock %}
+
+{% block javascript_ready %}
+    
+    {% if geo %}
+        getGeoComune(function(json){
+            lat = parseFloat(json.latitude);
+            lon = parseFloat(json.longitude);
+            luogo = json.nome+' ('+json.admin2_code+')';
+            $('#cermap_geo_luogo').val(luogo);
+            aggiornaCermapGeo();
+        });
+    {% endif %}
+{% endblock %}
+        
+
+{% block javascript_inline %}
+    
+    n_marker = 0;
+    var cerca_tag = '{{ path('tag_cer_cerca') }}';
+    var socketCerMap = io.connect('{{ node_server|raw }}:{{ node_cermap_port|raw }}');
+    {% if app.user %}
+        user = '{{ app.user.email }}';
+    {% endif %}
+    nazione = 'IT';
+    dist = {{ dist }};
+    luogo = "{{ luogo }}";
+    lat = {{ lat }};
+    lon = {{ lon }};
+    var data = Object.extended();
+    var url_ajax_comune = '{{ path('geo_search_comune') }}';
+    var url_search_ajax_comune = '{{ path('geo_search_comune_database') }}';
+    var url_data = ''; //'{#{ path('cermap_data') }#}';
+    var cerca_cer = ''; //'{#{ path('tag_cerca', {'o': 'cer2007no00', 'd': 1})|raw }#}'.replace(/&amp;/g, '&');
+    var load_totale = 0;
+    notifiche = false;
+    pre_populate = [];
+{% endblock %}
+
+{% block jscript_ready %}
+{% endblock %}
+{% block bodyclass %}relative {% endblock %}
+{% block extra_content %}
+{% endblock %}
+{% block content %}
+
+<div id="trip_ecoseekr">
+</div>
+{#<p id="repeat_trip" class="hover absolute gradient-blue text-shadow text-white  rounded-5-bottom no-rounded-right shadow" style="z-index: 500;top: 0; right: 0; padding: 25px 15px; display:none">Ripeti il tour</p>#}
+{% if trip_completo %}
+{% else %}
+    <div id="tutor" class="absolute shadow-strong rounded-5 padding-25" style="display: none; z-index: 100000;top: 50%; left: 50%; width: 500px; height: 360px; margin-left: -275px; margin-top: -250px; background: #006600  url(/bundles/esweb/images/bg_generic_2.png) no-repeat center center;">
+        <h1 class="text-white text-shadow normal" style="font-size: 30px;">Scopri EcoMaps<sup><small>®</small></sup></h1>
+        <h3 class="text-white text-shadow normal " style="font-size: 20px; ">Il modo più veloce per trattare rifiuti sul web</h3>
+        <div class="clearer twenty"></div>
+        <div class="reg step1 margin-bottom-10">
+            <h3 class="text-white text-shadow-down padding-top-15 normal">Descrivi il tuo rifiuto o indica il codice cer.</h3>
+        </div>
+        <div class="reg step2 margin-bottom-10">
+            <h3 class="text-white text-shadow-down padding-top-10 normal">Seleziona sulla mappa l'operatore più vicino o più indicato selezionato in funzione del tuo rifiuto.</h3>
+        </div>
+        <div class="reg step3">
+            <h3 class="text-white text-shadow-down padding-top-10 normal">Ricevi immediatamente risposte e quotazioni dai nostri operatori.</h3>
+        </div>
+        <div class="clearer twenty"></div>
+        <p class="text-center">
+            <button class="button-cyan start_trip left" style="width: 220px;">Segui il tour guidato!</button> <span class="text-white text-shadow inline-block padding-top-10">oppure</span> <button class="button-orange stop_trip right" style="width: 220px;">Utilizza subito EcoMaps</button>
+        </p>
+        <div class="clearer ten"></div>
+        <p class="text-white text-shadow"><input name="trip" id="trip_ck" type="checkbox" value="trip"/>Non visualizzare piu questo avviso</p>
+        
+    </div>
+    <div id="overlay_tutor" class="fixed" style=" display: none; z-index: 9999;width: 100%; height: 100%; top: 0; left: 0; right: 0; bottom: 0;"><img src="/bundles/esweb/images/bg_overlay.png" style="width: 100%; height: 100%;" ></div>
+{% endif %}
+<div id="trip_centrale"></div>
+{#<div class="absolute text-white text-center shadow-medium rounded-5 padding-25" style="z-index: 10000; top: 50%; left: 50%; background: rgba(0,0,0,.75); width:800px; height: 200px; margin-top: -150px; margin-left: -400px;"><h2>Test</h2><p>lorem ipsum sdfasdfda fsdaf sdaf asf saf safsa fsa fd </p></div>#}
+    {% include "ESCerMapBundle:Map:index/mdr.html.twig" %}
+    <div class="absolute" id="canvasmap" style="top:0; right: 0; height: 100%;">
+    {{ google_map_container(map) }}
+    {{ google_map_css(map) }}
+    {{ google_map_js(map) }}
+    </div>
+    <div id="tmp" class="no-display-important"></div>
+    {% include "ESCerMapBundle:Map:index/ballon.html.twig" %}
+    <script type="text/html" id="hidden_cer">
+        <span id="cer{id}" class="no-display">
+            <a href="javascript:void(0);" class="button-cer-code" title="<h3>{name}</h3><p>{descrizione}</p>" >{name}</a>
+            <span>{descrizione}</span>
+        </span>
+    </script>
+{% endblock %}

@@ -1,0 +1,19 @@
+recuperabili:
+  sm_rec: Smaltimento e recupero
+  recnp: rifiuti non pericolosi
+  recp: rifiuti pericolosi
+  
+operatori:
+  impianti: Impianti di trattamento o recupero
+  discariche: Discariche
+  raccoglitori: Raccoglitori
+  trasportatori: Trasportatori
+  servizi_ambientali: Servizi ambientali e smaltimenti
+  laboratori: Laboratorio di analisi chimiche, ambientali...
+  demolizioni: Demolizioni immobili
+  spurghi: Spurghi e serbatoi
+  bonifiche: Bonifiche ambientali
+  rottamazione: Rottamazione veicoli
+  raee: Rottamazione apparecchiature elettriche
+  olio_minerale: Recupero olio minerale
+  olio_vegetale: Recupero olio vegetale

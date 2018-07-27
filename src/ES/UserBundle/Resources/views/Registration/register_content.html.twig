@@ -1,0 +1,52 @@
+{#<p> !!!! questo lo trovi dentro UserBundle/views/Registration/register_contento.html.twig</p>
+
+<h1>{{'splash.titolo'|trans({},'RegistrazioneUtente') }}</h1>
+<p>{{'splash.abstract'|trans({},'RegistrazioneUtente')|nl2br }}</p>
+#}
+
+{% javascripts
+    '@ESUserBundle/Resources/public/js/registrazione.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<h3>{{'titolo_form_registrazione'|trans({},'ESUserBundle') }}</h3>
+<form action="{{ path('fos_user_registration_register') }}" {{ form_enctype(form) }} id="form_registrazione" method="POST" class="fos_user_registration_register">
+    <div class="form-section">
+        {#{ form_widget(form) }#}
+        {{ form_errors(form) }}
+        <input type="hidden" name="id_showroom" id="id_showroom" value="">
+        <input type="hidden" name="id_richiesta" id="id_richiesta" value="">
+
+    
+        {#<div>
+            {{ form_label(form.username) }}
+            {{ form_errors(form.username) }}
+            {{ form_widget(form.username) }}
+        </div>#}
+
+        <div class="form-section-area">
+            <span>{{ form_label(form.email) }}</span>
+            {{ form_errors(form.email) }}
+            {#{ form_widget(form.email) }#}
+            {{ form_widget(form.email) }}
+        </div>
+        <div class="form-section-area">
+            <span> {{ form_label(form.plainPassword.first) }}</span>
+            {{ form_errors(form.plainPassword) }}
+            {{ form_widget(form.plainPassword.first) }}
+        </div>
+        <div class="form-section-area">
+            <span> {{ form_label(form.plainPassword.second) }}</span>
+            {{ form_widget(form.plainPassword.second) }}
+        </div>
+        {#<div class="form-section-area">
+            <span>{{ form_label(form.partita_iva) }}</span>
+            {{ form_widget(form.partita_iva) }}
+        </div>#}
+         {{ form_rest(form) }} {#CSRF#}
+    </div>
+    <div class="form-section">
+        <span></span><button type="submit" value="{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}">{{ 'registration.submit'|trans({}, 'FOSUserBundle') }}</button>
+    </div>
+    
+</form>

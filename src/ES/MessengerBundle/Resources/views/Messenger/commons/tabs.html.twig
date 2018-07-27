@@ -1,0 +1,8 @@
+<section class="fixed-width clearfix" >
+    <ul class="tab-menu-portlet sr" >
+        
+        <li><a href="{{ path('messenger') }}" class="{% if open_tab == 'messenger'%} defaulttab {% endif %} rounded-5-top-left" rel="tabs1">Messenger</a></li>
+        <li><a href="{{ path('rubrica') }}" class="{% if open_tab == 'rubrica'%} defaulttab {% endif %}" rel="tabs2">Rubrica</a></li>
+        <li><a href="{{ path('notifiche') }}" class="{% if open_tab == 'notifiche'%} defaulttab {% endif %}" rel="tabs3">Notifiche</a></li>
+    </ul>
+</section>

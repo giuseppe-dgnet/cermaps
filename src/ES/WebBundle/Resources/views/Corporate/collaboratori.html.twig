@@ -1,0 +1,66 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+{% block title %}EcoSeekr CerMaps - Persone e Collaboratori{% endblock %}
+{% block description %}Scorpi chi fà parte del team di sviluppo, le persone ed i collaboratori di EcoSeekr{% endblock %}
+{% block keywords %}persone, collaboratori, team di sviluppo{% endblock %}
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            {#<span class="absolute tiptip" title="utente registrato in data {{showroom.intestazione.created_at|date("d/m/Y")}}" style="right: 0; top: 0;" ><img src="{{ asset('/images/user-type-'~showroom.intestazione.account~'.png') }}" /></span>#}
+            <h2 class="text-shadow">{{ 'menu.su_di_noi'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.collaboratori'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width corporate box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+        <section class="coldx left no-margin margin-left-10">
+            {% include 'ESWebBundle:Corporate:commons/corporateMenu.html.twig' %}
+        </section>
+        <section class="colsx right no-margin margin-right-10">
+            <h3 class="main-title">La nostra risorsa più grande sono le persone e le loro competenze, l'assoluta condivisione degli obiettivi, lo spirito di gruppo e la grande passione per il nostro lavoro. </h3>
+            <h3 class="subtitle">Core team</h3>
+            <div class="people">
+                <div class="thumb"><img src="/bundles/esweb/images/people/gabriele_stampa.png" width="114" height="114" alt="Gabriele Stampa "></div>
+                <h3>Gabriele Stampa</h3>
+                <p>General Manager &amp; Business Developer</p>
+                <p><a href="mailto:gabriele.stampa@ecoseekr.com" class="mailto">gabriele.stampa@ecoseekr.com</a><br>
+                    <a href="http://www.linkedin.com/in/gabrielestampa" class="lnkdin" target="_blank">profilo Linkedin</a></p>
+            </div>
+            <div class="people">
+                <div class="thumb"> <img src="/bundles/esweb/images/people/ephraim_pepe.png" alt="Fabrizio Ciacchi"></div>
+                <h3>Ephraim Pepe</h3>
+                <p>Web Developer</p>
+                <p><a href="mailto:ephraim.pepe@ecoseekr.com" class="mailto">ephraim.pepe@ecoseekr.com</a><br>
+                    <a href="http://www.linkedin.com/pub/ephraim-pepe/39/7ab/878" class="lnkdin" target="_blank" >profilo Linkedin</a></p>
+            </div>
+            <div class="people">
+                <div class="thumb"> <img src="/bundles/esweb/images/people/alessio_barnini.png" width="114" height="114" alt="Alessio Barnini"></div>
+                <h3>Alessio barnini</h3>
+                <p>Web Developer</p>
+                <p><a href="mailto:alessio.barnini@ecoseekr.com" class="mailto">alessio.barnini@ecoseekr.com</a><br>
+                    <a href="http://www.linkedin.com/in/alessiobarnini" class="lnkdin" target="_blank">profilo Linkedin</a></p>
+            </div>
+            <div class="people">
+                <div class="thumb"> <img src="/bundles/esweb/images/people/gianluca_monti.png" width="114" height="114" alt="Gianluca Monti"></div>
+                <h3>Gianluca Monti</h3>
+                <p>Web Designer</p>
+                <p><a href="mailto:gianluca.monti@ecoseekr.com" class="mailto">gianluca.monti@ecoseekr.com</a><br>
+                    <a href="http://www.linkedin.com/in/gimoz" class="lnkdin" target="_blank">profilo Linkedin</a></p>
+            </div>
+            <div class="clearer"></div>
+        </section>
+    </section>
+{% endblock %}

@@ -1,0 +1,11 @@
+<div class="fixed-width clearfix">
+    {#<span class="absolute tiptip" title="utente registrato in data {{showroom.intestazione.created_at|date("d/m/Y")}}" style="right: 0; top: 0;" ><img src="{{ asset('/images/user-type-'~showroom.intestazione.account~'.png') }}" /></span>#}
+    <h2 class="text-shadow">{{ showroom.ragionesociale }}</h2>
+    <h4 class="text-shadow normal"><span class="form_attivita_header">{{showroom.attivita}}</span></h4>
+    {% if modificabile %}
+        <div class="absolute box no-border rounded-8 shadow" style="bottom: -20px; right: 0; padding: 8px" >
+            <button class="on-show button-orange smaller bit-large" onclick="apriModifica()">modifica showroom</button>
+            <button class="on-edit button-red smaller bit-large" onclick="chiudiModifica()">concludi modifica</button>
+        </div>
+    {% endif %}
+</div>

@@ -1,0 +1,102 @@
+{% form_theme form ':form:form_registrazione_layout.html.twig' %}
+
+{% javascripts
+    '@ESOperatoriBundle/Resources/public/js/richiesta.js'
+ %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+
+<section class="header_rb">
+    <h1 id="titolo_fancybox_richiesta">{{'registrazione.titolo'|trans({},'ESOperatoriBundle') }}</h1>
+</section>
+{#<div class="left margin-left-10 margin-top-10" style="width: 380px;">
+    <h2 class="normal text-center"><strong>Niente è di più efficace di EcoSeekr CerMaps</strong> per farti conoscere ed acquisire nuovi clienti ed opportunità dal web.</h2>
+    <div class="clearer forty"></div>
+    <h3 class="normal text-lightblue text-center">Puoi diventare un operatore verificato per 12 mesi<br>a <strong>solo 999,00 Euro</strong> +iva.</h3>
+    <div class="clearer forty"></div>
+    <table width="100%" border="0" cellspacing="0" cellpadding="0" class="payment-table text-center">
+    <tr>
+        <td align="left" colspan="2" style="background: url(/bundles/esweb/images/icone/icon_tools.png) no-repeat center left; padding-left: 40px;"><h3 style="font-size: 14px;" class="no-margin text-lightblue normal">Funzionalità e caratteristiche</h3></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Account verificato</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Rubrica</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Messenger</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Showroom</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Collegamenti al tuo network</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    {#<tr class="noborder">
+        <td align="left" colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td align="left" colspan="2" style="background: url(/bundles/esweb/images/icone/icon_preventivi.png) no-repeat center left; padding-left: 40px;"><h3 style="font-size: 14px;" class="no-margin text-lightblue">Moduli richieste e preventivi</h3></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Informazioni</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Smaltimento o recupero CER o RIFIUTI</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Servizi ambientali</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Materie prime secondarie</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    <tr class="noborder">
+        <td align="left" colspan="2">&nbsp;</td>
+    </tr>
+    <tr>
+        <td align="left" colspan="2" style="background: url(/bundles/esweb/images/icone/icon_customize.png) no-repeat center left; padding-left: 40px;"><h3 style="font-size: 14px;" class="no-margin text-lightblue">Moduli richieste e preventivi</h3></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Assitenza telefonica</td>
+        <td><span class="gradient-green shadow rounded-10 box block centered no-text bullet">si</span></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Personalizzazione Shoroom</td>
+        <td><a href="mailto: info@ecoseekr.com?subject=Richiesta preventivo personalizzazione showroom">Richiedi preventivo</a></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Campagne pubblicitarie su misura AdWords</td>
+        <td><a href="mailto: info@ecoseekr.com?subject=Richiesta preventivo Campagne AdWords Google account">Richiedi preventivo</a></td>
+    </tr>
+    <tr>
+        <td align="left" class="text-lightblue">Nuovo sito web aziendale</td>
+        <td><a href="mailto: info@ecoseekr.com?subject=Richiesta preventivo nuovo sito web aziendale">Richiedi preventivo</a></td>
+    </tr>
+    </table>
+</div>
+<h3 class="normal text-lightblue text-center">Puoi diventare un operatore verificato per 12 mesi<br>a <strong>solo 999,00 Euro</strong> +iva.</h3>#}
+<form action="{{ path('richiesta_create') }}" method="post" {{ form_enctype(form) }} class="p_input request-form right" style="width: 540px; border-left: dotted 1px #ccc" id="form_richiesta">
+    {{ form_widget(form) }}
+    {{ form_rest(form) }} {# aggiunto perche dava error csrf#}
+    <table {{ block('widget_container_attributes') }} width="100%">
+        <tr>
+            <th style="height: 30px; width: 25%; text-align: right;">
+            </th>
+            <td>    
+                <button type="submit" class="button-orange smaller bit-large">{{'registrazione.submit'|trans({},'ESOperatoriBundle') }}</button>
+            </td>
+        </tr>
+    </table>
+</form>
+<div id="anga-info" class="anga note-big" style="float: left; padding: 10px 0;text-align:left;">I dati verranno verificati tramite<br>l'<strong>Albo dei Gestori Ambientali</strong></div>

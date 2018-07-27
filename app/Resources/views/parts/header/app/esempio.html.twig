@@ -1,0 +1,32 @@
+{##
+ # ESEMPIO DI GESTIONE APP GENERATO A MANO
+ # 
+ # Notare la struttura degli include usati all'interno di questo twig
+ #}
+<ul id="dashboard-menu" class="button-index">
+    {% if not app.user %}
+        <li class="index-list first last " id="index_tools">
+            <span><a href="javascript:showThis('#baloon-dashboard-tools')" title="Azioni">Azioni</a></span>
+            <div class="baloon-container target-content no-display" id="baloon-dashboard-tools" style="left: -25px">
+                <div class="arrow-up a-right"></div>
+                <section class="box-float shadow-strong clearfix" >
+                    <ul class="menu-tools">
+                        {% include ':parts:header/app/esempio/anonimo.html.twig' %}
+                    </ul>
+                </section>
+            </div>
+        </li>
+    {% else %}
+        <li class="index-list first last " id="index_tools">
+            <span><a href="javascript:showThis('#baloon-dashboard-tools')" title="Azioni">Azioni</a></span>
+            <div class="baloon-container target-content no-display" id="baloon-dashboard-tools" style="left: -25px">
+                <div class="arrow-up a-right"></div>
+                <section class="box-float shadow-strong clearfix" >
+                    <ul class="menu-tools">
+                        {% include ':parts:header/app/esempio/loggato.html.twig' %}
+                    </ul>
+                </section>
+            </div>
+        </li>
+    {% endif %}
+</ul>

@@ -1,0 +1,44 @@
+
+{% set titolo_app = 'app_bacheca_messaggi' %}
+{% extends '::splash.html.twig' %}
+
+{% block title %}{% if seoTitle is defined %}{{ seoTitle }}{% else %}EcoSeekr{% endif %}{% endblock %}
+{% block description %}{% if seoDescription is defined %}{{ seoDescription }}{% else %}{% endif %}{% endblock %}
+{% block keyword %}{% if seoKeywords is defined %}{{ seoKeywords }}{% else %}{% endif %}{% endblock %}
+
+
+{% block javascript %}
+    {% javascripts  
+        '@ESWebBundle/Resources/public/js/es/jquery.nuvolainput.js'
+        '@ESWebBundle/Resources/public/js/es/dragger.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#js routing bundle #}
+    <script src="{{ asset('bundles/fosjsrouting/js/router.js') }}"></script>
+    <script src="{{ path('fos_js_routing_js', {"callback": "fos.Router.setData"}) }}"></script>
+
+{% endblock %}
+
+
+        
+
+{#% block jscript_ready %}
+//Impianti
+        {% for impianto in impianti %}
+addMarker({{ impianto.id }}, {{ impianto.latitudine }}, {{ impianto.longitudine }}, '{{ impianto.nome }}', '{{ impianto.indirizzo }}', 'IMP');
+        {% endfor %}
+//Discariche
+        {% for discarica in discariche %}
+addMarker({{ discarica.id }}, {{ discarica.latitudine }}, {{ discarica.longitudine }}, '{{ discarica.nome }}', '{{ discarica.indirizzo }}', 'DIS');
+        {% endfor %}
+setData();
+{% endblock %#}
+{% block bodyclass %}relative parent{% endblock %}
+{% block extra_content %}
+{% endblock %}
+{% block content %}
+
+    <div id="tmp" class="no-display-important"></div>
+    {% include "ESCerMapBundle:Map:index/ballon.html.twig" %}
+{% endblock %}

@@ -1,0 +1,69 @@
+es_news:
+    resource: "@ESNewsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+es_foto:
+    resource: "@ESFotoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+es_upload_foto:
+    resource: "@ESUploadFotoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+es_messenger:
+    resource: "@ESMessengerBundle/Controller/"
+    type:     annotation
+    prefix:   /    
+
+es_user:
+    resource: "@ESUserBundle/Controller/"
+    type:     annotation
+    prefix:   /user
+
+es_web:
+    resource: "@ESWebBundle/Controller/DefaultController.php"
+    type:     annotation
+    prefix:   /
+es_web_corporate:
+    resource: "@ESWebBundle/Controller/CorporateController.php"
+    type:     annotation
+    prefix:   /
+es_web_help:
+    resource: "@ESWebBundle/Controller/HelpController.php"
+    type:     annotation
+    prefix:   /
+
+ephp_tag:
+    resource: "@EphpTagBundle/Controller/"
+    type:     annotation
+    prefix:   /tag
+
+_bazinga_exposetranslation:
+    resource: "@BazingaExposeTranslationBundle/Resources/config/routing/routing.yml"
+
+_operatori:
+    resource: routing_operatori.yml
+_cer_map:
+    resource: routing_cer_map.yml
+_geo:
+    resource: routing_geo.yml
+_fos:
+    resource: routing_fos_user.yml
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"    
+    
+PrestaSitemapBundle:
+    resource: "@PrestaSitemapBundle/Resources/config/routing.yml"
+    prefix:   /
+EphpStatsBundle:
+    resource: "@EphpStatsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+AngaImporter:
+    resource: "@ESOperatoriBundle/Controller/CronAngaController.php"
+    type:     annotation
+    prefix:   /

@@ -1,0 +1,24 @@
+{# Form iniziale per resetting password#}
+{% javascripts
+    '@ESUserBundle/Resources/public/js/resetEmail.js' %}
+    <script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+<form action="{{ path('fos_user_resetting_send_email') }}" method="POST" id="request_form_password" class="p_input recover-form fos_user_resetting_request">
+    <section class="bacheca no-border box-float shadow-strong clearfix" style="width: 235px;">
+        <div class="form_voice_baloon no-margin">
+            <span><label for="username">{{ 'resetting.request.username'|trans({}, 'FOSUserBundle') }}</label></span>
+            <input type="text" id="username_email" class="small" style="width: 225px"  name="username" required="required" />
+        <div class="clearer thirty"></div>
+        </div>
+    </section>
+    <section class="cyan left baloon-submit thick_login" style="width: 235px; left:  -1px; bottom: -11px;">
+        <a href="javascript:void(0)" style="color: #999; display: block; margin-top: 5px; float: left;" class="hover" onclick="back_login()">Torna al Login</a>
+        <button type="submit" class="button-orange smaller bit-medium right relative" value="{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}">{{ 'resetting.request.submit'|trans({}, 'FOSUserBundle') }}</button>        
+        {% if invalid_username is defined %}
+            <div class="absolute" style="top: 40px; right: 0;">
+                <span class="rounded-5-bottom shadow text-white gradient-red text-small" style="position: static; padding: 3px 6px;">{{ 'resetting.request.invalid_username'|trans({'%username%': invalid_username}, 'FOSUserBundle') }}</span>
+            </div>
+        {% endif %}
+    </section>
+</form>

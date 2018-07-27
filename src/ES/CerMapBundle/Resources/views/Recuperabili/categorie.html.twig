@@ -1,0 +1,42 @@
+{% if tipo == 'recnp' %}
+    {% set titolo_h1 = 'recuperabili.sm_rec'|trans({}, 'ESCerMapBundle') ~ ' di ' ~ 'recuperabili.recnp'|trans({}, 'ESCerMapBundle') ~ ' e codici cer' %}
+{% else %}
+    {% set titolo_h1 = 'recuperabili.sm_rec'|trans({}, 'ESCerMapBundle') ~ ' di ' ~ 'recuperabili.recp'|trans({}, 'ESCerMapBundle') ~ ' e codici cer' %}
+{% endif %}
+{% set titolo_app = 'app_cer' %}
+{% set menu_marker = 'rec' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'recuperabili.sm_rec'|trans({}, 'ESCerMapBundle') }} {% if tipo == 'recnp' %}{{ 'recuperabili.recnp'|trans({}, 'ESCerMapBundle') }}{% else %}{{ 'recuperabili.recnp'|trans({}, 'ESCerMapBundle') }}{% endif %} - EcoSeekr Italia{% endblock %}
+
+{% block description %}Trova aziende e servizi per lo {{ 'recuperabili.sm_rec'|trans({}, 'ESCerMapBundle')|lower }} di {% if tipo == 'recnp' %}{{ 'recuperabili.recnp'|trans({}, 'ESCerMapBundle') }}{% else %}{{ 'recuperabili.recp'|trans({}, 'ESCerMapBundle') }}{% endif %} tra cui {% for categoria in categorie %}{{ categoria.nome|lower }}{% if not loop.last %}, {% endif %}{% endfor %}{% endblock %}
+
+{% block keyword %}Smaltimento, recupero, rifiuti speciali{% for categoria in categorie %}, {{ categoria.nome|lower }}{% endfor %}{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/lps.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+
+{% block javascript_inline %}
+    {% include 'ESCerMapBundle:Recuperabili:_commons/variabiliJs.html.twig' %}
+{% endblock %}
+        
+{% block javascript_ready %}
+    marker_pos('#menu_rec');
+{% endblock %}
+
+{% block content %}
+    <section class="tab-content general no-padding box-light no-border shadow">
+        {% include 'ESCerMapBundle:Recuperabili:categorie/breadcrumbs.html.twig' %}
+        <section class="padding-10 clearfix">
+            <h2 class="no-disp lay text-center margin-5">Rifiuti recuperabili {% if tipo == 'recnp' %}non pericolosi{% else %}pericolosi{% endif %} con EcoSeekr CerMaps</h2>
+            <h4 class="no-disp lay text-center margin-5">Utilizza la ricerca dei rifiuti recuperabili {% if tipo == 'recnp' %}non pericolosi{% else %}pericolosi{% endif %} per trovare l'operatore più adatto sulla CerMaps<sup><small>®</small></sup></h4>
+            {% include 'ESCerMapBundle:Recuperabili:categorie/content.html.twig' %}
+        </section>
+    </section>
+{% endblock %}

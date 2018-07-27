@@ -1,0 +1,58 @@
+{% extends '::admin.html.twig' %}
+{% block content %}
+<h1>Richieste per operatori</h1>
+
+<table class="records_list">
+    <thead>
+        <tr>
+            <th>Ragione_sociale</th>
+            <th>Provincia</th>
+            <th>Referente</th>
+            <th>Impianto</th>
+            <th>Discarica</th>
+            <th>Raccoglitore</th>
+            <th>Trasportatore</th>
+            <th>Laboratorio</th>
+            <th>Servizi</th>
+            <th>Demolizioni</th>
+            <th>Spurghi</th>
+            <th>Bonifiche</th>
+            <th>Rottamazione</th>
+            <th>RAEE</th>
+            <th>O.Minerale</th>
+            <th>O.Vegetale</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+    {% for entity in entities %}
+        <tr style="text-align: center;">
+            <td><b>{{ entity.ragionesociale }}</b></td>
+            <td>{{ entity.indirizzo }}</td>
+            <td>{{ entity.referente }}</td>
+            <td>{% if entity.attivitaPrincipale == 'impianto'%}<b>P</b>{% else %}{% if  entity.impianto %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'discarica'%}<b>P</b>{% else %}{% if  entity.discarica %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'raccoglitore'%}<b>P</b>{% else %}{% if  entity.raccoglitore %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'trasportatore'%}<b>P</b>{% else %}{% if  entity.trasportatore %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'laboratorio'%}<b>P</b>{% else %}{% if  entity.laboratorio %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'servizi_ambientali'%}<b>P</b>{% else %}{% if  entity.servizi %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'demolizioni'%}<b>P</b>{% else %}{% if  entity.demolizioni %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'spurghi'%}<b>P</b>{% else %}{% if  entity.spurghi %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'bonifiche'%}<b>P</b>{% else %}{% if  entity.bonifiche %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'rottamazione'%}<b>P</b>{% else %}{% if  entity.rottamazione %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'raee'%}<b>P</b>{% else %}{% if  entity.raee %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'olio_minerale'%}<b>P</b>{% else %}{% if  entity.olioMinerale %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>{% if entity.attivitaPrincipale == 'olio_vegetale'%}<b>P</b>{% else %}{% if  entity.olioVegetale %}S{% else %}-{% endif %}{% endif %}</td>
+            <td>
+                <a href="{{ path('richiesta_show', { 'id': entity.id }) }}">Dettagli</a>
+                {% if entity.showroom %}
+                    - <a href="{{ path('crea_utente', { 'id': entity.id }) }}">Crea utenza</a>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+        
+        <a href="{{path('new_showroom')}}"><p>Nuova Utenza</p></a>
+    </tbody>
+</table>
+{% endblock %}

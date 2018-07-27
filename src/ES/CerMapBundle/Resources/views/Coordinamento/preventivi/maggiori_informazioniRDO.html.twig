@@ -1,0 +1,44 @@
+
+<div class='form_voice_compact clearfix left no-display'>
+    {{ form_label(form.from_azienda) }}
+    <i>ad es. Acme S.r.l.</i>
+    {{ form_errors(form.from_azienda) }}
+    {{ form_widget(form.from_azienda) }}
+</div>
+<article class="clearfix{% if cer %} no-display{% endif %}">
+    <div class='form_voice_compact clearfix left'>
+        {{ form_label(form.cerca_cer) }}
+        {{ form_errors(form.cerca_cer) }}
+        {{ form_widget(form.cerca_cer) }}
+    </div>
+</article>
+<div class='form_voice_compact clearfix left margin-right-10'>
+    <label for="condizione">Condizione fisica del rifiuto</label>
+    {{ form_label(form.condizione_fisica) }}
+    <div class="styled-select">
+    {{ form_errors(form.condizione_fisica) }}
+    {{ form_widget(form.condizione_fisica) }}
+    </div>
+</div>
+<div class='form_voice_compact clearfix left'>
+    {{ form_label(form.quantita) }}
+    <i>ad es. 1,2...</i>
+    {{ form_errors(form.quantita) }}
+    {{ form_widget(form.quantita) }}
+</div>
+<div class='form_voice_compact clearfix right'>
+    {{ form_label(form.uumm) }}
+    <div class="styled-select">
+        {{ form_errors(form.uumm) }}
+        {{ form_widget(form.uumm) }}
+    </div>
+</div>
+<div class='form_voice_compact clearfix left'>
+    {{ form_label(form.periodicita) }}
+    <div class="styled-select">
+        {{ form_errors(form.periodicita) }}
+        {{ form_widget(form.periodicita) }}
+    </div>
+</div>
+
+{% include 'ESCerMapBundle:Coordinamento:preventivi/geoRDO.html.twig' %}  {# QUI #}

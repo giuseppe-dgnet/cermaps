@@ -1,0 +1,73 @@
+admin_servizi:
+    resource: "@ESOperatoriBundle/Controller/Servizi/"
+    type:     annotation
+    prefix:   /
+    
+seo:
+    resource: "@EphpUtilityBundle/Controller/SeoController.php"
+    type:     annotation
+    prefix:   /
+
+es_cer_map_admin:
+    resource: "@ESCerMapBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /
+
+_wdt:
+    resource: "@WebProfilerBundle/Resources/config/routing/wdt.xml"
+    prefix:   /_wdt
+
+_profiler:
+    resource: "@WebProfilerBundle/Resources/config/routing/profiler.xml"
+    prefix:   /_profiler
+
+_configurator:
+    resource: "@SensioDistributionBundle/Resources/config/routing/webconfigurator.xml"
+    prefix:   /_configurator
+    
+_operatori:
+    resource: routing_operatori_admin.yml
+    
+_ws:
+    resource: routing_ws.yml
+
+es_foto:
+    resource: "@ESFotoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+es_upload_foto:
+    resource: "@ESUploadFotoBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+_bazinga_exposetranslation:
+    resource: "@BazingaExposeTranslationBundle/Resources/config/routing/routing.yml"
+
+_geo:
+    resource: routing_geo.yml
+_fos:
+    resource: routing_fos_user.yml
+
+fos_js_routing:
+    resource: "@FOSJsRoutingBundle/Resources/config/routing/routing.xml"    
+    
+EphpStatsBundle:
+    resource: "@EphpStatsBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+es_web:
+    resource: "@ESWebBundle/Controller/AdminController.php"
+    type:     annotation
+    prefix:   /
+
+        
+es_web_corporate:
+    resource: "@ESWebBundle/Controller/CorporateController.php"
+    type:     annotation
+    prefix:   /
+es_web_help:
+    resource: "@ESWebBundle/Controller/HelpController.php"
+    type:     annotation
+    prefix:   /

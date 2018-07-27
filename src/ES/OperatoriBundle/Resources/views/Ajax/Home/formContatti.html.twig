@@ -1,0 +1,43 @@
+{% form_theme form ':form:form_baloon_layout.html.twig' %}
+
+{% javascripts
+    '@ESOperatoriBundle/Resources/public/js/contatti.js'
+    %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+
+{#
+<section class="header_rb rounded-5-top">
+    <h1 id="titolo_fancybox_richiesta">Richiesta di registrazione a EcoSeekr</h1>
+</section>
+#}
+
+<div class="baloon-container" w="380" dx="50">
+    <div class="arrow-up a-left"></div>
+    <form action="{{ path('op_sr_save_contatti') }}" method="post" {{ form_enctype(form) }} class="p_input" id="form_balloon">
+        <section class="padding-10 box-float shadow-strong clearfix form-balloon">
+            <p class="text-lightblue" style="font-size: 14px;">Modifica indirizzo e dati societari</p>
+            <div class="clearer"></div>
+            <div class="hr-light margin-top-5 margin-bottom-5"></div>
+            <div class="clearer"></div> 
+            {{ form_widget(form) }}
+            {{ form_rest(form) }}
+            <div class="clearer thirty"></div>
+        </section>
+        <section class="cyan left baloon-submit form-balloon">
+            <ul class="tools button-light clearfix right" >
+                {#<li class="small first"><button type="submit" class="baloon-save">{{ 'salva'|trans({}, 'messages') }}</button></li>#}
+                <li class="small first"><a class="baloon-save" onclick="$('.submit').eq(0).trigger('click');" href="javascript:void(0);"><span class="ok">{{ 'salva'|trans({}, 'messages') }}</span></a></li>
+                <li class="small last"><a class="baloon-cancel" href="javascript:void(0);"><span class="annull">Annulla</span></a></li>
+            </ul>
+            <button type="submit" class="submit no-visible">{{ 'salva'|trans({}, 'messages') }}</button>
+        </section>
+        <script type="text/javascript">
+            enableBalloonForm();
+        </script>
+        
+    </form>
+</div>
+
+

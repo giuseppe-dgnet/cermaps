@@ -1,0 +1,75 @@
+<script type="text/javascript"> 
+    var url_search_ajax_comune = "{{path('geo_search_comune_database')}}";
+    var url_search_ajax = '';
+    var url_geocode = '{{ path('geo_geocode') }}';
+    var url_param = {slug: '{{ showroom }}'};
+    var fb = {%if fb != "" %} true{%else%}false{%endif%};
+</script>
+{% javascripts
+    '@ESWebBundle/Resources/public/js/es/jquery.nuvolainput.js'
+    '@ESOperatoriBundle/Resources/public/js/form_preventivi_mps.js'
+    '@ESOperatoriBundle/Resources/public/js/showroom.js'
+ %}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+
+{% stylesheets 
+    "@ESCerMapBundle/Resources/public/css/NuvolaInput/nuvola-input-rdo.css"  
+%}
+    <link rel="stylesheet" href="{{ asset_url }}" />
+{% endstylesheets %}
+    
+{% if fb  %} {# Se questo twig è dentro il Fancybox mettiamo il titolo #}
+    <section class="header_rb">
+        <h1 id="titolo_fancybox_richiesta">invia la tua richiesta di smaltimento</h1>
+    </section>   
+    <section class="margin-10">
+        <div class="form_ok" style="display:none">
+            <h3>Verrà contattato quanto prima.</h3>
+        </div>                    
+        <div id="form-container">
+{% else %}
+<div class="form_ok" style="display:none">
+    <h3>La Sua richiesta è stata spedita correttamente</h3>
+    <p>Verrà contattato quanto prima</p>
+</div>                    
+<div id="form-container-showroom">
+{% endif %}
+<form class="rdo-form p_input margin-top-20" action="{{ path('invio_richiesta_form_mps', {'slug' : showroom}) }}" style="width: 630px;" id="form_rdo_mps" method="post" {{ form_enctype(form) }}  onsubmit="return false;">
+    <div class='form_voice_orizz clearfix margin-bottom-5'>
+        {{ form_label(form.testo) }}
+        {{ form_errors(form.testo) }}
+        {{ form_widget(form.testo) }}
+    </div>
+    <span id="more_mps_rdo" class="margin-left-5 hover vert-open padding-right-20 text-lightblue">Specifica la tua mps</span>    
+    <div class="more_information_rdo" style="display:none">        
+        <div class="clearer ten"></div>
+        {% include 'ESOperatoriBundle:Showroom/preventivi:maggiori_informazioniMPS.html.twig' %}    
+        <div class="clearer twenty"></div>
+    </div>   
+    <div class="no-text shadow-row"></div>
+    <div class="clearer ten"></div>
+    <div class='form_voice_compact clearfix left'>
+        {{ form_label(form.from_nome) }}
+        <i>ad es. Mario</i>
+        {{ form_errors(form.from_nome) }}
+        {{ form_widget(form.from_nome) }}
+    </div>
+    <div class='form_voice_compact clearfix right'>
+        {{ form_label(form.from_cognome) }}
+        <i>ad es. Rossi</i>
+        {{ form_errors(form.from_cognome) }}
+        {{ form_widget(form.from_cognome) }}
+    </div>
+    
+    {% include 'ESOperatoriBundle:Showroom/preventivi:userRDO.html.twig' %} 
+    {{ form_rest(form) }} {#CSRF#}
+        <div class="clearer twenty"></div>
+    <button type="submit" class="button-orange large" id="submit_form_preventivo">{{ 'invia_richiesta'|trans({}, 'messages') }}</button>
+</form>    
+{% if fb  %} {# Se questo twig è dentro il Fancybox mettiamo il titolo #}
+</div>
+</section>
+{% else %}
+</div>
+{% endif %}

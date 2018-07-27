@@ -1,0 +1,57 @@
+<div class="clearer forty"></div>
+<p class="text-lightblue" style="font-size: 14px;">Registrazione Albo Nazionale Gestori Ambientali</p>
+<div class="clearer"></div>
+<div class="hr-light margin-top-5 margin-bottom-5"></div>
+<div class="clearer"></div> 
+<div class="relative">
+    <section id="form_attivita_static" class="form_attivita">
+        <div class="relative text-block">
+            <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-5">
+                <p class="text-grey">Numero di iscrizione:</p>
+            </article>
+            <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+                <p>{{ showroom.sezione }} {{ showroom.numeroIscrizione }}</p>
+            </article>
+            <div class="clearer"></div>
+            <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-5">
+                <p class="text-grey">Dati aggiornati al:</p>
+            </article>
+            <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+                <p>{{ showroom.detailUpdateAt|date('d/m/Y') }} ore {{ showroom.detailUpdateAt|date('H:i') }}</p>
+            </article>
+            <div class="clearer"></div>
+            {% if showroom.categorie|length > 0 %}
+                <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-5">
+                    <p class="text-grey">Tabella categorie:</p>
+                </article>
+                <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+                    <table class="lps-table shadow" >
+                        <tr>
+                            <th><strong>Categorie</strong></th>
+                            <th><strong>Tipo di iscrizione</strong></th>
+                            <th><strong>Classe</strong></th>
+                            <th><strong>Data di scadenza</strong></th>
+                        </tr>
+                        {% for cat in showroom.categorie %}
+                            <tr class="table-content center">
+                                <td class="cat-space">
+                                    <a href="javascript:void(0)" class="button-cat-code tiptip" title="<h3>{{ cat.categoria.categoria }}{% if cat.sottocategoria %} sottocategoria {{ cat.sottocategoria }}{% endif %}</h3><p>{{ cat.categoria.descrizione }}</p>" >{{ cat.categoria.sigla }} {{ cat.sottocategoria }}</a>
+                                </td>
+                                <td class="desc-cat-space">
+                                    {{ cat.tipoIscrizione }}
+                                </td>
+                                <td class="desc-cat-space">
+                                    <span title="{{ cat.classe.descrizione }}">{{ cat.classe.classe }}</span>
+                                </td>
+                                <td class="desc-cat-space">
+                                    {{ cat.scadenzaAt|date('d/m/Y') }}
+                                </td>
+                            </tr>
+                        {% endfor %}
+                    </table>
+                </article>
+            {% endif %}
+            <div class="clearer"></div>
+        </div>
+    </section>
+</div>

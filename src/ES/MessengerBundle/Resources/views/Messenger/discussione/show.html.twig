@@ -1,0 +1,32 @@
+<section class="clearfix messaggio" id="m_{{result.slug}}">
+    <div class="img_thumb_listing margin-right-10 relative">{% include 'EcoSeekrProfessionistaBundle::avatar.html.twig' with {'utente': result, 'size': 50} %}
+    {% if result.fromUtente.professionista %}
+        <div class="flag premium tiptip" title="Utente Premium Plus">Premium</div>
+    {% endif %}
+    </div>
+    <article class="mess-body left clearfix">
+        <div class="right date-stamp" time="{{ result.createdAt|date("Y-m-d H:i:s") }}"></div>
+        <h4>
+            <span class="relative">{{ result.fromUtenteDenominazioneCompleta }}
+                {% if result.isLock <= 0 and result.tipo != 'system' %}
+                    <span class="absolute rubrica_{{ result.fromUtente.id }} hover" style="font-size: 0; line-height: 0; top: 8px; right: -15px;">
+                        <span class="add-rubrica tiptip add" style="background-position: -1514px -1417px;" title="Aggiungi a rubrica" rel="{{result.fromUtente.id}}"></span>
+                    </span>
+                {% endif %}
+            </span>
+        </h4>
+        <div class="mess-body text-left">{% include result.twigTesto %}</div>
+        {% if result.allegati|length > 0 %}
+            <div class="bacheca light-grey clearfix">Questo messaggio contiene ({{result.allegati|length}}) {% if result.allegati|length == 1 %}allegato{% else %}allegati{% endif %}<br>
+                <ul class="attachment-archive max-width">
+                    {% for allegato in result.allegati %}
+                        <li class="hover"><a href="{{ asset(allegato.file) }}" target="_blank" class="{{ allegato.css }}">{{ allegato.filename }}</a></li>
+                    {% endfor %}
+                </ul>
+            </div>
+        {% endif %}
+    </article>
+</section>
+<div class="clearer five"></div>
+<div class="hr-light"></div>
+<div class="clearer five"></div>

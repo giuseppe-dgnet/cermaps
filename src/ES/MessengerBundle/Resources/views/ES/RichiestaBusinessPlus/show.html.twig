@@ -1,0 +1,85 @@
+{% extends 'EcoSeekrWebBundle::admin.html.twig' %}
+
+{% block title %}
+EcoSeekr - ES\RichiestaBusinessPlus
+{% endblock %}
+
+{% block content %}
+<h1>ES\RichiestaBusinessPlus</h1>
+
+<table class="record_properties">
+    <tbody>
+        <tr>
+            <th>Id</th>
+            <td>{{ entity.id }}</td>
+        </tr>
+        <tr>
+            <th>Nome</th>
+            <td>{{ entity.nome }}</td>
+        </tr>
+        <tr>
+            <th>Cognome</th>
+            <td>{{ entity.cognome }}</td>
+        </tr>
+        <tr>
+            <th>Email</th>
+            <td>{{ entity.email }}</td>
+        </tr>
+        <tr>
+            <th>Codice_fiscale</th>
+            <td>{{ entity.codicefiscale }}</td>
+        </tr>
+        <tr>
+            <th>Fatturato</th>
+            <td>{{ entity.fatturato }}</td>
+        </tr>
+        <tr>
+            <th>Telefono</th>
+            <td>{{ entity.telefono }}</td>
+        </tr>
+        <tr>
+            <th>Messaggio</th>
+            <td>{{ entity.messaggio }}</td>
+        </tr>
+        <tr>
+            <th>Data_invio</th>
+            <td>{{ entity.datainvio|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Preso_in_carico</th>
+            <td>{{ entity.presoincarico }}</td>
+        </tr>
+        <tr>
+            <th>Data_preso_in_carico</th>
+            <td>{{ entity.datapresoincarico|date('Y-m-d H:i:s') }}</td>
+        </tr>
+        <tr>
+            <th>Contattato</th>
+            <td>{{ entity.contattato }}</td>
+        </tr>
+        <tr>
+            <th>Note</th>
+            <td>{{ entity.note }}</td>
+        </tr>
+    </tbody>
+</table>
+
+<ul class="record_actions">
+    <li>
+        <a href="{{ path('business_plus') }}">
+            Torna indietro
+        </a>
+    </li>
+    <li>
+        <a href="{{ path('business_plus_edit', { 'id': entity.id }) }}">
+            Modificha
+        </a>
+    </li>
+    <li>
+        <form action="{{ path('business_plus_delete', { 'id': entity.id }) }}" method="post">
+            {{ form_widget(delete_form) }}
+            <button type="submit">Elimina</button>
+        </form>
+    </li>
+</ul>
+{% endblock %}

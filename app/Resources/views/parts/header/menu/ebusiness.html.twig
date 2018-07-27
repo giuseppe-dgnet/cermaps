@@ -1,0 +1,9 @@
+{##
+ # Menu corporate
+ #}
+<ul class="header_submenu clearfix left margin-left-10">
+    <li class="rounded-3 hover {% if menu_marker == 'ebusiness' %}active{% endif %}" id="menu_ebusiness"  onclick="window.location.href='{{ path('ebusinessIndex') }}'">E-Business</li>
+    <li class="rounded-3 hover {% if menu_marker == 'webmarketing' %}active{% endif %}" id="menu_webmarketing"  onclick="window.location.href='{{ path('webMarketingIndex') }}'">Web-Marketing</li>
+    <li class="rounded-3 hover {% if menu_marker == 'webadvertising' %}active{% endif %}" id="menu_webadvertising"  onclick="window.location.href='{{ path('webAdvertisingIndex') }}'">Web-Advertising</li>
+    <li class="rounded-3 hover {% if menu_marker == 'webdesign' %}active{% endif %}" id="menu_webdesign"  onclick="window.location.href='{{ path('webDesignIndex') }}'">Web-Design</li>
+</ul>

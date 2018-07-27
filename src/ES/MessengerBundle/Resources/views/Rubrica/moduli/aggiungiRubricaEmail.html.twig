@@ -1,0 +1,22 @@
+<form class="p_input" id="form_get_provider" onsubmit="return false;">
+    <div class="clearer ten"></div>
+    <label for="gmail_grabber" style="width: 87px" class="left hover"><img src="/images/icone/button_logo_gmail.png" ></label>
+    <label for="yahoo_grabber" style="width: 87px" class="right hover"><img src="/images/icone/button_logo_yahoo.png" ></label>
+    <div class="left text-center no-display" style="width: 87px"><input type="radio" name="email_provider[provider]" id="gmail_grabber" class="provider_radio" value="gmail"></div>
+    <div class="right text-center no-display" style="width: 87px"><input type="radio" name="email_provider[provider]" id="yahoo_grabber" class="provider_radio" value="yahoo"></div>
+    <div class="clearer"></div>
+    <section id="provider_mail" class="baloon-container no-display" id="invito_rubrica_baloon" style="left: -15px;"> 
+        <div id="arrow-up-provider" class="arrow-up a-right" id="arrow-up"></div>
+        <article class="box-float bacheca shadow-strong clearfix content-provider-email">
+            <div class="close-box-main hover shadow rounded-10" id="baloon-area-close">Chiudi</div>
+            <input class="left smaller" style="width: 185px;" id="user_get_provider" name="email_provider[username]" value="" placeholder="indirizzo Email"></input>
+            <p id="suggerimento_provider" class="note"></p>
+            <div class="form-alert_provider"></div>
+            <input type="password" class="left smaller margin-top-15" style="width: 185px;" id="email_get_provider" name="email_provider[password]" value="" placeholder="Password"></input>                               
+            <p id="suggerimento_password_provider" class="note"></p>
+            <div class="clearer ten"></div>      
+            <button type="button" class="button-orange smaller max-width relative" id="submit_get_provider"><strong>Invita</strong></button>
+            <div id="status_get_provider" class="margin-top-10 padding-3 text-lightblue box-lightblue rounded-3" style="display:none"></div>                            
+        </article>
+    </section>
+</form>

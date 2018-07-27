@@ -1,0 +1,16 @@
+<section class="box-light shadow bacheca rounded-3 gradient-lightmedium contact clearfix">
+    <p class="text-lightblue" style="font-size: 14px;" id="email_invito_titolo_{{i}}"></p>
+    <div class="clearer"></div>
+    <div class="hr-light margin-top-5 margin-bottom-5"></div>
+    <div class="clearer ten"></div> 
+    <input class="placeholder no-display" id="email_invito_{{i}}" attr="email_invito_{{i}}" name="invito_ecoseekr[{{i}}][email]" value="" onkeyup="javascript:checkInvito('{{i}}');" placeholder="Email destinatario"></input>
+    <input type="hidden" name="invito_ecoseekr[{{i}}][valida]" id="email_invito_hidden_{{i}}" value="non valido">
+    <input type="hidden" name="invito_ecoseekr[{{i}}][id_utente]" id="utente_invito_hidden_{{i}}" value="{{i}}">
+    <input type="hidden" name="invito_ecoseekr[{{i}}][provenienza]" id="provenienza_invito_hidden_{{i}}" value="rubrica">
+    <section class="baloon-container bc_{{i}} relative margin-left-5 left" style="display: none;">
+        <div class="arrow-up a-right" id="arrow-up"></div>
+        <section class="box-float bacheca shadow-strong clearfix form-alert_{{i}} text-left" >
+        {# Qui dentro ci viene caricato il baloon via Ajax, mail/formMessaggio #}
+        </section>
+    </section>  
+</section>

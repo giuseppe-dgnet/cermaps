@@ -1,0 +1,6 @@
+{{ risposta|raw }}
+
+{% if destinatario.destinatario.showroom %}
+    Per gestire la discussione apri il link:
+    {{ url('messenger_discussione_login', { 'slug': destinatario.slug }) }}
+{% endif %}

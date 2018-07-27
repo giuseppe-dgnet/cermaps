@@ -1,0 +1,20 @@
+<section class="right "style="width: 100%;">
+    <section class="contenuto_ricerca" style="margin-left: 300px;">
+         <section class="clearfix no-display-important">
+            <ul class="cer-index-cat clearfix"  id="contenuti">
+                <li class="shadow">
+                    <a href="{{ path('es_cer_cer', {'slug': categoria.slug}) }}" {% if categoria.pericoloso %}class="per"{% endif %}>
+                        <h2>{{ categoria.classe }}.{{ categoria.sottoclasse }}.{{ categoria.categoria }}</h2>
+                        <p>{{ categoria.descrizione|capitalize }}</p>
+                    </a>
+                </li>
+            </ul>
+        </section>
+        {#% include 'EcoSeekrMotoreBundle:Cerca:showroom/risultatiLps.html.twig'%#}
+        <article id="console" class="shadow">
+            <section class="activity gradient-reg">
+                <a href="javascript:void(0)" onclick="$('.register').trigger('click');" class="reg"><h4>Registrati subito.<br><small>Registrati gratis per ricevere le richieste che ti interessano di più nella tua zona</small></h4></a>
+            </section>
+        </article>
+    </section>
+</section>

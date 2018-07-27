@@ -1,0 +1,8 @@
+{% set utente = app.session.get('user') %}
+<section id="header-tab" class="no-padding relative">
+    <div class="fixed-width clearfix margin-top-20 margin-bottom-10">
+        <h2 class="text-shadow normal">Centro Comununicazioni</h2>
+        <h4 class="text-shadow normal">Messenger</h4>
+        {% include "EcoSeekrNuvolaBundle:Nuvola:commons/shortcut.html.twig" %}
+    </div>
+</section>

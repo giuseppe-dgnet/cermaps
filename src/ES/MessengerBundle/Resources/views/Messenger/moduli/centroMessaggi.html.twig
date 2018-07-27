@@ -1,0 +1,25 @@
+<h4>Messenger - <a href="javascript:init_tipo(),init_filtri(),show(['servizi','mps','cer','rdi','post','system']),aggiornaTestoFiltro(0)">Tutti</a></h4>
+<div class="clearer ten"></div>
+<ul class="filters-mailing">
+    {% set indice = 1 %}
+    {% for categoria in categorie_messaggi %}
+        <li {% if not categoria.sottocategorie %}class="hover"{% endif %}><a id="testo{{ indice }}" href="javascript:init_tipo(),init_filtri(),show({{ categoria.show }}),aggiornaTestoFiltro({{ indice }})" class="rdo-center">{{ categoria.label|raw }} <span class="counter rounded-3 shadow">{{ categoria.nuovi }}/{{ categoria.numero }}</span></a>
+            {% set indice = indice + 1 %}
+            {% if categoria.sottocategorie %}
+                <ul class="submenu">
+                    {% for sottocategoria in categoria.sottocategorie %}
+                        <li class="hover"><a id="testo{{ indice }}" href="javascript: javascript:init_tipo(),init_filtri(),show({{ sottocategoria.show }}),aggiornaTestoFiltro({{ indice }})">{{ sottocategoria.label|raw }} <span class="counter rounded-3 shadow">{{ sottocategoria.nuovi }}/{{ sottocategoria.numero }}</span></a></li>
+                        {% set indice = indice + 1 %}
+                    {% endfor %}
+                        <!-- BETA 0.1 BLANKATO
+                        {#{% if rdo_rimasti == 0 and rdo_rimasti is not null%}
+                        <li class="hover"><a href="#">Acquista <strong>RDO</strong><span class="counter rounded-3 shadow"></span></a></li>
+                        {% else %}
+                        <li class="hover"><a href="javascript: javascript:init_tipo(),init_filtri(),show(['rdo'])">Richiesta <strong>RDO</strong><span class="counter rounded-3 shadow">{{rdo_rimasti}}</span></a></li>                        
+                        {% endif %} #}
+                        -->
+                    </ul>
+            {% endif %}
+                </li>
+    {% endfor %}
+            </ul>

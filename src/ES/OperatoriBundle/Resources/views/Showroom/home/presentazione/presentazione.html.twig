@@ -1,0 +1,12 @@
+{% if showroom.descrizione %}
+    {{ showroom.descrizione|nl2br }}
+{% else %}
+    {% if not modificabile %}
+        {#<p><img src="/images/placeholder_desc_azienda.jpg"></p>#}
+        <p>L'utente non ha ancora inserito nessuna descrizione</p>
+    {% else %}
+        <article class="clearfix gradient-blue rounded-5 shadow padding-10">
+            <p class="text-white text-shadow" style="font-size: 14px;">Uno showroom completo e ricco di informazioni specifiche migliora la percezione della qualità dei tuoi SERVIZI, PRODOTTI ed in generale della tua organizzazione.</p>
+        </article>
+    {% endif %}
+{% endif %}

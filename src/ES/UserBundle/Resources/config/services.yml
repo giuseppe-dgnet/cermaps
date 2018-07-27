@@ -1,0 +1,8 @@
+# src/Acme/UserBundle/Resources/config/services.yml
+
+services:
+    sn_user.registration.form.type:
+        class: ES\UserBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: es_user_registration } # alias = nome form

@@ -1,0 +1,24 @@
+<script type="text/javascript">
+    var url_add_cerchia = '{{ path('rubrica_add_cercio') }}';
+    var cerchie = [];
+    var colleghi = [];
+    {% for cer in cerchie %}
+        {% if not cer.predefinito %}
+            cerchie.add({id: '{{cer.id}}', label: '{{cer.cerchia}}'})
+        {% else %}
+            {% for utente in cer.contatti %}
+                colleghi.add({{utente.contatto.id}});
+            {% endfor %}
+        {% endif %}
+    {% endfor %}
+</script>
+<article class="dashboard-box clearfix">
+    <div id="centro_messaggi"  class="new-email">
+        {% include 'EcoSeekrMessengerBundle:Messenger:moduli/centroMessaggi.html.twig'%}
+    </div>
+    <div class="clearer twenty"></div>
+    <div id="rubrica">
+        {% include 'EcoSeekrMessengerBundle:Messenger:moduli/rubrica.html.twig'%}
+        {#% include 'EcoSeekrMessengerBundle:Messenger:moduli/strumenti.html.twig'%#}
+    </div>
+</article>

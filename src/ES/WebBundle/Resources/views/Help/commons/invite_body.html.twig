@@ -1,0 +1,6 @@
+{% if not app.user %}
+    <h3>Sei un operatore del settore?</h3>
+    <div class="padding-20 cyan margin-bottom-10">
+        <button class="button-orange max-width" onclick="$('a.register').trigger('click');">Invia subito la tua candidatura</button>
+    </div>
+{% endif %}

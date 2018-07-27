@@ -1,0 +1,55 @@
+{% if showroom.user %}
+<article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-5">
+    <p class="text-grey">Attività principale:</p>
+</article>
+<article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+    <p>{{ showroom.attivita }}</p>
+</article>
+<div class="clearer"></div>
+{% endif %}
+<article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-5">
+    <p class="text-grey">{% if showroom.user %}Attività secondarie:{% else %}Attività:{% endif %}</p>
+</article>
+<article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+    <p>
+        {% if showroom.impianto %}
+            Impianto di trattamento o recupero
+        {% endif %}
+        {% if showroom.discarica %}
+            Discarica
+        {% endif %}
+        {% if showroom.raccoglitore %}
+            Raccoglitore
+        {% endif %}
+        {% if showroom.trasportatore %}
+            Trasportatore
+        {% endif %}
+        {% if showroom.servizi %}
+            Servizi ambientali, bonifiche, demolizioni, decontaminazioni
+        {% endif %}
+        {% if showroom.laboratorio %}
+            Laboratorio di analisi
+        {% endif %}
+        {% if showroom.demolizioni %}
+            Demolizioni immobili
+        {% endif %}
+        {% if showroom.spurghi %}
+            Spurghi e serbatoi
+        {% endif %}
+        {% if showroom.bonifiche %}
+            Bonifiche ambientali
+        {% endif %}
+        {% if showroom.rottamazione %}
+            Rottamazione veicoli
+        {% endif %}
+        {% if showroom.raee %}
+            Rottamazione apparecchiature elettriche
+        {% endif %}
+        {% if showroom.olio_minerale %}
+            Recupero olio minerale
+        {% endif %}
+        {% if showroom.olio_vegetale %}
+            Recupero olio vegetale
+        {% endif %}
+    </p>
+</article>

@@ -1,0 +1,24 @@
+{##
+ # ESEMPIO DI MENU GENERATO A MANO
+ #}
+{# menu di sx #}
+<ul class="header_submenu clearfix left margin-left-10">
+    <li class="rounded-3 hover {% if menu_marker == 'cer' %}active{% endif %}" id="menu_cer" onclick="window.location.href='#'">{{ 'menu.cer'|trans({}, 'menu') }}</li>
+    {#<li class="margin-right-50 rounded-3 hover relative toggle-content {% if menu_marker == 'rec' %}active{% endif %}" id="menu_rec" targetLink="baloon-rec">{{ 'menu.rec'|trans({}, 'menu') }}
+         <div class="baloon-container no-display baloon-login-left" id="baloon-rec">
+            <div class="arrow-up a-right"></div>
+            <section class="box-float shadow-strong clearfix" style="width: 255px;">
+                <ul class="menu-tools">
+                    <li><a href="#" >{{ 'menu.np'|trans({}, 'menu') }}</a></li>
+                    <li><a href="#" >{{ 'menu.p'|trans({}, 'menu') }}</a></li>
+                </ul>
+            </section>
+        </div>
+    </li>#}
+</ul>
+
+{# menu di dx #}
+<ul class="header_submenu clearfix right margin-right-10">
+    <li class="rounded-3 hover {% if menu_marker == 'cermap' %}active{% endif %}" id="menu_cermap" onclick="window.location.href='http://www.ecoseekr.it'">{{ 'menu.cermap'|trans({}, 'menu') }}</li>
+    {#<li class="rounded-3 hover {% if menu_marker == 'mps' %}active{% endif %}" id="menu_mps" onclick="window.location.href='{{ path('es_mps_categorie') }}'">{{ 'menu.mps'|trans({}, 'menu') }}</li>#}
+</ul>

@@ -1,0 +1,17 @@
+{##
+ # Menu cermap
+ #}
+<ul class="header_submenu clearfix left">
+    <li class="rounded-3 hover" onclick="window.location.href='{{ path('richiesta') }}'">Richieste operatori</li>
+    <li class="rounded-3 hover" onclick="window.location.href='{{ path('gestione_rdo') }}'">Rdo</li>
+    {% for role in app.user.roles %}
+        {% if role == 'ROLE_ADMIN' or role == 'ROLE_SUPER_ADMIN' %}
+            <li class="rounded-3 hover" onclick="window.location.href='{{ path('gestione_csr') }}'">Centro Smaltimento Rifiuti</li>
+        {% endif %} 
+    {% endfor %} 
+    {% for role in app.user.roles %}
+        {% if role == 'ROLE_SUPER_ADMIN' %}
+            <li class="rounded-3 hover" onclick="window.location.href='{{ path('admin_servizi') }}'">Servizi</li>
+        {% endif %} 
+    {% endfor %} 
+</ul>

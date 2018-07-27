@@ -1,0 +1,204 @@
+{% set footer = 'corporate' %}
+{% set menu_marker = 'help' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+        '@ESWebBundle/Resources/public/js/base/jquery.activate.functions.js'   
+        '@ESWebBundle/Resources/public/js/base/concat.select.region.js'  
+        '@ESWebBundle/Resources/public/js/base/jquery.j3ssw.js'   %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+    
+    
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_help');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative">
+        <div class="fixed-width clearfix">
+            {#<span class="absolute tiptip" title="utente registrato in data {{showroom.intestazione.created_at|date("d/m/Y")}}" style="right: 0; top: 0;" ><img src="{{ asset('/images/user-type-'~showroom.intestazione.account~'.png') }}" /></span>#}
+            <h2 class="text-shadow">{{ 'menu.su_di_noi'|trans({}, 'menu') }}</h2>
+            <h4 class="text-shadow normal">{{ 'menu.info'|trans({}, 'menu') }}</h4>
+        </div>
+    </section>
+    <section class="fixed-width corporate box no-border shadow clearfix rounded-5 no-padding padding-top-10 padding-bottom-10" id="tab_container">
+        <section class="coldx left no-margin margin-left-10">
+            {% include 'ESWebBundle:Corporate:commons/corporateMenu.html.twig' %}
+        </section>
+        <section class="colsx right no-margin margin-right-10">
+            <h3 class="main-title">EcoSeekr è un prodotto unico e fortemente innovativo! Richiedi l’esclusiva di vendita per la tua zona e collabora per espandere la nostra rete commerciale lavorando con noi nei settore dell’ ambiente, l’energia ed i rifiuti.</h3>
+        
+            
+            <form class="formdiv p_input clearfix" id="form_collaborazioni" method="post" action="{{path('salva_collaborazione')}}">
+                <div class="fieldset">
+                    <legend>
+                        <div class="dati tipo">
+                            <h3>Tipo di contatto</h3>
+                        </div>
+                    </legend>
+                    <div class="radiobutton none" id="rb">
+                        <label for="libpro" class="none"><span class="userspan">Libero professionista</span>
+                            <input name="utente" type="radio" value="Libero professionista" id="libpro" class="user" checked />
+                        </label>
+                        <label for="azienda" class="none"> <span class="userspan">Azienda</span>
+                            <input name="utente" type="radio" value="Azienda" id="azienda" class="user" />
+                        </label>
+                        <label for="ente" class="none"> <span class="userspan">Ente o associazione</span>
+                            <input name="utente" type="radio" value="Ente o Associazione" id="ente" class="user" />
+                        </label>
+                    </div>
+                </div>
+                <div class="clearer thirty"></div>
+                <div class="fieldset">
+                    <legend>
+                    <div class="dati contatto">
+                        <h3>Dati contatto</h3>
+                    </div>
+                    </legend>
+                    <label id="labelnome"><span>Nome:</span> <span><span class="asterisco">*</span>
+                        <input class="inputfield small small required" name="nome" type="text" id="nome" />
+                        </span> </label>
+                    <label id="labelcognome"><span>Cognome:</span> <span><span class="asterisco">*</span>
+                        <input class="inputfield small required" name="cognome" type="text" id="cognome" />
+                        </span> </label>
+                    <label id="labelruolo"> <span>Ruolo occupato in azienda:</span> <span><span class="asterisco">*</span>
+                        <input class="inputfield small required" name="ruolo" type="text" id="ruolo" />
+                        </span> </label>
+                    <label id="labelemail"><span>Email:<span class="asterisco">*</span> <br />
+                        <small>(ti verr&agrave; inviata una mail di conferma!)</small></span> <span>
+                        <input class="inputfield small required email" name="email3" type="text" id="email3" />
+                        </span> </label>
+                    <label id="labelragsoc"><span>Ragione Sociale:</span> <span><span class="asterisco">*</span>
+                        <input class="inputfield small required" name="ragsoc" type="text" id="ragsoc" />
+                        </span> </label>
+                    <label id="labelpiva"><span>Partita IVA:</span> <span><span class="asterisco">*</span>
+                        <input class="inputfield small required" name="piva" type="text" id="piva"  maxlength="11"/>
+                        </span> </label>
+                    <label id="labelregione"><span>Seleziona una regione</span> <span><span class="asterisco">*</span>
+                        <div class="styled-select-small">
+                            <select class="select required" name="regione" id="combo_0"  onChange="change(this);">
+                                <option value="" selected="selected">- -</option>
+                                <option value="Abruzzo">Abruzzo</option>
+                                <option value="Basilicata">Basilicata</option>
+                                <option value="Calabria">Calabria</option>
+                                <option value="Campania">Campania</option>
+                                <option value="Emilia-Romagna">Emilia-Romagna</option>
+                                <option value="Friuli-Venezia Giulia">Friuli-Venezia Giulia</option>
+                                <option value="Lazio">Lazio</option>
+                                <option value="Liguria">Liguria</option>
+                                <option value="Lombardia">Lombardia</option>
+                                <option value="Marche">Marche</option>
+                                <option value="Molise">Molise</option>
+                                <option value="Piemonte">Piemonte</option>
+                                <option value="Puglia">Puglia</option>
+                                <option value="Sardegna">Sardegna</option>
+                                <option value="Sicilia">Sicilia</option>
+                                <option value="Toscana">Toscana</option>
+                                <option value="Trentino-Alto Adige">Trentino-Alto Adige</option>
+                                <option value="Umbria">Umbria</option>
+                                <option value="Valle d'Aosta">Valle d'Aosta</option>
+                                <option value="Veneto">Veneto</option>
+                            </select>
+                        </div>
+                        </span> </label>
+                    <label id="labelprovincia"><span>Seleziona una provincia</span>
+                        <span>
+                            <span class="asterisco">*</span>
+                            <div class="styled-select-small">
+                                <select class="select required" name="provincia" id="combo_1">
+                                    <option value="" selected="selected">- -</option>
+                                </select>
+                            </div>
+                        </span>
+                    </label>
+                    <label id="labelwebsite"><span>Sito Web:<br />
+                        <small>(inserire http:// prima del sito)</small></span> <span>
+                        <input class="inputfield small url" name="website" type="text" id="website" />
+                        </span> </label>
+                    <label id="labelemailaz"><span>Email aziendale:</span> <span>
+                        <input class="inputfield small email" name="emailaz" type="text" id="emailaz" />
+                        </span> </label>
+                    <label id="labeltel"><span>Telefono:</span> <span><span class="asterisco">*</span>
+                        <input class="inputfield small required" name="tel" type="text" id="tel" />
+                        </span> </label>
+                    <label id="labelfax" class="none"><span>Fax:</span> <span>
+                        <input class="inputfield small" name="fax" type="text" id="fax" />
+                        </span>
+                    </label>
+                </div>
+                <label class="none margin"><span id="state3"><span class="state2">campi obligatori</span></span>
+                    <button class="button-orange invia large" type="submit">invia la richiesta</button>
+                </label>
+            </form>
+        </section>
+    </section>
+    <script type="text/javascript">
+        $(document).ready(function(){
+
+                $("#rb").j3ssw({off:"state3down-sort", on:"state3up-sort", def:"state3def-sort", callback:listener1, mode:1});
+                function listener1(selection, status){
+                    $("div.trace").eq(0).empty().append(selection + " : " + (status?"Z-A":"A-Z"));
+                }
+
+                $("#labelragsoc").css("display","none");
+                $("#labelruolo").css("display","none");
+                $("#labelemailaz").css("display","none");
+
+                $("#ruolo").removeClass("required");
+                $("#ragsoc").removeClass("required");
+
+                $(".user").click(function(){
+                        if ($('input[name=utente]:checked').val() == "Libero professionista" ) {
+                                $("#labelnome").slideDown("fast");
+                                $("#labelcognome").slideDown("fast");
+                                $("#labelruolo").slideUp("fast");
+                                $("#labelemail").slideDown("fast");
+                                $("#labelragsoc").slideUp("fast");
+                                $("#labelpiva").slideDown("fast");
+                                $("#labelwebsite").slideDown("fast");
+                                $("#labelemailaz").slideUp("fast");
+                                $("#labeltel").slideDown("fast");
+                                $("#labelfax").slideDown("fast"); 
+
+                                $("#ruolo").removeClass("required");
+                                $("#ragsoc").removeClass("required");
+                        }
+                        if ($('input[name=utente]:checked').val() == "Azienda" ){
+                                $("#labelnome").slideDown("fast");
+                                $("#labelcognome").slideDown("fast");
+                                $("#labelruolo").slideDown("fast");
+                                $("#labelemail").slideDown("fast");
+                                $("#labelragsoc").slideDown("fast");
+                                $("#labelpiva").slideDown("fast");
+                                $("#labelwebsite").slideDown("fast");
+                                $("#labelemailaz").slideDown("fast");
+                                $("#labeltel").slideDown("fast");
+                                $("#labelfax").slideDown("fast");
+
+                                $("#ruolo").addClass("required");
+                                $("#ragsoc").addClass("required");
+                        }
+                        if ($('input[name=utente]:checked').val() == "Ente o Associazione" ){
+                                $("#labelnome").slideDown("fast");
+                                $("#labelcognome").slideDown("fast");
+                                $("#labelruolo").slideDown("fast");
+                                $("#labelemail").slideDown("fast");
+                                $("#labelragsoc").slideDown("fast");
+                                $("#labelpiva").slideDown("fast");
+                                $("#labelwebsite").slideDown("fast");
+                                $("#labelemailaz").slideDown("fast");
+                                $("#labeltel").slideDown("fast");
+                                $("#labelfax").slideDown("fast");
+
+                                $("#ruolo").addClass("required");
+                                $("#ragsoc").addClass("required");
+                        }
+                });     
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,13 @@
+<section class="title_dashboard clearfix gradient-lightmedium padding-10">
+    <p class="breadcrumbs neutro" style="top: 4px;"><a href="{{ path('es_cer_classi') }}"><span class="cer shadow active" title="Indice CER">Indice CER</span></a>
+        <strong>
+            &raquo;<a href="{{ path('es_cer_sottoclassi', {'slug': classe.slug}) }}"><span title="<span class='button-cer-code-small'>{{ classe.codice }}</span> - {{ classe.descrizione|capitalize }}">Classe: ({{ classe.codice }})</span></a>
+            &raquo;<span class="active" title="<span class='button-cer-code-small'>{{ sottoclasse.codice }}</span> - {{ sottoclasse.descrizione|capitalize }}">Sottoclasse: ({{ sottoclasse.codice }})</span>
+        </strong>
+    </p>
+    <form style="position: absolute; top: 8px; right: 8px;" onsubmit="return false;">
+        <section class="search-mess-area clearfix">
+            <input type="text" id="q_lps" class="placeholder" name="q_lps" value="" placeholder="Cerca per descrizione o indice cer">
+        </section>
+    </form>
+</section>

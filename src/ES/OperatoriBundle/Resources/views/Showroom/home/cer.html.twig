@@ -1,0 +1,22 @@
+{% if showroom.tipologie|length > 0 %}
+
+    <div class="clearer forty"></div>
+    <p class="text-lightblue" style="font-size: 14px;">Rifiuti recuperabili trattati</p>
+    <div class="clearer"></div>
+    <div class="hr-light margin-top-5 margin-bottom-5"></div>
+    <div class="clearer"></div> 
+        
+        
+    {% for categoria in showroom.categorieTipologie %}
+        
+        <ul class="doc-tools button-light">
+            <li class="small first last shadow"><a href="javascript: void(0)" class="relative" onclick="mostraTipologia(this,{{categoria.id}})"><span class="read read-{{ categoria.id }}">{{categoria.nome}}</span></a>
+            </li>
+        </ul>
+        <div class="clearer"></div>
+        <div id="contenitore_cer_{{categoria.id}}"></div>
+        <div class="clearer"></div>
+        <div class="hr-light margin-top-5 margin-bottom-5"></div>
+        <div class="clearer"></div> 
+    {%endfor%}
+{%endif%}

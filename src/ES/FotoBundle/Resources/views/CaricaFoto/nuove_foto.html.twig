@@ -1,0 +1,27 @@
+{% extends "::base.html.twig" %}
+{% block content %}
+
+{#SUPER IPER PROVVISORIO#}
+{% stylesheets 
+  "@ESFotoBundle/Resources/public/css/*" 
+%}
+    <link rel="stylesheet" type="text/css" href="{{ asset_url }}" />
+{% endstylesheets %}
+
+{# 
+    Redirect è se vogliamo il pulsante per cambiare pagina alla fine del salvataggio
+    didascalia è se vogliamo i campi per scrivere una descrizione sull'immagine + Jcrop
+    {% set vars = {'redirect': path('profilo',{'slug': profilo.slug|raw}),'didascalia': false } %}
+#}
+    <div id="utility-area">
+        <div id="sub-header-bar">   
+            <div class="wrapper">
+                <span class="filters"><strong>Gestione foto: </strong> <a href="#" class="tag">Tutte</a> <a href="#" class="tag">Private</a> <a href="#" class="tag">Foto profilo</a>
+            </div>
+        </div>
+    </div>
+    
+    {% set vars = {'didascalia': true } %}
+    {% render 'ESFotoBundle:UploadFoto:index' with vars%} {# ES twig vedere cosa richiama l'azione dentro ESFotoBundle/UploadFotoController/indexAction #}
+    {#% render 'ESFotoBundle:Cam:index'%#}
+{%endblock content%}

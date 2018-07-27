@@ -1,0 +1,40 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webdesign' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webdesign');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Web Design</h2>
+            <h4 class="text-shadow normal">Interpretiamo il design per il web per aumentare la profondità dell'esperienza dell'utente e l'efficacia della tua struttura online.</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>L' <strong>esperienza utente  e l'usabilità  esprimono l'efficacia</strong>, l'efficienza e la soddisfazione con le quali un utente raggiunge i suoi obiettivi sul tuo sito web. La chiave per creare questa comprensione é una complessa scienza che deve essere applicata mentre al processo di sviluppo del tuo sito web, portale o e-commerce.</p><p>
+                    <strong>Nell'utente soddisfatto si genera subito un parere  positivo e diffuso sulla tua attività  online che si espande fino al concetto reale della tua azienda. </strong></p>
+                <p> Un <strong>corretto equilibrio, tra forma, funzione, canalizzazione utente ed iterazione con il software </strong>é un compito difficile che noi ci sentiamo in grado di assolvere con la più assoluta sicurezza e serenità . </p>
+            </section>
+        </section>
+    </section>
+{% endblock %}

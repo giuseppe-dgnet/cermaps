@@ -1,0 +1,75 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webmarketing' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webmarketing');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">SEO - Search Engine Optimization</h2>
+            <h4 class="text-shadow normal">Servizio per l'ottimizzazione e l'indicizzazione del sito web in Google e nei principali motori di ricerca senza utilizzare la pubblicità  online</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webmarketing/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:webmarketing/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>Il Search Engine Optimization, in acronimo SEO, riguarda tutte le <strong>attività  finalizzate ad aumentare il volume di traffico che il tuo sito web deve riceve dai motori di ricerca</strong>.</p>
+                <p>Principalmente queste attività  sono riconducibili a due principali ambiti operativi:</p>
+                <ul class="dot">
+                    <li>L'ottimizzazione semantica del codice di programmazione delle pagine web</li>
+                    <li>L'ottimizzazione dei contenuti della pagina web</li>
+                </ul>
+                <h3>Perché utilizzare il SEO per il proprio sito web? <br>Perché il tuo Business online riceve traffico dai motori di ricerca anche senza pubblicità !</h3>
+                <p>Utilizziamo sulla vostra piattaforma le migliore tecniche e best  practicies<strong> per ricevere gratutitamente visite dai motori di ricerca</strong> e dalle  directory.</p>
+                <p><strong>E' evidente che senza una evoluta strategia SEO,</strong> le possibilità   di ricevere od incrementare il numero delle visite e degli utenti <strong>in modo organico e gratuito dal web</strong> <em>(senza pubblicità  online)</em> <strong>possono risultare molto scarse</strong>, penalizzando tutta la vostra iniziativa di e-business o e-commerce.</p>
+                <p> Le <strong>tecniche SEO</strong> servono quindi a rendere efficace ed efficiente in maniera orgnanica  rispetto ai motori di ricerca il vostro Busienss online.
+                <p><strong>Queste strategie di  ottimizzazione per i motori di ricerca portano quindi risultati permanenti nel  tempo e permettono quindi di costruire un'entità  digitale di reale valore.</strong></p>
+                <div class="clearer twenty"></div>
+                <table class="tavola_servizi" width="100%" border="0" cellpadding="0" cellspacing="0">
+                    <tr>
+                        <th width="50%">Servizi correlati</th>
+                        <th width="50%">benefici e vantaggi</th>
+                    </tr>
+                    <tr>
+                        <td><strong>Analisi delle Keyword</strong></td>
+                        <td><p>Vengono individuate le parole chiave più utilizzate dai tuo potenziali clienti per ricercare i tuoi prodotti per utilizzare nel processo di implementazione SEO</p></td>
+                    </tr>
+                    <tr class="th_alt">
+                        <td><strong>Previsione dei risultati di ricerca</strong></td>
+                        <td><p>Vengono verificati i posizionamenti migliori tra le combinazioni di keyword in relazione ai prodotti o i contesti su cui si  intender ricevere traffico da utenti realmente interessati. </p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Una Keyword per pagina</strong></td>
+                        <td><p>Si amplia l'utilizzo della Keyword nei codici più sensibili ai motori di ricerca. Questo aspetto migliora fortemente e costantemente nel tempo i risultati di traffico da visite generate in modo organico (gratuito) dai motori di ricerca.</p></td>
+                    </tr>
+                    <tr class="th_alt">
+                        <td><strong>Integrazione strategica degli aspetti SEM</strong></td>
+                        <td><p>Ogni pagina della tua struttura é sviluppata secondo le linee guida e le attività  previste nel piano SEM (Search Engine marketing).</p></td>
+                    </tr>
+                    <tr>
+                        <td><strong>Analisi delle performance</strong></td>
+                        <td><p>E' un processo di tuning e affinamento al fine di migliorarne le performance. </p></td>
+                    </tr>
+                </table>
+            </section>
+        </section>
+    </section>
+{% endblock %}

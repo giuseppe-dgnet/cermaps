@@ -1,0 +1,37 @@
+{#risultati_totali è quando arrivo dai filtri, result è quando arrivo dalla rubrica#}
+{% if risultati_totali is defined%}
+    {% if risultati_totali > 0 %}
+        {% if risultati_totali == 1%}
+            <li id="sezione" class="mid-light-grey"><span class="padding-left-15">E' stato trovato <strong>{{risultati_totali}}</strong> risultato</span></li> 
+        {% else %}
+            <li id="sezione" class="mid-light-grey"><span class="padding-left-15">Sono Stati trovati <strong>{{risultati_totali}}</strong> risultati</span></li>    
+        {% endif %}
+    {% else %}
+        <li>
+        {# <h2 style="text-align: left;">La Casella di posta è vuota.</h2>#}
+            <h2 style="text-align: left;">Non sono presenti messaggi <span id="context"></span>.</h2>
+            <div class="clearer ten"></div>
+        </li> 
+    {% endif %}
+    {% for id, result in results %}   
+       {% include 'EcoSeekrMessengerBundle:Messenger:moduli/risultato.html.twig' %}
+    {% endfor %}    
+{% elseif  risultati_totali is not defined and results is defined%}
+   {% if results|length > 0 %}
+        {% if results|length == 1%}
+             <li id="sezione" class="mid-light-grey"><span class="padding-left-15">E' stato trovato <strong>{{results|length}}</strong> risultato</span></li>
+        {%else%}
+             <li id="sezione" class="mid-light-grey"><span class="padding-left-15">Sono Stati trovati <strong>{{results|length}}</strong> risultati</span></li>
+        {% endif %}
+   {% else %}
+        <li>
+            <h2 style="text-align: left;">Non sono presenti messaggi <span id="context"></span>.</h2>
+            <div class="clearer ten"></div>
+        </li> 
+    {% endif %}
+    {% for id, result in results %}   
+       {% include 'EcoSeekrMessengerBundle:Messenger:moduli/risultato.html.twig' %}
+    {% endfor %}    
+{% endif %}    
+
+

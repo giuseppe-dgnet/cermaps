@@ -1,0 +1,16 @@
+{# Twig che viene chiamato all'interno dello showroom, quando clicchamo su una macro tipologia ( ad esempio carta, e vengono fuori tutti i contenuti inerenti)#}
+{% for tipo in tipologia %}
+    {% if tipo.categoria.pericoloso == 1 %}
+        {% set percorso = 'es_ajax_recp_rifiuto'  %}
+    {%else%}
+        {% set percorso = 'es_ajax_recnp_rifiuto'  %}
+    {%endif%}
+    <ul class="doc-tools button-light margin-left-10">
+        <li class="small first last shadow">
+            <a href="javascript: void(0)" class="recuperabili-{{tipo.id}}" onclick="mostraContenutoRecuperabili('{{percorso|raw}}','{{tipo.slug|raw}}',{{tipo.id}})"><span class="read subread-{{ tipo.id }}">{{ tipo.rifiuto }}</span></a>
+        </li>
+    </ul>
+    <div class="clearer"></div>
+    <div class="contenitore_cer_{{tipo.id}} relative padding-top-10 padding-bottom-10" ></div>
+    <div class="clearer"></div>
+{%endfor%}

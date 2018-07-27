@@ -1,0 +1,29 @@
+
+<div class='form_voice_compact clearfix left no-display'>
+    {{ form_label(form.from_azienda) }}
+    <i>ad es. Acme S.r.l.</i>
+    {{ form_errors(form.from_azienda) }}
+    {{ form_widget(form.from_azienda) }}
+</div>
+<article class="clearfix ">
+    <div class='form_voice_compact clearfix left'>
+        {{ form_label(form.cerca_mps) }}
+        {{ form_errors(form.cerca_mps) }}
+        {{ form_widget(form.cerca_mps) }}
+    </div>
+    <div class='form_voice_compact clearfix left margin-right-10'>
+</div>
+<div class="clearer ten"></div>
+<div class='form_voice_compact clearfix left'>
+    {{ form_label(form.from_nome) }}
+    <i>ad es. Mario</i>
+    {{ form_errors(form.from_nome) }}
+    {{ form_widget(form.from_nome) }}
+</div>
+<div class='form_voice_compact clearfix right'>
+    {{ form_label(form.from_cognome) }}
+    <i>ad es. Rossi</i>
+    {{ form_errors(form.from_cognome) }}
+    {{ form_widget(form.from_cognome) }}
+</div>
+{% include 'ESOperatoriBundle:Showroom/preventivi:geoRDO.html.twig' %}  {# QUI #}

@@ -1,0 +1,36 @@
+{% set titolo_h1 =  'recuperabili.sm_rec'|trans({}, 'ESCerMapBundle') ~ ' di ' ~ rifiuto.seoTitle|lower ~ ' e codici cer' %}
+{% set titolo_app = 'app_cer' %}
+{% set menu_marker = 'rec' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}{{ 'recuperabili.sm_rec'|trans({}, 'ESCerMapBundle') }} di {{ rifiuto.seoTitle|lower }} - EcoSeekr{% endblock %}
+
+{% block description %}{{ rifiuto.seoDescription }}{% endblock %}
+
+{% block keyword %}Smaltimento, recupero, rifiuti speciali, {{ rifiuto.seoKeywords }}{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/lps.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+        <script type="text/javascript"> var sheet = true</script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+
+{% block javascript_inline %}
+    {% include 'ESCerMapBundle:Recuperabili:_commons/variabiliJs.html.twig' %}
+{% endblock %}
+        
+{% block javascript_ready %}
+    marker_pos('#menu_rec');
+{% endblock %}
+
+{% block content %}
+    {% include 'ESCerMapBundle:Recuperabili:scheda/breadcrumbs.html.twig' %}
+    <section class="padding-10 clearfix box-light no-border shadow">
+        {% include 'ESCerMapBundle:Recuperabili:scheda/suggest.html.twig' %}    
+        {% include 'ESCerMapBundle:Recuperabili:scheda/content.html.twig' %}    
+    </section>
+{% endblock %}

@@ -1,0 +1,44 @@
+{# EcoSeekrConfigurazioneBundle:Configurazione:richiestePreventivi/cer/cer.html.twig #}
+
+{% extends 'EcoSeekrWebBundle::wizard.html.twig' %}
+
+{% block title %}
+Seleziona i CER che tratti
+{% endblock %}
+
+{% block jscript %}
+<script src="{{ asset('/js/configurazione/richiestePreventivoCer.js') }}"></script>
+{% endblock %}
+
+{% block jscript_inline %}
+cer_massimi = {{ cer_massimi }};
+url_get_cer = '{{ path('conf_ajax_li_cer') }}';
+{% endblock %}
+
+{% block titleapp %}
+<ul id="title-app">
+    <li>
+        <hgroup>
+            <h1>EcoSeekr</h1>
+        </hgroup>
+    </li>
+</ul>
+{% endblock %}
+
+{% block centered_menu %}
+<div id="centered-menu">
+    {{ knp_menu_render('main_reg_menu') }}
+    </div>
+{% endblock %}
+
+{% block content_large %}
+    <div style="display: block; height: 48px"></div>
+    <div class="listing-filter-top">
+        {% include fasi_twig with fasi_params %}
+        <section class="fixed-width showroom no-background clearfix"></section>
+    </div>
+{% endblock %}
+
+{% block content %}
+    {% include 'EcoSeekrConfigurazioneBundle:Configurazione:richiestePreventivi/cer/dragdrop.html.twig' with {'open': open, 'action' : path(form_action)} %}
+{% endblock %}

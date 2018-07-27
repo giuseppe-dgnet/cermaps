@@ -1,0 +1,38 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webdesign' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webdesign');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Web Design</h2>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenuTab.html.twig' with {'index': 'true'} %}
+        <section class="corporate no-border clearfix no-padding padding-10 margin-top-10">
+            <h2>A cosa serve...</h2>
+            <p><strong>Aiutiamo i tuoi clienti a trovare quello che cercano nel tuo sito web con grande semplicità</strong>, in minor tempo ed in modo molto facile da ricordare.</p>
+            <p><strong>Nel cliente soddisfatto si genera subito un parere positivo sulla tua attività online, che si estende fino al concetto reale della tua azienda e dei tuoi prodotti.</strong> </p>
+            <div class="clearer twenty"></div>
+            <h2>Cosa possiamo fare per te...</h2>
+            <p>L'<strong>esperienza utente</strong> e l'<strong>usabilità</strong> esprimono l'<strong>efficacia</strong>, l'<strong>efficienza</strong> e la <strong>soddisfazione</strong> con le quali un utente raggiunge i suoi  obiettivi sul tuo sito web.</p>
+            <p>La chiave per creare questa comprensione é una complessa miscela di competenze che deve essere applicata al processo creativo e di sviluppo del tuo sito web, portale o e-commerce.</hp>
+            <p><strong>Un corretto equilibrio, tra forma, funzione, canalizzazione utente ed interazione con il software</strong> é un compito difficile che noi ci sentiamo in  grado di assolvere con la più assoluta sicurezza e serenità.</p>
+        </section>
+    </section>
+{% endblock %}

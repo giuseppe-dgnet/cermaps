@@ -1,0 +1,5 @@
+{% if cer %}
+    <div class="fixed-width clearfix">
+        <h3 class="text-shadow">Codice CER <span class="button-cer-code-small {% if cer.pericoloso %}cer-per{% else %}cer-np{% endif %} tiptip" title="<h3>{{ cer.codice }}</h3><p>{{ cer.descrizione|capitalize }}</p>">{{ cer.codice }}</span>: richiesta per lo smaltimento e gestione</h3>
+    </div>
+{% endif %}

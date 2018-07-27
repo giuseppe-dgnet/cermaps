@@ -1,0 +1,18 @@
+<div class="clearer forty"></div>
+<p class="text-lightblue" style="font-size: 14px;">Attività dell'azienda</p>
+<div class="clearer"></div>
+<div class="hr-light margin-top-5 margin-bottom-5"></div>
+<div class="clearer"></div> 
+<div class="relative">
+    <section class="form_attivita">
+        <div class="relative text-block" id="sr_attivita">
+            {% include 'ESOperatoriBundle:Showroom:home/attivita/attivita.html.twig' %}
+        </div>
+    </section>
+{% if modificabile %}
+    {#  url è la action dentro HomeController che restituisce il form
+        target è l'id dove bverra renderizzato il form 
+    #}
+    {#% include 'ESOperatoriBundle:Showroom:commons/edit.html.twig' with {'url': path('op_sr_form_attivita'), 'target': 'sr_attivita'} %#}
+{% endif %}
+</div>

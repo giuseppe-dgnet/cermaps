@@ -1,0 +1,61 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'theenq' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Theenq | [think]</h2>
+            <h3 class="text-shadow">Esplora il web, comprende e cataloga le informazioni e i giudizi degli utente</h3>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left  shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:theenq/commons/subMenuTab.html.twig' with {'index': menu_marker} %}
+        <section class="corporate no-border clearfix no-padding padding-10 margin-top-10">
+            <div style="display: block; width: 288px; float: left; margin: 20px">
+                <a href="{{ path('alert') }}"><img src="/bundles/esweb/images/theenq-alert-icon.png" ></a>
+                <div class="hr"></div>
+                <div class="clearer ten"></div>
+                <h2>In questo momento, qualcuno ha appena parlato di te...</h2>
+                <p><strong>Ricevi una e-mail in tempo reale ogni volta che sul web si parla della tua azienda, dei tuoi prodotti o servizi..</strong></p>
+                <p><strong>Tutto o solo le critiche?</strong><br>Puoi scegliere di ricevere la segnalazione di tutti i nuovi contenuti pubblicati che ti riguardano o solo i contenuti critici e negativi. </p>
+                <div class="clearer twenty"></div>
+                <h3><strong><a style="color: #FB0A13;" href="{{ path('alert') }}">Scopri TheenqAlert</a></strong></h3>
+            </div>
+            <div style="display: block; width: 288px; float: left; margin: 20px 20px 20px 0;">
+                <a href="{{ path('one') }}"><img src="/bundles/esweb/images/theenq-one-icon.png" ></a>
+                <div class="hr"></div>
+                <div class="clearer ten"></div>
+                <h2>Chi è e cosa fa la tua concorrenza?</h2>
+                <p><strong>Scopri le azioni della tua concorrenza sul web. Chi sono, come si promuovono, dove, quando, quante risorse vi dedicano, ecc.</strong></p>
+                <p>Scopri cosa succede nel tuo settore di attività e valuta la popolarità di brand, prodotti, servizi e aziende, per capire dove, come e quando si promuove la concorrenza. E tanto altro...</p>
+                <div class="clearer twenty"></div>
+                <h3><strong><a style="color: #F76E20;" href="{{ path('one') }}">Scopri TheenqOne</a></strong></h3>
+            </div>
+            <div style="display: block; width: 288px; float: left;margin: 20px 0 20px 0;">
+                <a href="{{ path('two') }}"><img src="/bundles/esweb/images/theenq-two-icon.png" ></a>
+                <div class="hr"></div>
+                <div class="clearer ten"></div>
+                <h2>Cosa si dice di te e dei tuoi prodotti? E della concorrenza?</h2>
+                <p><strong>Scopri i commenti e i giudizi espressi dagli utenti nei confronti di brand, prodotti, servizi, persone, eventi, ecc.</strong></p>
+                <p>Valuta tutti i giudizi espressi per capire cosa si pensa realmente di te e dei tuoi prodotti, quali sono i punti di forza e quelli da migliorare.<br>Tuoi e dei tuoi concorrenti.</p>
+                <div class="clearer twenty"></div>
+                <h3><strong><a style="color: #6686C3;" href="{{ path('two') }}">Scopri TheenqTwo</a></strong></h3>
+            </div>
+        </section>
+    </section>
+{% endblock %}

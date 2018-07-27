@@ -1,0 +1,25 @@
+imports:
+    - { resource: config.yml }
+    - { resource: parameters.yml }
+    - { resource: security.yml }
+    
+framework:
+    router:   { resource: "%kernel.root_dir%/config/routing_csr.yml" }
+
+monolog:
+    handlers:
+        main:
+            type:         fingers_crossed
+            action_level: error
+            handler:      nested
+        nested:
+            type:  stream
+            path:  "%kernel.logs_dir%/%kernel.environment%.log"
+            level: debug
+
+twig:
+    globals:
+        site_stats: http://www.ecoseekr.it
+        analytics_id: UA-40814810-3
+        analytics_site: centrosmaltimentorifiuti.it
+        analytics_ids: ga:72259413

@@ -1,0 +1,21 @@
+<div class="container_cerchie">
+    <a href="{{path('rubrica', {'cerchia': cer.cerchia|lower})}}" id="cerc_{{cer.id}}" class="box-light rounded-3  {% if cer.cerchia|lower == cerchia %}gradient-bluelight{% else %}gradient-lightmedium{% endif %} tags no-margin left text-small">
+        <strong>{{ cer.cerchia|capitalize }}</strong> (contatti: <span id="cc_{{cer.id}}">{{cer.contatti|length}}</span>)</small>
+    </a> 
+    <div class="right">
+        {#<a href="#" class="new-mess left">mail</a>#}
+        {% if not cer.predefinito %} <a href="javascript:void(0)" goto="{{ path('rubrica_cancella_cerchia', {'cerchia': cer.cerchia|lower}) }}" ref="{{cer.id}}" class="delete-item rem-cerchia left">[X]</a>{% endif %}
+    </div>
+    <script type="text/javascript">
+        {% if not cer.predefinito %}
+            cerchie.add({id: '{{cer.id}}', label: '{{cer.cerchia}}'})
+        {% else %}
+            {% for utente in cer.contatti %}
+                colleghi.add({{utente.id}});
+            {% endfor %}
+        {% endif %}
+    </script>
+    <div class="clearer five"></div>
+    <div class="hr-light"></div>
+    <div class="clearer five"></div>
+</div>

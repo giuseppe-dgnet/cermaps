@@ -1,0 +1,53 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webadvertising' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2>Primeggiare e sopravanzare i tuoi concorrenti online</h2>
+            <h3>Servizi, consulenze e strategie per primeggiare online e sopravanzare sulla concorrenza</h3>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+                <section class="colsx right no-margin margin-right-10">
+                <p><strong>Se sei alla ricerca di un interlocutore serio ed affidabile per gestire il tuo posizionamento strategico on line, noi di Admize possiamo fare al caso tuo!</strong></p>
+                <p>Per mezzo dei nostri servzi in OUTOSOURCING di WEB MANAGEMENT e WEB MARKETING &amp; ADVERTISING MANAGEMENT <strong>puoi garantire alla tua azienda una struttura web <em>(e-business)</em> perfomarmente, evoluta ed aggressiva,</strong> gestita in modo da essere sempre avanti su i tuoi concorrenti piÃ¹ diretti. </p>
+                <h3>Cosa possiamo fare per te?</h3>
+                <p>Possiamo garantirti servizi FULL-MANTEINANCE e TEMPORARY MANAGEMENT per gestire la tua piattaforma e il tuo MARKETING MX e WEB MARKETING per il web.</p>
+                <ul class="dot">
+                    <li>Modificare il marketing mix dei tuoi prodotti e servizi per adottarlo al web</li>
+                    <li>Sviluppare strategie efficaci per scalzare i tuoi concorrenti</li>
+                    <li>Gestire tutte le operazioni di sviluppo e attuazione in full-outsourcing senza dover assumere personale in azienda</li>
+                    <li>Aiutarti a costruireun E-Business di valore e duraturo nel tempo</li>
+                    <li>Mantenere alto il livello delle tue perfomance online in funzione di costi e benefici</li>
+                    <li>Addestrare il tuo personale</li>
+                </ul>
+                <div class="spacer twenty"></div>
+                <div class="tips-adm shadow rounded-3">
+                    <div class="ribbon_tips"></div>
+                    <em>&quot;La rete diventa protagonista di un rapporto di prestazione di servizio. Successivamente le imprese usano il Web per sviluppare proprie relazioni di affari con i loro clienti, che possono riguardare processi comuni di tipo complesso ed innalzando notevolmente la qualitÃ  della comunicazione.&quot;<br>
+                    <br><small>Tiziano Vescovi - Prof. di Economia e Gestione delle imprese universita Ca' Foscari di Venezia.</small></em>
+                </div>
+            </section>
+        </section>
+    </section>
+{% endblock %}

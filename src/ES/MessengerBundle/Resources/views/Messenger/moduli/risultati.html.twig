@@ -1,0 +1,14 @@
+<section class="coldx-listing" id="messager-list">
+    <article class="clearfix " >
+        <ul class="listing-result">
+            {% include 'EcoSeekrMessengerBundle:Messenger:moduli/risultatiAjax.html.twig' %}
+        </ul>
+    </article>
+    {% if risultati_totali is defined%}
+        {% if risultati_totali > 10 %}
+            <div id="more-result-container">
+                <div class="centered" style="display: block; width: 300px;"><button class="button-orange big margin-top-10" style="width: 100%;" onclick="scrollResult()" id="more-result">Visualizza più risultati</button></div>
+            </div>
+        {%endif%}
+    {%endif%}
+</section>

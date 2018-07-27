@@ -1,0 +1,24 @@
+<h2 style="color: #81AE28;">Nuova richiesta di Collaborazione Ecoseekr</h2>
+<p><b> Un nuovo Utente Vuole collaborare con Ecoseekr</b></p>
+
+<p>Nome: {{app.request.get('nome')}}</p>
+<p>Cognome: {{app.request.get('cognome')}}</p>
+
+{% if app.request.get('ragsoc')  %}
+<p>ruolo: {{app.request.get('ragsoc')}}</p>
+{%endif%}
+<p>Email: <a href="mailto:{{app.request.get('email3')}}">{{app.request.get('email3')}}</a></p>
+<p>Piva: {{app.request.get('piva')}}</p>
+<p>Regione: {{app.request.get('regione')}}</p>
+<p>Provincia: {{app.request.get('provincia')}}</p>
+{% if app.request.get('website')  %}
+<p>website: {{app.request.get('website')}}</p>
+{%endif%}
+{% if app.request.get('emailaz')  %}
+<p>Email Aziendali: <a href="mailto:{{app.request.get('emailaz')}}">{{app.request.get('emailaz')}}</a></p>
+{%endif%}
+<p>Telefono: {{app.request.get('tel')}}</p>
+{% if app.request.get('fax')  %}
+<p>Fax: {{app.request.get('fax')}}</p>
+{%endif%}
+

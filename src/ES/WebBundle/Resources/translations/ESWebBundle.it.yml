@@ -1,0 +1,22 @@
+menu:
+  language: >
+    Scegli la tua lingua
+
+info_facebook: >
+  Non pubblicheremo niente sulla tua bacheca <strong>Facebook</strong>.
+  
+titolo:
+  abstract: >
+    Smaltisci i tuoi rifiuti,<br>cerca l'operatore più vicino alla tua attività<br>risparmia con la nostra geolocalizzazone
+
+presentazione:
+  titolo: >
+    Il portale per chi lavora per l'Ambiente
+  abstract: >
+    Utilizza gli strumenti che EcoSeekr offre per la tua azienda per migliorare il tuo business
+
+bottone_facebook:
+  label: >
+    Iscriviti con Facebook
+  informazione: >
+    Non preoccuparti,<br> non pubblicheremo nulla sulla tua bacheca ; )

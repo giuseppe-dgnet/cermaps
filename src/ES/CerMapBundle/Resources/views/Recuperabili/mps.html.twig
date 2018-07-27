@@ -1,0 +1,181 @@
+{% set titolo_h1 = 'Contatta imprese che vendono o acquistano materie prime seconde (MPS) ricavate da ' ~ rifiuto.titolo_lps|lower ~ ' e codici cer' %}
+{% set titolo_app = 'app_cer' %}
+{% set menu_marker = 'rec' %}
+{% extends '::base.html.twig' %}
+
+{% block title %}Contatta imprese che vendono o acquistano materie prime seconde (MPS) ricavate da {{ rifiuto.titolo_lps|lower }} - EcoSeekr Italia{% endblock %}
+
+{% block description %} Acquista o vendi materie prime seconde (MPS) ricavati da {{ rifiuto.titolo_lps|lower }}: {% for categoria,dati in rifiuto.categorie_mps %}{% for mps in dati.mps %}{{ mps.mps|lower }}{% if not loop.last %}, {% endif %}{% endfor %}{% endfor %}{% endblock %}
+
+{% block keyword %}Acquista, vendi, materie prime seconde, mps, {% for categoria,dati in rifiuto.categorie_mps %}{% for mps in dati.mps %}, {{ mps.mps|lower }}{% endfor %}{% endfor %}{% endblock %}
+
+{% block javascript %}
+    {% javascripts  
+        '@ESCerMapBundle/Resources/public/js/lps.js'
+    %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+    {#<script src="{{ asset('/js/listing_lps.js') }}"></script>#}    
+{% endblock %}
+
+{% block javascript_inline %}
+    {% include 'ESCerMapBundle:Recuperabili:_commons/variabiliJs.html.twig' %}
+    aggiungi_utente_rdo = !true;
+    var a_mps = [];
+    {% for categoria,dati in rifiuto.categorie_mps %}
+        {% for mps in dati.mps %}
+            a_mps.add({{ mps.id }});
+        {% endfor %} 
+    {% endfor %} 
+{% endblock %}
+        
+{% block javascript_ready %}
+    marker_pos('#menu_rec');
+{% endblock %}
+
+{% block jscript %}
+    <script src="{{ asset('/js/listing_lps.js') }}"></script>
+{% endblock %}
+
+{% block centered_menu %}
+{% endblock %}
+    
+{% block titleapp %}
+{% endblock %}
+    
+{% block filtri %}
+<div class="listing-filter-top">
+</div>
+{% endblock %}
+{% block riepilogo %}
+    <section id="header-tab" class="no-padding relative">
+        <div class="fixed-width clearfix margin-top-20 margin-bottom-10">
+            <h2 class="text-shadow normal">Consulta l'indice dei recuperabili</h2>
+            <h4 class="text-shadow normal">Per trovare risposte o l’operatore o il servizio più adatto o più vicino</h4>
+            {% include "EcoSeekrNuvolaBundle:Nuvola:commons/shortcut.html.twig" %}
+        </div>
+    </section>
+{% endblock %}
+{% block tabs %}
+    <section id="info-tab" class="no-padding">
+        {% include 'EcoSeekrMotoreBundle:Cerca:commons/tabs.html.twig' with { 'selecttab': 'tabs_rifiuti' } %}
+    </section>
+    {% for cer in rifiuto.cer %}
+        <span id="cer{{cer.id}}" class="no-display">
+            <a href="{{ path('cer_indici_cer', {'slug': cer.slug}) }}" class="button-cer-code-small {% if cer.pericoloso %}cer-per{% else %}cer-np{% endif %}" title="<h3>{{ cer.codice }}</h3><p>{{ cer.descrizione|capitalize }}</p>" >{{ cer.codice }}</a>
+            <span class="no-display">{{ cer.descrizione|capitalize }}</span>
+        </span>
+    {% endfor %}
+{% endblock %}
+{% block breadcrumbs %}
+    <section class="title_dashboard clearfix gradient-lightmedium padding-10">
+        <p class="breadcrumbs neutro" style="top: 4px;"><a href="{{ path('web_'~route~'_index') }}"><span class="cer-rec shadow active" title="Indice generale dei {% if tipo == 'recnp' %}{{ 'recuperabili.recnp'|trans({}, 'ESCerMapBundle') }}{% else %}{{ 'recuperabili.recp'|trans({}, 'ESCerMapBundle') }}{% endif %}">Indice generale dei {% if tipo == 'recnp' %}{{ 'recuperabili.recnp'|trans({}, 'ESCerMapBundle') }}{% else %}{{ 'recuperabili.recp'|trans({}, 'ESCerMapBundle') }}{% endif %}</span></a>
+            <strong>
+                &raquo;<a href="{{ path('web_'~route~'_categoria', {'slug': rifiuto.categoria.slug }) }}"><span title="{{ rifiuto.categoria.nome|capitalize }}">Categoria Recuperabili{% if pericoloso %} da pericolosi{% endif %}</span></a>
+                &raquo;<a href="{{ path('web_'~route~'_rifiuti', {'slug': rifiuto.slug }) }}"><span title="{{ rifiuto.titolo_lps }}<br><br>{% for cer in rifiuto.cer %}<span class='button-cer-code-small {% if cer.pericoloso %}cer-per{% else %}cer-np{% endif %}'>{{ cer.codice }}</span>{% endfor %}"">Scheda rifiuti</span></a>
+                &raquo;<span class="active" title="<dl class='treelist'>
+                    {% for categoria,dati in rifiuto.categorie_mps %}
+                        <dt><h4>Categoria: {{ categoria }}<br><small>({{ dati.descrizione }})</small></h4></dt>
+                        {% for mps in dati.mps %}
+                            <dd {% if loop.last %}class='last-dd'{% endif %} id='mps{{mps.id}}' cat='{{ categoria }}'> 
+                                <span style='color: #ccc; font-size: 10px;line-height: 1em;'><strong>{{ mps.mps|capitalize }}</strong> {{ mps.descrizione }}</span>
+                            </dd>
+                        {% endfor %} 
+                    {% endfor %} 
+                </dl>">Materie prime seconde ottenibili</span>
+            </strong>
+        </p>
+        <form style="position: absolute; top: 8px; right: 8px;" onsubmit="return false;">
+            <section class="search-mess-area">
+                <input type="text" id="q_lps" class="placeholder" name="q_lps" value="" placeholder="Cerca un rifiuto">
+                <div class="clearer"></div>
+            </section>
+        </form>
+    </section>
+    <div class="clearer ten"></div>
+{% endblock %}
+{% block suggerimenti %}
+    <section class="coldx left margin-left-10">
+        <article class="lps-tab no-margin">
+            {#<ul class="tab-menu tab-listing">
+                <li><a href="#" class="defaulttab active" rel="tab-cer">Rifiuti recuperabili</a></li>
+                <li><a href="#" class="tab-request" rel="tab-rdo">Invia una richiesta ></a></li>
+            </ul>#}
+            <section class="tab-content-int tab-content-listing tab-content-lps padding-3" id="tab-cer">
+                <article class="box-rdo-listing no-border rounded-5 padding-3 shadow-rdopanel">
+                    <h4 class="mps-class padding-3 rounded-3">Materie prime seconde ottenibili</h4>
+                    <ul class='treelist'>
+                        {% for categoria,dati in rifiuto.categorie_mps %}
+                            <li><h4>Categoria: {{ categoria }}<br><small>({{ dati.descrizione }})</small></h4></li>
+                            {#% for mps in dati.mps %}
+                                <dd {% if loop.last %}class='last-dd'{% endif %} id='mps{{mps.id}}' cat='{{ categoria }}'> 
+                                    <a style='font-size: 10px;line-height: 1em;'><strong>{{ mps.mps|capitalize }}</strong> {{ mps.descrizione }}</a>
+                                </dd>
+                            {% endfor %#} 
+                        {% endfor %} 
+                    </ul>
+                </article>
+                {% include 'EcoSeekrMessengerBundle:RDO:rdopanel.html.twig' with {'action': path('rdo_mps')} %}
+                {#<article class="no-border rounded-5 padding-3 margin-top-10 text-center">
+                    <p>Per maggiore sicurezza e garanzia scegli un utente verificato!</p>
+                    <p class="no-margin"><img src="{{ asset('/images/user-type-PLUS.png') }}"></p>
+                </article>#}
+                <article class="box-rdo-listing no-border rounded-5 padding-3 shadow-rdopanel margin-top-10">
+                    <h4 class="cer-class padding-3 rounded-3">Da rifiuto</h4>
+                    <p class="padding-3 margin-bottom-10">{{ rifiuto.titolo_lps }}</p>
+                </article>
+                <article class="box-rdo-listing no-border rounded-5 padding-3 shadow-rdopanel margin-top-10">
+                    <div class="arrow-up a-white a-right" style="top: -8px;"></div>
+                    <h4 class="cer-class padding-3 rounded-3">Categoria</h4>
+                    <p class="padding-3 margin-bottom-10">{{ rifiuto.categoria.nome|capitalize }}</p>
+                </article>
+                {#<div class="clearer ten"></div>
+                <div class="hr bevel-img"></div>
+                <div class="clearer ten"></div>
+                <a href="javascript:void(0)" class="ico_pdf block" style="padding-left: 40px; min-height: 40px;"><small>{{ rifiuto.titolo_lps }}</small></a>#}
+            </section>
+            {#<section class="tab-content-int tab-content-listing tab-content-lps padding-3 no-display" id="tab-rdo">
+                <article class="box-rdo-listing no-border rounded-5 padding-3 shadow-rdopanel">
+                    <h4 class="mps-class padding-3 rounded-3">Materie prime seconde ottenibili</h4>
+                    <ul class='treelist'>
+                        {% for categoria,dati in rifiuto.categorie_mps %}
+                            <li><h4>Categoria: {{ categoria }}<br><small>({{ dati.descrizione }})</small></h4></li>
+                            {#% for mps in dati.mps %}
+                                <dd {% if loop.last %}class='last-dd'{% endif %} id='mps{{mps.id}}' cat='{{ categoria }}'> 
+                                    <a style='font-size: 10px;line-height: 1em;'><strong>{{ mps.mps|capitalize }}</strong> {{ mps.descrizione }}</a>
+                                </dd>
+                            {% endfor %} 
+                        {% endfor %} 
+                    </ul>
+                </article>#}
+                {#<article class="box-rdo-listing no-border rounded-5 padding-3 shadow-rdopanel margin-top-10">
+                    <div class="arrow-up a-white a-right " style="top: -8px;"></div>
+                    <h4 class="cer-class padding-3 rounded-3">Rifiuto</h4>
+                    <p class="padding-3">{{ rifiuto.titolo_lps }}</p>
+                </article>
+                <article class="box-rdo-listing no-border rounded-5 padding-3 shadow-rdopanel margin-top-10">
+                    <div class="arrow-up a-white a-right" style="top: -8px;"></div>
+                    <h4 class="cer-class padding-3 rounded-3">Categoria</h4>
+                    <p class="padding-3 margin-bottom-10">{{ rifiuto.categoria.nome|capitalize }}</p>
+                </article> ="no-border rounded-5 padding-3 margin-top-10 op-choice">
+                    <h4 class="padding-3">Scegli l'operatore</h4>
+                    <p class="padding-3 no-padding-vert">Seleziona l’operatare che preferisci per inoltrare una richiesta di smaltimento o informazioni.</p>
+                </article>
+                {% include 'EcoSeekrMessengerBundle:RDO:rdopanel.html.twig' with {'action': path('rdo_cer')} %}
+                <article class="no-border rounded-5 padding-3 margin-top-10 text-center">
+                    <p>Per maggiore sicurezza e garanzia scegli un utente verificato!</p>
+                    <p class="no-margin"><img src="{{ asset('/images/user-type-PLUS.png') }}"></p>
+                </article>
+                <div class="clearer ten"></div>
+                <div class="hr bevel-img"></div>
+                <div class="clearer ten"></div>
+                <a href="javascript:void(0)" class="ico_pdf block" style="padding-left: 40px; min-height: 40px;"><small>{{ rifiuto.titolo_lps }}</small></a>
+            </section> #}
+        </article>
+    </section>
+{% endblock %}
+{% block content %}
+    <section class="colsx right margin-right-10">
+        {% include 'EcoSeekrMotoreBundle:Cerca:showroom/risultatiLps.html.twig'%}
+    </section>
+{% endblock %}

@@ -1,0 +1,38 @@
+{% set titolo_app = 'app_centro_messaggi' %}
+{% set open_tab = 'messenger' %}
+{% extends 'EcoSeekrWebBundle::layout_messenger.html.twig' %}
+{% block title %}EcoSeekr{% endblock %}
+{% block description %}Social B2B per Professionisti, Aziende ed Organizzazioni di energia, ambiente, rifiuti e materie prime seconde{% endblock %}
+{% block keyword %}keyword{% endblock %}
+{% block jscript %}
+<script src="{{ asset('/js/messenger_messenger_index.js') }}"></script>
+{% endblock %}
+{% block jscript_inline %}
+    {% include 'EcoSeekrMessengerBundle:Messenger:route.js.twig' %}
+    var aggiungi_utente_rdo = false;
+    var url_cerca_rifiuti_invio = false;
+    var destinatari = JSON.parse('{{destinatari|raw}}');
+{% endblock %}
+{% block jscript_ready %}
+    nuovoMessaggio(destinatari);
+{% endblock %}
+{% block css_inline %}{% endblock %}
+{% block intestazione %}
+    {% include 'EcoSeekrMessengerBundle:Messenger:moduli/intestazione.html.twig' %}
+{% endblock %}
+{% block filtri %}
+    {% include 'EcoSeekrMessengerBundle:Messenger:moduli/filtri.html.twig' %}
+{% endblock %}
+{% block dashboard %}
+    <section class="colsx-filter">
+        {% include 'EcoSeekrMessengerBundle:Messenger:moduli/dashboard.html.twig' %}
+    </section>
+{% endblock %}
+{% block content %}
+    <section class="coldx-listing" id="messager-list">
+        <article class="clearfix " >
+            <ul class="listing-result">
+            </ul>
+        </article>
+    </section>
+{% endblock %}

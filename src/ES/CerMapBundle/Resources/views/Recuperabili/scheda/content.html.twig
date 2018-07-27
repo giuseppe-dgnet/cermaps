@@ -1,0 +1,93 @@
+ 
+<section class="right "style="width: 100%;">
+    <section class="contenuto_ricerca" style="margin-left: 300px;">
+        <table class="lps-table shadow" >
+            <tr>
+                <th>Codici <strong>CER associati al rifiuto</strong> o prodotto di scarto</th>
+                <th><strong>Operazioni</strong> di recupero associate</th>
+            </tr>
+            <tr class="table-content">
+                <td class="cer-space">
+                    {% for cer in rifiuto.cer %}
+                        <a href="{{ path('es_cer_cer', {'slug': cer.slug}) }}" class="button-cer-code {% if cer.pericoloso %}cer-per{% else %}cer-np{% endif %}" title="<h3>{{ cer.codice }}</h3><p>{{ cer.descrizione|capitalize }}</p>" >{{ cer.codice }}</a>
+                    {% endfor %} 
+                </td>
+                <td class="op-space">
+                    {% for rd in rifiuto.rds %}
+                        <a href="javascript:void(0)" class="button-op-code" title="<h3>{{ rd.codice }}</h3><p>{{ rd.descrizione|capitalize }}</p>" >{{ rd.codice }}</a>
+                    {% endfor %}
+                </td>
+            </tr>
+        </table>
+        <div class="clearer ten"></div>
+{#
+        <h4>Cosa ti serve per questo rifiuto o materiale?</h4>
+        <div class="clearer ten"></div>
+        <div class="table">
+            <article id="console" class="table-row shadow">
+                <section class="activity gradient-light table-cell" style="border: solid 1px #dadada;">
+                    <a href="javascript:void(0)" class="cer"><h3>Smaltimento o recupero<br><small>Trova vicino a te chi smaltisce questo rifiuto o prodotto di scarto</small></h3></a>
+                    {#<a href="{{ path('web_'~route~'_cer_rifiuti', {'slug': rifiuto.slug }) }}" class="cer"><h3>Smaltimento o recupero<br><small>Trova vicino a te chi smaltisce questo rifiuto o prodotto di scarto</small></h3></a># }
+                </section>
+                {% if rifiuto.mps|length > 0 %}
+                    <section class="activity gradient-light table-cell" style="border: solid 1px #dadada; border-left: none;">
+                        <a href="javascript:void(0)" class="mps"><h3>Acquistare materie prime<br><small>Scopri vicino a te dove acquistare materie prime seconde ricavate da questo rifiuto</small></h3></a>
+                        {#<a href="{{ path('web_'~route~'_mps_rifiuti', {'slug': rifiuto.slug }) }}" class="mps"><h3>Acquistare materie prime<br><small>Scopri vicino a te dove acquistare materie prime seconde ricavate da questo rifiuto</small></h3></a># }
+                    </section>
+                {% endif %}
+            </article>
+        </div>
+#}
+        <article class="lps-tab-sheet">
+            <ul class="tab-menu">
+                <li><a href="#" class="defaulttab active" rel="tab-caratteristiche">Caratteristiche</a></li>
+                <li><a href="#" rel="tab-provenienza">Provenienza</a></li>
+                <li><a href="#" rel="tab-recupero">Attività di Recupero</a></li>
+                {% if rifiuto.mps|length > 0 %}
+                    <li><a href="#" rel="tab-mps">Materie Prime ottenibili</a></li>
+                {% endif %}
+            </ul>
+            <section class="tab-content-int tab-content-lps-sheet shadow" id="tab-caratteristiche">
+                <ul class="treelist">
+                    <li><p>{{ rifiuto.tipologia|replace({'[': '<a href="#" class="button-cer-code-small" title="">', ']': '</a>'})|raw|nl2br }}</p></li>
+                    <li><p>{{ rifiuto.caratteristiche|nl2br }}</p></li>
+                </ul>
+            </section>
+            <section class="tab-content-int tab-content-lps-sheet shadow no-display" id="tab-provenienza">
+                <ul class="treelist">
+                    <li><p>{{ rifiuto.provenienza|nl2br }}</p></li>
+                </ul>
+            </section>
+            <section class="tab-content-int tab-content-lps-sheet shadow no-display" id="tab-recupero">
+                <ul class="treelist">
+                    {% for attivita in rifiuto.attivitaRecupero %}
+                    <li>
+                        <p>{{ attivita.attivita|replace({'[': '<a href="#" class="button-op-code-small" title="">', ']': '</a>'})|raw|nl2br }}<p>
+                    </li>
+                        {% if attivita.caratteristicheMps|length > 0 %}
+                        <li>
+                            <p>Materie prime seconde ottenute: {{ attivita.caratteristicheMps|nl2br }}</p>
+                        </li>
+                        {% endif %}
+                    {% endfor %}
+                </ul>
+            </section>
+            {% if rifiuto.categorieMps|length > 0 %}
+                <section class="tab-content-int tab-content-lps-sheet shadow no-display" id="tab-mps">
+                    <dl class="treelist">
+                        {% for categoria,dati in rifiuto.categorieMps %}
+                            <dt><h4>Categoria: {{ categoria }} <small>({{ dati.descrizione }})</small></h4></dt>
+                            {% for mps in dati.mps %}
+                                <dd {% if loop.last %}class="last-dd"{% endif %}> 
+                                    <a href="javascript:void(0)"><strong>{{ mps.materia|capitalize }}</strong> {{ mps.descrizione }}</a>
+                                    {#<a href="{{ path('lps_mps', {'slug': mps.slug}) }}"><strong>{{ mps.mps|capitalize }}</strong> {{ mps.descrizione }}</a>#}
+                                </dd>
+                            {% endfor %} 
+                        {% endfor %} 
+                    </dl>
+                </section>
+            {% endif %}
+        </article>
+    </section>
+</section>
+  

@@ -1,0 +1,45 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'ebusiness' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_ebusiness');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Servizi e consulenze per lo sviluppo del tuo business online</h2>
+            <h4 class="text-shadow normal">Sviluppiamo soluzioni E-BUSINESS ALL-IN-ONE a misura di piccola e media impresa!</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:ebusiness/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:ebusiness/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>Crediamo profondamente che il business sia socialità e che i migliori affari si basino su stima e fedeltà reciproca tra fornitore e consumatore. </p>
+                <p>Per mezzo delle nuove tecnologie, <strong>si possono velocizzare, gestire  ed ampliare tutti i livelli di comunicazione integrata tra la vostra impresa, gli account, i fornitori ed i clienti </strong><strong>organizzando e supportando lo scambio reciproco di informazioni </strong><em>- premesse di fondamentale importanza per la conoscenza della vostra impresa e dei vostri prodotti </em>semplicemente, attraverso l'utilizzo comportamenti propri del web.</p>
+                <p>Per questo ed altri principali motivi <strong>vi offriamo soluzioni evolute di E-Business, Marketing Intelligence, Web Markerting e Comunicazione integrata destinate ad operatori di mercato industriale o di consumo,</strong> in grado di far accrescere la fedeltà e la fiducia nelle relazioni.</p>
+                <p>Admize <strong>è il partner ideale per la consulenza e lo sviluppo di nuove strategie per la connettività con il mercato e la loro attuazione operativa.</strong> Sviluppiamo innovativi modelli di E-Business per aumentare la tua competività integrando internet nel tuo modello di business.
+                <div class="clearer twenty"></div>
+                <div class="tips yellow">
+                    <p>Internet, opportunamente integrato, aiuta lo sviluppo e il rafforzamento del valore delle relazioni con i propri clienti e fornitori, modificandone l'evoluzione, la facilità, i tempi di attuazione e le modalità costruttive. In altre parole ricostituisce le strategie di connettività con il mercato e la loro attuazione operativa.</p>
+                </div>
+            </section>
+        </section>
+    </section>
+{% endblock %}

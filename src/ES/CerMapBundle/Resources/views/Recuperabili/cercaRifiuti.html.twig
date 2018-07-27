@@ -1,0 +1,22 @@
+<ul class="rec-index-cat clearfix">
+    {% if response|length >0 %}
+        {% include 'ESCerMapBundle:Recuperabili:categoria/content.html.twig' with {'categoria': {'rifiuti': response} } %}
+        {#% for risposta in response%}
+            <li class="shadow"><a href="{{path ('web_lps_rifiuti',{'slug':risposta.slug})}}">{{risposta.label}}</a></li>
+        {% endfor %#}
+ {% else %}
+        <h3><small>Non sono stati trovati risultati per:</small> {{parola_ricercata}}</h3>
+        <div class="clearer ten"></div>
+        <div class="hr ten"></div>
+        <h4>Suggerimenti per la ricerca:</h4>
+        <div class="clearer ten"></div>
+        <ol>
+            <li>1) Assicurarsi che tutte le parole siano state digitate correttamente.</li>
+            <li>2) Provare con parole chiave diverse.</li>
+            <li>3) Provare con parole chiave più generiche.</li>
+        </ol>
+        <div class="clearer ten"></div>
+        <div class="hr ten"></div>
+        <p>oppure <a href="javascript:void(0)" onClick="window.location.reload()">Torna all'indice principale</a></p>
+    {% endif %}
+</ul>

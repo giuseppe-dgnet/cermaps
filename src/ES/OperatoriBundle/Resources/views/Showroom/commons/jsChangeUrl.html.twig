@@ -1,0 +1,12 @@
+var uri = {
+    {% for tab in showroom.tabs %}
+        't_{{tab.id}}': '{{ url('show_room_con', {'slug': slug, 'area': tab.slug}) }}'{% if not loop.last %},{% endif %}
+    {% endfor %}
+    };
+var title = {
+    {% for tab in showroom.tabs %}
+        't_{{tab.id}}': '{{ showroom.intestazione.titolo }} - {{ tab.titolo }} - EcoSeekr'{% if not loop.last %},{% endif %}
+    {% endfor %}
+    };
+var url_todo_fatto = '{{ path('pt_sr_todo_fatto') }}';
+var url_todo_rinuncio = '{{ path('pt_sr_todo_rinuncio') }}';

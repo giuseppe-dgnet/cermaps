@@ -1,0 +1,14 @@
+<section class="title_dashboard clearfix gradient-lightmedium padding-10">
+    <p class="breadcrumbs neutro" style="top: 4px;"><a href="{{ path('es_'~route) }}"><span class="cer-rec shadow active" title="Indice generale dei {% if tipo == 'recnp' %}{{ 'recuperabili.recnp'|trans({}, 'ESCerMapBundle') }}{% else %}{{ 'recuperabili.recp'|trans({}, 'ESCerMapBundle') }}{% endif %}">Indice generale dei {% if tipo == 'recnp' %}{{ 'recuperabili.recnp'|trans({}, 'ESCerMapBundle') }}{% else %}{{ 'recuperabili.recp'|trans({}, 'ESCerMapBundle') }}{% endif %}</span></a>
+        <strong>
+            &raquo;<a href="{{ path('es_'~route~'_categoria', {'slug': rifiuto.categoria.slug }) }}"><span title="{{ categoria.nome|capitalize }}">Categoria recuperabili{% if pericoloso %} da pericolosi{% endif %}</span></a>
+            &raquo;<span class="active" title="{{ rifiuto.rifiuto }}">Scheda rifiuti{% if pericoloso %} da pericolosi{% endif %}</span>
+        </strong>
+    </p>
+    <form style="position: absolute; top: 8px; right: 8px;" onsubmit="return false;">
+        <section class="search-mess-area">
+            <input type="text" id="q_lps" class="placeholder" name="q_lps" value="" placeholder="Cerca un rifiuto">
+            <div class="clearer"></div>
+        </section>
+    </form>
+</section>

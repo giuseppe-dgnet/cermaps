@@ -1,0 +1,55 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webdesign' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webdesign');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Come nasce ed evolve il tuo sito aziendale</h2>
+            <h4 class="text-shadow normal">Admize &egrave; in grado di portarvi al successo nel web attraverso una rigorosa applicazione degli standard  e  tecnologie allo stato dell'arte.</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>La realizzazione di un sito web &egrave; <strong>un'operazione che coinvolge e fonde   diverse competenze</strong>. In Admize sappiamo come bene come deve essere svolto questo compito: Il prodotto finale deve essere gradevole, di facile   esplorazione, deve presentare in maniera chiara i propri contenuti ed essere   utilizzabile in sicurezza, fluidit&agrave; e massima semplicit&agrave;.</p>
+                <p>Per raggiungere questo obiettivo &egrave; basilare, oltre alla tipica figura del web designer, una serie di  competenze multidisciplinari, che portano il tuo sito ben oltre il semplice concetto di  vetrina aziendale. </p>
+                <p>Concetti come <strong>accessibilit&agrave;</strong>, <strong>usabilit&agrave;</strong>, <strong>conformit&agrave;</strong> a standard tecnici ben definiti e non ultimi concetti tipici del marketing come <strong>brand-awareness</strong> (percezione dell'immagine aziendale) e <strong>customer care</strong>, sono altrettanto importanti per raggiungere gli obiettivi sopra delineati ed in <strong>Admize sappiamo come renderli al massimo</strong>.</p>
+                <p>Ma per avere un prodotto vincente &egrave; necessario fare una pianificazione efficiente.</p>
+                <div class="clearer twenty"></div>
+                <div class="tips yellow">
+                    <div class="ribbon_tips"></div>
+                    <p>Un sito dallo stile inconfondibile ed accattivante  da sicuramente valore alla vostra immagine ed attivit, ma sempre senza perdere di vista lo scopo ultimo di questo strumento: aumentare e consolidare il volume dei vostri affari!!</p>
+                </div>
+                <div class="clearer "></div>
+                <h3>Punti chiave del processo di pianificazione e sviluppo di un sito web.</h3>
+                <ul class="dot">
+                    <li>La definizione del 'Concept'.</li>
+                    <li>Produrre e organizzare i contenuti.</li>
+                    <li>Controllo, valutazione e manutenzione del sito.</li>
+                </ul>
+                <p>Per quanto essenziali, <strong>questi punti sono solo l'inizio di un processo per sua natura in continuo perfezionamento</strong> ed adattamento della canalizzazione dell'utente verso l'obiettvo finale del sito: portare velocemente il cliente a voi e soprattutto <strong>creare una fidelizzazione sempre piÃ¹ solida e concreta</strong>.</p>
+
+            </section>
+        </section>
+    </section>
+{% endblock %}

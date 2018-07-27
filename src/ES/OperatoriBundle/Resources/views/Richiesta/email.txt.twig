@@ -1,0 +1,58 @@
+<h2 style="color: #81AE28;">Nuova richiesta Ecoseekr</h2>
+<p><b> Un nuovo Utente Vuole iscriversi ad Ecoseekr</b></p>
+<p>Ragione Sociale: {{ richiesta.ragioneSociale }}</p>
+<p>PartitaIva: {{ richiesta.partitaIva }}</p>
+<p>Codice Fiscale Azienda: {{ richiesta.codiceFiscaleAzienda }}</p>
+<p>Indirizzo: {{ richiesta.indirizzo }}</p>
+<p>Attivita Principale: {{ richiesta.attivitaPrincipale }}</p>
+<p>Attivita Secondarie:</p>
+<ul>
+{% if richiesta.impianto  %}
+   <li>Impianto</li>
+{%endif%}
+{% if richiesta.discarica  %}
+    <li>discarica</li>
+{%endif%}
+{% if richiesta.raccoglitore  %}
+    <li>raccoglitore</li>
+{%endif%}
+{% if richiesta.trasportatore  %}
+    <li>trasportatore</li>
+{%endif%}
+{% if richiesta.servizi  %}
+    <li>servizi</li>
+{%endif%}
+{% if richiesta.laboratorio  %}
+   <li>laboratorio</li>
+{%endif%}
+{% if richiesta.demolizioni  %}
+   <li>demolizioni</li>
+{%endif%}
+{% if richiesta.spurghi  %}
+   <li>spurghi</li>
+{%endif%}
+{% if richiesta.bonifiche  %}
+   <li>bonifiche</li>
+{%endif%}
+{% if richiesta.rottamazione  %}
+   <li>rottamazione</li>
+{%endif%}
+{% if richiesta.raee  %}
+   <li>raee</li>
+{%endif%}
+{% if richiesta.olio_minerale  %}
+   <li>olio minerale</li>
+{%endif%}
+{% if richiesta.olio_vegetale  %}
+   <li>olio vegetale</li>
+{%endif%}
+</ul>
+<p>Telefono: {{ richiesta.telefono }}</p>
+<p>Fax: {{ richiesta.fax }}</p>
+<p>Email: <a href="mailto:{{ richiesta.email }}">{{ richiesta.email }}</a></p>
+<p>Email Pec: <a href="mailto:{{ richiesta.emailPec }}">{{ richiesta.emailPec }}</a></p>
+<p>Referente: {{ richiesta.referente }}</p>
+<p>Ruolo: {{ richiesta.ruolo }}</p>
+<p>Sito Web: <a href="{{ richiesta.sitoWeb}}">{{ richiesta.sitoWeb}}</a></p>
+
+

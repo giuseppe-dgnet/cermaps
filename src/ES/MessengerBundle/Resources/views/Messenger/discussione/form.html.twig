@@ -1,0 +1,15 @@
+<section class="message-insert bacheca mid-light-grey clearfix" id="reply">
+    <form class="p_input margin-left-50" id="reply_form" action="{{ path('messenger_new_response') }}">
+        <textarea class="message-textarea placeholder" style="width: 400px;" id="messaggio_testo_risposta" name="messaggio[testo_risposta]" value="" placeholder="Scrivi una risposta..."></textarea>
+        <button type="submit" class="button-orange smaller margin-left-5 relative" id="submit_mess"><strong>Invia</strong></button>
+        <div class="clearer ten"></div>
+        <input type="hidden" name="messaggio[slug]" id="messaggio_slug" value="" />
+        <input type="hidden" name="messaggio[allegati]" id="messaggio_allegati" value="[]" />
+            {% render 'EphpDragDropBundle:DragDrop:multiAllegato' with {
+                'field': 'messaggio_allegati',
+                'values': '',
+                'dir': result.slug,
+                'mimetype': '/(\\.|\\/)(pdf|x?docx?|odt|jpe?g|png|jpg|gif|tiff?|zip|7z|rar|cad)$/i'
+            } %}
+    </form>
+</section>

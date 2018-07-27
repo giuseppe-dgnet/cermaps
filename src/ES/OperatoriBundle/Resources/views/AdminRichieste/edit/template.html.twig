@@ -1,0 +1,173 @@
+<script type="text/html" id="dettagli_list_row">
+    <tr>
+        <td>{tipo}</th>
+        <td><b>{denominazione}</b></th>
+        <td rowspan="2">{punti}</th>
+        <td rowspan="2"><button onclick="anga_detail({id})">Dettagli</button></th>
+    </tr>
+    <tr>
+        <td colspan="2">{sede}</th>
+    </tr>
+</script>
+<script type="text/html" id="match_list_row">
+    <tr>
+        <td>{tipo}</th>
+        <td><b>{denominazione}</b></th>
+        <td rowspan="2">{punti}</th>
+        <td rowspan="2"><button onclick="confronta_detail({id})">Confronta</button></th>
+    </tr>
+    <tr>
+        <td colspan="2">{sede}</th>
+    </tr>
+</script>
+<script type="text/html" id="nodettagli_list_row">
+    <tr>
+        <td>{tipo}</th>
+        <td><b>{denominazione}</b></th>
+        <td rowspan="2">{punti}</th>
+        <td rowspan="2">&nbsp;</th>
+    </tr>
+    <tr>
+        <td colspan="2">{sede}</th>
+    </tr>
+</script>
+
+<script type="text/html" id="anga_detail_body">
+    <tr>
+        <th colspan="3">
+            <button onclick="seleziona()">Importa dati</button>
+            <button onclick="torna_indietro()">Torna Indietro</button>
+            <br>
+            (lasciare il campo vuoto per non modificare i dati esistenti)
+        </th>
+    </tr>
+    <tr>
+        <th>&nbsp;</th>
+        <th>Anga</td>
+        <th>Match</th>
+    </tr>
+    <tr>
+        <th>Denominazione</th>
+        <td><input type="text" style="width: 275px;" id="go_denominazione" value="{denominazione}"></td>
+        <td id="sw_denominazione" class="sw"></td>
+    </tr>
+    <tr>
+        <th>Attivita</th>
+        <td><input type="text" style="width: 275px;" id="go_attivita" value="{attivita}"></td>
+        <td id="sw_attivita" class="sw"></td>
+    </tr>
+    <tr>
+        <th>Descrizione</th>
+        <td><textarea style="width: 275px; height: 175px;" id="go_descrizione">{descrizione}</textarea></td>
+        <td id="sw_descrizione" class="sw"></td>
+    </tr>
+    <tr>
+        <th>CF</th>
+        <td><input type="text" id="go_codice_fiscale" value="{codice_fiscale}"></td>
+        <td id="sw_codice_fiscale" class="sw"></td>
+    </tr>
+    <tr>
+        <th>PIVA</th>
+        <td><input type="text" id="go_partita_iva" value="{partita_iva}"></td>
+        <td id="sw_partita_iva" class="sw"></td>
+    </tr>
+    <tr>
+        <th colspan="3">SEDE</th>
+    </tr>
+    <tr>
+        <th>Indirizzo</th>
+        <td><input type="text" style="width: 275px;" id="go_indirizzo" value="{indirizzo}"></td>
+        <td id="sw_indirizzo" class="sw"></td>
+    </tr>
+    <tr>
+        <th>CAP</th>
+        <td><input type="text" id="go_cap" value="{cap}"></td>
+        <td id="sw_cap" class="sw"></td>
+    </tr>
+    <tr>
+        <th>Comune</th>
+        <td><input type="text" style="width: 275px;" id="go_comune" value="{comune} ({provincia})"></td>
+        <td id="sw_comune" class="sw"></td>
+    </tr>
+    <tr>
+        <th>Geo</th>
+        <td><input type="text" style="width: 275px;" id="go_geo" value="{lat}x{lon}"></td>
+        <td id="sw_geo" class="sw"></td>
+    </tr>
+    <tr>
+        <th colspan="3">CONTATTI</th>
+    </tr>
+    <tr>
+        <th>Telefono</th>
+        <td><input type="text" id="go_telefono" value="{telefono}"></td>
+        <td id="sw_telefono" class="sw"></td>
+    </tr>
+    <tr>
+        <th>Cellulare</th>
+        <td><input type="text" id="go_cellulare" value="{cellulare}"></td>
+        <td id="sw_cellulare" class="sw"></td>
+    </tr>
+    <tr>
+        <th>Fax</th>
+        <td><input type="text" id="go_fax" value="{fax}"></td>
+        <td id="sw_fax" class="sw"></td>
+    </tr>
+    <tr>
+        <th>Email</th>
+        <td><input type="text" style="width: 275px;" id="go_email" value="{email}"></td>
+        <td id="sw_email" class="sw"></td>
+    </tr>
+    <tr>
+        <th>Sito</th>
+        <td><input type="text" style="width: 275px;" id="go_sito" value="{sito}"></td>
+        <td id="sw_sito" class="sw"></td>
+    </tr>
+    <tr>
+        <th colspan="3">DATI ANGA</th>
+    </tr>
+    <tr>
+        <th>Iscrizione Albo</th>
+        <td colspan="2">{sezione} {numero_iscrizione}</td>
+    </tr>
+    <tr>
+        <th>Categorie</th>
+        <td colspan="2">{categorie}</td>
+    </tr>
+    <tr>
+        <th>CER</th>
+        <td colspan="2" id="c_cer"><textarea style="width: 575px; height: 175px;" readonly="readonly">{cer}</textarea></td>
+    </tr>
+    <tr>
+        <th>CER Conto Proprio</th>
+        <td colspan="2" id="c_cercp"><textarea style="width: 575px; height: 175px;" readonly="readonly">{cercp}</textarea></td>
+    </tr>
+    <tr>
+        <th>Tipologie</th>
+        <td colspan="2" id="c_tipologie"><textarea style="width: 575px; height: 175px;" readonly="readonly">{tipologie}</textarea></td>
+    </tr>
+    <tr id="row_match">
+        <th>Corrispondenze</th>
+        <td colspan="2">
+            <table id="match_list_table" style="float: left; margin: 10px;">
+                <thead>
+                    <tr>
+                        <th>Tipo</th>
+                        <th>Ragione sociale</th>
+                        <th rowspan="2">Match</th>
+                        <th rowspan="2">Azioni</th>
+                    </tr>
+                    <tr>
+                        <th colspan="2">Sede</th>
+                    </tr>
+                </thead>
+                <tbody id="match_list">
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan="4"><button id="bt_anga">Cerca</button></th>
+                    </tr>
+                </tfoot>
+            </table>
+        </td>
+    </tr>
+</script>

@@ -1,0 +1,88 @@
+{##
+ # ESEMPIO DI MENU GENERATO A MANO
+ #}
+{# menu di sx #}
+<ul class="header_submenu clearfix left margin-left-10">
+    <li class="rounded-3 hover {% if menu_marker == 'cermap' %}active{% endif %}" id="menu_cermap" onclick="window.location.href='{{ path('cermap') }}'">{{ 'menu.cermap'|trans({}, 'menu') }}</li>
+</ul>
+
+{# menu di dx #}
+<ul class="header_submenu clearfix right margin-right-10">
+    {#<li class="rounded-3 hover {% if menu_marker == 'mps' %}active{% endif %}" id="menu_mps" onclick="window.location.href='{{ path('es_mps_categorie') }}'">{{ 'menu.mps'|trans({}, 'menu') }}</li>#}
+    <li class="rounded-3 hover {% if menu_marker == 'cer' %}active{% endif %}" id="menu_cer" onclick="window.location.href='{{ path('es_cer_classi') }}'">{{ 'menu.cer'|trans({}, 'menu') }}</li>
+    <li class="margin-right-0 rounded-3 hover relative toggle-content {% if menu_marker == 'rec' %}active{% endif %}" id="menu_rec" targetLink="baloon-rec">{{ 'menu.rec'|trans({}, 'menu') }}
+         <div class="baloon-container no-display baloon-login-right" id="baloon-rec">
+            <div class="arrow-up a-left"></div>
+            <section class="box-float shadow-strong clearfix" style="width: 255px;">
+                <ul class="menu-tools">
+                    <li><a href="{{ path('es_recnp') }}" >{{ 'menu.np'|trans({}, 'menu') }}</a></li>
+                    <li><a href="{{ path('es_recp') }}" >{{ 'menu.p'|trans({}, 'menu') }}</a></li>
+                </ul>
+            </section>
+        </div>
+    </li>
+    {% if app.user %}
+        <li class="rounded-3 hover {% if menu_marker == 'showroom' %}active{% endif %}" id="menu_showroom" onclick="window.location.href='{{ path('op_sr_my') }}'">Showroom</li>
+    {% else %}
+        <li class="no-display" id="menu_showroom"></li>
+    {% endif %}
+    {# <li class="rounded-3 hover relative toggle-content {% if menu_marker == 'help' %}active{% endif %}" id="menu_help" targetLink="baloon-help">{{ 'menu.help'|trans({}, 'menu') }}
+        <div class="baloon-container no-display baloon-login-right" id="baloon-help">
+            <div class="arrow-up a-left"></div>
+            <section class="box-float shadow-strong clearfix" style="width: 255px;">
+                <ul class="menu-tools level-1">
+                    <li><a href="{{ path('come_funziona')|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" >Scopri di più</a></li>
+                    <li><a href="{{ path('ebusinessIntro')|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" >Servizi aggiuntivi</a></li>
+                    <li><a href="{{ path('vision')|replace({'/app_cersite.php': 'http://www.ecoseekr.it'}) }}" >Su di noi</a></li>
+
+                    <li><a class="hover" href="javascript:void(0)">{{ 'menu.scopri_di_piu'|trans({}, 'menu') }}</a>
+                        <div class="baloon-container baloon-orizz no-display baloon-login-right" style="left: -255px;">
+                            <div class="arrow-right a-right-white a-top"></div>
+                            <section class="box-float shadow-strong clearfix" style="width: 255px;">
+                                <ul class="menu-tools">
+                                    {% include ':parts:header/menu/submenu/scopri_di_piu.html.twig' %}
+                                </ul>
+                            </section>
+                        </div>
+                    </li>
+                    <li><a class="hover" href="javascript:void(0)">{{ 'menu.su_di_noi'|trans({}, 'menu') }}</a>
+                        <div class="baloon-container baloon-orizz no-display baloon-login-right" style="left: -255px;">
+                            <div class="arrow-right a-right-white a-top"></div>
+                            <section class="box-float shadow-strong clearfix" style="width: 255px;">
+                                <ul class="menu-tools">
+                                    {% include ':parts:header/menu/submenu/su_di_noi.html.twig' %}
+                                    {% include ':parts:header/menu/submenu/lavora_con_noi.html.twig' %}
+                                </ul>
+                            </section>
+                        </div>
+                    </li>
+                    <li><a class="hover" href="javascript:void(0)">Servizi aggiuntivi</a>
+                        <div class="baloon-container baloon-orizz no-display baloon-login-right" style="left: -255px;">
+                            <div class="arrow-right a-right-white a-top"></div>
+                            <section class="box-float shadow-strong clearfix" style="width: 255px;">
+                                <ul class="menu-tools">
+                                    {% include ':parts:header/menu/submenu/servizi.html.twig' %}
+                                </ul>
+                            </section>
+                        </div>
+                    </li>
+                </ul>
+            </section>
+        </div>
+    </li> #}
+</ul>
+{#<script type="text/javascript">
+    $(document).ready(function() {
+        $('.level-1 > li').bind('mouseover', openSubMenu);
+        $('.level-1 > li').bind('mouseout', closeSubMenu);
+
+        function openSubMenu() {
+            $(this).find('.baloon-container').css('display', 'block');	
+        };
+
+        function closeSubMenu() {
+            $(this).find('.baloon-container').css('display', 'none');	
+        };
+
+    });
+</script>#}

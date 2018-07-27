@@ -1,0 +1,103 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'alert' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webadvertising');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Theenq Alert</h2>
+            <h3 class="text-shadow">Per fronteggiare le criticità [analisi qualitativa]</h3>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:theenq/commons/subMenuTab.html.twig' with {'index': menu_marker} %}
+        <section class="corporate no-border clearfix no-padding padding-10 margin-top-10">
+            <h2>Direttamente nella tua email, ogni 10 minuti.<br>Tutto quello che si dice di te, dei tuoi concorrenti, del tuo settore.<br>Con le informazioni rilevate sui media-online, social-network, forum, blog, ecc.</h2>
+            <h3>Hai mai visto un Alert che...</h3>
+            <ul class="dot">
+                <li>ti segnala in tempo reale tutto ciò che ti interessa? </li>
+                <li>non cerca le parole chiave ma gli argomenti di tuo interesse?</li>
+                <li>ti segnala elementi critici riferiti al tuo brand o ai tuoi prodotti?</li>
+                <li>ti invia email e sms, che ti mostra statistiche e grafici per capire chi parla di te, dove, come e quando?</li>
+            </ul>
+            <div class="clearer twenty"></div>
+            <section class="table">  
+                <section class="table-row">
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point">
+                            <h4 class="no-margin">Filtra tutto ciò che non è rilevante</h4>
+                            <p class="margin-bottom-20">Theenq Alert riporta solo le informazioni collegate all'argomento di tuo interesse e ti invia una chiara email che mostra a colpo d'occhio le informazioni più importanti e tutto ciò che si dice di te.</p>
+                        </article>
+                    </section>
+                    <section class="table-cell padding-top-15 ">
+                        <article class="article-point">
+                            <h4 class="no-margin">Segnala i contenuti critici</h4>
+                            <p class="margin-bottom-20">Theenq Alert mostra la criticità di ogni testo rilevato per darti la possibilità di intervenire subito e risolvere eventuali problemi di immagine e di reputazione riferiti al tuo brand o ai prodotti/servizi che offri.</p>
+                        </article>
+                    </section>
+                </section>
+                <section class="table-row">
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point">
+                            <h4 class="no-margin">Perché filtrare gli argomenti?</h4>
+                            <p class="margin-bottom-20">Perché il nome della tua azienda o i tuoi brand potrebbero essere impiegati anche in altri ambiti. Ad esempio, Scavolini, oltre ad essere una azienda leader nel settore delle cucine è anche una squadra di pallacanestro, una squadra di volley, una linea di arredamento bagno, un cognome diffuso, ecc. Selezionando il tuo settore/argomento riceverai solo ciò che ti interessa.</p>
+                        </article>
+                    </section>
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point ">
+                            <h4 class="no-margin">Nuove informazioni e aggiornamenti</h4>
+                            <p class="margin-bottom-20">Theenq Alert distingue le nuove informazioni trovate da quelle già segnalate e ti permette anche di seguire il loro sviluppo in caso di aggiornamento. Una impostazione utile per seguire o escludere, ad esempio, le eventuali risposte in forum e discussioni.</p>
+                        </article>
+                    </section>
+                </section>
+                <section class="table-row">
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point ">
+                            <h4 class="no-margin">Personalizzabile</h4>
+                            <p class="margin-bottom-20">Theenq Alert è uno strumento flessibile che può essere personalizzato per offrire informazioni realmente utili nel modo in cui desideri.</p>
+                        </article>
+                    </section>
+                    <section class="table-cell padding-top-15">
+                        <article class="article-point ">
+                            <h4 class="no-margin">Vengono poste domande?</h4>
+                            <p class="margin-bottom-20">Theenq Alert rileva e indica se tra i messaggi segnalati (da forum, social-media, ecc) vengono poste domande nei confronti di marche e/o modelli. Un'indicazione che consente di valutare subito un possibile intervento di risposta.</p>
+                        </article>
+                    </section>
+                </section>
+            </section>
+            {#<h3 class="no-margin">Filtra tutto ciò che non è rilevante</h3>
+            <p>Theenq Alert riporta solo le informazioni collegate all'argomento di tuo interesse e ti invia una chiara email che mostra a colpo d'occhio le informazioni più importanti e tutto ciò che si dice di te.</p>
+            <div class="clearer ten"></div>
+            <h3 class="no-margin">Segnala i contenuti critici</h3>
+            <p>Theenq Alert mostra la criticità di ogni testo rilevato per darti la possibilità di intervenire subito e risolvere eventuali problemi di immagine e di reputazione riferiti al tuo brand o ai prodotti/servizi che offri.</p>
+            <div class="clearer ten"></div>
+            <h3 class="no-margin">Perché filtrare gli argomenti?</h3>
+            <p>Perché il nome della tua azienda o i tuoi brand potrebbero essere impiegati anche in altri ambiti. Ad esempio, Scavolini, oltre ad essere una azienda leader nel settore delle cucine è anche una squadra di pallacanestro, una squadra di volley, una linea di arredamento bagno, un cognome diffuso, ecc. Selezionando il tuo settore/argomento riceverai solo ciò che ti interessa.</p>
+            <div class="clearer ten"></div>
+            <h3 class="no-margin">Nuove informazioni e aggiornamenti</h3>
+            <p>Theenq Alert distingue le nuove informazioni trovate da quelle già segnalate e ti permette anche di seguire il loro sviluppo in caso di aggiornamento. Una impostazione utile per seguire o escludere, ad esempio, le eventuali risposte in forum e discussioni.</p>
+            <div class="clearer ten"></div>
+            <h3 class="no-margin">Personalizzabile</h3>
+            <p>Theenq Alert è uno strumento flessibile che può essere personalizzato per offrire informazioni realmente utili nel modo in cui desideri.</p>
+            <div class="clearer ten"></div>
+            <h3 class="no-margin">Vengono poste domande?</h3>
+            <p>Theenq Alert rileva e indica se tra i messaggi segnalati (da forum, social-media, ecc) vengono poste domande nei confronti di marche e/o modelli. Un'indicazione che consente di valutare subito un possibile intervento di risposta.</p>
+            <div class="clearer ten"></div>
+            <p><strong>Come funziona TheenqAlert? <a style="color: #FB0A13;" href="http://www.theenq.com/theenq-alert-dettagli.htm">Scoprilo quì</strong></a>#}
+        </section>
+    </section>
+{% endblock %}

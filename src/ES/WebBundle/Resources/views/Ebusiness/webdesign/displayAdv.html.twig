@@ -1,0 +1,43 @@
+{% set header_preset = 'ebusiness' %}
+{% set footer = 'ebusiness' %}
+{% set menu_marker = 'webdesign' %}
+{% extends "::base.html.twig" %}
+{% block bodyclass %}showroom-page{% endblock %}
+
+{% block javascript %}
+    {% javascripts
+           %}   
+        <script src="{{ asset_url }}"></script>
+    {% endjavascripts %}
+{% endblock %}
+
+{% block javascript_ready %}
+    $.backstretch("/bundles/esweb/images/bg_generic.jpg", {speed: 1500});
+    marker_pos('#menu_webdesign');
+{% endblock %}
+    
+{% block content %}
+    <section id="header-tab" class="relative clear">
+        <div class="fixed-width clearfix">
+            <h2 class="text-shadow">Display Advertising e Banner Design</h2>
+            <h4 class="text-shadow normal">Sviluppo di banner pubblicitori per il web e per i nuovi media  in adobe flash e altre tecnologie</h4>
+        </div>
+    </section>
+    <section class="fixed-width box no-border rounded-5-left shadow clearfix">
+        {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenuTab.html.twig' %}
+        <section class="corporate no-border clearfix  no-padding padding-top-10 padding-bottom-10 margin-top-10">
+            <section class="coldx left no-margin margin-left-10">
+                {% include 'ESWebBundle:Ebusiness:webdesign/commons/subMenu.html.twig' %}
+                {% include 'ESWebBundle:Ebusiness:obiettivi/commons/subMenu.html.twig' %}
+            </section>
+            <section class="colsx right no-margin margin-right-10">
+                <p>Il Display advertising utilizza spazi a pagamento all'interno di un contenuto di interesse dell'utente in cui promuovere un prodotto/servizio. I formati rientrano in 4 grandi categorie: Banners e buttons, Pop-up e pop Under, Rich Media, Interstitial e Superstitial. </p>
+                <p>Non sempre le campagne display sono efficaci; un modo per cercare di aumentarne l'efficacia é quello di fare una buona pianificazione degli spazi in modo da intercettare il target. Per questo risulta importante il ruolo del centro media. </p>
+                <p>Nella fase di implementazione del piano, si apre una negoziazione/collaborazione con le concessionarie per acquistare degli spazi pubblicitari. Importante in questo caso avere una conoscenza dei siti dei portali e del tipo di audiance che raccolgono, al fine di investire il budget in modo mirato. </p>
+                <p>Le concessionarie vendono gli spazi in concessione: siti, portali, social network, community. </p>
+                <p>La campagna viene costantemente monitorata attraverso strumenti di tracking specifici. </p>
+                <p>La misurazione e vendita degli spazi viene effettuata per impression o CPM (cost per mille impression), tale dato rappresenta la visualizzazione del banner da parte dell'utente. Il click through rate (CTR) rappresenta il numero di click da parte dei visitatori del sito sul banner o link in generale, ma solo se questi hanno poi realmente raggiunto il contenuto richiesto e linkato nella pubblicità . L'efficacia di una campagna si misura perciò con il click rate (CR), cioé il rapporto percentuale tra il numero di Impression erogate di un Ad e il numero di AdClick sullo stesso.</p>
+            </section>
+        </section>
+    </section>
+{% endblock %}

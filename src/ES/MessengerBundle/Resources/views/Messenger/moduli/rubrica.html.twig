@@ -1,0 +1,63 @@
+{% set preferiti = 0 %}
+{% for categoria,contatti in rubrica%}
+    {% if categoria != 'numero_contatti' and categoria != 'contatti_in_rubrica' %}
+        {% set preferiti = preferiti + contatti|length %}
+    {% endif %}
+{% endfor %}
+{#<h4>Preferiti - <a href="javascript:void(0);" id="aggiungi_rubrica">Aggiungi</a></h4>#}
+<section class="baloon-container no-display" id="invito_rubrica_baloon"> 
+    <div class="arrow-up a-right" id="arrow-up"></div>
+    <section class="box-float bacheca shadow-strong clearfix" >
+        {% include 'EcoSeekrMessengerBundle:Rubrica:formInvito.html.twig' %}
+    </section>
+</section>  
+<div class="clearer ten"></div>
+<div class="box-light padding-3 rounded-3 gradient-light ">
+    <h4 class="favourites hover text-lightblue padding-left-20" onclick="baloon_preferiti();">Preferiti <span class="counter rounded-3 shadow">{{ preferiti }}</span></h4>
+    <section class="baloon-container no-display" id="favoriti_baloon" style="left: -15px;"> 
+        <div class="arrow-up a-right" id="arrow-up"></div>
+        <section class="box-float bacheca shadow-strong clearfix no-padding" >
+            <div class="close-box-main hover shadow rounded-10" id="baloon-favoriti-close">Chiudi</div>
+            {% if rubrica.numero_contatti > 0 %}
+                {% for categoria,contatti in rubrica%}
+                    {% if categoria != 'numero_contatti' and categoria != 'contatti_in_rubrica' %}
+                        <ul class="filters-mailing">
+                            {% for contatto in contatti %}
+                                {% if loop.length < 20 %}
+                                    <li class="contatto hover clearfix relative padding-10 no-margin" id="ru_{{contatto.id}}">
+                                        <a class="{{ categoria }} left margin-right-50" href="javascript: loadContent(ru_contact_tools+'?contatto={{contatto.id}}', ru_target, '#baloon-contact-tools', false);setPositionBallon('baloon-contact-tools', 'ru_{{contatto.id}}')">
+                                            <span id="cn_{{contatto.id}}">{{contatto.label}}</span>
+                                                {% if contatto.tipo == 'showroom' %}
+                                                    <br><small>{{ contatto.nome }}</small>
+                                                {% else %}
+                                                    {% if contatto.azienda %}<br><small>{{ contatto.azienda }}</small>{% endif %}
+                                                {% endif %}
+                                        </a>
+                                        <span class="op">
+                                            <a href="javascript: tuttiMessaggi({{contatto.id}})" class="user-mess left" title="Messaggi">Messaggi</a>
+                                            <a href="javascript: nuovoMessaggio({{contatto.id}})" class="new-mess left" title="Nuovo messaggio">Nuovo messaggio</a>
+                                            <a href="javascript: eliminaRubrica({{contatto.id}})" id="delete_{{contatto.id}}" class="delete-item left" title="Cancella il contatto">Elimina Contatto</a>
+                                        </span>
+                                        <div class="baloon-container no-display" id="baloon-contact-tools" style="left:0;">
+                                            <div class="arrow-up a-right" id="arrow-up"></div>
+                                            <section class="box-float bacheca shadow-strong clearfix" >
+                                            </section>
+                                        </div>    
+                                    </li>
+                                    {% if not loop.last %}
+                                        <div class="clearer"></div>
+                                        <div class="hr-light"></div>
+                                        <div class="clearer"></div>
+                                    {% endif %}
+                                {% endif %}
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                {% endfor %}
+            {% else %}
+        </section>
+    </section>
+</div>
+<p class="note">Nessun contatto in rubrica</p>
+{% endif %}
+

@@ -1,0 +1,92 @@
+<section class="clearfix margin-10">
+    <div class="clearfix left no-margin">
+        <p class="text-lightblue" style="font-size: 18px;">Scegli i Servizi</p>
+        <div class="clearer"></div>
+        <div class="hr-light margin-top-5 margin-bottom-5"></div>
+        <div class="clearer"></div>
+        <article class="all_draggable">
+            <div class="styled-select">
+                <select id="categorie_servizi">
+                {% if not open %}
+                    <option value="">Scegli le categorie di Servizi che offri.</option>
+                {% endif %}
+                {% for categoria in categorie %}
+                    <option id="opt_{{ categoria.id }}" value="draggable_{{ categoria.id }}">{{ categoria.categoria }}</option>
+                {% endfor %}
+                </select>
+            </div>
+        </article>
+    </div>
+</section>
+<div id="hide-drag" {% if not open %}style="display: none;"{% endif %}>
+    <section class="colsx margin-left-10" style="width: 400px;">
+        <p class="text-lightblue" style="font-size: 14px;">Seleziona...</p>
+        <div class="clearer"></div>
+        <div class="hr-light margin-top-5 margin-bottom-5"></div>
+        <div class="clearer"></div> 
+        <p>Scegli i Servizi e trascinali nel riquadro a destra.</p>
+        <article class="all_draggable">
+            <div class="clearer ten loader" style="position: relative; width: 50px; top: 20px;"></div>    
+            {% for categoria in categorie %}
+                <div class="div_drag draggable{% if not loop.first %} no-display{% endif %}" id="draggable_{{ categoria.id }}">
+                    {% include 'ESOperatoriBundle:Ajax:Preventivi/servizi/categorie.html.twig' %}
+                </div>
+            {% endfor %}
+        </article>
+    </section>
+    <section class="coldx margin-right-10" style="width: 350px;" >
+        <section class="hand-drag">Trascina nel riquadro successivo</section>
+        <section>
+            <p class="text-lightblue" style="font-size: 14px;">Trascina quì...</p>
+            <div class="clearer"></div>
+            <div class="hr-light margin-top-5 margin-bottom-5"></div>
+            <div class="clearer"></div> 
+            <p><a href="#riepilogo_servizi" class="fancybox">Hai selezionato <strong class="numero_servizi">0 Servizi</strong> da <strong class="numero_categorie">0 categorie</strong></a> | <a href="javascript:void(0);" class="drop_list">Cancella tutto</a></p>
+        </section>
+        <div class="ten"></div>
+        <section class="droppable">
+            <ul id="droppable" class="servizi_ul">
+                <li class="placeholder"></li>
+            </ul>
+        </section>
+        <div class="ten"></div>
+        <p><a href="#riepilogo_servizi" class="fancybox">Hai selezionato <strong class="numero_servizi">0 Servizi</strong> da <strong class="numero_categorie">0 categorie</strong></a> | <a href="javascript:void(0);" class="drop_list">Cancella tutto</a></p>
+    </section>
+    <div class="clearer ten"></div>
+    <section class="clearfix rounded-5 mess cyan margin-10" >
+        <div class="form_voice clearfix right">
+            <form class="p_input" action="{{ action }}" method="post" id="rdo_form">
+                <input type="hidden" name="servizi" id="servizi_json" value="" />
+                <button class="button-orange large" id="confirm" type="button">Conferma le scelte</button>
+            </form>
+        </div>
+    </section>
+</div>
+{# ##### LIGHT WINDOW RIEPILOGO CATEGORIA ##### #}
+<div id="riepilogo_servizi" class="no-display p_input">
+    <section class="header_rb"><h1>Panoramica dei Servizi che hai selezionato</h1></section>
+    <section id="content" class="clearfix regbox">
+        <section class="colmono riepilogo_servizi">
+            <ul id="riepilogo_servizi_list">
+
+            </ul>
+        </section>
+    </section>
+</div>
+<script type="text/javascript">
+    {% for servizio in showroom.serviziSr %}
+    selezionaServizio(".droppable ul", 
+                      "s_{{ servizio.id }}", 
+                      ["{{ servizio.categoria.categoria }}"], 
+                      "{{ servizio.servizio }}", 
+                      false, 
+                      ["{{ servizio.categoria.id }}"]);
+    {% endfor %}
+
+        $(function(){
+        $(".tips").tipTip({
+            delay: 0,
+            content: 'Questo è un servizio che hai aggiunto'
+        });
+    });
+</script>

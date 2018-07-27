@@ -1,0 +1,81 @@
+<div class="relative text-block">
+    {% if showroom.telefono %}
+        <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-10">
+            <p class="text-grey">Telefono:</p>
+        </article>
+        <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+            {% if modificabile %}
+                <p>{{ showroom.telefono }}</p>
+            {% else %}
+                <p><button class="button-orange smaller bit-large left contatti_showroom margin-right-10" attr="telefono-{{showroom.id}}">Mostra</button></p>
+            {% endif %}
+        </article>
+        <div class="clearer"></div>
+    {% endif %}
+
+    {% if showroom.cellulare %}
+        <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-10">
+            <p class="text-grey">Cellulare:</p>
+        </article>
+        <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+            {% if modificabile %}
+                <p>{{ showroom.cellulare }}</p>
+            {% else %}
+                <p><button class="button-orange smaller bit-large left contatti_showroom margin-right-10" attr="cellulare-{{showroom.id}}">Mostra</button></p>
+            {% endif %}
+        </article>
+        <div class="clearer"></div>
+    {% endif %}
+    {% if showroom.fax %}
+        <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-10">
+            <p class="text-grey">Fax:</p>
+        </article>
+        <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+            {% if modificabile %}
+                <p>{{ showroom.fax }}</p>
+            {% else %}
+                <p><button class="button-orange smaller bit-large left contatti_showroom margin-right-10" attr="fax-{{showroom.id}}">Mostra</button></p>
+            {% endif %}
+        </article>
+        <div class="clearer"></div>
+    {% endif %}
+    {% if showroom.email %}
+        <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-10">
+            <p class="text-grey">Email:</p>
+        </article>
+        <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+            {% if modificabile %}
+                <p>{{ showroom.email }}</p>
+            {% else %}
+                <p><button class="button-orange smaller bit-large left contatti_showroom margin-right-10" attr="email-{{showroom.id}}">Mostra</button></p>
+            {% endif %}
+        </article>
+        <div class="clearer"></div>
+    {% endif %}
+    {% if showroom.emailPec %}
+        <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-10">
+            <p class="text-grey">Email Pec:</p>
+        </article>
+        <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+            {% if modificabile %}
+                <p>{{ showroom.emailPec }}</p>
+            {% else %}
+                <p><button class="button-orange smaller bit-large left contatti_showroom margin-right-10" attr="email-{{showroom.id}}">Mostra</button></p>
+            {% endif %}
+        </article>
+        <div class="clearer"></div>
+    {% endif %}
+    {% if showroom.sito %}
+        <article class="mini-colsx clearfix azienda_presentazione  left text-right no-padding-top no-padding-bottom  margin-top-10">
+            <p class="text-grey">Sito:</p>
+        </article>
+        <article class="mini-coldx clearfix right no-padding-top no-padding-bottom relative margin-top-5">
+            {% if modificabile %}
+                <p>{{ showroom.sito }}</p>
+            {% else %}
+                <p><button class="button-orange smaller bit-large left contatti_showroom margin-right-10" attr="sito-{{showroom.id}}">Mostra</button></p>
+            {% endif %}
+        </article>
+        <div class="clearer"></div>
+    {% endif %}
+</div>

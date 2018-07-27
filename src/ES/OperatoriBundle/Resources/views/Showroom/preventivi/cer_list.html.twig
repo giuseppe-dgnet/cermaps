@@ -1,0 +1,27 @@
+
+{% if showroom.cer|length > 0 %}
+    <div class="clearer five"></div>
+    <p class="text-grey text-small hover text-small text-right" id="showcer">+ lista estesa codici cer trattati dall'azienda</p>
+    <div id="cerlist" style="display: none;">
+        <div class="clearer five"></div>
+        <section class="clearfix" id="select_cer">
+            <div class="clearer ten"></div>
+            <p class="int_activity"><span class="cer-col">Codice CER</span>Descrizione rifiuto<span class="filter-col"><strong>{{ showroom.cer|length }} indici selezionati</strong> | Visualizza: <a class="allFilter" href="javascript:showCer('all')">Tutti</a> | <a class="perFilter" href="javascript:showCer('per')">Pericolosi</a> | <a class="npFilter" href="javascript:showCer('np')">Non pericolosi</a></span></p>
+            <div class="clearer"></div>
+            <section class="box-light" >
+                <ul class="activity act-list" a="cer" id="cer">
+                    {% for cer in showroom.cer %}
+                        <li id="cer{{ cer.id }}" {% if loop.last %} class="last shadow"{% endif %}><span class="cer-col"><a class="button-cer-code-small {% if cer.pericoloso %}cer-per{% else %}cer-np{% endif %}">{{ cer.codice }}</a></span><span class="desc-col">{{ cer.descrizione|capitalize }}</span>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </section>
+        </section>
+    </div>
+    <script>
+        $('#showcer').click(function(){
+            $('#cerlist').toggle();
+        });
+    </script>
+{% endif %}
+
